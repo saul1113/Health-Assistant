@@ -40,11 +40,16 @@ struct AddEventView: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         SectionView(header: "제목") {
-                            TextField("제목을 입력해주세요", text: $title)
-                                .font(.headline)
-                                .padding()
-                                .background(Color.white)
-                                .cornerRadius(8)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.green.opacity(0.5), lineWidth: 3)
+                                    .background(Color.white.cornerRadius(8)) // 입력하는 부분 흰색 배경
+                                
+                                TextField("제목을 입력해주세요", text: $title)
+                                    .font(.bold20)
+                                    .padding(8)
+                                    .background(Color.clear)
+                            }
                         }
                         
                         SectionView(header: "시간 설정") {
@@ -58,11 +63,13 @@ struct AddEventView: View {
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
+                                    .font(.regular18)
                                 
                                 DatePicker("종료 시간", selection: $endTime)
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
+                                    .font(.regular18)
                             }
                         }
                         
@@ -81,7 +88,9 @@ struct AddEventView: View {
                                     }
                                 }
                                 .pickerStyle(MenuPickerStyle())
+                                .font(.bold24)
                             }
+                            .font(.regular18)
                         }
                         
                         SectionView(header: "메모") {
@@ -91,6 +100,7 @@ struct AddEventView: View {
                                 TextEditor(text: $notes)
                                     .frame(height: 100)
                                     .padding(8)
+                                    .font(.regular18)
                                     .background(Color.clear)
                                     .cornerRadius(8)
                                     .onChange(of: notes) {
