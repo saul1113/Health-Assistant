@@ -16,12 +16,14 @@ class CalendarViewModel: ObservableObject {
     }
     @Published var displayedMonthYear: String = ""
     @Published var calendarEvents: [CalendarEvent] = []
+    @Published var selectedDay: Int? = nil
     
     private let calendar = Calendar.current
     private let today = Date()
     
     init() {
         self.currentDate = Date()
+        self.selectedDay = todayDay
         updateMonthYearDisplay()
     }
     
@@ -93,5 +95,14 @@ class CalendarViewModel: ObservableObject {
     
     func removeEvent(for day: Int, eventID: UUID) {
         calendarEvents.removeAll { $0.id == eventID }
+    }
+    
+    // 선택한 날짜를 기준으로 시작 및 종료 시간 생성
+    func dateForSelectedDay(day: Int, hour: Int, minute: Int) -> Date? {
+        var components = calendar.dateComponents([.year, .month], from: currentDate)
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        return calendar.date(from: components)
     }
 }

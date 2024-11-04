@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CalendarEvent: Identifiable {
+struct CalendarEvent: Identifiable, Equatable {
     let id = UUID()
     var title: String
     var startTime: Date
@@ -15,7 +15,6 @@ struct CalendarEvent: Identifiable {
     var isAllDay: Bool
     var alert: EventAlert
     var notes: String
-    var content: String
 }
 
 enum EventAlert: String, CaseIterable, Identifiable {

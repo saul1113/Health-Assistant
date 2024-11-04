@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HealthCalendarView: View {
     @ObservedObject var viewModel = CalendarViewModel()
-    @State private var selectedDay: Int?
     @State private var showDayEvents = false
     
     var body: some View {
@@ -38,6 +37,7 @@ struct HealthCalendarView: View {
                 Button(action: { viewModel.moveToNextMonth() }) {
                     Image(systemName: "chevron.right")
                 }
+                
             }
             .padding()
             
@@ -49,22 +49,25 @@ struct HealthCalendarView: View {
                         .font(.subheadline)
                 }
             }
+            .padding(.horizontal)
             
             // 날짜 및 이벤트 미리보기 표시 (월의 일 수와 시작 요일에 맞춰 동적 생성)
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
                 ForEach(0..<viewModel.startDayOffset() + viewModel.daysInCurrentMonth(), id: \.self) { index in
                     if index < viewModel.startDayOffset() {
                         // 빈 칸 표시
-                        Text("")
+                        Text(" ")
                             .frame(height: 50)
                     } else {
                         let day = index - viewModel.startDayOffset() + 1
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .center, spacing: 5) {
                             Text("\(day)")
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(8)
-                                .background(day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() ? Color.blue.opacity(0.3) : Color.clear)
+                                .background(day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() ? Color.blue.opacity(0.3) : (day == viewModel.selectedDay ? Color.green.opacity(0.3) : Color.clear))
                                 .clipShape(Circle())
+                            
+                            Spacer()
                             
                             // 이벤트 제목 표시 (최대 2개)
                             ForEach(viewModel.events(for: day).prefix(2), id: \.id) { event in
@@ -74,21 +77,23 @@ struct HealthCalendarView: View {
                                     .truncationMode(.tail)
                             }
                         }
-                        .frame(height: 50)
-                        .background(Color.gray.opacity(0.1))
+                        .frame(height: 100)
                         .cornerRadius(5)
                         .onTapGesture {
-                            selectedDay = day
+                            viewModel.selectedDay = day
                             showDayEvents = true
                         }
                     }
                 }
             }
             .padding()
+            
+            Spacer()
         }
         .sheet(isPresented: $showDayEvents) {
-            if let day = selectedDay {
-                DayEventsView(viewModel: viewModel, day: day)
+            if let selectedDay = viewModel.selectedDay {
+                DayEventsView(viewModel: viewModel, day: selectedDay)
+                    .presentationDetents([.medium, .large]) // 반쯤 올라오게 설정
             }
         }
     }

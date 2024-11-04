@@ -23,11 +23,13 @@ struct DayEventsView: View {
                         }
                 }
             }
-            .navigationTitle("\(day)일 일정")
+            .navigationTitle("\(viewModel.displayedMonthYear) \(day)일 일정")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("+") {
+                    Button(action: {
                         showAddEvent = true
+                    }) {
+                        Image(systemName: "plus")
                     }
                 }
             }

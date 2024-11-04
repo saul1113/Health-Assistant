@@ -32,15 +32,14 @@ struct EditEventView: View {
                     TextEditor(text: $event.notes)
                 }
                 
-                Section(header: Text("본문")) {
-                    TextEditor(text: $event.content)
-                }
             }
             .navigationTitle("일정 편집")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("저장") {
-                        viewModel.addEvent(for: day, event: event)
+                        if let index = viewModel.calendarEvents.firstIndex(where: { $0.id == event.id }) {
+                            viewModel.calendarEvents[index] = event
+                        }
                         dismiss()
                     }
                 }
