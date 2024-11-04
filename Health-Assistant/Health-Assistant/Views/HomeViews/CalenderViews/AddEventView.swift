@@ -14,11 +14,25 @@ struct AddEventView: View {
     
     @State private var title: String = ""
     @State private var isAllDay: Bool = false
-    @State private var startTime: Date = Date()
-    @State private var endTime: Date = Date()
+    @State private var startTime: Date
+    @State private var endTime: Date
     @State private var alert: EventAlert = .none
     @State private var notes: String = ""
     private let notesCharacterLimit = 50
+    
+    init(viewModel: CalendarViewModel, day: Int) {
+        self.viewModel = viewModel
+        self.day = day
+        
+        // 선택한 날짜의 시작 시간과 종료 시간을 초기화
+        if let startOfDay = viewModel.startOfDay(for: day) {
+            _startTime = State(initialValue: startOfDay)
+            _endTime = State(initialValue: viewModel.dateByAddingHours(1, to: startOfDay) ?? startOfDay)
+        } else {
+            _startTime = State(initialValue: Date())
+            _endTime = State(initialValue: Date().addingTimeInterval(3600))
+        }
+    }
     
     var body: some View {
         NavigationView {

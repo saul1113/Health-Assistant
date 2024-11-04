@@ -16,7 +16,7 @@ class CalendarViewModel: ObservableObject {
     }
     @Published var displayedMonthYear: String = ""
     @Published var calendarEvents: [CalendarEvent] = []
-    @Published var selectedDay: Int? = nil
+    @Published var selectedDay: Int?
     
     private let calendar = Calendar.current
     private let today = Date()
@@ -97,12 +97,15 @@ class CalendarViewModel: ObservableObject {
         calendarEvents.removeAll { $0.id == eventID }
     }
     
-    // 선택한 날짜를 기준으로 시작 및 종료 시간 생성
-    func dateForSelectedDay(day: Int, hour: Int, minute: Int) -> Date? {
+    // 선택한 날짜를 기준으로 그 날의 시작 시간 생성
+    func startOfDay(for day: Int) -> Date? {
         var components = calendar.dateComponents([.year, .month], from: currentDate)
         components.day = day
-        components.hour = hour
-        components.minute = minute
         return calendar.date(from: components)
+    }
+    
+    // 특정 시간 수를 더한 날짜 생성
+    func dateByAddingHours(_ hours: Int, to date: Date) -> Date? {
+        return calendar.date(byAdding: .hour, value: hours, to: date)
     }
 }
