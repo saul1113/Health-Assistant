@@ -21,6 +21,8 @@ extension Color {
 }
 
 struct HomeView: View {
+    @StateObject private var healthData: HealthDataManager = HealthDataManager()
+    @State private var heartRate: Double = 0
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -61,10 +63,19 @@ struct HomeView: View {
             Text("현재")
                 .foregroundStyle(.white)
                 .font(.regular20)
-            Text("70")
-                .foregroundStyle(.white)
-                .font(.bold96)
-                .padding(.vertical, -27)
+            if healthData.isMeasuring {
+                Text("측정중...")
+                    .foregroundStyle(.white)
+                    .font(.bold96)
+                    .padding(.vertical, -27)
+            }
+                else {
+                    Text("\(String(format: "%.f", healthData.heartRate))")
+                        .foregroundStyle(.white)
+                        .font(.bold96)
+                        .padding(.vertical, -27)
+
+                }
             HStack {
                 Text("BPM")
                     .foregroundStyle(.white)
@@ -96,10 +107,10 @@ struct HomeView: View {
                 .frame(maxWidth: geometry.size.width, alignment: .leading)
             RoundedRectangle(cornerRadius: 18)
                 .fill(Color.mainColorD)
-                .frame(width: geometry.size.width - 94, height: 34)
+                .frame(width: abs(geometry.size.width - 94), height: 34)
                 .overlay (alignment: .leading) {
                     RoundedRectangle(cornerRadius: 18)
-                        .frame(width: gaugePerOne * 5 )
+                        .frame(width:abs(gaugePerOne * 5) )
                         .foregroundStyle(.white)
                 }
             HStack {
