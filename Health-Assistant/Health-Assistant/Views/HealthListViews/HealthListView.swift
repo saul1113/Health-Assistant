@@ -24,6 +24,7 @@ struct HealthListView: View {
                 .padding(.horizontal)
                 
                 
+                
                 let selectedRecords = selectedTab == 0 ? ocrRecords : healthReports
                 
                 if selectedRecords.isEmpty {
@@ -35,7 +36,7 @@ struct HealthListView: View {
                 } else {
                     List {
                         ForEach(selectedRecords) { report in
-                            NavigationLink(destination: DetailView(report: report)) {
+                            NavigationLink(destination: ReportsDetailView(report: report)) {
                                 HealthReportItem(title: report.title, dateRange: report.dateRange)
                                     .listRowInsets(EdgeInsets())
                             }

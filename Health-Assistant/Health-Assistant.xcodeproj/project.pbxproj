@@ -15,18 +15,19 @@
 		5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProFileView.swift */; };
 		5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062D2CD4AAB300AFE182 /* HomeView.swift */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
+		77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */; };
+		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
+		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
+		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
 		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
 		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
 		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
 		EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE160962CD7D312003E7CC2 /* Assets.xcassets */; };
 		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
 		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
-		77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */; };
-		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
-		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
-		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
+		F605D7CE2CD8AE30008DC5FC /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F605D7CD2CD8AE30008DC5FC /* MarkdownUI */; };
 		F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FD2CD8837A00944503 /* NewReportView.swift */; };
-		F64B24002CD883A500944503 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FF2CD8839C00944503 /* DetailView.swift */; };
+		F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */; };
 		F64B24022CD883C100944503 /* HealthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B24012CD883BC00944503 /* HealthReport.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,18 +42,18 @@
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
 		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
-		77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
-		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
-		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
-		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
 		F64B23FD2CD8837A00944503 /* NewReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportView.swift; sourceTree = "<group>"; };
-		F64B23FF2CD8839C00944503 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDetailView.swift; sourceTree = "<group>"; };
 		F64B24012CD883BC00944503 /* HealthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
 		F64B24032CD8917800944503 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F605D7CE2CD8AE30008DC5FC /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				F64B24012CD883BC00944503 /* HealthReport.swift */,
-				F64B23FF2CD8839C00944503 /* DetailView.swift */,
+				F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */,
 				F64B23FD2CD8837A00944503 /* NewReportView.swift */,
 				507906282CD4AA7900AFE182 /* HealthListView.swift */,
 			);
@@ -215,6 +217,7 @@
 			);
 			name = "Health-Assistant";
 			packageProductDependencies = (
+				F605D7CD2CD8AE30008DC5FC /* MarkdownUI */,
 			);
 			productName = "Health-Assistant";
 			productReference = 2C7F61372CD4914E0070998C /* Health-Assistant.app */;
@@ -244,6 +247,9 @@
 			);
 			mainGroup = 2C7F612E2CD4914E0070998C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C7F61382CD4914E0070998C /* Products */;
 			projectDirPath = "";
@@ -259,21 +265,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507906432CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf in Resources */,
-				507906442CD4AB9900AFE182 /* Pretendard-Light.ttf in Resources */,
-				507906452CD4AB9900AFE182 /* Pretendard-Black.ttf in Resources */,
-				507906462CD4AB9900AFE182 /* Pretendard-Thin.ttf in Resources */,
 				EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */,
-				507906472CD4AB9900AFE182 /* Pretendard-Bold.ttf in Resources */,
-				507906482CD4AB9900AFE182 /* Pretendard-Medium.ttf in Resources */,
-				507906492CD4AB9900AFE182 /* Pretendard-SemiBold.ttf in Resources */,
-				5079064A2CD4AB9900AFE182 /* Pretendard-Regular.ttf in Resources */,
-				5079064B2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
-				2C7F61512CD491570070998C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
-				F64B24002CD883A500944503 /* DetailView.swift in Sources */,
+				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
 				EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */,
@@ -527,6 +523,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F605D7CD2CD8AE30008DC5FC /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C7F612F2CD4914E0070998C /* Project object */;
 }
