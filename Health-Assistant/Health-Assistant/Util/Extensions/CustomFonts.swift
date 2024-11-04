@@ -16,7 +16,8 @@ extension Font {
     static var bold20 = Font.custom("NotoSansKR-Bold", size: 20)
     static var bold18 = Font.custom("NotoSansKR-Bold", size: 18)
     static var bold16 = Font.custom("NotoSansKR-Bold", size: 16)
-    
+    static var bold96 = Font.custom("NotoSansKR-Bold", size: 96)
+
     /// SemiBold
     static var semibold24 = Font.custom("NotoSansKR-SemiBold", size: 24)
     static var semibold20 = Font.custom("NotoSansKR-SemiBold", size: 20)

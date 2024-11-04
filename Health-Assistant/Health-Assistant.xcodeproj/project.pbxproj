@@ -10,6 +10,7 @@
 		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
 		2C7F61512CD491570070998C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F614A2CD491570070998C /* Assets.xcassets */; };
+		2C8E15E92CD84D46005C9801 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E15E72CD84D46005C9801 /* CustomFonts.swift */; };
 		507906252CD4AA5000AFE182 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906242CD4AA5000AFE182 /* Model.swift */; };
 		507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906262CD4AA5E00AFE182 /* MedisonView.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
@@ -27,6 +28,7 @@
 		2C7F614A2CD491570070998C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		2C7F614C2CD491570070998C /* Health_AssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_AssistantApp.swift; sourceTree = "<group>"; };
+		2C8E15E72CD84D46005C9801 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		507906242CD4AA5000AFE182 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		507906262CD4AA5E00AFE182 /* MedisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonView.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
@@ -39,14 +41,6 @@
 		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		77C7F7D32CD7BCFD00D345E5 /* Extensions */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C7F61342CD4914E0070998C /* Frameworks */ = {
@@ -78,21 +72,28 @@
 		2C7F614D2CD491570070998C /* Health-Assistant */ = {
 			isa = PBXGroup;
 			children = (
+				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
 				5079064C2CD4ABBC00AFE182 /* Info.plist */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
 				5079064E2CD4AED200AFE182 /* ViewModels */,
 				5079061F2CD4A7EC00AFE182 /* Views */,
-				2C7F614B2CD491570070998C /* MainTabView.swift */,
-				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
-				2C7F614A2CD491570070998C /* Assets.xcassets */,
 			);
 			path = "Health-Assistant";
+			sourceTree = "<group>";
+		};
+		2C8E15E82CD84D46005C9801 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C8E15E72CD84D46005C9801 /* CustomFonts.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5079061F2CD4A7EC00AFE182 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C7F614B2CD491570070998C /* MainTabView.swift */,
 				5079062E2CD4AAB300AFE182 /* HomeViews */,
 				507906332CD4AAC300AFE182 /* MedisonViews */,
 				507906342CD4AAC600AFE182 /* HealthListViews */,
@@ -144,7 +145,8 @@
 		507906372CD4AB1B00AFE182 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				77C7F7D32CD7BCFD00D345E5 /* Extensions */,
+				2C7F614A2CD491570070998C /* Assets.xcassets */,
+				2C8E15E82CD84D46005C9801 /* Extensions */,
 				507906392CD4AB2500AFE182 /* Fonts */,
 			);
 			path = Util;
@@ -183,9 +185,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				77C7F7D32CD7BCFD00D345E5 /* Extensions */,
 			);
 			name = "Health-Assistant";
 			packageProductDependencies = (
@@ -251,6 +250,7 @@
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
+				2C8E15E92CD84D46005C9801 /* CustomFonts.swift in Sources */,
 				507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
