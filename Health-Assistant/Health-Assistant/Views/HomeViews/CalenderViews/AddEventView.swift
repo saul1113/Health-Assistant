@@ -18,17 +18,15 @@ struct AddEventView: View {
     @State private var endTime: Date = Date()
     @State private var alert: EventAlert = .none
     @State private var notes: String = ""
+    private let notesCharacterLimit = 50
     
     var body: some View {
         NavigationView {
             ZStack {
-                Color.white // 전체 화면 배경을 흰색으로 설정
-                    .edgesIgnoringSafeArea(.all)
-                
                 ScrollView {
                     VStack(spacing: 20) {
-                        SectionView(header: "기본 정보") {
-                            TextField("제목", text: $title)
+                        SectionView(header: "제목") {
+                            TextField("제목을 입력해주세요", text: $title)
                                 .font(.headline)
                                 .padding()
                                 .background(Color.white)
@@ -42,12 +40,18 @@ struct AddEventView: View {
                         }
                         
                         SectionView(header: "알림") {
-                            Picker("미리알림", selection: $alert) {
-                                ForEach(EventAlert.allCases) { alertOption in
-                                    Text(alertOption.rawValue).tag(alertOption)
+                            HStack {
+                                Text("미리알림")
+                                
+                                Spacer()
+                                
+                                Picker("미리알림", selection: $alert) {
+                                    ForEach(EventAlert.allCases) { alertOption in
+                                        Text(alertOption.rawValue).tag(alertOption)
+                                    }
                                 }
+                                .pickerStyle(MenuPickerStyle())
                             }
-                            .pickerStyle(MenuPickerStyle())
                         }
                         
                         SectionView(header: "메모") {
@@ -58,6 +62,14 @@ struct AddEventView: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.gray.opacity(0.5))
                                 )
+                                .onChange(of: notes) {
+                                    if notes.count > notesCharacterLimit {
+                                        notes = String(notes.prefix(notesCharacterLimit))
+                                    }
+                                }
+                            Text("\(notes.count)/\(notesCharacterLimit) 글자")
+                                .font(.caption)
+                                .foregroundColor(notes.count > notesCharacterLimit ? .red : .gray)
                         }
                     }
                     .padding()
