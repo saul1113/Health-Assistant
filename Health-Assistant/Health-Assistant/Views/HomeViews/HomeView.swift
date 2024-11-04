@@ -77,10 +77,10 @@ struct HomeView: View {
     func chartView(geometry: GeometryProxy) -> some View {
         HStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.mainColor.opacity(0.3))
+                .fill(Color.mainColor30)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.mainColor.opacity(0.3))
+                .fill(Color.mainColor30)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
         }
         .padding(.horizontal, 20)
