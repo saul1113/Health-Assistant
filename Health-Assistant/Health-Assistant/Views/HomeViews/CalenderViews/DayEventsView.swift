@@ -23,20 +23,26 @@ struct DayEventsView: View {
                         HStack {
                             Text(event.title)
                         }
-                        
                         .onTapGesture {
                             selectedEvent = event
                         }
                     }
                 }
             }
-            .navigationTitle("\(viewModel.displayedMonthYear) \(day)일 일정")
+            .listStyle(.inset)
             .toolbar {
+                ToolbarItem(placement: .principal) { // 타이틀 커스터마이징
+                    Text("\(viewModel.displayedMonthYear) \(day)일 일정")
+                        .font(.headline)
+                        .foregroundColor(.green) // 원하는 색상으로 변경 가능
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showAddEvent = true
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.green) // 원하는 색상으로 변경 가능
                     }
                 }
             }
