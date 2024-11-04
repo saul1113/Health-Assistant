@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
-		2C7F61512CD491570070998C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F614A2CD491570070998C /* Assets.xcassets */; };
 		507906252CD4AA5000AFE182 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906242CD4AA5000AFE182 /* Model.swift */; };
 		507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906262CD4AA5E00AFE182 /* MedisonView.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
@@ -25,11 +24,16 @@
 		5079064A2CD4AB9900AFE182 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 507906402CD4AB9900AFE182 /* Pretendard-Regular.ttf */; };
 		5079064B2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063C2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
+		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
+		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
+		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
+		EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE160962CD7D312003E7CC2 /* Assets.xcassets */; };
+		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
+		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C7F614A2CD491570070998C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		2C7F614C2CD491570070998C /* Health_AssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_AssistantApp.swift; sourceTree = "<group>"; };
 		507906242CD4AA5000AFE182 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -48,6 +52,12 @@
 		507906422CD4AB9900AFE182 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.ttf"; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +97,7 @@
 				5079061F2CD4A7EC00AFE182 /* Views */,
 				2C7F614B2CD491570070998C /* MainTabView.swift */,
 				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
-				2C7F614A2CD491570070998C /* Assets.xcassets */,
+				EBE160962CD7D312003E7CC2 /* Assets.xcassets */,
 			);
 			path = "Health-Assistant";
 			sourceTree = "<group>";
@@ -95,6 +105,11 @@
 		5079061F2CD4A7EC00AFE182 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */,
+				EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */,
+				EBE160902CD7CC23003E7CC2 /* JoinView.swift */,
+				EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */,
+				EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */,
 				5079062E2CD4AAB300AFE182 /* Homeviews */,
 				507906332CD4AAC300AFE182 /* MedisonViews */,
 				507906342CD4AAC600AFE182 /* HealthListViews */,
@@ -236,11 +251,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C7F61512CD491570070998C /* Assets.xcassets in Resources */,
 				507906432CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf in Resources */,
 				507906442CD4AB9900AFE182 /* Pretendard-Light.ttf in Resources */,
 				507906452CD4AB9900AFE182 /* Pretendard-Black.ttf in Resources */,
 				507906462CD4AB9900AFE182 /* Pretendard-Thin.ttf in Resources */,
+				EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */,
 				507906472CD4AB9900AFE182 /* Pretendard-Bold.ttf in Resources */,
 				507906482CD4AB9900AFE182 /* Pretendard-Medium.ttf in Resources */,
 				507906492CD4AB9900AFE182 /* Pretendard-SemiBold.ttf in Resources */,
@@ -259,10 +274,15 @@
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
+				EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */,
+				EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */,
+				EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */,
 				507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */,
+				EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
+				EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */,
 				507906252CD4AA5000AFE182 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
