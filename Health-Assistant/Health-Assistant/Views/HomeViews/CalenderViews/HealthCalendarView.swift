@@ -23,7 +23,7 @@ struct HealthCalendarView: View {
                     }
                 } label: {
                     Text(viewModel.displayedMonthYear)
-                        .font(.title)
+                        .font(.bold28)
                         .foregroundStyle(.black)
                         .bold()
                 }
@@ -32,21 +32,25 @@ struct HealthCalendarView: View {
                 
                 Button(action: { viewModel.moveToPreviousMonth() }) {
                     Image(systemName: "chevron.left")
+                        .font(.bold24)
                 }
                 
                 Button(action: { viewModel.moveToNextMonth() }) {
                     Image(systemName: "chevron.right")
+                        .font(.bold24)
                 }
                 
             }
             .padding()
+            
+            Spacer()
             
             // 요일 표시 (일월화수목금토 순서)
             HStack {
                 ForEach(["일", "월", "화", "수", "목", "금", "토"], id: \.self) { day in
                     Text(day)
                         .frame(maxWidth: .infinity)
-                        .font(.subheadline)
+                        .font(.medium18)
                 }
             }
             .padding(.horizontal)
@@ -66,18 +70,21 @@ struct HealthCalendarView: View {
                                 .padding(8)
                                 .background(day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() ? Color.blue.opacity(0.3) : (day == viewModel.selectedDay ? Color.green.opacity(0.3) : Color.clear))
                                 .clipShape(Circle())
+                                .font(.semibold18)
                             
                             Spacer()
                             
                             // 이벤트 제목 표시 (최대 2개)
                             ForEach(viewModel.events(for: day).prefix(2), id: \.id) { event in
                                 Text(event.title)
-                                    .font(.caption)
+                                    .font(.regular16)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
+                                    .background(Color.green.opacity(0.3))
+                                    .foregroundStyle(.white)
                             }
                         }
-                        .frame(height: 100)
+                        .frame(height: 110)
                         .cornerRadius(5)
                         .onTapGesture {
                             viewModel.selectedDay = day

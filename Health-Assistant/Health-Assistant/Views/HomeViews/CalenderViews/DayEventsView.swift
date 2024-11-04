@@ -18,10 +18,13 @@ struct DayEventsView: View {
             List {
                 if viewModel.events(for: day).isEmpty {
                     Text("일정이 없습니다.")
+                        .font(.medium16)
+                        .foregroundStyle(.gray)
                 } else  {
                     ForEach(viewModel.events(for: day)) { event in
                         HStack {
                             Text(event.title)
+                                .font(.medium18)
                         }
                         .onTapGesture {
                             selectedEvent = event
@@ -33,7 +36,7 @@ struct DayEventsView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) { // 타이틀 커스터마이징
                     Text("\(viewModel.displayedMonthYear) \(day)일 일정")
-                        .font(.headline)
+                        .font(.bold24)
                         .foregroundColor(.green) // 원하는 색상으로 변경 가능
                 }
                 
@@ -42,6 +45,7 @@ struct DayEventsView: View {
                         showAddEvent = true
                     }) {
                         Image(systemName: "plus.circle.fill")
+                            .font(.bold24)
                             .foregroundColor(.green) // 원하는 색상으로 변경 가능
                     }
                 }
