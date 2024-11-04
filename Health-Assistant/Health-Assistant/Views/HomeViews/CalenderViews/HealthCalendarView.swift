@@ -25,6 +25,7 @@ struct HealthCalendarView: View {
                 } label: {
                     Text(viewModel.displayedMonthYear)
                         .font(.title)
+                        .foregroundStyle(.black)
                         .bold()
                 }
                 
@@ -40,36 +41,46 @@ struct HealthCalendarView: View {
             }
             .padding()
             
-            // 요일 표시
+            // 요일 표시 (일월화수목금토 순서)
             HStack {
-                ForEach(["월", "화", "수", "목", "금", "토", "일"], id: \.self) { day in
+                ForEach(["일", "월", "화", "수", "목", "금", "토"], id: \.self) { day in
                     Text(day)
                         .frame(maxWidth: .infinity)
                         .font(.subheadline)
                 }
             }
             
-            // 날짜 및 이벤트 미리보기 표시
+            // 날짜 및 이벤트 미리보기 표시 (월의 일 수와 시작 요일에 맞춰 동적 생성)
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
-                ForEach(1...31, id: \.self) { day in
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("\(day)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        // 이벤트 제목 표시 (최대 2개)
-                        ForEach(viewModel.events(for: day).prefix(2), id: \.id) { event in
-                            Text(event.title)
-                                .font(.caption)
-                                .lineLimit(1)
-                                .truncationMode(.tail)
+                ForEach(0..<viewModel.startDayOffset() + viewModel.daysInCurrentMonth(), id: \.self) { index in
+                    if index < viewModel.startDayOffset() {
+                        // 빈 칸 표시
+                        Text("")
+                            .frame(height: 50)
+                    } else {
+                        let day = index - viewModel.startDayOffset() + 1
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("\(day)")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(8)
+                                .background(day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() ? Color.blue.opacity(0.3) : Color.clear)
+                                .clipShape(Circle())
+                            
+                            // 이벤트 제목 표시 (최대 2개)
+                            ForEach(viewModel.events(for: day).prefix(2), id: \.id) { event in
+                                Text(event.title)
+                                    .font(.caption)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                            }
                         }
-                    }
-                    .frame(height: 50)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(5)
-                    .onTapGesture {
-                        selectedDay = day
-                        showDayEvents = true
+                        .frame(height: 50)
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(5)
+                        .onTapGesture {
+                            selectedDay = day
+                            showDayEvents = true
+                        }
                     }
                 }
             }
