@@ -16,11 +16,18 @@ struct DayEventsView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.events(for: day)) { event in
-                    Text(event.title)
+                if viewModel.events(for: day).isEmpty {
+                    Text("일정이 없습니다.")
+                } else  {
+                    ForEach(viewModel.events(for: day)) { event in
+                        HStack {
+                            Text(event.title)
+                        }
+                        
                         .onTapGesture {
                             selectedEvent = event
                         }
+                    }
                 }
             }
             .navigationTitle("\(viewModel.displayedMonthYear) \(day)일 일정")
