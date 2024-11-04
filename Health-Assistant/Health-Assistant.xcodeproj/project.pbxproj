@@ -14,15 +14,6 @@
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
 		5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProFileView.swift */; };
 		5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062D2CD4AAB300AFE182 /* HomeView.swift */; };
-		507906432CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063D2CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf */; };
-		507906442CD4AB9900AFE182 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063E2CD4AB9900AFE182 /* Pretendard-Light.ttf */; };
-		507906452CD4AB9900AFE182 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063A2CD4AB9900AFE182 /* Pretendard-Black.ttf */; };
-		507906462CD4AB9900AFE182 /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 507906422CD4AB9900AFE182 /* Pretendard-Thin.ttf */; };
-		507906472CD4AB9900AFE182 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063B2CD4AB9900AFE182 /* Pretendard-Bold.ttf */; };
-		507906482CD4AB9900AFE182 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063F2CD4AB9900AFE182 /* Pretendard-Medium.ttf */; };
-		507906492CD4AB9900AFE182 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 507906412CD4AB9900AFE182 /* Pretendard-SemiBold.ttf */; };
-		5079064A2CD4AB9900AFE182 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 507906402CD4AB9900AFE182 /* Pretendard-Regular.ttf */; };
-		5079064B2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5079063C2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
 		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
 		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
@@ -30,6 +21,10 @@
 		EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE160962CD7D312003E7CC2 /* Assets.xcassets */; };
 		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
 		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
+		77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */; };
+		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
+		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
+		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,15 +36,6 @@
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
 		5079062A2CD4AA9F00AFE182 /* ProFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFileView.swift; sourceTree = "<group>"; };
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		5079063A2CD4AB9900AFE182 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.ttf"; sourceTree = "<group>"; };
-		5079063B2CD4AB9900AFE182 /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.ttf"; sourceTree = "<group>"; };
-		5079063C2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
-		5079063D2CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
-		5079063E2CD4AB9900AFE182 /* Pretendard-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.ttf"; sourceTree = "<group>"; };
-		5079063F2CD4AB9900AFE182 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.ttf"; sourceTree = "<group>"; };
-		507906402CD4AB9900AFE182 /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.ttf"; sourceTree = "<group>"; };
-		507906412CD4AB9900AFE182 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
-		507906422CD4AB9900AFE182 /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.ttf"; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -58,7 +44,20 @@
 		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
+		77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		77C7F7D32CD7BCFD00D345E5 /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C7F61342CD4914E0070998C /* Frameworks */ = {
@@ -110,7 +109,7 @@
 				EBE160902CD7CC23003E7CC2 /* JoinView.swift */,
 				EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */,
 				EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */,
-				5079062E2CD4AAB300AFE182 /* Homeviews */,
+				5079062E2CD4AAB300AFE182 /* HomeViews */,
 				507906332CD4AAC300AFE182 /* MedisonViews */,
 				507906342CD4AAC600AFE182 /* HealthListViews */,
 				507906352CD4AAC800AFE182 /* ProFileViews */,
@@ -126,12 +125,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		5079062E2CD4AAB300AFE182 /* Homeviews */ = {
+		5079062E2CD4AAB300AFE182 /* HomeViews */ = {
 			isa = PBXGroup;
 			children = (
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
 			);
-			path = Homeviews;
+			path = HomeViews;
 			sourceTree = "<group>";
 		};
 		507906332CD4AAC300AFE182 /* MedisonViews */ = {
@@ -161,25 +160,21 @@
 		507906372CD4AB1B00AFE182 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				507906392CD4AB2500AFE182 /* Font */,
+				77C7F7D32CD7BCFD00D345E5 /* Extensions */,
+				507906392CD4AB2500AFE182 /* Fonts */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		507906392CD4AB2500AFE182 /* Font */ = {
+		507906392CD4AB2500AFE182 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				5079063A2CD4AB9900AFE182 /* Pretendard-Black.ttf */,
-				5079063B2CD4AB9900AFE182 /* Pretendard-Bold.ttf */,
-				5079063C2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf */,
-				5079063D2CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf */,
-				5079063E2CD4AB9900AFE182 /* Pretendard-Light.ttf */,
-				5079063F2CD4AB9900AFE182 /* Pretendard-Medium.ttf */,
-				507906402CD4AB9900AFE182 /* Pretendard-Regular.ttf */,
-				507906412CD4AB9900AFE182 /* Pretendard-SemiBold.ttf */,
-				507906422CD4AB9900AFE182 /* Pretendard-Thin.ttf */,
+				77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */,
+				77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */,
+				77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */,
+				77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */,
 			);
-			path = Font;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		5079064E2CD4AED200AFE182 /* ViewModels */ = {
@@ -204,6 +199,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				77C7F7D32CD7BCFD00D345E5 /* Extensions */,
 			);
 			name = "Health-Assistant";
 			packageProductDependencies = (
@@ -261,6 +259,11 @@
 				507906492CD4AB9900AFE182 /* Pretendard-SemiBold.ttf in Resources */,
 				5079064A2CD4AB9900AFE182 /* Pretendard-Regular.ttf in Resources */,
 				5079064B2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf in Resources */,
+				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
+				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
+				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
+				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
+				2C7F61512CD491570070998C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
