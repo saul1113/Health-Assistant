@@ -98,14 +98,10 @@ struct ProfileView: View {
                 }) {
                     Text("로그아웃")
                         .font(.medium16)
-                        .foregroundColor(.red)
+                        .foregroundColor(.gray)
                         .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .shadow(radius: 1)
                 }
-                .padding(.horizontal)
+                .padding()
             }
             .navigationTitle("프로필")
             .navigationBarTitleDisplayMode(.inline)
