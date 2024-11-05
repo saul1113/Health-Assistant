@@ -23,8 +23,14 @@ struct DayEventsView: View {
                 } else  {
                     ForEach(viewModel.events(for: day)) { event in
                         HStack {
-                            Text(event.title)
-                                .font(.medium18)
+                            VStack(alignment: .leading) {
+                                Text(viewModel.formattedTime(for: event))
+                                    .font(.regular20)
+                                    .foregroundStyle(.gray)
+                                
+                                Text(event.title)
+                                    .font(.medium24)
+                            }
                         }
                         .onTapGesture {
                             selectedEvent = event
@@ -59,3 +65,4 @@ struct DayEventsView: View {
         }
     }
 }
+

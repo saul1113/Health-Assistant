@@ -108,4 +108,12 @@ class CalendarViewModel: ObservableObject {
     func dateByAddingHours(_ hours: Int, to date: Date) -> Date? {
         return calendar.date(byAdding: .hour, value: hours, to: date)
     }
+    
+    func formattedTime(for event: CalendarEvent) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "a h:mm" // "오전/오후 h:mm" 형식
+        
+        return "\(formatter.string(from: event.startTime)) - \(formatter.string(from: event.endTime))"
+    }
 }
