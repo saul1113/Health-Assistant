@@ -15,16 +15,20 @@
 		5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProFileView.swift */; };
 		5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062D2CD4AAB300AFE182 /* HomeView.swift */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
+		77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */; };
+		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
+		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
+		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
 		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
 		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
 		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
 		EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE160962CD7D312003E7CC2 /* Assets.xcassets */; };
 		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
 		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
-		77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */; };
-		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
-		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
-		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
+		EBE160A42CD8AF36003E7CC2 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160A32CD8AF36003E7CC2 /* ProfileImageView.swift */; };
+		EBE160A62CD8F218003E7CC2 /* HealthAllowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160A52CD8F218003E7CC2 /* HealthAllowView.swift */; };
+		EBE160A82CD8FFD4003E7CC2 /* HealthSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160A72CD8FFD4003E7CC2 /* HealthSheetView.swift */; };
+		EBE160AB2CDA0A1B003E7CC2 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,17 +42,21 @@
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
 		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
-		77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
-		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
-		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
-		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
-
+		EBE160A32CD8AF36003E7CC2 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		EBE160A52CD8F218003E7CC2 /* HealthAllowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAllowView.swift; sourceTree = "<group>"; };
+		EBE160A72CD8FFD4003E7CC2 /* HealthSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSheetView.swift; sourceTree = "<group>"; };
+		EBE160A92CDA088D003E7CC2 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
+		EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -89,6 +97,7 @@
 		2C7F614D2CD491570070998C /* Health-Assistant */ = {
 			isa = PBXGroup;
 			children = (
+				EBE160A92CDA088D003E7CC2 /* Health-Assistant.entitlements */,
 				5079064C2CD4ABBC00AFE182 /* Info.plist */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
@@ -104,11 +113,7 @@
 		5079061F2CD4A7EC00AFE182 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */,
-				EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */,
-				EBE160902CD7CC23003E7CC2 /* JoinView.swift */,
-				EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */,
-				EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */,
+				EBE160A22CD88A1A003E7CC2 /* LoginViews */,
 				5079062E2CD4AAB300AFE182 /* HomeViews */,
 				507906332CD4AAC300AFE182 /* MedisonViews */,
 				507906342CD4AAC600AFE182 /* HealthListViews */,
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				507906242CD4AA5000AFE182 /* Model.swift */,
+				EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +189,21 @@
 				5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		EBE160A22CD88A1A003E7CC2 /* LoginViews */ = {
+			isa = PBXGroup;
+			children = (
+				EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */,
+				EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */,
+				EBE160902CD7CC23003E7CC2 /* JoinView.swift */,
+				EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */,
+				EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */,
+				EBE160A32CD8AF36003E7CC2 /* ProfileImageView.swift */,
+				EBE160A52CD8F218003E7CC2 /* HealthAllowView.swift */,
+				EBE160A72CD8FFD4003E7CC2 /* HealthSheetView.swift */,
+			);
+			path = LoginViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,21 +270,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				507906432CD4AB9900AFE182 /* Pretendard-ExtraLight.ttf in Resources */,
-				507906442CD4AB9900AFE182 /* Pretendard-Light.ttf in Resources */,
-				507906452CD4AB9900AFE182 /* Pretendard-Black.ttf in Resources */,
-				507906462CD4AB9900AFE182 /* Pretendard-Thin.ttf in Resources */,
 				EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */,
-				507906472CD4AB9900AFE182 /* Pretendard-Bold.ttf in Resources */,
-				507906482CD4AB9900AFE182 /* Pretendard-Medium.ttf in Resources */,
-				507906492CD4AB9900AFE182 /* Pretendard-SemiBold.ttf in Resources */,
-				5079064A2CD4AB9900AFE182 /* Pretendard-Regular.ttf in Resources */,
-				5079064B2CD4AB9900AFE182 /* Pretendard-ExtraBold.ttf in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
-				2C7F61512CD491570070998C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE160A62CD8F218003E7CC2 /* HealthAllowView.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
@@ -281,10 +293,13 @@
 				EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */,
 				EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */,
 				507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */,
+				EBE160AB2CDA0A1B003E7CC2 /* HealthKitManager.swift in Sources */,
 				EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
+				EBE160A82CD8FFD4003E7CC2 /* HealthSheetView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
+				EBE160A42CD8AF36003E7CC2 /* ProfileImageView.swift in Sources */,
 				EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */,
 				507906252CD4AA5000AFE182 /* Model.swift in Sources */,
 			);
@@ -417,6 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-Assistant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -454,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-Assistant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";

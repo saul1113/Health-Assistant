@@ -20,30 +20,31 @@ struct LoginView: View {
                 HStack {
                     Text("HAHA")
                         .foregroundStyle(Color(uiColor: .systemGreen))
-                        .bold()
+                        .font(Font.bold24)
                     
                     + Text("와 함께")
-                        .bold()
+                        .font(Font.bold20)
                 }
                
                     HStack(spacing: 0) {
                             Text("건강 관리")
+                            .font(Font.bold20)
                                 .foregroundColor(.black)
                                 .background(Color(uiColor: .systemGreen).opacity(0.3))
                                 .cornerRadius(5)
                         
                         Text("를 시작하세요!")
+                            .font(Font.bold20)
                     }
                     
                 Text("검사지 검색부터 스케줄관리 까지")
                     .foregroundStyle(Color(uiColor: .systemGray))
-                    .font(.caption2)
+                    .font(Font.semibold14)
             }
             
             VStack {
                 Text ("소셜 계정으로 로그인하기")
-                    .font(Font.footnote)
-                    .bold()
+                    .font(Font.semibold14)
                 
                 HStack {
                     Button {
@@ -78,6 +79,7 @@ struct LoginView: View {
                                 .foregroundColor(.gray)
                             Text("이메일로 로그인")
                                 .foregroundColor(.gray)
+                                .font(Font.semibold14)
                         }
                         .frame(width: 250)
                         .padding()
@@ -91,7 +93,7 @@ struct LoginView: View {
                         NavigationLink(destination: JoinView()) {
                             Text("회원가입")
                         }
-                        .font(.caption)
+                        .font(Font.semibold14)
                         
                         Text(" | ")
                             .font(.caption)
@@ -99,7 +101,7 @@ struct LoginView: View {
                         Button("문의하기") {
                             
                         }
-                        .font(.caption)
+                        .font(Font.semibold14)
                     }
                     .padding()
                 }
