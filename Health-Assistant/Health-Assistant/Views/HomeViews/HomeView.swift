@@ -135,7 +135,6 @@ struct HomeView: View {
     }
 }
 
-
 #Preview {
     HomeView()
 }
