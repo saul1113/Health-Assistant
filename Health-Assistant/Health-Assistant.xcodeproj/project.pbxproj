@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
+		2C41A0C72CD9B6FE006815BC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C41A0C62CD9B6FE006815BC /* Alamofire */; };
+		2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0CA2CD9B763006815BC /* UserViewModel.swift */; };
+		2C41A0CD2CD9B837006815BC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0CC2CD9B837006815BC /* LocationManager.swift */; };
+		2C41A0D02CD9E8C7006815BC /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 2C41A0CF2CD9E8C7006815BC /* XMLCoder */; };
+		2C41A0D22CD9ED24006815BC /* HostpitalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */; };
+		2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0D32CDA054A006815BC /* HospitalMapView.swift */; };
+		2C77E0EF2CDA857E005365CC /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EC2CDA857E005365CC /* NotoSansKR-Regular.ttf */; };
+		2C77E0F02CDA857E005365CC /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0ED2CDA857E005365CC /* NotoSansKR-SemiBold.ttf */; };
+		2C77E0F12CDA857E005365CC /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EA2CDA857E005365CC /* NotoSansKR-Bold.ttf */; };
+		2C77E0F22CDA857E005365CC /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EB2CDA857E005365CC /* NotoSansKR-Medium.ttf */; };
+		2C77E0F42CDA8626005365CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0F32CDA8626005365CC /* Assets.xcassets */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
-		500EB8872CD854BA00CCD409 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		2C8E15F52CD89D6E005C9801 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E15F42CD89D6E005C9801 /* HealthManager.swift */; };
 		500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88B2CD855C800CCD409 /* CalendarEvent.swift */; };
 		500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */; };
 		500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8912CD8568300CCD409 /* HealthCalendarView.swift */; };
@@ -49,7 +59,6 @@
 		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
 		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
 		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
-		EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE160962CD7D312003E7CC2 /* Assets.xcassets */; };
 		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
 		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
 		EBE160A42CD8AF36003E7CC2 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160A32CD8AF36003E7CC2 /* ProfileImageView.swift */; };
@@ -63,9 +72,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C41A0CA2CD9B763006815BC /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		2C41A0CC2CD9B837006815BC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostpitalResponse.swift; sourceTree = "<group>"; };
+		2C41A0D32CDA054A006815BC /* HospitalMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapView.swift; sourceTree = "<group>"; };
+		2C77E0EA2CDA857E005365CC /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		2C77E0EB2CDA857E005365CC /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		2C77E0EC2CDA857E005365CC /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		2C77E0ED2CDA857E005365CC /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
+		2C77E0F32CDA8626005365CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C77E0F52CDA8AB5005365CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		2C7F614C2CD491570070998C /* Health_AssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_AssistantApp.swift; sourceTree = "<group>"; };
+		2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
+		2C8E15F42CD89D6E005C9801 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		500EB88B2CD855C800CCD409 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		500EB8912CD8568300CCD409 /* HealthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCalendarView.swift; sourceTree = "<group>"; };
@@ -82,7 +102,6 @@
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
 		5079062A2CD4AA9F00AFE182 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -106,13 +125,11 @@
 		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
-		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 		EBE160A32CD8AF36003E7CC2 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		EBE160A52CD8F218003E7CC2 /* HealthAllowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthAllowView.swift; sourceTree = "<group>"; };
 		EBE160A72CD8FFD4003E7CC2 /* HealthSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSheetView.swift; sourceTree = "<group>"; };
-		EBE160A92CDA088D003E7CC2 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
 		EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		F64B23FD2CD8837A00944503 /* NewReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportView.swift; sourceTree = "<group>"; };
 		F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDetailView.swift; sourceTree = "<group>"; };
@@ -124,6 +141,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C41A0D02CD9E8C7006815BC /* XMLCoder in Frameworks */,
+				2C41A0C72CD9B6FE006815BC /* Alamofire in Frameworks */,
 				F605D7CE2CD8AE30008DC5FC /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +150,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C77E0EE2CDA857E005365CC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2C77E0EA2CDA857E005365CC /* NotoSansKR-Bold.ttf */,
+				2C77E0EB2CDA857E005365CC /* NotoSansKR-Medium.ttf */,
+				2C77E0EC2CDA857E005365CC /* NotoSansKR-Regular.ttf */,
+				2C77E0ED2CDA857E005365CC /* NotoSansKR-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2C7F612E2CD4914E0070998C = {
 			isa = PBXGroup;
 			children = (
@@ -150,15 +180,13 @@
 		2C7F614D2CD491570070998C /* Health-Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				EBE160A92CDA088D003E7CC2 /* Health-Assistant.entitlements */,
-				5079064C2CD4ABBC00AFE182 /* Info.plist */,
+				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
+				2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */,
+				2C77E0F52CDA8AB5005365CC /* Info.plist */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
 				5079064E2CD4AED200AFE182 /* ViewModels */,
 				5079061F2CD4A7EC00AFE182 /* Views */,
-				2C7F614B2CD491570070998C /* MainTabView.swift */,
-				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
-				EBE160962CD7D312003E7CC2 /* Assets.xcassets */,
 			);
 			path = "Health-Assistant";
 			sourceTree = "<group>";
@@ -255,6 +283,11 @@
 			children = (
 				500EB8882CD854CD00CCD409 /* CalenderViews */,
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
+				2C41A0D32CDA054A006815BC /* HospitalMapView.swift */,
+				2C41A0CA2CD9B763006815BC /* UserViewModel.swift */,
+				2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */,
+				2C41A0CC2CD9B837006815BC /* LocationManager.swift */,
+				2C8E15F42CD89D6E005C9801 /* HealthManager.swift */,
 			);
 			path = HomeViews;
 			sourceTree = "<group>";
@@ -299,6 +332,8 @@
 		507906372CD4AB1B00AFE182 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2C77E0F32CDA8626005365CC /* Assets.xcassets */,
+				2C77E0EE2CDA857E005365CC /* Fonts */,
 				500EFB522CD99B9B0036D4DC /* Components */,
 				500EFB602CD99BB30036D4DC /* Extensions */,
 				507906392CD4AB2500AFE182 /* Fonts */,
@@ -376,6 +411,8 @@
 			);
 			name = "Health-Assistant";
 			packageProductDependencies = (
+				2C41A0C62CD9B6FE006815BC /* Alamofire */,
+				2C41A0CF2CD9E8C7006815BC /* XMLCoder */,
 				F605D7CD2CD8AE30008DC5FC /* MarkdownUI */,
 			);
 			productName = "Health-Assistant";
@@ -407,6 +444,8 @@
 			mainGroup = 2C7F612E2CD4914E0070998C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				2C41A0C52CD9B6FE006815BC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2C41A0CE2CD9E8C7006815BC /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -424,10 +463,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */,
+				2C77E0EF2CDA857E005365CC /* NotoSansKR-Regular.ttf in Resources */,
+				2C77E0F02CDA857E005365CC /* NotoSansKR-SemiBold.ttf in Resources */,
+				2C77E0F12CDA857E005365CC /* NotoSansKR-Bold.ttf in Resources */,
+				2C77E0F22CDA857E005365CC /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
+				2C77E0F42CDA8626005365CC /* Assets.xcassets in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +482,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
+				2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */,
+				2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */,
 				50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */,
 				EBE160A62CD8F218003E7CC2 /* HealthAllowView.swift in Sources */,
 				7739971B2CD85306008DE12E /* MedicationDetailView.swift in Sources */,
@@ -459,7 +505,9 @@
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
-				500EB8872CD854BA00CCD409 /* (null) in Sources */,
+				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
+				2C41A0CD2CD9B837006815BC /* LocationManager.swift in Sources */,
+				2C41A0D22CD9ED24006815BC /* HostpitalResponse.swift in Sources */,
 				500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */,
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
 				50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */,
@@ -467,7 +515,6 @@
 				7739971D2CD85319008DE12E /* MedicationAddView.swift in Sources */,
 				500EB8872CD854BA00CCD409 /* (null) in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
-				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
 				50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */,
 				50FC2E5F2CDA070C000C1EB8 /* NotificationSettingsView.swift in Sources */,
 				500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */,
@@ -483,7 +530,6 @@
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */,
 				EBE160A82CD8FFD4003E7CC2 /* HealthSheetView.swift in Sources */,
-				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
 				50FC2E612CDA0736000C1EB8 /* AccountManagementView.swift in Sources */,
 				F64B24022CD883C100944503 /* HealthReport.swift in Sources */,
 				F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */,
@@ -492,6 +538,7 @@
 				EBE160A42CD8AF36003E7CC2 /* ProfileImageView.swift in Sources */,
 				EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */,
 				507906252CD4AA5000AFE182 /* Model.swift in Sources */,
+				2C8E15F52CD89D6E005C9801 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,14 +673,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = U4BQZ3AXAA;
+				DEVELOPMENT_TEAM = 6R3M7VGRP2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "사용자 건강 데이터 업데이트 허용";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 항상 또는 앱을 사용할 때만 얻어 오기위한 권한요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 얻어 오기위한 권한요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -645,7 +693,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sueunal.com.Health-Assistant";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sueunal.com.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -666,14 +714,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = U4BQZ3AXAA;
+				DEVELOPMENT_TEAM = 6R3M7VGRP2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "사용자 건강 데이터 업데이트 허용";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 항상 또는 앱을 사용할 때만 얻어 오기위한 권한요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 얻어 오기위한 권한요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -685,7 +734,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sueunal.com.Health-Assistant";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sueunal.com.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -721,6 +770,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2C41A0C52CD9B6FE006815BC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+		2C41A0CE2CD9E8C7006815BC /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.1;
+			};
+		};
 		F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
@@ -732,6 +797,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2C41A0C62CD9B6FE006815BC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C41A0C52CD9B6FE006815BC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2C41A0CF2CD9E8C7006815BC /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C41A0CE2CD9E8C7006815BC /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
 		F605D7CD2CD8AE30008DC5FC /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
