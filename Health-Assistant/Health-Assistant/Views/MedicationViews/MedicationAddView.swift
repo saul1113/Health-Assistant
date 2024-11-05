@@ -18,6 +18,8 @@ struct MedicationAddView: View {
     @State private var timePicker: Bool = false
     @State private var time: Date = Date()
     
+    @State private var iconViewSheet = false
+    
     let week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     @Environment(\.dismiss) var dismiss
@@ -39,7 +41,9 @@ struct MedicationAddView: View {
                                 .foregroundStyle(.white)
                                 .font(.system(size: 40))
                             
-                            NavigationLink(destination: MedicationIconView()) {
+                            Button(action: {
+                                iconViewSheet.toggle()
+                            }) {
                                 Text("아이콘 추가")
                                     .foregroundColor(.white)
                                     .font(.semibold14)
@@ -164,6 +168,7 @@ struct MedicationAddView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
+                        print("취소 버튼 눌림")
                         dismiss()
                     }) {
                         Text("취소")
@@ -172,7 +177,11 @@ struct MedicationAddView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-//                        viewModel.addMedication(name: medicationName, days: selectedDays, times: selectedTimes, note: medicationNote)
+                        print("저장 버튼 눌림")
+                        let formattedTimes = selectedTimes.map { formatTimeToString($0) }
+                        viewModel.addMedication(name: medicationName, company: "", days: selectedDays, times: formattedTimes, note: medicationNote)
+//
+                        dismiss()
                     }) {
                         Text("저장")
                             .foregroundStyle(.black)
@@ -181,6 +190,9 @@ struct MedicationAddView: View {
             }
             .navigationTitle("약 추가")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $iconViewSheet) {
+                MedicationIconView()
+            }
         }
         
     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MedicationListView: View {
     
     @ObservedObject var viewModel = MedicationViewModel()
+    
     @State private var addViewSheet = false
     
     var body: some View {
@@ -30,7 +31,7 @@ struct MedicationListView: View {
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(medication.name)
                                     .font(.semibold20)
-                                Text("업체 이름")
+                                Text(medication.company)
                                     .font(.regular14)
                                 Text("2024.08.16부터 복용 중")
                                     .font(.regular10)
