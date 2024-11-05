@@ -19,7 +19,11 @@ extension Font {
     static var bold96 = Font.custom("NotoSansKR-Bold", size: 96)
 
     /// SemiBold
+    static var semibold30 = Font.custom("NotoSansKR-SemiBold", size: 30)
+    static var semibold28 = Font.custom("NotoSansKR-SemiBold", size: 28)
+    static var semibold26 = Font.custom("NotoSansKR-SemiBold", size: 26)
     static var semibold24 = Font.custom("NotoSansKR-SemiBold", size: 24)
+    static var semibold22 = Font.custom("NotoSansKR-SemiBold", size: 22)
     static var semibold20 = Font.custom("NotoSansKR-SemiBold", size: 20)
     static var semibold18 = Font.custom("NotoSansKR-SemiBold", size: 18)
     static var semibold16 = Font.custom("NotoSansKR-SemiBold", size: 16)

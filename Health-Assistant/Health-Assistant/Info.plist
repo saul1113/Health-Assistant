@@ -19,12 +19,6 @@
 </dict>
 <key>NSHealthShareUsageDescription</key>
 <string>이 앱은 수면 분석 및 심박수를 기반으로 개인화된 건강 피드백을 제공합니다.</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>NotoSansKR-Bold.ttf</string>
-		<string>NotoSansKR-SemiBold.ttf</string>
-		<string>NotoSansKR-Medium.ttf</string>
-		<string>NotoSansKR-Regular.ttf</string>
-	</array>
+
 </dict>
 </plist>

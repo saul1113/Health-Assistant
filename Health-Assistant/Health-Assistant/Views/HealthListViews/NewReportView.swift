@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
-
+//헬스 데이터 가져와서 콘텐트에 넣어줘야함xxxxx -> 헬스데이터 받아온 각각에다가 넣어서 지금은 일단 더미로 편의상 콘텐트에 박음
 struct NewReportView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title: String = ""
     @State private var startDate = Date()
     @State private var endDate = Date()
-    @State private var healthData: [HealthReport] = []
-    @ObservedObject var healthDataManager: HealthDataManager
-    var onSave: (HealthReportSummary) -> Void
     
+    var onSave: (HealthReport) -> Void
+    //헬스데이터 받아오는거 보고 데이트 피커 선택 조건 걸어야함 
     var body: some View {
         NavigationView {
             Form {
@@ -33,58 +32,79 @@ struct NewReportView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("저장") {
-                        fetchHealthData()
+                        let newReport = HealthReport(id: UUID().hashValue, title: title, startDate: startDate, endDate: endDate, content: """
+                                                     ## 2024-10-01
+                                                     
+                                                     ### 수면
+
+                                                     - 그래프: 수면 시간, 깊은 수면, 얕은 수면 비율
+                                                     - 호흡수: 16회/분
+                                                     - 심박수: 72회/분
+                                                     - 체온: 36.5°C
+
+                                                     ### 심박수
+
+                                                     - 그래프: 심박수 변화 추이
+                                                     - 평균 심박수: 68회/분
+                                                     - 휴식기 심박수: 60회/분
+                                                     - 심전도: 정상
+
+                                                     ### 산소포화도
+
+                                                     - 산소포화도: 98%
+
+                                                     ---
+
+                                                     ## 2024-10-02
+
+                                                     수면
+
+                                                     - 그래프: 수면 시간, 깊은 수면, 얕은 수면 비율
+                                                     - 호흡수: 15회/분
+                                                     - 심박수: 70회/분
+                                                     - 체온: 36.4°C
+
+                                                     ### 심박수
+
+                                                     - 그래프: 심박수 변화 추이
+                                                     - 평균 심박수: 69회/분
+                                                     - 휴식기 심박수: 61회/분
+                                                     - 심전도: 정상
+
+                                                     ### 산소포화도
+
+                                                     - 산소포화도: 97%
+
+                                                     ---
+
+                                                     ## 2024-10-03
+
+                                                     ### 수면
+
+                                                     - 그래프: 수면 시간, 깊은 수면, 얕은 수면 비율
+                                                     - 호흡수: 17회/분
+                                                     - 심박수: 73회/분
+                                                     - 체온: 36.6°C
+
+                                                     ### 심박수
+
+                                                     - 그래프: 심박수 변화 추이
+                                                     - 평균 심박수: 70회/분
+                                                     - 휴식기 심박수: 62회/분
+                                                     - 심전도: 정상
+
+                                                     ### 산소포화도
+
+                                                     - 산소포화도: 96%
+                                                     
+                                                     _이 리포트는 건강 데이터를 기준으로 생성되었습니다._
+                                                     """)
+                                                     
+                        onSave(newReport)
                         dismiss()
                     }
                 }
             }
         }
     }
-    //이거 옛날 방식인거 같은데 시간남으면 async로 바꿀게요
-    private func fetchHealthData() {
-         let calendar = Calendar.current
-         var currentDate = startDate
-         let group = DispatchGroup()
-         var reports: [HealthReport] = []
-
-         while currentDate <= endDate {
-             let date = currentDate
-             
-             group.enter()
-             healthDataManager.fetchAverageHeartRate(for: date) { heartRate in
-                 group.enter()
-                 healthDataManager.fetchBodyTemperature(for: date) { temperature in
-                     group.enter()
-                     healthDataManager.fetchOxygenSaturation(for: date) { oxygenSaturation in
-                         group.enter()
-                         healthDataManager.fetchBreathRate(for: date) { breath in
-                             let report = HealthReport(
-                                 id: UUID(),
-                                 title: title, // 리포트의 타이틀 추가
-                                 date: date,
-                                 heartRate: Double(heartRate),
-                                 temperature: temperature,
-                                 breath: Int(breath),
-                                 oxygenSaturation: oxygenSaturation
-                             )
-                             
-                             reports.append(report)
-                             group.leave()
-                         }
-                         group.leave()
-                     }
-                     group.leave()
-                 }
-                 group.leave()
-             }
-             
-             currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate)!
-         }
-         
-         // 모든 디스패치 그룹의 작업이 끝나면 실행
-         group.notify(queue: .main) {
-             let newSummary = HealthReportSummary(id: UUID(), title: title, startDate: startDate, endDate: endDate, healthReports: reports)
-             onSave(newSummary)
-         }
-     }
- }
+}
