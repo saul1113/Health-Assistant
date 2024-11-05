@@ -35,7 +35,7 @@ struct HealthConnectSheet: View {
                 .foregroundColor(.red)
                 
                 Button("허용") {
-//                    dismiss()
+                    dismiss()
                     requestHealthKitAuthorization()
                 }
                 .foregroundColor(.blue)
