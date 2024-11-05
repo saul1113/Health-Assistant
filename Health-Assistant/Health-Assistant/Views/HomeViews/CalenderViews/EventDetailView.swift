@@ -31,6 +31,7 @@ struct EventDetailView: View {
                     HStack {
                         Image(systemName: "clock.fill")
                             .foregroundStyle(.green)
+
                         Text("시간")
                         
                         Spacer()
@@ -42,7 +43,6 @@ struct EventDetailView: View {
                     Text("\(formattedTime(for: event))")
                         .font(.bold24)
                         .padding()
-//                        .background(Color.green.opacity(0.2))
                         .cornerRadius(8)
                 }
                 
@@ -60,7 +60,6 @@ struct EventDetailView: View {
                     Text(event.alert.rawValue)
                         .font(.regular20)
                         .padding()
-//                        .background(Color.green.opacity(0.2))
                         .cornerRadius(8)
                 }
                 .padding(.vertical, 20)
@@ -123,14 +122,14 @@ struct EventDetailView: View {
     private func formattedTime(for event: CalendarEvent) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "a h:mm" // "오전/오후 h:mm" 형식
+        formatter.dateFormat = "a h:mm"
         return "\(formatter.string(from: event.startTime)) - \(formatter.string(from: event.endTime))"
     }
     
     private func formattedDate(for date: Date) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy년 M월 d일 (E)" // 날짜 형식 예시
+        formatter.dateFormat = "yyyy년 M월 d일 (E)"
         return formatter.string(from: date)
     }
 }

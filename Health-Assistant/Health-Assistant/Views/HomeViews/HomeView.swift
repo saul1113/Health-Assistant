@@ -8,18 +8,6 @@
 import SwiftUI
 
 
-extension Color {
-    static var mainColor: Color {
-        Color("MainColor")
-    }
-    static var mainColor30: Color {
-        Color("MainColor").opacity(0.3)
-    }
-    static var mainColorD: Color {
-        Color("MainColorDeep")
-    }
-}
-
 struct HomeView: View {
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
@@ -29,7 +17,7 @@ struct HomeView: View {
         NavigationStack {
             GeometryReader { geometry in
                 ZStack {
-                    Color.mainColor
+                    Color.CustomGreen
                         .ignoresSafeArea()
                         .overlay (alignment: .bottom){
                             RoundedRectangle(cornerRadius: 20)
@@ -37,7 +25,7 @@ struct HomeView: View {
                                 .frame(height: geometry.size.height / 1.6)
                         }
                         .ignoresSafeArea()
-                    VStack(spacing: 35) {
+                    VStack(spacing: 55) {
                         
                         healthDataView()
                         
@@ -71,10 +59,10 @@ struct HomeView: View {
         VStack {
             Text("현재")
             if healthData.isMeasuring {
-                Text("측정중...")
+                Text("0")
                     .foregroundStyle(.white)
                     .font(.bold96)
-                    .padding(.vertical, -27)
+                    .padding(.vertical, 0)
             }
             else {
                 Text("\(String(format: "%.f", healthData.heartRate))")
@@ -95,7 +83,7 @@ struct HomeView: View {
     func chartView(geometry: GeometryProxy) -> some View {
         HStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.mainColor30)
+                .fill(Color.customGreen30)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
             NavigationLink {
                 HospitalMapView(hospitals: userViewModel.hospitalsInfo)
@@ -104,7 +92,7 @@ struct HomeView: View {
                     .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.mainColor30)
+                            .fill(Color.customGreen30)
                     }
                 
             }
@@ -121,7 +109,7 @@ struct HomeView: View {
                 .font(.medium14)
                 .frame(maxWidth: geometry.size.width, alignment: .leading)
             RoundedRectangle(cornerRadius: 18)
-                .fill(Color.mainColorD)
+                .fill(Color.green)
                 .frame(width: abs(geometry.size.width - 94), height: 34)
                 .overlay (alignment: .leading) {
                     RoundedRectangle(cornerRadius: 18)
@@ -146,6 +134,7 @@ struct HomeView: View {
         .padding(.horizontal, 47)
     }
 }
+
 
 #Preview {
     HomeView()

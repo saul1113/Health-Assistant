@@ -24,11 +24,10 @@ struct EditEventView: View {
                         SectionView(header: "제목") {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.green.opacity(0.5), lineWidth: 3)
+                                    .stroke(Color.customGreen.opacity(0.5), lineWidth: 3)
                                     .background(Color.white.cornerRadius(8))
-                                
                                 TextField("제목을 입력해주세요", text: $event.title)
-                                    .font(.bold20)
+                                    .font(.medium20)
                                     .padding(8)
                                     .background(Color.clear)
                                     .onChange(of: event.title) {
@@ -93,6 +92,7 @@ struct EditEventView: View {
                         SectionView(header: "메모") {
                             ZStack {
                                 Color.green.opacity(0.2)
+
                                     .cornerRadius(8)
                                 TextEditor(text: $event.notes)
                                     .frame(height: 100)
@@ -120,7 +120,7 @@ struct EditEventView: View {
                         checkIfEditedBeforeDismissing()
                     }) {
                         Text("취소")
-                            .font(.regular20) // regular20 폰트 적용
+                            .font(.regular20)
                     }
                 }
 
@@ -132,7 +132,7 @@ struct EditEventView: View {
                         dismiss()
                     }) {
                         Text("저장")
-                            .font(.regular20) // regular20 폰트 적용
+                            .font(.regular20)
                     }
                 }
             }

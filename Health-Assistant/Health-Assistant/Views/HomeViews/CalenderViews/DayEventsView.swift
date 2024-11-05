@@ -57,5 +57,6 @@ struct DayEventsView: View {
                 AddEventView(viewModel: viewModel, day: day)
             }
         }
+        .accentColor(Color("CustomGreen"))
     }
 }
