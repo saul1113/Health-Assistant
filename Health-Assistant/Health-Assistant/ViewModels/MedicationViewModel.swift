@@ -32,4 +32,10 @@ class MedicationViewModel: ObservableObject {
             todayMedications[medicationIndex].isTaken[index].toggle()
         }
     }
+    
+    // 복용 약 추가
+    func addMedication(name: String, days: [String], times: [String], note: String) {
+            let newMedication = Medication(name: name, days: days, times: times, note: note)
+            medications.append(newMedication)
+        }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MedicationListView: View {
     
     @ObservedObject var viewModel = MedicationViewModel()
+    @State private var addViewSheet = false
     
     var body: some View {
         NavigationStack {
@@ -17,9 +18,9 @@ struct MedicationListView: View {
                 VStack(alignment:.leading){
                     ForEach(viewModel.medications) { medication in
                         HStack {
-                            Text("약 이미지")
+                            Text("약아이콘")
                                 .padding(10)
-                                .frame(width: 90, height: 90)
+                                .frame(width: 80, height: 80)
                                 .background(Color.CustomGreen)
                                 .clipShape(Circle())
                                 .foregroundStyle(.white)
@@ -48,21 +49,33 @@ struct MedicationListView: View {
                 }
                 .padding(40)
             }
+            
+        }
+        .onAppear {
+            viewModel.filterTodayMedications()
+        }
+        .navigationTitle("내가 복용하는 약")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackButton()
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    addViewSheet.toggle()
+                }) {
+                    Image(systemName: "plus")
+                        .foregroundColor(.black)
+                }
                 
             }
-            .onAppear {
-                viewModel.filterTodayMedications()
-            }
-            .navigationTitle("내가 복용하는 약")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton()
-                }
-            }
+        }
+        .sheet(isPresented: $addViewSheet) {
+            MedicationAddView()
         }
     }
+}
 
 #Preview {
     MedicationListView()

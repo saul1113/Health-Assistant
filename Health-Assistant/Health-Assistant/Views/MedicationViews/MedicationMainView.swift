@@ -14,7 +14,6 @@ struct MedicationMainView: View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    // 오늘 복용해야 할 약 리스트 출력
                     ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
                             HStack {
@@ -33,7 +32,6 @@ struct MedicationMainView: View {
                             }
                             .padding()
                             
-                            // 복용 시간 목록
                             ForEach(medication.times.indices, id: \.self) { index in
                                 HStack {
                                     displayTime(medication.times[index])
@@ -41,11 +39,14 @@ struct MedicationMainView: View {
                                     Button(action: {
                                         viewModel.toggleTakeMedication(for: medication, at: index)
                                     }) {
-                                        Image(medication.isTaken[index] ? "off" : "on")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 50, height: 50)
+                                        //                                        Image(medication.isTaken[index] ? "off" : "on")
+                                        //                                            .resizable()
+                                        //                                            .scaledToFit()
+                                        //                                            .frame(width: 50, height: 50)
                                         
+                                        Image(systemName: medication.isTaken[index] ? "pill.fill" : "pill")
+                                            .foregroundColor(medication.isTaken[index] ? .CustomGreen : .gray)
+                                            .font(.system(size: 30))
                                     }
                                 }
                                 .padding(.horizontal)
@@ -57,7 +58,7 @@ struct MedicationMainView: View {
                         Divider()
                     }
                 }
-                .padding()
+                .padding(25)
                 
                 Image("medicationOn")
                     .resizable()
@@ -67,16 +68,17 @@ struct MedicationMainView: View {
             .onAppear {
                 viewModel.filterTodayMedications()
             }
-            .navigationTitle("오늘 먹을 약")
+            .navigationTitle("오늘 복용 약")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: MedicationAddView()) {
-                        Image(systemName: "plus")
+                    NavigationLink(destination: MedicationSearchView()) {
+                        Image(systemName: "magnifyingglass")
                             .foregroundColor(.black)
-                    }                }
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                                NavigationLink(destination: MedicationListView()) {
+                    NavigationLink(destination: MedicationListView()) {
                         Image(systemName: "line.horizontal.3")
                             .foregroundColor(.black)
                     }

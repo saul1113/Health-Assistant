@@ -1,20 +1,20 @@
 //
-//  MedicationSearchView.swift
+//  MedicationIconView.swift
 //  Health-Assistant
 //
-//  Created by 김수민 on 11/4/24.
+//  Created by 김수민 on 11/5/24.
 //
 
 import SwiftUI
 
-struct MedicationSearchView: View {
+struct MedicationIconView: View {
     var body: some View {
         NavigationStack {
             VStack {
                 Text("Hello, World!")
             }
         }
-        .navigationTitle("약 검색")
+        .navigationTitle("아이콘 추가")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -26,5 +26,5 @@ struct MedicationSearchView: View {
 }
 
 #Preview {
-    MedicationSearchView()
+    MedicationIconView()
 }

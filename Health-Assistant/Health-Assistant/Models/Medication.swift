@@ -54,3 +54,10 @@ func translateDayKorean(_ day: String) -> String {
         return day
     }
 }
+
+
+func formatTimeToString(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "hh:mm a"
+    return formatter.string(from: date)
+}
