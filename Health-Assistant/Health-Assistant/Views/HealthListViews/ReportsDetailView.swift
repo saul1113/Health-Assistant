@@ -1,54 +1,51 @@
-//
-//  DetailView.swift
-//  Health-Assistant
-//
-//  Created by wonhoKim on 11/4/24.
-//
-
-//디테일뷰 더미
-//타이틀 두고 내용을 마크다운으로 표현할수 있게
 import SwiftUI
 import MarkdownUI
 
 struct ReportsDetailView: View {
-    var report: HealthReport
+    
+    var reports: [HealthReport]
+    private var sortedReports: [HealthReport] {
+        reports.sorted { $0.reportDate < $1.reportDate }
+    }
     
     var body: some View {
-        
         VStack {
-            ScrollView{
-                VStack{
-                    //나중에 건강데이터 받아와서 마크다운으로 적용하기 일단 폼만 만들어놓기
-                    //그래프는 데이터 받아온후 차트 활용해서
+            ScrollView {
+                VStack(alignment: .leading) {
                     Markdown("""
-                         # 건강 리포트
-                         \(report.dateRange)
-                         ___
-                         """)
-                    
-                    Markdown(report.content)
+                    # 건강 데이터 보고서
+                    ---
+
+                    \(sortedReports.map { report in
+                        """
+                        ## \(report.reportDate)
+
+                        ### 수면
+                        - 수면 데이터 추가 예정
+
+                        ### 심박수
+                        - 그래프: 추가 예정
+                        - 평균 심박수: \(report.heartRate)회/분
+                        - 휴식기 심박수: 추가예정
+                        - 심전도: 추가예정
+
+                        ### 산소포화도
+                        - 산소포화도: \(report.oxygenSaturation)%
+                        
+                        ### 체온
+                        - 평균 체온: \(report.temperature)°C
+                        ---
+                        """
+                    }.joined(separator: "\n"))
+
+                    _이 리포트는 건강 데이터를 기준으로 생성되었습니다._
+                    """)
+                    .padding()
                 }
             }
-            .padding()
-            Spacer()
+            .navigationTitle(reports.first?.title ?? "보고서")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle(report.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                  //pdf 공유 로직 와야할곳
-                }) {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.regular20)
-                }
-            }
-        }
+        .padding()
     }
 }
-
-#Preview {
-    HealthListView()
-}
-
-

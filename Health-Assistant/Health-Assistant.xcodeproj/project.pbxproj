@@ -34,6 +34,7 @@
 		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
 		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
 		F605D7CE2CD8AE30008DC5FC /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F605D7CD2CD8AE30008DC5FC /* MarkdownUI */; };
+		F605D7E62CD9ADFC008DC5FC /* ReportHealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605D7E52CD9ADF2008DC5FC /* ReportHealthManager.swift */; };
 		F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FD2CD8837A00944503 /* NewReportView.swift */; };
 		F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */; };
 		F64B24022CD883C100944503 /* HealthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B24012CD883BC00944503 /* HealthReport.swift */; };
@@ -68,6 +69,8 @@
 		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
+		F605D7E52CD9ADF2008DC5FC /* ReportHealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHealthManager.swift; sourceTree = "<group>"; };
+		F62C3F872CD9D9E20006C89C /* Health-AssistantDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-AssistantDebug.entitlements"; sourceTree = "<group>"; };
 		F64B23FD2CD8837A00944503 /* NewReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportView.swift; sourceTree = "<group>"; };
 		F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDetailView.swift; sourceTree = "<group>"; };
 		F64B24012CD883BC00944503 /* HealthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		2C7F614D2CD491570070998C /* Health-Assistant */ = {
 			isa = PBXGroup;
 			children = (
+				F62C3F872CD9D9E20006C89C /* Health-AssistantDebug.entitlements */,
 				F64B24032CD8917800944503 /* Health-Assistant.entitlements */,
 				5079064C2CD4ABBC00AFE182 /* Info.plist */,
 				507906372CD4AB1B00AFE182 /* Util */,
@@ -182,6 +186,7 @@
 		507906342CD4AAC600AFE182 /* HealthListViews */ = {
 			isa = PBXGroup;
 			children = (
+				F605D7E52CD9ADF2008DC5FC /* ReportHealthManager.swift */,
 				F64B24012CD883BC00944503 /* HealthReport.swift */,
 				F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */,
 				F64B23FD2CD8837A00944503 /* NewReportView.swift */,
@@ -313,6 +318,7 @@
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
 				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
 				773997232CD8573D008DE12E /* MedisonViewModel.swift in Sources */,
+				F605D7E62CD9ADFC008DC5FC /* ReportHealthManager.swift in Sources */,
 				500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */,
 				500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */,
 				773997192CD852C5008DE12E /* MedisonMainView.swift in Sources */,
@@ -465,18 +471,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-Assistant.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-AssistantDebug.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = U4BQZ3AXAA;
+				DEVELOPMENT_TEAM = 6R3M7VGRP2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "건강데이터를공유할때사용되는권한입니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "건강데이터를조회할때사용되는권한입니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,7 +494,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sueunal.com.Health-Assistant";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sueunal.com.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -509,14 +515,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = U4BQZ3AXAA;
+				DEVELOPMENT_TEAM = J8A648NYN3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "건강데이터를공유할때사용되는권한입니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "건강데이터를조회할때사용되는권한입니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -12,6 +12,8 @@ struct HealthListView: View {
     @State private var isPresentingNewReportView = false
     @State private var ocrRecords: [HealthReport] = []
     @State private var healthReports: [HealthReport] = []
+    @State private var isAuthorized = false
+    @StateObject private var healthDataManager = HealthDataManager()
     
     var body: some View {
         NavigationStack {
@@ -35,9 +37,10 @@ struct HealthListView: View {
                         .padding()
                 } else {
                     List {
-                        ForEach(selectedRecords) { report in
-                            NavigationLink(destination: ReportsDetailView(report: report)) {
-                                HealthReportItem(title: report.title, dateRange: report.dateRange)
+                        // healthReports의 첫 번째 리포트를 사용하여 타이틀과 날짜 범위 표시, 맘에안들긴함
+                        if let firstReport = healthReports.first {
+                            NavigationLink(destination: ReportsDetailView(reports: healthReports)) {
+                                HealthReportItem(title: firstReport.title, dateRange: firstReport.dateRange)
                                     .listRowInsets(EdgeInsets())
                             }
                         }
@@ -53,7 +56,7 @@ struct HealthListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         if selectedTab == 0 {
-                          //OCR 추가하는 로직이 와야함
+                            //OCR 추가하는 로직이 와야함
                         } else {
                             // 건강리포트 쪽
                             isPresentingNewReportView = true
@@ -65,13 +68,32 @@ struct HealthListView: View {
                 }
             }
             .sheet(isPresented: $isPresentingNewReportView) {
-                NewReportView { newReport in
-                    healthReports.append(newReport)
+                NewReportView(healthDataManager: healthDataManager) { newReports in
+                    healthReports.append(contentsOf: newReports) // 모든 HealthReport를 추가
                 }
             }
         }
+        .onAppear {
+            requestHealthKitAuthorization()
+        }
     }
+    
+    
+    private func requestHealthKitAuthorization() {
+        let healthDataManager = HealthDataManager()
+        healthDataManager.requestAuthorization { success, error  in
+            if success {
+                isAuthorized = true
+            } else {
+                // 권한 요청이 실패한 경우 처리
+                print("HealthKit 권한이 거부되었습니다.")
+            }
+        }
+    }
+    
 }
+
+
 
 struct HealthReportItem: View {
     var title: String
