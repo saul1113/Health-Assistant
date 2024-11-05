@@ -80,8 +80,10 @@ struct HealthCalendarView: View {
                                     .font(.regular16)
                                     .lineLimit(1)
                                     .truncationMode(.tail)
-                                    .background(Color.green.opacity(0.3))
+                                    .padding(1)
+                                    .background(Color.green.opacity(0.8))
                                     .foregroundStyle(.white)
+                                    .cornerRadius(5)
                             }
                         }
                         .frame(height: 110)
@@ -93,7 +95,7 @@ struct HealthCalendarView: View {
                     }
                 }
             }
-            .padding()
+            .padding(.horizontal)
             
             Spacer()
         }
