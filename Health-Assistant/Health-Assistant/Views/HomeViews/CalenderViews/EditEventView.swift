@@ -116,22 +116,23 @@ struct EditEventView: View {
             .navigationTitle("일정 편집")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("취소") {
+                    Button(action: {
                         checkIfEditedBeforeDismissing()
+                    }) {
+                        Text("취소")
+                            .font(.regular20) // regular20 폰트 적용
                     }
                 }
+
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("저장") {
+                    Button(action: {
                         if let index = viewModel.calendarEvents.firstIndex(where: { $0.id == event.id }) {
                             viewModel.calendarEvents[index] = event
                         }
                         dismiss()
-                    }
-                }
-                ToolbarItem(placement: .destructiveAction) {
-                    Button("삭제") {
-                        viewModel.removeEvent(for: day, eventID: event.id)
-                        dismiss()
+                    }) {
+                        Text("저장")
+                            .font(.regular20) // regular20 폰트 적용
                     }
                 }
             }

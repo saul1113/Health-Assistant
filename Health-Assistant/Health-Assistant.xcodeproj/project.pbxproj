@@ -18,6 +18,7 @@
 		500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89F2CD867E300CCD409 /* EditEventView.swift */; };
 		500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8A72CD8696B00CCD409 /* DayEventsView.swift */; };
 		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
+		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
 		507906252CD4AA5000AFE182 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906242CD4AA5000AFE182 /* Model.swift */; };
 		507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906262CD4AA5E00AFE182 /* MedisonView.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
@@ -43,6 +44,7 @@
 		500EB89F2CD867E300CCD409 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		500EB8A72CD8696B00CCD409 /* DayEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsView.swift; sourceTree = "<group>"; };
 		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		507906242CD4AA5000AFE182 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		507906262CD4AA5E00AFE182 /* MedisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonView.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
@@ -111,9 +113,10 @@
 			children = (
 				500EB8912CD8568300CCD409 /* HealthCalendarView.swift */,
 				500EB8A72CD8696B00CCD409 /* DayEventsView.swift */,
+				500EFB652CD9AA240036D4DC /* EventDetailView.swift */,
 				500EB89D2CD866FE00CCD409 /* AddEventView.swift */,
-				500EFB632CD9A6FB0036D4DC /* SectionView.swift */,
 				500EB89F2CD867E300CCD409 /* EditEventView.swift */,
+				500EFB632CD9A6FB0036D4DC /* SectionView.swift */,
 			);
 			path = CalenderViews;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
+				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
 				500EB8872CD854BA00CCD409 /* CustomFonts.swift in Sources */,
 				507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */,

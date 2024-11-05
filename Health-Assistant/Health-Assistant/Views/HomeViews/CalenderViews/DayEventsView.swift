@@ -12,7 +12,6 @@ struct DayEventsView: View {
     let day: Int
     @State private var showAddEvent = false
     @State private var selectedEvent: CalendarEvent?
-    @State private var showDiscardAlert = false
     
     var body: some View {
         NavigationView {
@@ -23,7 +22,7 @@ struct DayEventsView: View {
                         .foregroundStyle(.gray)
                 } else  {
                     ForEach(viewModel.events(for: day)) { event in
-                        HStack {
+                        NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)) {
                             VStack(alignment: .leading) {
                                 Text(viewModel.formattedTime(for: event))
                                     .font(.regular20)
@@ -33,18 +32,15 @@ struct DayEventsView: View {
                                     .font(.medium24)
                             }
                         }
-                        .onTapGesture {
-                            selectedEvent = event
-                        }
                     }
                 }
             }
             .listStyle(.inset)
             .toolbar {
-                ToolbarItem(placement: .principal) { // 타이틀 커스터마이징
+                ToolbarItem(placement: .principal) {
                     Text("\(viewModel.displayedMonthYear) \(day)일 일정")
                         .font(.bold24)
-                        .foregroundColor(.green) // 원하는 색상으로 변경 가능
+                        .foregroundColor(.green)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -53,17 +49,13 @@ struct DayEventsView: View {
                     }) {
                         Image(systemName: "plus.circle.fill")
                             .font(.bold24)
-                            .foregroundColor(.green) // 원하는 색상으로 변경 가능
+                            .foregroundColor(.green)
                     }
                 }
             }
             .sheet(isPresented: $showAddEvent) {
                 AddEventView(viewModel: viewModel, day: day)
             }
-            .sheet(item: $selectedEvent) { event in
-                EditEventView(viewModel: viewModel, day: day, event: event)
-            }
         }
     }
 }
-

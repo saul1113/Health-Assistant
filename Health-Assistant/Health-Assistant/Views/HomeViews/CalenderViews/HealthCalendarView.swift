@@ -102,7 +102,7 @@ struct HealthCalendarView: View {
         .sheet(isPresented: $showDayEvents) {
             if let selectedDay = viewModel.selectedDay {
                 DayEventsView(viewModel: viewModel, day: selectedDay)
-                    .presentationDetents([.medium, .large]) // 반쯤 올라오게 설정
+                    .presentationDetents([.large]) // 풀스크린으로 띄움
             }
         }
     }
