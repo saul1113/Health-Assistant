@@ -52,17 +52,17 @@ struct HealthCalendarView: View {
             }
             .padding(.horizontal)
             
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
                 ForEach(0..<viewModel.startDayOffset() + viewModel.daysInCurrentMonth(), id: \.self) { index in
                     if index < viewModel.startDayOffset() {
                         Text(" ")
                             .frame(height: 50)
                     } else {
                         let day = index - viewModel.startDayOffset() + 1
-                        VStack(alignment: .center, spacing: 5) {
+                        VStack(alignment: .center, spacing: 2) {
                             Text("\(day)")
                                 .frame(maxWidth: .infinity, alignment: .center)
-                                .padding(8)
+                                .padding(6)
                                 .background(day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() ? Color.blue.opacity(0.3) : (day == viewModel.selectedDay ? Color.green.opacity(0.3) : Color.clear))
                                 .clipShape(Circle())
                                 .font(.semibold18)
