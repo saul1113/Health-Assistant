@@ -22,7 +22,7 @@ struct JoinView: View {
                 Text("이메일")
                     .font(Font.semibold20)
                 EmailTextField(text: $email)
-                    .onChange(of: email) { _ in
+                    .onChange(of: email) {
                         validateEmailFormat()
                     }
                     .overlay {
@@ -53,7 +53,7 @@ struct JoinView: View {
                 Text("비밀번호 확인")
                     .font(Font.semibold20)
                 passwordtextField()
-                    .onChange(of: confirmPassword) { _ in
+                    .onChange(of: confirmPassword) {
                         validatePasswords()
                     }
                 if showPasswordMismatch {
