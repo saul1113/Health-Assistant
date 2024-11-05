@@ -16,7 +16,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            MedisonMainView()
+            MedicationMainView()
                 .tabItem() {
                     Label("medison", systemImage: "pill")
                 }
