@@ -1,5 +1,5 @@
 {
-  "originHash" : "65d98ba1d92e444467272dfaf498cce560316869b63073cea138fac56605b1d0",
+  "originHash" : "4fb6db1fb25ed0088cef97229bd98c7d3ec92af17fa01019b399f7504a5b57ed",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -11,9 +11,36 @@
       }
     },
     {
+      "identity" : "networkimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/NetworkImage",
+      "state" : {
+        "revision" : "2849f5323265386e200484b0d0f896e73c3411b9",
+        "version" : "6.0.1"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark",
+      "state" : {
+        "revision" : "3ccff77b2dc5b96b77db3da0d68d28068593fa53",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "swift-markdown-ui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/swift-markdown-ui",
+      "state" : {
+        "revision" : "5f613358148239d0292c0cef674a3c2314737f9e",
+        "version" : "2.4.1"
+      }
+    },
+    {
       "identity" : "xmlcoder",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CoreOffice/XMLCoder.git",
+      "location" : "https://github.com/CoreOffice/XMLCoder",
       "state" : {
         "revision" : "b1e944cbd0ef33787b13f639a5418d55b3bed501",
         "version" : "0.17.1"
