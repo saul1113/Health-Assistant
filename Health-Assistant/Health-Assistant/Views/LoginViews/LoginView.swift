@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var textField: String = ""
+    @State private var showJoinView = false
+    @State private var showEmailLoginView = false
     
     var body: some View {
-        NavigationView {
         VStack {
             VStack {
                 Image("HAHALogo")
@@ -25,18 +25,18 @@ struct LoginView: View {
                     + Text("와 함께")
                         .font(Font.bold20)
                 }
-               
-                    HStack(spacing: 0) {
-                            Text("건강 관리")
-                            .font(Font.bold20)
-                                .foregroundColor(.black)
-                                .background(Color(uiColor: .systemGreen).opacity(0.3))
-                                .cornerRadius(5)
-                        
-                        Text("를 시작하세요!")
-                            .font(Font.bold20)
-                    }
+                
+                HStack(spacing: 0) {
+                    Text("건강 관리")
+                        .font(Font.bold20)
+                        .foregroundColor(.black)
+                        .background(Color(uiColor: .systemGreen).opacity(0.3))
+                        .cornerRadius(5)
                     
+                    Text("를 시작하세요!")
+                        .font(Font.bold20)
+                }
+                
                 Text("검사지 검색부터 스케줄관리 까지")
                     .foregroundStyle(Color(uiColor: .systemGray))
                     .font(Font.semibold14)
@@ -72,42 +72,52 @@ struct LoginView: View {
             }
             .padding(.top, 100)
             
-                VStack {
-                    NavigationLink(destination: EmailLoginView()) {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                                .foregroundColor(.gray)
-                            Text("이메일로 로그인")
-                                .foregroundColor(.gray)
-                                .font(Font.semibold14)
-                        }
-                        .frame(width: 250)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 0.5)
-                        )
+            VStack {
+                Button(action: {
+                    showEmailLoginView = true
+                }) {
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                            .foregroundColor(.gray)
+                        Text("이메일로 로그인")
+                            .foregroundColor(.gray)
+                            .font(Font.semibold14)
                     }
-                    
-                    HStack(spacing: 20) {
-                        NavigationLink(destination: JoinView()) {
-                            Text("회원가입")
-                        }
-                        .font(Font.semibold14)
-                        
-                        Text(" | ")
-                            .font(.caption)
-                        
-                        Button("문의하기") {
-                            
-                        }
-                        .font(Font.semibold14)
-                    }
+                    .frame(width: 250)
                     .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 0.5)
+                    )
+                }
+                
+                HStack(spacing: 20) {
+                    Button(action: {
+                        showJoinView = true
+                    }) {
+                        Text("회원가입")
+                    }
+                    .font(Font.semibold14)
+                    
+                    Text(" | ")
+                        .font(.caption)
+                    
+                    Button("문의하기") {
+                        // 문의하기 액션
+                    }
+                    .font(Font.semibold14)
                 }
                 .padding()
             }
+            .padding()
         }
+        .fullScreenCover(isPresented: $showJoinView) {
+            JoinView() // JoinView를 전체 화면에 표시
+        }
+        .fullScreenCover(isPresented: $showEmailLoginView) {
+            EmailLoginView() // EmailLoginView를 전체 화면에 표시
+        }
+        .navigationBarBackButtonHidden(true) // 네비게이션 백 버튼 숨김
     }
 }
 

@@ -10,7 +10,7 @@ import HealthKit
 
 struct HealthAllowView: View {
     private let healthKitManager = HealthKitManager()
-    @State private var showHealthConnectSheet = true
+    @State private var showHealthConnectSheet = false
     @State private var navigateToHome = false
     
     var body: some View {
@@ -35,7 +35,7 @@ struct HealthAllowView: View {
                             .font(Font.regular14)
                         
                         
-                        Button("건너뛰기") {
+                        Button("시작하기") {
                             navigateToHome = true
                         }
                         .font(Font.semibold24)
@@ -54,8 +54,9 @@ struct HealthAllowView: View {
                 HealthConnectSheet(navigateToHome: $navigateToHome)
                     .presentationDetents([.fraction(0.5)])
             }
-            .navigationDestination(isPresented: $navigateToHome) {
-                HomeView() // HomeView로 이동
+            .fullScreenCover(isPresented: $navigateToHome) {
+                MainTabView() // MainTabView로 이동
+                
             }
         }
     }
