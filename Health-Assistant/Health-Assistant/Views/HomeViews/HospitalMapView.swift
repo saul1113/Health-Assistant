@@ -9,14 +9,17 @@ import SwiftUI
 import MapKit
 
 struct HospitalMapView: View {
-    let hospitals: [Item] = []
+    let hospitals: [Item]
     var body: some View {
         NavigationStack {
             VStack {
                 List (hospitals, id: \.dutyName) { hospital in
                     NavigationLink {
                     } label: {
-                        Text(hospital.dutyName)
+                        VStack {
+                            Text(hospital.dutyName)
+                            Text(hospital.dutyTel3)
+                        }
                     }
                 }
             }
@@ -25,5 +28,5 @@ struct HospitalMapView: View {
 }
 
 #Preview {
-    HospitalMapView()
+    HospitalMapView(hospitals: [])
 }

@@ -50,7 +50,6 @@ struct HomeView: View {
                     .onAppear {
                         locationManager.fetchAddress { local, locality in
                             Task {
-                                print(local, locality)
                                 await userViewModel.fetchHospitalLocation(local: local, locality: locality)
                             }
                         }
@@ -99,9 +98,9 @@ struct HomeView: View {
                 .fill(Color.mainColor30)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
             NavigationLink {
-                HospitalMapView()
+                HospitalMapView(hospitals: userViewModel.hospitalsInfo)
             }label: {
-                Text("\(locationManager.currentAddress)")
+                Text("\(locationManager.currentAddress ?? "")")
                     .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
