@@ -7,7 +7,7 @@
 
 import Foundation
 import HealthKit
-
+//여기도 시간남을때 어싱크로 바꿀게요
 class HealthDataManager: ObservableObject{
     let healthStore = HKHealthStore()
     @Published var healthReports: [Date: [HealthReport]] = [:]

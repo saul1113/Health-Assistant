@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+
 struct HealthListView: View {
     @State private var selectedTab = 0
     @State private var isPresentingNewReportView = false
-    @State private var ocrRecords: [HealthReport] = []
-    @State private var healthReports: [HealthReport] = []
+    // @State private var ocrRecords: [HealthReport] = []
+    @State private var healthReportSummaries: [HealthReportSummary] = []
     @State private var isAuthorized = false
     @StateObject private var healthDataManager = HealthDataManager()
     
@@ -25,22 +26,18 @@ struct HealthListView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
                 
-                
-                
-                let selectedRecords = selectedTab == 0 ? ocrRecords : healthReports
+                let selectedRecords = selectedTab == 0 ? [] : healthReportSummaries
                 
                 if selectedRecords.isEmpty {
-                    
                     Text("기록이 없습니다.")
                         .foregroundColor(.gray)
                         .font(.bold16)
                         .padding()
                 } else {
                     List {
-                        // healthReports의 첫 번째 리포트를 사용하여 타이틀과 날짜 범위 표시, 맘에안들긴함
-                        if let firstReport = healthReports.first {
-                            NavigationLink(destination: ReportsDetailView(reports: healthReports)) {
-                                HealthReportItem(title: firstReport.title, dateRange: firstReport.dateRange)
+                        ForEach(healthReportSummaries) { summary in
+                            NavigationLink(destination: ReportsDetailView(reportSummary: summary)) {
+                                HealthReportItem(title: summary.title, dateRange: summary.dateRange)
                                     .listRowInsets(EdgeInsets())
                             }
                         }
@@ -68,8 +65,8 @@ struct HealthListView: View {
                 }
             }
             .sheet(isPresented: $isPresentingNewReportView) {
-                NewReportView(healthDataManager: healthDataManager) { newReports in
-                    healthReports.append(contentsOf: newReports) // 모든 HealthReport를 추가
+                NewReportView(healthDataManager: healthDataManager) { newSummary in
+                    healthReportSummaries.append(newSummary) // 새 리포트를 추가
                 }
             }
         }
@@ -78,10 +75,8 @@ struct HealthListView: View {
         }
     }
     
-    
     private func requestHealthKitAuthorization() {
-        let healthDataManager = HealthDataManager()
-        healthDataManager.requestAuthorization { success, error  in
+        healthDataManager.requestAuthorization { success, error in
             if success {
                 isAuthorized = true
             } else {
@@ -90,10 +85,7 @@ struct HealthListView: View {
             }
         }
     }
-    
 }
-
-
 
 struct HealthReportItem: View {
     var title: String
@@ -115,8 +107,4 @@ struct HealthReportItem: View {
         .background(Color.green.opacity(0.3))
         .cornerRadius(10)
     }
-}
-
-#Preview {
-    HealthListView()
 }
