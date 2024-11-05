@@ -17,6 +17,7 @@ struct MiniWeekView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .padding(.leading)
+                .foregroundStyle(.black)
             
             HStack {
                 ForEach(viewModel.currentWeekDates(), id: \.self) { date in
@@ -25,6 +26,7 @@ struct MiniWeekView: View {
                         Text(viewModel.formattedDayOfWeek(date))
                             .font(.regular14)
                             .padding(.vertical, -5)
+                            .foregroundStyle(.black)
                         
                         // 날짜 표시
                         Text(viewModel.formattedDayOfMonth(date))
