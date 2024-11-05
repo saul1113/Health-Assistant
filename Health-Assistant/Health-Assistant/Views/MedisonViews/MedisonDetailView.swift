@@ -18,7 +18,7 @@ struct MedisonDetailView: View {
             HStack {
                 Text("약 이미지")
                     .padding(10)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 90, height: 90)
                     .background(Color.CustomGreen)
                     .clipShape(Circle())
                     .foregroundStyle(.white)
@@ -35,7 +35,7 @@ struct MedisonDetailView: View {
             .padding(.bottom, 40)
             
             Text("요일")
-                .font(.semibold20)
+                .font(.semibold24)
             
             HStack(spacing: 20) {
                 ForEach(medison.translatedDays(), id: \.self) { day in
@@ -45,13 +45,13 @@ struct MedisonDetailView: View {
                         .background(Color.CustomGreen)
                         .clipShape(Circle())
                         .foregroundStyle(.white)
-                        .font(.medium16)
+                        .font(.semibold16)
                 }
             }
             .padding(.bottom, 40)
             
             Text("시간")
-                .font(.semibold20)
+                .font(.semibold24)
             VStack {
                 ForEach(medison.times.indices, id: \.self) { index in
                     displayTime(medison.times[index])
@@ -61,11 +61,11 @@ struct MedisonDetailView: View {
             .padding(.bottom, 40)
             
             Text("메모")
-                .font(.semibold20)
+                .font(.semibold24)
                 .padding(.bottom, 5)
             
             Text("\(medison.note)")
-                .font(.regular14)
+                .font(.regular16)
                 .padding(.bottom, 40)
             
             
@@ -84,7 +84,7 @@ struct MedisonDetailView: View {
             
             Spacer()
         }
-        .padding(.trailing, 80)
+        .padding(.trailing, 100)
         .padding(.top, 40)
         .navigationTitle("상세정보")
         .navigationBarTitleDisplayMode(.inline)
@@ -110,7 +110,7 @@ struct MedisonDetailView: View {
                 .foregroundColor(.black)
             
             Text(second)
-                .font(.regular14)
+                .font(.regular16)
                 .foregroundColor(.black)
                 .padding(.top, 7)
         }
@@ -123,50 +123,59 @@ struct DetailSheetView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-                Text("효능")
+                
+                Text(medison.name)
                     .font(.semibold20)
+                    .padding(.horizontal, 5)
+                    .background(Color.CustomGreen.opacity(0.3))
+                    .cornerRadius(3)
+                    .padding(.bottom, 20)
+                
+                Text("효능")
+                    .font(.semibold24)
                     .padding(.bottom, 5)
                 Text("약의 효능 내용")
-                    .font(.regular14)
+                    .font(.regular16)
                     .padding(.bottom, 40)
                 
                 Text("사용법")
-                    .font(.semibold20)
+                    .font(.semibold24)
                     .padding(.bottom, 5)
                 Text("약의 사용법 내용")
-                    .font(.regular14)
+                    .font(.regular16)
                     .padding(.bottom, 40)
                 
                 Text("주의사항 / 경고")
-                    .font(.semibold20)
+                    .font(.semibold24)
                     .padding(.bottom, 5)
                 Text("주의사항 내용")
-                    .font(.regular14)
+                    .font(.regular16)
                     .padding(.bottom, 40)
                 
                 Text("상호작용")
-                    .font(.semibold20)
+                    .font(.semibold24)
                     .padding(.bottom, 5)
                 Text("상호작용 내용")
-                    .font(.regular14)
+                    .font(.regular16)
                     .padding(.bottom, 40)
                 
                 Text("부작용")
-                    .font(.semibold20)
+                    .font(.semibold24)
                     .padding(.bottom, 5)
                 Text("부작용 내용")
-                    .font(.regular14)
+                    .font(.regular16)
                     .padding(.bottom, 40)
                 
                 Text("보관법")
-                    .font(.semibold20)
+                    .font(.semibold24)
                     .padding(.bottom, 5)
                 Text("보관법 내용")
-                    .font(.regular14)
+                    .font(.regular16)
                     .padding(.bottom, 40)
                 
             }
-            .padding(.trailing, 180)
+            .padding(.trailing, 150)
+            .padding(.top, 80)
         }
     }
 }

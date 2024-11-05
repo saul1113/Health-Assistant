@@ -29,7 +29,7 @@ struct Medison: Identifiable {
     }
     
     static let dummyList: [Medison] = [Medison(name: "약 이름 1", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "공복에 복용하면 안됨"),
-                                       Medison(name: "약 이름 2", days:  ["Friday"], times: ["08:00 AM"], note: "공복에 복용하면 안됨"),
+                                       Medison(name: "약 이름 2", days:  ["TuesDay","Friday"], times: ["08:00 AM"], note: "공복에 복용하면 안됨"),
                                        Medison(name: "약 이름 3", days:  ["Monday", "TuesDay", "ThursDay"], times: ["08:00 AM", "02:00 PM", "10:00 PM"], note: "공복에 복용하면 안됨")
     ]
 }

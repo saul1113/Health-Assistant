@@ -13,17 +13,17 @@ class MedisonViewModel: ObservableObject {
     @Published var todayMedisons: [Medison] = []
     
     init() {
-            medisons = Medison.dummyList
-            filterTodayMedisons()
-        }
+        medisons = Medison.dummyList
+        filterTodayMedisons()
+    }
     
     // 오늘 복용해야 할 약 필터링
     func filterTodayMedisons() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         
-        let today = dateFormatter.string(from: Date())
-        todayMedisons = medisons.filter { $0.days.contains(today) }
+        let today = dateFormatter.string(from: Date()).lowercased()  // 소문자로 변환
+        todayMedisons = medisons.filter { $0.days.contains(where: { $0.lowercased() == today }) }
     }
     
     // 복용 상태 업데이트
