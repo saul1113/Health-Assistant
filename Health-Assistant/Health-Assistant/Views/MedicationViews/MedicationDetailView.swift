@@ -84,7 +84,7 @@ struct MedicationDetailView: View {
             
             Spacer()
         }
-        .padding(.trailing, 130)
+        .padding(.trailing, 135)
         .padding(.top, 40)
         .navigationTitle("\(medication.name) 정보")
         .navigationBarTitleDisplayMode(.inline)
