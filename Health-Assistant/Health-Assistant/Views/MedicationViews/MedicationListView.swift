@@ -1,5 +1,5 @@
 //
-//  MedisonListView.swift
+//  MedicationListView.swift
 //  Health-Assistant
 //
 //  Created by 김수민 on 11/5/24.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct MedisonListView: View {
+struct MedicationListView: View {
     
-    @ObservedObject var viewModel = MedisonViewModel()
+    @ObservedObject var viewModel = MedicationViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment:.leading){
-                    ForEach(viewModel.medisons) { medison in
+                    ForEach(viewModel.medications) { medication in
                         HStack {
                             Text("약 이미지")
                                 .padding(10)
@@ -27,7 +27,7 @@ struct MedisonListView: View {
                                 .padding(.trailing, 10)
                             
                             VStack(alignment: .leading, spacing: 5) {
-                                Text(medison.name)
+                                Text(medication.name)
                                     .font(.semibold20)
                                 Text("업체 이름")
                                     .font(.regular14)
@@ -38,7 +38,7 @@ struct MedisonListView: View {
                             
                             Spacer()
                             
-                            NavigationLink(destination: MedisonDetailView(medison: medison)) {
+                            NavigationLink(destination: MedicationDetailView(medication: medication)) {
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.black)
                             }
@@ -51,7 +51,7 @@ struct MedisonListView: View {
                 
             }
             .onAppear {
-                viewModel.filterTodayMedisons()
+                viewModel.filterTodayMedications()
             }
             .navigationTitle("내가 복용하는 약")
             .navigationBarTitleDisplayMode(.inline)
@@ -65,5 +65,5 @@ struct MedisonListView: View {
     }
 
 #Preview {
-    MedisonListView()
+    MedicationListView()
 }

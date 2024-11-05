@@ -1,5 +1,5 @@
 //
-//  MedisonMainView.swift
+//  MedicationMainView.swift
 //  Health-Assistant
 //
 //  Created by 김수민 on 11/4/24.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct MedisonMainView: View {
-    @ObservedObject var viewModel = MedisonViewModel()
+struct MedicationMainView: View {
+    @ObservedObject var viewModel = MedicationViewModel()
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
                     // 오늘 복용해야 할 약 리스트 출력
-                    ForEach(viewModel.todayMedisons) { medison in
+                    ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
                             HStack {
-                                Text(medison.name)
+                                Text(medication.name)
                                     .font(.semibold20)
                                     .padding(.horizontal, 5)
                                     .background(Color.CustomGreen.opacity(0.3))
@@ -26,7 +26,7 @@ struct MedisonMainView: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink(destination: MedisonDetailView(medison: medison)) {
+                                NavigationLink(destination: MedicationDetailView(medication: medication)) {
                                     Image(systemName: "chevron.right")
                                         .foregroundColor(.black)
                                 }
@@ -34,14 +34,14 @@ struct MedisonMainView: View {
                             .padding()
                             
                             // 복용 시간 목록
-                            ForEach(medison.times.indices, id: \.self) { index in
+                            ForEach(medication.times.indices, id: \.self) { index in
                                 HStack {
-                                    displayTime(medison.times[index])
+                                    displayTime(medication.times[index])
                                     Spacer()
                                     Button(action: {
-                                        viewModel.toggleTakeMedison(for: medison, at: index)
+                                        viewModel.toggleTakeMedication(for: medication, at: index)
                                     }) {
-                                        Image(medison.isTaken[index] ? "off" : "on")
+                                        Image(medication.isTaken[index] ? "off" : "on")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 50, height: 50)
@@ -59,24 +59,24 @@ struct MedisonMainView: View {
                 }
                 .padding()
                 
-                Image("medisonOn")
+                Image("medicationOn")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50)
             }
             .onAppear {
-                viewModel.filterTodayMedisons()
+                viewModel.filterTodayMedications()
             }
             .navigationTitle("오늘 먹을 약")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: MedisonAddView()) {
+                    NavigationLink(destination: MedicationAddView()) {
                         Image(systemName: "plus")
                             .foregroundColor(.black)
                     }                }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                                NavigationLink(destination: MedisonListView()) {
+                                NavigationLink(destination: MedicationListView()) {
                         Image(systemName: "line.horizontal.3")
                             .foregroundColor(.black)
                     }
@@ -107,5 +107,5 @@ struct MedisonMainView: View {
 
 
 #Preview {
-    MedisonMainView()
+    MedicationMainView()
 }

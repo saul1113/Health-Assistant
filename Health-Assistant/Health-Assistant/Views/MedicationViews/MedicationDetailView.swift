@@ -1,5 +1,5 @@
 //
-//  MedisonDetailView.swift
+//  MedicationDetailView.swift
 //  Health-Assistant
 //
 //  Created by 김수민 on 11/4/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MedisonDetailView: View {
-    var medison: Medison
+struct MedicationDetailView: View {
+    var medication: Medication
     
     @State private var showDetailsSheet = false
     
@@ -26,7 +26,7 @@ struct MedisonDetailView: View {
                     .padding(.trailing, 10)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(medison.name)
+                    Text(medication.name)
                         .font(.semibold24)
                     Text("업체 이름")
                         .font(.regular14)
@@ -38,7 +38,7 @@ struct MedisonDetailView: View {
                 .font(.semibold24)
             
             HStack(spacing: 20) {
-                ForEach(medison.translatedDays(), id: \.self) { day in
+                ForEach(medication.translatedDays(), id: \.self) { day in
                     Text(day)
                         .padding(10)
                         .frame(width: 40, height: 40)
@@ -53,8 +53,8 @@ struct MedisonDetailView: View {
             Text("시간")
                 .font(.semibold24)
             VStack {
-                ForEach(medison.times.indices, id: \.self) { index in
-                    displayTime(medison.times[index])
+                ForEach(medication.times.indices, id: \.self) { index in
+                    displayTime(medication.times[index])
                 }
                 .padding(.trailing, 10)
             }
@@ -64,7 +64,7 @@ struct MedisonDetailView: View {
                 .font(.semibold24)
                 .padding(.bottom, 5)
             
-            Text("\(medison.note)")
+            Text("\(medication.note)")
                 .font(.regular16)
                 .padding(.bottom, 40)
             
@@ -78,7 +78,7 @@ struct MedisonDetailView: View {
                     .padding(.vertical, 10)
             }
             .sheet(isPresented: $showDetailsSheet) {
-                DetailSheetView(medison: medison)
+                DetailSheetView(medication: medication)
             }
             
             
@@ -86,7 +86,7 @@ struct MedisonDetailView: View {
         }
         .padding(.trailing, 100)
         .padding(.top, 40)
-        .navigationTitle("상세정보")
+        .navigationTitle("\(medication.name) 정보")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -118,13 +118,13 @@ struct MedisonDetailView: View {
 }
 
 struct DetailSheetView: View {
-    var medison: Medison
+    var medication: Medication
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
                 
-                Text(medison.name)
+                Text(medication.name)
                     .font(.semibold20)
                     .padding(.horizontal, 5)
                     .background(Color.CustomGreen.opacity(0.3))
@@ -181,5 +181,5 @@ struct DetailSheetView: View {
 }
 
 #Preview {
-    MedisonDetailView(medison: Medison(name: "약 이름 1", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "공복에 복용하면 안됨"))
+    MedicationDetailView(medication: Medication(name: "약 이름 1", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "공복에 복용하면 안됨"))
 }

@@ -1,5 +1,5 @@
 //
-//  Medison.swift
+//  Medication.swift
 //  Health-Assistant
 //
 //  Created by 김수민 on 11/4/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Medison: Identifiable {
+struct Medication: Identifiable {
     let id: UUID
     var name: String      // 약 이름
     var days: [String]    // 복용 요일
@@ -28,9 +28,9 @@ struct Medison: Identifiable {
             return days.map { translateDayKorean($0) }
     }
     
-    static let dummyList: [Medison] = [Medison(name: "약 이름 1", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "공복에 복용하면 안됨"),
-                                       Medison(name: "약 이름 2", days:  ["TuesDay","Friday"], times: ["08:00 AM"], note: "공복에 복용하면 안됨"),
-                                       Medison(name: "약 이름 3", days:  ["Monday", "TuesDay", "ThursDay"], times: ["08:00 AM", "02:00 PM", "10:00 PM"], note: "공복에 복용하면 안됨")
+    static let dummyList: [Medication] = [Medication(name: "약 이름 1", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "공복에 복용하면 안됨"),
+                                       Medication(name: "약 이름 2", days:  ["TuesDay","Friday"], times: ["08:00 AM"], note: "공복에 복용하면 안됨"),
+                                       Medication(name: "약 이름 3", days:  ["Monday", "TuesDay", "ThursDay"], times: ["08:00 AM", "02:00 PM", "10:00 PM"], note: "공복에 복용하면 안됨")
     ]
 }
 
