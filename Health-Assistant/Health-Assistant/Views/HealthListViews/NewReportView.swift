@@ -42,7 +42,7 @@ struct NewReportView: View {
             }
         }
     }
-    // NewReportView.swift
+   
     private func fetchHealthData() {
             let calendar = Calendar.current
             var currentDate = startDate

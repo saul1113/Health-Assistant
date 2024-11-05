@@ -7,7 +7,7 @@
 
 import Foundation
 
-//필요한 건강데이터는 호흡수 수면, 심박수, 체온, 심전도, 산소포화도
+//필요한 건강데이터는 호흡수 수면, 심박수, 체온, 심전도, 산소포화도 데이터들 추가해야함
 
 struct HealthReport: Identifiable {
     var id: Int
