@@ -24,14 +24,10 @@ struct AddEventView: View {
         self.viewModel = viewModel
         self.day = day
         
-        // 선택한 날짜의 시작 시간과 종료 시간을 초기화
-        if let startOfDay = viewModel.startOfDay(for: day) {
-            _startTime = State(initialValue: startOfDay)
-            _endTime = State(initialValue: viewModel.dateByAddingHours(1, to: startOfDay) ?? startOfDay)
-        } else {
-            _startTime = State(initialValue: Date())
-            _endTime = State(initialValue: Date().addingTimeInterval(3600))
-        }
+        // 시작 시간을 현재 시간으로 설정하고, 종료 시간을 1시간 뒤로 설정
+        let now = Date()
+        _startTime = State(initialValue: now) // 현재 시간으로 시작 시간 설정
+        _endTime = State(initialValue: Calendar.current.date(byAdding: .hour, value: 1, to: now) ?? now) // 1시간 뒤로 종료 시간 설정
     }
     
     var body: some View {
