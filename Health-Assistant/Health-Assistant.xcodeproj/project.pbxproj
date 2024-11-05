@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
+		2C7F61512CD491570070998C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F614A2CD491570070998C /* Assets.xcassets */; };
+		500EB8872CD854BA00CCD409 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8852CD854BA00CCD409 /* CustomFonts.swift */; };
+		500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88B2CD855C800CCD409 /* CalendarEvent.swift */; };
+		500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */; };
+		500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8912CD8568300CCD409 /* HealthCalendarView.swift */; };
+		500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89D2CD866FE00CCD409 /* AddEventView.swift */; };
+		500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89F2CD867E300CCD409 /* EditEventView.swift */; };
+		500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8A72CD8696B00CCD409 /* DayEventsView.swift */; };
+		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
+		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
 		500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB512CD99B9B0036D4DC /* BackButton.swift */; };
 		500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5E2CD99BB30036D4DC /* CustomColors.swift */; };
 		500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */; };
@@ -45,6 +55,14 @@
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		2C7F614C2CD491570070998C /* Health_AssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_AssistantApp.swift; sourceTree = "<group>"; };
+		500EB88B2CD855C800CCD409 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		500EB8912CD8568300CCD409 /* HealthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCalendarView.swift; sourceTree = "<group>"; };
+		500EB89D2CD866FE00CCD409 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		500EB89F2CD867E300CCD409 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		500EB8A72CD8696B00CCD409 /* DayEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsView.swift; sourceTree = "<group>"; };
+		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		500EFB512CD99B9B0036D4DC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		500EFB5E2CD99BB30036D4DC /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
@@ -139,6 +157,51 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		500EB8882CD854CD00CCD409 /* CalenderViews */ = {
+			isa = PBXGroup;
+			children = (
+				500EB8912CD8568300CCD409 /* HealthCalendarView.swift */,
+				500EB8A72CD8696B00CCD409 /* DayEventsView.swift */,
+				500EFB652CD9AA240036D4DC /* EventDetailView.swift */,
+				500EB89D2CD866FE00CCD409 /* AddEventView.swift */,
+				500EB89F2CD867E300CCD409 /* EditEventView.swift */,
+				500EFB632CD9A6FB0036D4DC /* SectionView.swift */,
+			);
+			path = CalenderViews;
+			sourceTree = "<group>";
+		};
+		500EB8892CD8558600CCD409 /* HomeModels */ = {
+			isa = PBXGroup;
+			children = (
+				500EB88A2CD855A200CCD409 /* CalenderModels */,
+			);
+			path = HomeModels;
+			sourceTree = "<group>";
+		};
+		500EB88A2CD855A200CCD409 /* CalenderModels */ = {
+			isa = PBXGroup;
+			children = (
+				500EB88B2CD855C800CCD409 /* CalendarEvent.swift */,
+			);
+			path = CalenderModels;
+			sourceTree = "<group>";
+		};
+		500EB88D2CD855E500CCD409 /* HomeViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				500EB88E2CD855EB00CCD409 /* CalenderViewModels */,
+			);
+			path = HomeViewModels;
+			sourceTree = "<group>";
+		};
+		500EB88E2CD855EB00CCD409 /* CalenderViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */,
+			);
+			path = CalenderViewModels;
+			sourceTree = "<group>";
+		};
 		5079061F2CD4A7EC00AFE182 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +221,7 @@
 		507906212CD4A87700AFE182 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				500EB8892CD8558600CCD409 /* HomeModels */,
 				507906242CD4AA5000AFE182 /* Model.swift */,
 				773997202CD85464008DE12E /* Medication.swift */,
 			);
@@ -167,6 +231,7 @@
 		5079062E2CD4AAB300AFE182 /* HomeViews */ = {
 			isa = PBXGroup;
 			children = (
+				500EB8882CD854CD00CCD409 /* CalenderViews */,
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
 			);
 			path = HomeViews;
@@ -228,6 +293,7 @@
 		5079064E2CD4AED200AFE182 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				500EB88D2CD855E500CCD409 /* HomeViewModels */,
 				5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */,
 				773997222CD8573D008DE12E /* MedicationViewModel.swift */,
 			);
@@ -316,6 +382,9 @@
 			files = (
 				7739971B2CD85306008DE12E /* MedicationDetailView.swift in Sources */,
 				773997212CD85464008DE12E /* Medication.swift in Sources */,
+				500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */,
+				500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */,
+				500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
 				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
 				773997232CD8573D008DE12E /* MedicationViewModel.swift in Sources */,
@@ -324,12 +393,18 @@
 				500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */,
 				773997192CD852C5008DE12E /* MedicationMainView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
+				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
 				7739971D2CD85319008DE12E /* MedicationAddView.swift in Sources */,
+				500EB8872CD854BA00CCD409 /* CustomFonts.swift in Sources */,
+				500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */,
+				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				7739971F2CD85337008DE12E /* MedicationSearchView.swift in Sources */,
+				500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */,
 				EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */,
 				EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */,
 				EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */,
