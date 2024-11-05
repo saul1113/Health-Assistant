@@ -12,6 +12,7 @@
 		2C41A0CD2CD9B837006815BC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0CC2CD9B837006815BC /* LocationManager.swift */; };
 		2C41A0D02CD9E8C7006815BC /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 2C41A0CF2CD9E8C7006815BC /* XMLCoder */; };
 		2C41A0D22CD9ED24006815BC /* HostpitalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */; };
+		2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0D32CDA054A006815BC /* HospitalMapView.swift */; };
 		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
 		2C7F61512CD491570070998C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F614A2CD491570070998C /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		2C41A0CA2CD9B763006815BC /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		2C41A0CC2CD9B837006815BC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostpitalResponse.swift; sourceTree = "<group>"; };
+		2C41A0D32CDA054A006815BC /* HospitalMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapView.swift; sourceTree = "<group>"; };
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7F614A2CD491570070998C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
+				2C41A0D32CDA054A006815BC /* HospitalMapView.swift */,
 				2C41A0CA2CD9B763006815BC /* UserViewModel.swift */,
 				2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */,
 				2C41A0CC2CD9B837006815BC /* LocationManager.swift */,
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
+				2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */,
 				2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,

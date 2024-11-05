@@ -22,6 +22,7 @@ extension Color {
 
 struct HomeView: View {
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
+    @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
     @State private var heartRate: Double = 0
     var body: some View {
@@ -46,8 +47,13 @@ struct HomeView: View {
                         
                         Spacer()
                     }
-                    .task {
-                        try? await userViewModel.fetchHospitalLocation()
+                    .onAppear {
+                        locationManager.fetchAddress { local, locality in
+                            Task {
+                                print(local, locality)
+                                await userViewModel.fetchHospitalLocation(local: local, locality: locality)
+                            }
+                        }
                     }
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
@@ -65,21 +71,19 @@ struct HomeView: View {
     func healthDataView() -> some View {
         VStack {
             Text("현재")
-                .foregroundStyle(.white)
-                .font(.regular20)
             if healthData.isMeasuring {
                 Text("측정중...")
                     .foregroundStyle(.white)
                     .font(.bold96)
                     .padding(.vertical, -27)
             }
-                else {
-                    Text("\(String(format: "%.f", healthData.heartRate))")
-                        .foregroundStyle(.white)
-                        .font(.bold96)
-                        .padding(.vertical, -27)
-
-                }
+            else {
+                Text("\(String(format: "%.f", healthData.heartRate))")
+                    .foregroundStyle(.white)
+                    .font(.bold96)
+                    .padding(.vertical, -27)
+                
+            }
             HStack {
                 Text("BPM")
                     .foregroundStyle(.white)
@@ -94,9 +98,17 @@ struct HomeView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.mainColor30)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.mainColor30)
-                .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+            NavigationLink {
+                HospitalMapView()
+            }label: {
+                Text("\(locationManager.currentAddress)")
+                    .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.mainColor30)
+                    }
+                
+            }
         }
         .padding(.horizontal, 20)
     }
