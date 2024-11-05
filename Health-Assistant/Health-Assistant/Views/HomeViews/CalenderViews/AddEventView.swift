@@ -14,23 +14,14 @@ struct AddEventView: View {
     
     @State private var title: String = ""
     @State private var isAllDay: Bool = false
-    @State private var startTime: Date
-    @State private var endTime: Date
+    @State private var startTime: Date = Date()
+    @State private var endTime: Date = Date()
     @State private var alert: EventAlert = .none
     @State private var notes: String = ""
     private let notesCharacterLimit = 50
     
     @State private var showDiscardAlert = false
     @State private var isEdited = false
-    
-    init(viewModel: CalendarViewModel, day: Int) {
-        self.viewModel = viewModel
-        self.day = day
-        
-        let times = viewModel.getStartAndEndTime(for: day)
-        _startTime = State(initialValue: times.startTime)
-        _endTime = State(initialValue: times.endTime)
-    }
     
     var body: some View {
         NavigationView {
@@ -40,11 +31,11 @@ struct AddEventView: View {
                         SectionView(header: "제목") {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.green.opacity(0.5), lineWidth: 3)
+                                    .stroke(Color.customGreen.opacity(0.5), lineWidth: 3)
                                     .background(Color.white.cornerRadius(8))
                                 
                                 TextField("제목을 입력해주세요", text: $title)
-                                    .font(.bold20)
+                                    .font(.medium20)
                                     .padding(8)
                                     .background(Color.clear)
                                     .onChange(of: title) {
@@ -56,7 +47,7 @@ struct AddEventView: View {
                         SectionView(header: "시간 설정") {
                             HStack {
                                 Image(systemName: "hourglass")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.customGreen)
                                 Toggle("종일", isOn: $isAllDay)
                                     .onChange(of: isAllDay) {
                                         isEdited = true
@@ -65,7 +56,7 @@ struct AddEventView: View {
                             VStack {
                                 DatePicker("시작 시간", selection: $startTime)
                                     .padding()
-                                    .background(Color.green.opacity(0.2))
+                                    .background(Color.customGreen.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
                                     .onChange(of: startTime) {
@@ -74,7 +65,7 @@ struct AddEventView: View {
                                 
                                 DatePicker("종료 시간", selection: $endTime)
                                     .padding()
-                                    .background(Color.green.opacity(0.2))
+                                    .background(Color.customGreen.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
                                     .onChange(of: endTime) {
@@ -86,7 +77,7 @@ struct AddEventView: View {
                         SectionView(header: "알림") {
                             HStack {
                                 Image(systemName: "deskclock.fill")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.customGreen)
                                 
                                 Text("미리알림")
                                 
@@ -108,7 +99,7 @@ struct AddEventView: View {
                         
                         SectionView(header: "메모") {
                             ZStack {
-                                Color.green.opacity(0.2)
+                                Color.customGreen.opacity(0.2)
                                     .cornerRadius(8)
                                 TextEditor(text: $notes)
                                     .frame(height: 100)
@@ -123,10 +114,6 @@ struct AddEventView: View {
                                         }
                                     }
                             }
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.5))
-                            )
                             
                             Text("\(notes.count)/\(notesCharacterLimit) 글자")
                                 .font(.caption)
@@ -158,8 +145,10 @@ struct AddEventView: View {
                     }
                 }
             }
-            .onDisappear {
-                checkIfEditedBeforeDismissing()
+            .onAppear {
+                let times = viewModel.getStartAndEndTime(for: day)
+                startTime = times.startTime
+                endTime = times.endTime
             }
             .alert(isPresented: $showDiscardAlert) {
                 Alert(

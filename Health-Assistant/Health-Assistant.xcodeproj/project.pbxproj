@@ -9,24 +9,31 @@
 /* Begin PBXBuildFile section */
 		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
-		2C7F61512CD491570070998C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F614A2CD491570070998C /* Assets.xcassets */; };
-		500EB8872CD854BA00CCD409 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8852CD854BA00CCD409 /* CustomFonts.swift */; };
+		500EB8872CD854BA00CCD409 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88B2CD855C800CCD409 /* CalendarEvent.swift */; };
 		500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */; };
 		500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8912CD8568300CCD409 /* HealthCalendarView.swift */; };
 		500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89D2CD866FE00CCD409 /* AddEventView.swift */; };
 		500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89F2CD867E300CCD409 /* EditEventView.swift */; };
 		500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8A72CD8696B00CCD409 /* DayEventsView.swift */; };
-		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
-		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
 		500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB512CD99B9B0036D4DC /* BackButton.swift */; };
 		500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5E2CD99BB30036D4DC /* CustomColors.swift */; };
 		500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */; };
+		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
+		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
+		5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */; };
 		507906252CD4AA5000AFE182 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906242CD4AA5000AFE182 /* Model.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
-		5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProFileView.swift */; };
+		5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProfileView.swift */; };
 		5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062D2CD4AAB300AFE182 /* HomeView.swift */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
+		50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */; };
+		50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */; };
+		50FC2E5B2CDA06C2000C1EB8 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */; };
+		50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5C2CDA06DF000C1EB8 /* PasswordChangeView.swift */; };
+		50FC2E5F2CDA070C000C1EB8 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5E2CDA070C000C1EB8 /* NotificationSettingsView.swift */; };
+		50FC2E612CDA0736000C1EB8 /* AccountManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E602CDA0736000C1EB8 /* AccountManagementView.swift */; };
+		50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E622CDA0748000C1EB8 /* AccountDeletionView.swift */; };
 		770FA17D2CD9A97800949C07 /* MedicationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770FA17C2CD9A97800949C07 /* MedicationListView.swift */; };
 		770FA1832CDA094D00949C07 /* MedicationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770FA1822CDA094D00949C07 /* MedicationIconView.swift */; };
 		773997192CD852C5008DE12E /* MedicationMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773997182CD852C5008DE12E /* MedicationMainView.swift */; };
@@ -65,17 +72,25 @@
 		500EB89D2CD866FE00CCD409 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		500EB89F2CD867E300CCD409 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		500EB8A72CD8696B00CCD409 /* DayEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsView.swift; sourceTree = "<group>"; };
-		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
-		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		500EFB512CD99B9B0036D4DC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		500EFB5E2CD99BB30036D4DC /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniWeekView.swift; sourceTree = "<group>"; };
 		507906242CD4AA5000AFE182 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
-		5079062A2CD4AA9F00AFE182 /* ProFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFileView.swift; sourceTree = "<group>"; };
+		5079062A2CD4AA9F00AFE182 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		50FC2E5C2CDA06DF000C1EB8 /* PasswordChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeView.swift; sourceTree = "<group>"; };
+		50FC2E5E2CDA070C000C1EB8 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		50FC2E602CDA0736000C1EB8 /* AccountManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementView.swift; sourceTree = "<group>"; };
+		50FC2E622CDA0748000C1EB8 /* AccountDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionView.swift; sourceTree = "<group>"; };
 		770FA17C2CD9A97800949C07 /* MedicationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationListView.swift; sourceTree = "<group>"; };
 		770FA1822CDA094D00949C07 /* MedicationIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationIconView.swift; sourceTree = "<group>"; };
 		773997182CD852C5008DE12E /* MedicationMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationMainView.swift; sourceTree = "<group>"; };
@@ -148,23 +163,6 @@
 			path = "Health-Assistant";
 			sourceTree = "<group>";
 		};
-		500EFB522CD99B9B0036D4DC /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				500EFB512CD99B9B0036D4DC /* BackButton.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		500EFB602CD99BB30036D4DC /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				500EFB5E2CD99BB30036D4DC /* CustomColors.swift */,
-				500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		500EB8882CD854CD00CCD409 /* CalenderViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +172,7 @@
 				500EB89D2CD866FE00CCD409 /* AddEventView.swift */,
 				500EB89F2CD867E300CCD409 /* EditEventView.swift */,
 				500EFB632CD9A6FB0036D4DC /* SectionView.swift */,
+				5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */,
 			);
 			path = CalenderViews;
 			sourceTree = "<group>";
@@ -210,6 +209,23 @@
 			path = CalenderViewModels;
 			sourceTree = "<group>";
 		};
+		500EFB522CD99B9B0036D4DC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				500EFB512CD99B9B0036D4DC /* BackButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		500EFB602CD99BB30036D4DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				500EFB5E2CD99BB30036D4DC /* CustomColors.swift */,
+				500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5079061F2CD4A7EC00AFE182 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				500EB8892CD8558600CCD409 /* HomeModels */,
+				50FC2E572CDA04F8000C1EB8 /* ProfileModels */,
 				507906242CD4AA5000AFE182 /* Model.swift */,
 				EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */,
 				773997202CD85464008DE12E /* Medication.swift */,
@@ -269,7 +286,12 @@
 		507906352CD4AAC800AFE182 /* ProFileViews */ = {
 			isa = PBXGroup;
 			children = (
-				5079062A2CD4AA9F00AFE182 /* ProFileView.swift */,
+				5079062A2CD4AA9F00AFE182 /* ProfileView.swift */,
+				50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */,
+				50FC2E5C2CDA06DF000C1EB8 /* PasswordChangeView.swift */,
+				50FC2E5E2CDA070C000C1EB8 /* NotificationSettingsView.swift */,
+				50FC2E602CDA0736000C1EB8 /* AccountManagementView.swift */,
+				50FC2E622CDA0748000C1EB8 /* AccountDeletionView.swift */,
 			);
 			path = ProFileViews;
 			sourceTree = "<group>";
@@ -299,10 +321,27 @@
 			isa = PBXGroup;
 			children = (
 				500EB88D2CD855E500CCD409 /* HomeViewModels */,
+				50FC2E532CDA0469000C1EB8 /* ProfileViewModels */,
 				5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */,
 				773997222CD8573D008DE12E /* MedicationViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		50FC2E532CDA0469000C1EB8 /* ProfileViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */,
+			);
+			path = ProfileViewModels;
+			sourceTree = "<group>";
+		};
+		50FC2E572CDA04F8000C1EB8 /* ProfileModels */ = {
+			isa = PBXGroup;
+			children = (
+				50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */,
+			);
+			path = ProfileModels;
 			sourceTree = "<group>";
 		};
 		EBE160A22CD88A1A003E7CC2 /* LoginViews */ = {
@@ -400,13 +439,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */,
 				EBE160A62CD8F218003E7CC2 /* HealthAllowView.swift in Sources */,
 				7739971B2CD85306008DE12E /* MedicationDetailView.swift in Sources */,
 				773997212CD85464008DE12E /* Medication.swift in Sources */,
 				500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */,
+				50FC2E5B2CDA06C2000C1EB8 /* ProfileEditView.swift in Sources */,
 				500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */,
 				500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */,
-				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
+				7739971B2CD85306008DE12E /* MedisonDetailView.swift in Sources */,
+				773997212CD85464008DE12E /* Medison.swift in Sources */,
+				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
 				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
 				773997232CD8573D008DE12E /* MedicationViewModel.swift in Sources */,
 				770FA1832CDA094D00949C07 /* MedicationIconView.swift in Sources */,
@@ -416,12 +459,17 @@
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
-				7739971D2CD85319008DE12E /* MedicationAddView.swift in Sources */,
-				500EB8872CD854BA00CCD409 /* CustomFonts.swift in Sources */,
+				500EB8872CD854BA00CCD409 /* (null) in Sources */,
 				500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */,
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
+				50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */,
+				50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */,
+				7739971D2CD85319008DE12E /* MedicationAddView.swift in Sources */,
+				500EB8872CD854BA00CCD409 /* CustomFonts.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */,
+				50FC2E5F2CDA070C000C1EB8 /* NotificationSettingsView.swift in Sources */,
 				500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				7739971F2CD85337008DE12E /* MedicationSearchView.swift in Sources */,
@@ -433,8 +481,10 @@
 				770FA17D2CD9A97800949C07 /* MedicationListView.swift in Sources */,
 				EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
+				5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */,
 				EBE160A82CD8FFD4003E7CC2 /* HealthSheetView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				50FC2E612CDA0736000C1EB8 /* AccountManagementView.swift in Sources */,
 				F64B24022CD883C100944503 /* HealthReport.swift in Sources */,
 				F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */,
 				500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */,
