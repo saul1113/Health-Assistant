@@ -28,7 +28,7 @@ struct MedicationDetailView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(medication.name)
                         .font(.semibold24)
-                    Text("업체 이름")
+                    Text(medication.company)
                         .font(.regular14)
                 }
             }
@@ -84,7 +84,7 @@ struct MedicationDetailView: View {
             
             Spacer()
         }
-        .padding(.trailing, 110)
+        .padding(.trailing, 130)
         .padding(.top, 40)
         .navigationTitle("\(medication.name) 정보")
         .navigationBarTitleDisplayMode(.inline)
@@ -201,8 +201,4 @@ struct DetailSheetView: View {
             .padding(45)
         }
     }
-}
-
-#Preview {
-    MedicationDetailView(medication: Medication(name: "약 이름 1", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "공복에 복용하면 안됨"))
 }

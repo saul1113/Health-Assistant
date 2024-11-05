@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MedicationAddView: View {
-    @ObservedObject var viewModel = MedicationViewModel()
+    
+    @EnvironmentObject var viewModel: MedicationViewModel
     
     @State private var medicationName: String = ""
     @State private var selectedDays: [String] = []
@@ -17,6 +18,8 @@ struct MedicationAddView: View {
     @State private var medicationNote : String = ""
     @State private var timePicker: Bool = false
     @State private var time: Date = Date()
+    
+    @State private var iconViewSheet = false
     
     let week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
@@ -39,7 +42,9 @@ struct MedicationAddView: View {
                                 .foregroundStyle(.white)
                                 .font(.system(size: 40))
                             
-                            NavigationLink(destination: MedicationIconView()) {
+                            Button(action: {
+                                iconViewSheet.toggle()
+                            }) {
                                 Text("아이콘 추가")
                                     .foregroundColor(.white)
                                     .font(.semibold14)
@@ -172,7 +177,10 @@ struct MedicationAddView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-//                        viewModel.addMedication(name: medicationName, days: selectedDays, times: selectedTimes, note: medicationNote)
+                        let formattedTimes = selectedTimes.map { formatTimeToString($0) }
+                        viewModel.addMedication(name: medicationName, company: "", days: selectedDays, times: formattedTimes, note: medicationNote)
+
+                        dismiss()
                     }) {
                         Text("저장")
                             .foregroundStyle(.black)
@@ -181,6 +189,9 @@ struct MedicationAddView: View {
             }
             .navigationTitle("약 추가")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $iconViewSheet) {
+                MedicationIconView()
+            }
         }
         
     }
@@ -207,4 +218,5 @@ struct MedicationAddView: View {
 
 #Preview {
     MedicationAddView()
+        .environmentObject(MedicationViewModel())
 }
