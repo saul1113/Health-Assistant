@@ -24,9 +24,16 @@
 		5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */; };
 		507906252CD4AA5000AFE182 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906242CD4AA5000AFE182 /* Model.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
-		5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProFileView.swift */; };
+		5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProfileView.swift */; };
 		5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062D2CD4AAB300AFE182 /* HomeView.swift */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
+		50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */; };
+		50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */; };
+		50FC2E5B2CDA06C2000C1EB8 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */; };
+		50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5C2CDA06DF000C1EB8 /* PasswordChangeView.swift */; };
+		50FC2E5F2CDA070C000C1EB8 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5E2CDA070C000C1EB8 /* NotificationSettingsView.swift */; };
+		50FC2E612CDA0736000C1EB8 /* AccountManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E602CDA0736000C1EB8 /* AccountManagementView.swift */; };
+		50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E622CDA0748000C1EB8 /* AccountDeletionView.swift */; };
 		773997192CD852C5008DE12E /* MedisonMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773997182CD852C5008DE12E /* MedisonMainView.swift */; };
 		7739971B2CD85306008DE12E /* MedisonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739971A2CD85306008DE12E /* MedisonDetailView.swift */; };
 		7739971D2CD85319008DE12E /* MedisonAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739971C2CD85319008DE12E /* MedisonAddView.swift */; };
@@ -67,10 +74,17 @@
 		5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniWeekView.swift; sourceTree = "<group>"; };
 		507906242CD4AA5000AFE182 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
-		5079062A2CD4AA9F00AFE182 /* ProFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFileView.swift; sourceTree = "<group>"; };
+		5079062A2CD4AA9F00AFE182 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		50FC2E5C2CDA06DF000C1EB8 /* PasswordChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeView.swift; sourceTree = "<group>"; };
+		50FC2E5E2CDA070C000C1EB8 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		50FC2E602CDA0736000C1EB8 /* AccountManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagementView.swift; sourceTree = "<group>"; };
+		50FC2E622CDA0748000C1EB8 /* AccountDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionView.swift; sourceTree = "<group>"; };
 		773997182CD852C5008DE12E /* MedisonMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonMainView.swift; sourceTree = "<group>"; };
 		7739971A2CD85306008DE12E /* MedisonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonDetailView.swift; sourceTree = "<group>"; };
 		7739971C2CD85319008DE12E /* MedisonAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonAddView.swift; sourceTree = "<group>"; };
@@ -220,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				500EB8892CD8558600CCD409 /* HomeModels */,
+				50FC2E572CDA04F8000C1EB8 /* ProfileModels */,
 				507906242CD4AA5000AFE182 /* Model.swift */,
 				773997202CD85464008DE12E /* Medison.swift */,
 			);
@@ -260,7 +275,12 @@
 		507906352CD4AAC800AFE182 /* ProFileViews */ = {
 			isa = PBXGroup;
 			children = (
-				5079062A2CD4AA9F00AFE182 /* ProFileView.swift */,
+				5079062A2CD4AA9F00AFE182 /* ProfileView.swift */,
+				50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */,
+				50FC2E5C2CDA06DF000C1EB8 /* PasswordChangeView.swift */,
+				50FC2E5E2CDA070C000C1EB8 /* NotificationSettingsView.swift */,
+				50FC2E602CDA0736000C1EB8 /* AccountManagementView.swift */,
+				50FC2E622CDA0748000C1EB8 /* AccountDeletionView.swift */,
 			);
 			path = ProFileViews;
 			sourceTree = "<group>";
@@ -290,10 +310,27 @@
 			isa = PBXGroup;
 			children = (
 				500EB88D2CD855E500CCD409 /* HomeViewModels */,
+				50FC2E532CDA0469000C1EB8 /* ProfileViewModels */,
 				5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */,
 				773997222CD8573D008DE12E /* MedisonViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		50FC2E532CDA0469000C1EB8 /* ProfileViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */,
+			);
+			path = ProfileViewModels;
+			sourceTree = "<group>";
+		};
+		50FC2E572CDA04F8000C1EB8 /* ProfileModels */ = {
+			isa = PBXGroup;
+			children = (
+				50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */,
+			);
+			path = ProfileModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,12 +413,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */,
 				500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */,
+				50FC2E5B2CDA06C2000C1EB8 /* ProfileEditView.swift in Sources */,
 				500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */,
 				500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */,
 				7739971B2CD85306008DE12E /* MedisonDetailView.swift in Sources */,
 				773997212CD85464008DE12E /* Medison.swift in Sources */,
-				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
+				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
 				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
 				773997232CD8573D008DE12E /* MedisonViewModel.swift in Sources */,
 				500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */,
@@ -394,8 +433,12 @@
 				500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */,
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
 				7739971D2CD85319008DE12E /* MedisonAddView.swift in Sources */,
+				50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */,
+				50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */,
+				50FC2E5F2CDA070C000C1EB8 /* NotificationSettingsView.swift in Sources */,
 				500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */,
@@ -407,6 +450,7 @@
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				50FC2E612CDA0736000C1EB8 /* AccountManagementView.swift in Sources */,
 				F64B24022CD883C100944503 /* HealthReport.swift in Sources */,
 				F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */,
 				500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */,

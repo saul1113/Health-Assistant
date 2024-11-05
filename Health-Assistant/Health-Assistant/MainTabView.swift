@@ -28,13 +28,14 @@ struct MainTabView: View {
                 }
                 .tag(2)
             
-            ProFileView()
+            ProfileView()
                 .tabItem() {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
                 .tag(3)
             
         }
+        .accentColor(Color("CustomGreen"))
     }
 }
 
