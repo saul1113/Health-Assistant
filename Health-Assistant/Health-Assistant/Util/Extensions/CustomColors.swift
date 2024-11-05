@@ -9,4 +9,6 @@ import SwiftUI
 
 extension Color {
     static let CustomGreen = Color("CustomGreen")
+    static let customGreen30 = Color.CustomGreen.opacity(0.3)
+    
 }
