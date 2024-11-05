@@ -19,24 +19,40 @@
 		500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8A72CD8696B00CCD409 /* DayEventsView.swift */; };
 		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
 		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
+		500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB512CD99B9B0036D4DC /* BackButton.swift */; };
+		500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5E2CD99BB30036D4DC /* CustomColors.swift */; };
+		500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */; };
 		507906252CD4AA5000AFE182 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906242CD4AA5000AFE182 /* Model.swift */; };
-		507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906262CD4AA5E00AFE182 /* MedisonView.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
 		5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProFileView.swift */; };
 		5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062D2CD4AAB300AFE182 /* HomeView.swift */; };
 		507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */; };
+		773997192CD852C5008DE12E /* MedisonMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773997182CD852C5008DE12E /* MedisonMainView.swift */; };
+		7739971B2CD85306008DE12E /* MedisonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739971A2CD85306008DE12E /* MedisonDetailView.swift */; };
+		7739971D2CD85319008DE12E /* MedisonAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739971C2CD85319008DE12E /* MedisonAddView.swift */; };
+		7739971F2CD85337008DE12E /* MedisonSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7739971E2CD85337008DE12E /* MedisonSearchView.swift */; };
+		773997212CD85464008DE12E /* Medison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773997202CD85464008DE12E /* Medison.swift */; };
+		773997232CD8573D008DE12E /* MedisonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773997222CD8573D008DE12E /* MedisonViewModel.swift */; };
 		77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */; };
 		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
 		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
 		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
+		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
+		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
+		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
+		EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE160962CD7D312003E7CC2 /* Assets.xcassets */; };
+		EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */; };
+		EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */; };
+		F605D7CE2CD8AE30008DC5FC /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F605D7CD2CD8AE30008DC5FC /* MarkdownUI */; };
+		F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FD2CD8837A00944503 /* NewReportView.swift */; };
+		F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */; };
+		F64B24022CD883C100944503 /* HealthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B24012CD883BC00944503 /* HealthReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C7F614A2CD491570070998C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		2C7F614C2CD491570070998C /* Health_AssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_AssistantApp.swift; sourceTree = "<group>"; };
-		500EB8852CD854BA00CCD409 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		500EB88B2CD855C800CCD409 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		500EB8912CD8568300CCD409 /* HealthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCalendarView.swift; sourceTree = "<group>"; };
@@ -45,17 +61,35 @@
 		500EB8A72CD8696B00CCD409 /* DayEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsView.swift; sourceTree = "<group>"; };
 		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		500EFB512CD99B9B0036D4DC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		500EFB5E2CD99BB30036D4DC /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		507906242CD4AA5000AFE182 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		507906262CD4AA5E00AFE182 /* MedisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonView.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
 		5079062A2CD4AA9F00AFE182 /* ProFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFileView.swift; sourceTree = "<group>"; };
 		5079062D2CD4AAB300AFE182 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5079064C2CD4ABBC00AFE182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		773997182CD852C5008DE12E /* MedisonMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonMainView.swift; sourceTree = "<group>"; };
+		7739971A2CD85306008DE12E /* MedisonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonDetailView.swift; sourceTree = "<group>"; };
+		7739971C2CD85319008DE12E /* MedisonAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonAddView.swift; sourceTree = "<group>"; };
+		7739971E2CD85337008DE12E /* MedisonSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonSearchView.swift; sourceTree = "<group>"; };
+		773997202CD85464008DE12E /* Medison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medison.swift; sourceTree = "<group>"; };
+		773997222CD8573D008DE12E /* MedisonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedisonViewModel.swift; sourceTree = "<group>"; };
 		77C7F7CB2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
 		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
+		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		EBE160962CD7D312003E7CC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
+		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
+		F64B23FD2CD8837A00944503 /* NewReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportView.swift; sourceTree = "<group>"; };
+		F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDetailView.swift; sourceTree = "<group>"; };
+		F64B24012CD883BC00944503 /* HealthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
+		F64B24032CD8917800944503 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F605D7CE2CD8AE30008DC5FC /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +123,7 @@
 		2C7F614D2CD491570070998C /* Health-Assistant */ = {
 			isa = PBXGroup;
 			children = (
+				F64B24032CD8917800944503 /* Health-Assistant.entitlements */,
 				5079064C2CD4ABBC00AFE182 /* Info.plist */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
@@ -95,15 +131,24 @@
 				5079061F2CD4A7EC00AFE182 /* Views */,
 				2C7F614B2CD491570070998C /* MainTabView.swift */,
 				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
-				2C7F614A2CD491570070998C /* Assets.xcassets */,
+				EBE160962CD7D312003E7CC2 /* Assets.xcassets */,
 			);
 			path = "Health-Assistant";
 			sourceTree = "<group>";
 		};
-		500EB8862CD854BA00CCD409 /* Extensions */ = {
+		500EFB522CD99B9B0036D4DC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				500EB8852CD854BA00CCD409 /* CustomFonts.swift */,
+				500EFB512CD99B9B0036D4DC /* BackButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		500EFB602CD99BB30036D4DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				500EFB5E2CD99BB30036D4DC /* CustomColors.swift */,
+				500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -156,6 +201,11 @@
 		5079061F2CD4A7EC00AFE182 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */,
+				EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */,
+				EBE160902CD7CC23003E7CC2 /* JoinView.swift */,
+				EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */,
+				EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */,
 				5079062E2CD4AAB300AFE182 /* HomeViews */,
 				507906332CD4AAC300AFE182 /* MedisonViews */,
 				507906342CD4AAC600AFE182 /* HealthListViews */,
@@ -169,6 +219,7 @@
 			children = (
 				500EB8892CD8558600CCD409 /* HomeModels */,
 				507906242CD4AA5000AFE182 /* Model.swift */,
+				773997202CD85464008DE12E /* Medison.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,7 +236,10 @@
 		507906332CD4AAC300AFE182 /* MedisonViews */ = {
 			isa = PBXGroup;
 			children = (
-				507906262CD4AA5E00AFE182 /* MedisonView.swift */,
+				773997182CD852C5008DE12E /* MedisonMainView.swift */,
+				7739971A2CD85306008DE12E /* MedisonDetailView.swift */,
+				7739971C2CD85319008DE12E /* MedisonAddView.swift */,
+				7739971E2CD85337008DE12E /* MedisonSearchView.swift */,
 			);
 			path = MedisonViews;
 			sourceTree = "<group>";
@@ -193,6 +247,9 @@
 		507906342CD4AAC600AFE182 /* HealthListViews */ = {
 			isa = PBXGroup;
 			children = (
+				F64B24012CD883BC00944503 /* HealthReport.swift */,
+				F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */,
+				F64B23FD2CD8837A00944503 /* NewReportView.swift */,
 				507906282CD4AA7900AFE182 /* HealthListView.swift */,
 			);
 			path = HealthListViews;
@@ -209,7 +266,8 @@
 		507906372CD4AB1B00AFE182 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				500EB8862CD854BA00CCD409 /* Extensions */,
+				500EFB522CD99B9B0036D4DC /* Components */,
+				500EFB602CD99BB30036D4DC /* Extensions */,
 				507906392CD4AB2500AFE182 /* Fonts */,
 			);
 			path = Util;
@@ -231,6 +289,7 @@
 			children = (
 				500EB88D2CD855E500CCD409 /* HomeViewModels */,
 				5079064F2CD4AEDA00AFE182 /* SwiftUIView.swift */,
+				773997222CD8573D008DE12E /* MedisonViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -252,6 +311,7 @@
 			);
 			name = "Health-Assistant";
 			packageProductDependencies = (
+				F605D7CD2CD8AE30008DC5FC /* MarkdownUI */,
 			);
 			productName = "Health-Assistant";
 			productReference = 2C7F61372CD4914E0070998C /* Health-Assistant.app */;
@@ -281,6 +341,9 @@
 			);
 			mainGroup = 2C7F612E2CD4914E0070998C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C7F61382CD4914E0070998C /* Products */;
 			projectDirPath = "";
@@ -296,11 +359,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE160972CD7D312003E7CC2 /* Assets.xcassets in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
-				2C7F61512CD491570070998C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +377,14 @@
 				500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */,
 				500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */,
 				500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */,
+				7739971B2CD85306008DE12E /* MedisonDetailView.swift in Sources */,
+				773997212CD85464008DE12E /* Medison.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
+				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
+				773997232CD8573D008DE12E /* MedisonViewModel.swift in Sources */,
+				500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */,
+				500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */,
+				773997192CD852C5008DE12E /* MedisonMainView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
@@ -322,11 +392,24 @@
 				507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */,
 				500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */,
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
+				7739971D2CD85319008DE12E /* MedisonAddView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
 				500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */,
+				7739971F2CD85337008DE12E /* MedisonSearchView.swift in Sources */,
+				EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */,
+				EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */,
+				EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */,
+				EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */,
+				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
+				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				F64B24022CD883C100944503 /* HealthReport.swift in Sources */,
+				F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */,
+				500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */,
+				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
+				EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */,
 				507906252CD4AA5000AFE182 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-Assistant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -467,6 +551,8 @@
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -495,6 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-Assistant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -504,6 +591,8 @@
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -549,6 +638,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F605D7CD2CD8AE30008DC5FC /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F605D7CC2CD8AE30008DC5FC /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C7F612F2CD4914E0070998C /* Project object */;
 }
