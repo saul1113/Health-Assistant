@@ -22,6 +22,7 @@ extension Color {
 
 struct HomeView: View {
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
+    @StateObject private var userViewModel = UserViewModel()
     @State private var heartRate: Double = 0
     var body: some View {
         NavigationStack {
@@ -44,6 +45,9 @@ struct HomeView: View {
                         chartView(geometry: geometry)
                         
                         Spacer()
+                    }
+                    .task {
+                        try? await userViewModel.fetchHospitalLocation()
                     }
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {

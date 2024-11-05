@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C41A0C72CD9B6FE006815BC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C41A0C62CD9B6FE006815BC /* Alamofire */; };
+		2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0CA2CD9B763006815BC /* UserViewModel.swift */; };
+		2C41A0CD2CD9B837006815BC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0CC2CD9B837006815BC /* LocationManager.swift */; };
 		2C7F614E2CD491570070998C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614B2CD491570070998C /* MainTabView.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
 		2C7F61512CD491570070998C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F614A2CD491570070998C /* Assets.xcassets */; };
@@ -25,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C41A0CA2CD9B763006815BC /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		2C41A0CC2CD9B837006815BC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7F614A2CD491570070998C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C7F614B2CD491570070998C /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -50,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C41A0C72CD9B6FE006815BC /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
+				2C41A0CA2CD9B763006815BC /* UserViewModel.swift */,
+				2C41A0CC2CD9B837006815BC /* LocationManager.swift */,
 				2C8E15F42CD89D6E005C9801 /* HealthManager.swift */,
 			);
 			path = HomeViews;
@@ -193,6 +201,7 @@
 			);
 			name = "Health-Assistant";
 			packageProductDependencies = (
+				2C41A0C62CD9B6FE006815BC /* Alamofire */,
 			);
 			productName = "Health-Assistant";
 			productReference = 2C7F61372CD4914E0070998C /* Health-Assistant.app */;
@@ -222,6 +231,9 @@
 			);
 			mainGroup = 2C7F612E2CD4914E0070998C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2C41A0C52CD9B6FE006815BC /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2C7F61382CD4914E0070998C /* Products */;
 			projectDirPath = "";
@@ -253,12 +265,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5079062B2CD4AA9F00AFE182 /* ProFileView.swift in Sources */,
+				2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				507906502CD4AEDA00AFE182 /* SwiftUIView.swift in Sources */,
 				2C8E15E92CD84D46005C9801 /* CustomFonts.swift in Sources */,
 				507906272CD4AA5E00AFE182 /* MedisonView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C7F614E2CD491570070998C /* MainTabView.swift in Sources */,
+				2C41A0CD2CD9B837006815BC /* LocationManager.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				507906252CD4AA5000AFE182 /* Model.swift in Sources */,
 				2C8E15F52CD89D6E005C9801 /* HealthManager.swift in Sources */,
@@ -404,6 +418,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "헬스 데이터를 얻어오기 위한 권한 요청";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "헬스 데이터를 업데이트 하기 위한 권한 요청";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 항상 또는 앱을 사용할 때만 얻어 오기위한 권한요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 얻어 오기위한 권한요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -444,6 +460,8 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "헬스 데이터를 얻어오기 위한 권한 요청";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "헬스 데이터를 업데이트 하기 위한 권한 요청";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 항상 또는 앱을 사용할 때만 얻어 오기위한 권한요청";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 얻어 오기위한 권한요청";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -489,6 +507,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C41A0C52CD9B6FE006815BC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C41A0C62CD9B6FE006815BC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C41A0C52CD9B6FE006815BC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C7F612F2CD4914E0070998C /* Project object */;
 }

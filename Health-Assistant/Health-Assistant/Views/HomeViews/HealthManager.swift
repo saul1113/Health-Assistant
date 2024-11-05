@@ -9,7 +9,6 @@ import HealthKit
 import SwiftUI
 
 
-@MainActor
 class HealthDataManager: ObservableObject {
     @Published var heartRate: Double = 0
     @Published var isMeasuring: Bool = true
@@ -111,7 +110,6 @@ extension HealthDataManager {
                 completion(nil, error)
             }
         }
-        
         healthStore.execute(query)
     }
 }
