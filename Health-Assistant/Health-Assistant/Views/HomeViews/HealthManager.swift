@@ -21,7 +21,9 @@ class HealthDataManager: ObservableObject {
             if auth {
                 self.startHeartRateQuery { data , error in
                     if let data = data {
-                        self.heartRate = data
+                        DispatchQueue.main.async {
+                            self.heartRate = data
+                        }
                     }
                 }
             } else {
