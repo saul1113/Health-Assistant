@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
-    
+    @State private var isLoggedIn = false 
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -39,9 +39,11 @@ struct ProfileView: View {
                             .offset(x: -8, y: -8)
                     }
                     
+                    
                     Text(viewModel.profile.nickname)
                         .font(.bold24)
                         .fontWeight(.medium)
+                    
                     
                     Text(viewModel.profile.birthDate)
                         .font(.regular16)
@@ -92,16 +94,31 @@ struct ProfileView: View {
                 
                 Spacer()
                 
-                // 가운데 하단에 로그아웃 버튼 추가
-                Button(action: {
-                    // 로그아웃 기능 구현
-                }) {
-                    Text("로그아웃")
-                        .font(.medium16)
-                        .foregroundColor(.gray)
-                        .padding()
+                if isLoggedIn {
+                    // 가운데 하단에 로그아웃 버튼 추가
+                    Button(action: {
+                        isLoggedIn = false
+                    }) {
+                        Text("로그아웃")
+                            .font(.medium16)
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                    .padding()
+                } else {
+                    NavigationLink(destination: LoginView()) {
+                        VStack {
+                            Text("로그인하기")
+                                .font(.medium16)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color("CustomGreen"))
+                                .cornerRadius(10)
+                            
+                        }
+                        .padding(.bottom, 40)
+                    }
                 }
-                .padding()
             }
             .navigationTitle("프로필")
             .navigationBarTitleDisplayMode(.inline)
