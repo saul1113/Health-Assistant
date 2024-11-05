@@ -40,7 +40,7 @@ struct DayEventsView: View {
                 ToolbarItem(placement: .principal) {
                     Text("\(viewModel.displayedMonthYear) \(day)일 일정")
                         .font(.bold24)
-                        .foregroundColor(.green)
+                        .foregroundColor(.CustomGreen)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -49,7 +49,7 @@ struct DayEventsView: View {
                     }) {
                         Image(systemName: "plus.circle.fill")
                             .font(.bold24)
-                            .foregroundColor(.green)
+                            .foregroundColor(.CustomGreen)
                     }
                 }
             }

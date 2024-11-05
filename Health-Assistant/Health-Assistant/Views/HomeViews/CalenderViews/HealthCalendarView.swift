@@ -81,7 +81,7 @@ struct HealthCalendarView: View {
                                     .lineLimit(1)
                                     .truncationMode(.tail)
                                     .padding(1)
-                                    .background(Color.green.opacity(0.8))
+                                    .background(Color.CustomGreen.opacity(0.8))
                                     .foregroundStyle(.white)
                                     .cornerRadius(5)
                             }
