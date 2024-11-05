@@ -70,7 +70,6 @@
 		EBE160982CD7D357003E7CC2 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		EBE1609A2CD85F59003E7CC2 /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 		F605D7E52CD9ADF2008DC5FC /* ReportHealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHealthManager.swift; sourceTree = "<group>"; };
-		F62C3F872CD9D9E20006C89C /* Health-AssistantDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-AssistantDebug.entitlements"; sourceTree = "<group>"; };
 		F64B23FD2CD8837A00944503 /* NewReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportView.swift; sourceTree = "<group>"; };
 		F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDetailView.swift; sourceTree = "<group>"; };
 		F64B24012CD883BC00944503 /* HealthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		2C7F614D2CD491570070998C /* Health-Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				F62C3F872CD9D9E20006C89C /* Health-AssistantDebug.entitlements */,
 				F64B24032CD8917800944503 /* Health-Assistant.entitlements */,
 				5079064C2CD4ABBC00AFE182 /* Info.plist */,
 				507906372CD4AB1B00AFE182 /* Util */,
@@ -471,7 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-AssistantDebug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Health-Assistant/Health-Assistant.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -515,7 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = J8A648NYN3;
+				DEVELOPMENT_TEAM = 6R3M7VGRP2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
@@ -534,7 +532,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sueunal.com.Health-Assistant";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sueunal.com.HealthAssistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
