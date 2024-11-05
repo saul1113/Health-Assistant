@@ -116,4 +116,26 @@ class CalendarViewModel: ObservableObject {
         
         return "\(formatter.string(from: event.startTime)) - \(formatter.string(from: event.endTime))"
     }
+    
+    // 특정 날짜에 현재 시간을 적용한 시작 및 종료 시간 반환
+    func getStartAndEndTime(for day: Int) -> (startTime: Date, endTime: Date) {
+        let now = Date()
+        if let selectedDayStart = startOfDay(for: day) {
+            var components = calendar.dateComponents([.year, .month, .day], from: selectedDayStart)
+            let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: now)
+            
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+            components.second = timeComponents.second
+            
+            let startTime = calendar.date(from: components) ?? now
+            let endTime = calendar.date(byAdding: .hour, value: 1, to: startTime) ?? startTime
+            
+            return (startTime: startTime, endTime: endTime)
+        } else {
+            // 만약 선택한 날짜의 시작 시간을 가져올 수 없을 경우 현재 시간 사용
+            let endTime = calendar.date(byAdding: .hour, value: 1, to: now) ?? now
+            return (startTime: now, endTime: endTime)
+        }
+    }
 }

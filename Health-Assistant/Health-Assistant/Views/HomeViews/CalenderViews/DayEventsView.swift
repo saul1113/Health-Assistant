@@ -12,6 +12,7 @@ struct DayEventsView: View {
     let day: Int
     @State private var showAddEvent = false
     @State private var selectedEvent: CalendarEvent?
+    @State private var showDiscardAlert = false
     
     var body: some View {
         NavigationView {

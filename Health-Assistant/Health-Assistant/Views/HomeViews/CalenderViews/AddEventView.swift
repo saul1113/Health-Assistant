@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddEventView: View {
     @ObservedObject var viewModel: CalendarViewModel
-    let day: Int // 선택한 날짜를 전달받아 해당 날짜에 이벤트를 추가하도록 설정
+    let day: Int
     @Environment(\.dismiss) var dismiss
     
     @State private var title: String = ""
@@ -20,14 +20,16 @@ struct AddEventView: View {
     @State private var notes: String = ""
     private let notesCharacterLimit = 50
     
+    @State private var showDiscardAlert = false
+    @State private var isEdited = false
+    
     init(viewModel: CalendarViewModel, day: Int) {
         self.viewModel = viewModel
         self.day = day
         
-        // 시작 시간을 현재 시간으로 설정하고, 종료 시간을 1시간 뒤로 설정
-        let now = Date()
-        _startTime = State(initialValue: now) // 현재 시간으로 시작 시간 설정
-        _endTime = State(initialValue: Calendar.current.date(byAdding: .hour, value: 1, to: now) ?? now) // 1시간 뒤로 종료 시간 설정
+        let times = viewModel.getStartAndEndTime(for: day)
+        _startTime = State(initialValue: times.startTime)
+        _endTime = State(initialValue: times.endTime)
     }
     
     var body: some View {
@@ -39,12 +41,15 @@ struct AddEventView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.green.opacity(0.5), lineWidth: 3)
-                                    .background(Color.white.cornerRadius(8)) // 입력하는 부분 흰색 배경
+                                    .background(Color.white.cornerRadius(8))
                                 
                                 TextField("제목을 입력해주세요", text: $title)
                                     .font(.bold20)
                                     .padding(8)
                                     .background(Color.clear)
+                                    .onChange(of: title) {
+                                        isEdited = true
+                                    }
                             }
                         }
                         
@@ -53,6 +58,9 @@ struct AddEventView: View {
                                 Image(systemName: "hourglass")
                                     .foregroundColor(.green)
                                 Toggle("종일", isOn: $isAllDay)
+                                    .onChange(of: isAllDay) {
+                                        isEdited = true
+                                    }
                             }
                             VStack {
                                 DatePicker("시작 시간", selection: $startTime)
@@ -60,12 +68,18 @@ struct AddEventView: View {
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
+                                    .onChange(of: startTime) {
+                                        isEdited = true
+                                    }
                                 
                                 DatePicker("종료 시간", selection: $endTime)
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
+                                    .onChange(of: endTime) {
+                                        isEdited = true
+                                    }
                             }
                         }
                         
@@ -85,6 +99,9 @@ struct AddEventView: View {
                                 }
                                 .pickerStyle(MenuPickerStyle())
                                 .font(.bold24)
+                                .onChange(of: alert) {
+                                    isEdited = true
+                                }
                             }
                             .font(.regular18)
                         }
@@ -100,6 +117,7 @@ struct AddEventView: View {
                                     .background(Color.clear)
                                     .cornerRadius(8)
                                     .onChange(of: notes) {
+                                        isEdited = true
                                         if notes.count > notesCharacterLimit {
                                             notes = String(notes.prefix(notesCharacterLimit))
                                         }
@@ -122,7 +140,7 @@ struct AddEventView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("취소") {
-                        dismiss()
+                        checkIfEditedBeforeDismissing()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
@@ -140,31 +158,27 @@ struct AddEventView: View {
                     }
                 }
             }
+            .onDisappear {
+                checkIfEditedBeforeDismissing()
+            }
+            .alert(isPresented: $showDiscardAlert) {
+                Alert(
+                    title: Text("이 새로운 일정을 폐기하시겠습니까?"),
+                    message: Text("저장하지 않은 변경사항이 사라집니다."),
+                    primaryButton: .destructive(Text("변경사항 폐기")) {
+                        dismiss()
+                    },
+                    secondaryButton: .cancel(Text("계속 편집하기"))
+                )
+            }
         }
     }
-}
-
-struct SectionView<Content: View>: View {
-    let header: String
-    let content: Content
     
-    init(header: String, @ViewBuilder content: () -> Content) {
-        self.header = header
-        self.content = content()
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(header)
-                .font(.headline)
-                .padding(.leading, 5)
-            VStack {
-                content
-            }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(8)
-            .shadow(color: Color.gray.opacity(0.1), radius: 5, x: 0, y: 2)
+    private func checkIfEditedBeforeDismissing() {
+        if isEdited {
+            showDiscardAlert = true
+        } else {
+            dismiss()
         }
     }
 }
