@@ -17,7 +17,6 @@ struct MainTabView: View {
                 .tag(0)
             
             MedicationMainView()
-                .environmentObject(MedicationViewModel())
                 .tabItem() {
                     Label("medison", systemImage: "pill")
                 }

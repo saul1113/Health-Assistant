@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MedicationMainView: View {
-    
-    @EnvironmentObject var viewModel: MedicationViewModel
+    @ObservedObject var viewModel = MedicationViewModel()
     
     var body: some View {
         NavigationStack {
@@ -40,6 +39,10 @@ struct MedicationMainView: View {
                                     Button(action: {
                                         viewModel.toggleTakeMedication(for: medication, at: index)
                                     }) {
+                                        //                                        Image(medication.isTaken[index] ? "off" : "on")
+                                        //                                            .resizable()
+                                        //                                            .scaledToFit()
+                                        //                                            .frame(width: 50, height: 50)
                                         
                                         Image(systemName: medication.isTaken[index] ? "pill.fill" : "pill")
                                             .foregroundColor(medication.isTaken[index] ? .CustomGreen : .gray)
@@ -107,5 +110,4 @@ struct MedicationMainView: View {
 
 #Preview {
     MedicationMainView()
-        .environmentObject(MedicationViewModel())
 }

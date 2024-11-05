@@ -34,9 +34,8 @@ class MedicationViewModel: ObservableObject {
     }
     
     // 복용 약 추가
-    func addMedication(name: String, company: String, days: [String], times: [String], note: String) {
-        let newMedication = Medication(name: name, company: company,days: days, times: times, note: note)
+    func addMedication(name: String, days: [String], times: [String], note: String) {
+            let newMedication = Medication(name: name, days: days, times: times, note: note)
             medications.append(newMedication)
-        print("new:\(newMedication)")
-    }
+        }
 }
