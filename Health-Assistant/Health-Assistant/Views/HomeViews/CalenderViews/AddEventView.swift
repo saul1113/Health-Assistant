@@ -14,23 +14,14 @@ struct AddEventView: View {
     
     @State private var title: String = ""
     @State private var isAllDay: Bool = false
-    @State private var startTime: Date
-    @State private var endTime: Date
+    @State private var startTime: Date = Date()
+    @State private var endTime: Date = Date()
     @State private var alert: EventAlert = .none
     @State private var notes: String = ""
     private let notesCharacterLimit = 50
     
     @State private var showDiscardAlert = false
     @State private var isEdited = false
-    
-    init(viewModel: CalendarViewModel, day: Int) {
-        self.viewModel = viewModel
-        self.day = day
-        
-        let times = viewModel.getStartAndEndTime(for: day)
-        _startTime = State(initialValue: times.startTime)
-        _endTime = State(initialValue: times.endTime)
-    }
     
     var body: some View {
         NavigationView {
@@ -154,8 +145,10 @@ struct AddEventView: View {
                     }
                 }
             }
-            .onDisappear {
-                checkIfEditedBeforeDismissing()
+            .onAppear {
+                let times = viewModel.getStartAndEndTime(for: day)
+                startTime = times.startTime
+                endTime = times.endTime
             }
             .alert(isPresented: $showDiscardAlert) {
                 Alert(

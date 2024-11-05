@@ -116,7 +116,7 @@ struct EditEventView: View {
                         checkIfEditedBeforeDismissing()
                     }) {
                         Text("취소")
-                            .font(.regular20) // regular20 폰트 적용
+                            .font(.regular20) 
                     }
                 }
 
@@ -128,7 +128,7 @@ struct EditEventView: View {
                         dismiss()
                     }) {
                         Text("저장")
-                            .font(.regular20) // regular20 폰트 적용
+                            .font(.regular20)
                     }
                 }
             }
