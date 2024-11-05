@@ -127,4 +127,39 @@ class CalendarViewModel: ObservableObject {
         
         return "\(formatter.string(from: event.startTime)) - \(formatter.string(from: event.endTime))"
     }
+    
+    // 현재 주의 날짜들을 가져오는 메서드
+    func currentWeekDates() -> [Date] {
+        let calendar = Calendar.current
+        let today = Date()
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)) ?? today
+        var dates = [Date]()
+        for i in 0..<7 {
+            if let date = calendar.date(byAdding: .day, value: i, to: startOfWeek) {
+                dates.append(date)
+            }
+        }
+        return dates
+    }
+    
+    // 요일과 날짜 포맷 (예: "월 5")
+    func formattedDateForWeekView(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E d"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
+    }
+    
+    // 특정 날짜의 이벤트 필터링
+    func events(for date: Date) -> [CalendarEvent] {
+        let calendar = Calendar.current
+        return calendarEvents.filter { event in
+            calendar.isDate(event.startTime, inSameDayAs: date)
+        }
+    }
+    
+    // 오늘 날짜인지 확인하는 메서드
+    func isToday(_ date: Date) -> Bool {
+        Calendar.current.isDateInToday(date)
+    }
 }

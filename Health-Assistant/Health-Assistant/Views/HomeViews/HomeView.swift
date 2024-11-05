@@ -8,10 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var viewModel = CalendarViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                NavigationLink(destination: HealthCalendarView(viewModel: viewModel)) {
+                    MiniWeekView(viewModel: viewModel)
+                        .padding()
+                        .cornerRadius(8)
+                }
+                
+                Spacer()
+            }
+        }
     }
 }
+
 
 #Preview {
     HomeView()
