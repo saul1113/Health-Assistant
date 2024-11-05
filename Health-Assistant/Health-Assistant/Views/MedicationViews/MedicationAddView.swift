@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MedicationAddView: View {
-    @ObservedObject var viewModel = MedicationViewModel()
+    
+    @EnvironmentObject var viewModel: MedicationViewModel
     
     @State private var medicationName: String = ""
     @State private var selectedDays: [String] = []
@@ -168,7 +169,6 @@ struct MedicationAddView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        print("취소 버튼 눌림")
                         dismiss()
                     }) {
                         Text("취소")
@@ -177,10 +177,9 @@ struct MedicationAddView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        print("저장 버튼 눌림")
                         let formattedTimes = selectedTimes.map { formatTimeToString($0) }
                         viewModel.addMedication(name: medicationName, company: "", days: selectedDays, times: formattedTimes, note: medicationNote)
-//
+
                         dismiss()
                     }) {
                         Text("저장")
@@ -219,4 +218,5 @@ struct MedicationAddView: View {
 
 #Preview {
     MedicationAddView()
+        .environmentObject(MedicationViewModel())
 }
