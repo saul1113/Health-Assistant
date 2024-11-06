@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EditEventView: View {
+    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalendarViewModel
     let day: Int
     @State var event: CalendarEvent
