@@ -11,7 +11,7 @@ import SwiftUI
 struct Health_AssistantApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            MainTabView()
         }
     }
 }
