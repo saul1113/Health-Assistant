@@ -17,8 +17,8 @@ struct MedicationMainView: View {
                 VStack (alignment: .leading) {
                     Text("아이콘을 눌러 복용 상태를 체크하세요")
                         .padding(.leading, 15)
-                        .padding(.bottom, -5)
-                        .font(.medium16)
+                        .padding(.bottom, -10)
+                        .font(.medium14)
                         .foregroundStyle(.gray)
                     
                     ForEach(viewModel.todayMedications) { medication in
@@ -71,12 +71,7 @@ struct MedicationMainView: View {
                         Divider()
                     }
                 }
-                .padding(25)
-                
-                Image("medicationOn")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50)
+                .padding(20)
             }
             .onAppear {
                 viewModel.filterTodayMedications()
@@ -113,7 +108,7 @@ struct MedicationMainView: View {
                 .foregroundColor(.black)
             
             Text(second)
-                .font(.regular16)
+                .font(.regular18)
                 .foregroundColor(.black)
                 .padding(.top, 7)
         }
