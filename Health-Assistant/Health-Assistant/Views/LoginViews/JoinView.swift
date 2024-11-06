@@ -13,103 +13,90 @@ struct JoinView: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var showPasswordMismatch: Bool = false
-    @State private var showSignupCompleteMessage = false
+    @State private var navigateToProfileSetting = false
     @State private var showEmailFormatError: Bool = false
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                Text("이메일")
-                    .font(Font.semibold20)
-                EmailTextField(text: $email)
-                    .onChange(of: email) {
-                        validateEmailFormat()
-                    }
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(showEmailFormatError ? Color.red : Color.black, lineWidth: 0.3)
-                    }
-                if showEmailFormatError {
-                    Text("이메일 형식으로 가입해야 합니다")
-                        .foregroundColor(.red)
-                        .font(Font.regular12)
-                        .padding(.top, 5)
-                        .padding(.leading, 10)
-                }
-            }
-            .padding(.leading, 40)
-            .padding(.trailing, 40)
-            
-            VStack(alignment: .leading) {
-                Text("비밀번호")
-                    .font(Font.semibold20)
-                PasswordTextField(text: $password)
-            }
-            .padding(.leading, 40)
-            .padding(.trailing, 40)
-            .padding(.top, 30)
-            
-            VStack(alignment: .leading) {
-                Text("비밀번호 확인")
-                    .font(Font.semibold20)
-                passwordtextField()
-                    .onChange(of: confirmPassword) {
-                        validatePasswords()
-                    }
-                if showPasswordMismatch {
-                    Text("비밀번호가 일치하지 않습니다")
-                        .foregroundColor(.red)
-                        .font(Font.regular12)
-                        .padding(.top, 5)
-                        .padding(.leading, 10)
-                }
-            }
-            .padding(.leading, 40)
-            .padding(.trailing, 40)
-            .padding(.top, 30)
-            
-            Button("가입하기") {
-                if validateForm() {
-                    saveUserData() // 회원 데이터 저장
-                    showSignupCompleteMessage = true // 가입 완료 메시지 표시
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        dismiss() // 홈 화면으로 돌아가기
-                    }
-                }
-            }
-            .font(Font.semibold24)
-            .foregroundStyle(.white)
-            .frame(width: 330, height: 50)
-            .background(Color(uiColor: .systemGreen))
-            .cornerRadius(8)
-            .padding(.top, 80)
-        }
-        .navigationTitle("회원가입")
-        .font(Font.bold18)
-        .onTapGesture {
-            UIApplication.shared.endEditing()
-        }
-        .overlay(
+        NavigationStack {
             VStack {
-                if showSignupCompleteMessage {
-                    Text("가입이 완료되었습니다!")
-                        .font(.system(size: 16, weight: .bold))
-                        .padding()
-                        .background(Color.green.opacity(0.8))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .transition(.slide)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                showSignupCompleteMessage = false
-                            }
+                VStack(alignment: .leading) {
+                    Text("이메일")
+                        .font(Font.semibold20)
+                    EmailTextField(text: $email)
+                        .onChange(of: email) {
+                            validateEmailFormat()
                         }
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(showEmailFormatError ? Color.red : Color.black, lineWidth: 0.3)
+                        }
+                    if showEmailFormatError {
+                        Text("이메일 형식으로 가입해야 합니다")
+                            .foregroundColor(.red)
+                            .font(Font.regular12)
+                            .padding(.top, 5)
+                            .padding(.leading, 10)
+                    }
                 }
-                Spacer()
+                .padding(.leading, 40)
+                .padding(.trailing, 40)
+                
+                VStack(alignment: .leading) {
+                    Text("비밀번호")
+                        .font(Font.semibold20)
+                    PasswordTextField(text: $password)
+                }
+                .padding(.leading, 40)
+                .padding(.trailing, 40)
+                .padding(.top, 30)
+                
+                VStack(alignment: .leading) {
+                    Text("비밀번호 확인")
+                        .font(Font.semibold20)
+                    passwordtextField()
+                        .onChange(of: confirmPassword) {
+                            validatePasswords()
+                        }
+                    if showPasswordMismatch {
+                        Text("비밀번호가 일치하지 않습니다")
+                            .foregroundColor(.red)
+                            .font(Font.regular12)
+                            .padding(.top, 5)
+                            .padding(.leading, 10)
+                    }
+                }
+                .padding(.leading, 40)
+                .padding(.trailing, 40)
+                .padding(.top, 30)
+                
+                Button("다 음") {
+                    if validateForm() {
+                        saveUserData() // 회원 데이터 저장
+                        navigateToProfileSetting = true // ProfileSetting 뷰로 이동
+                    }
+                }
+                .font(Font.semibold24)
+                .foregroundStyle(.white)
+                .frame(width: 330, height: 50)
+                .background(Color(uiColor: .systemGreen))
+                .cornerRadius(8)
+                .padding(.top, 80)
+                
+                NavigationLink(
+                    destination: ProfileSetting(),
+                    isActive: $navigateToProfileSetting
+                ) {
+                    EmptyView()
+                }
             }
-                .padding(.top, 50)
-        )
+            .navigationTitle("회원가입")
+            .font(Font.bold18)
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
+        }
     }
+    
     func passwordtextField() -> some View {
         SecureField("비밀번호 확인", text: $confirmPassword)
             .frame(height: 35)

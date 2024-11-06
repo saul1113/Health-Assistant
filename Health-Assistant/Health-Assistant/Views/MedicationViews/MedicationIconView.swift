@@ -8,28 +8,20 @@
 import SwiftUI
 
 struct MedicationIconView: View {
-    
-    @Environment(\.dismiss) var dismiss
-    
     var body: some View {
         NavigationStack {
             VStack {
                 Text("Hello, World!")
             }
-            .navigationTitle("아이콘 추가")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        BackButton()
-                    }
-                }
+        }
+        .navigationTitle("아이콘 추가")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                BackButton()
             }
         }
-        
     }
 }
 

@@ -26,7 +26,6 @@ struct EditEventView: View {
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.customGreen.opacity(0.5), lineWidth: 3)
                                     .background(Color.white.cornerRadius(8))
-                                
                                 TextField("제목을 입력해주세요", text: $event.title)
                                     .font(.medium20)
                                     .padding(8)
@@ -40,7 +39,7 @@ struct EditEventView: View {
                         SectionView(header: "시간 설정") {
                             HStack {
                                 Image(systemName: "hourglass")
-                                    .foregroundColor(.customGreen)
+                                    .foregroundColor(.green)
                                 Toggle("종일", isOn: $event.isAllDay)
                                     .onChange(of: event.isAllDay) {
                                         isEdited = true
@@ -49,7 +48,7 @@ struct EditEventView: View {
                             VStack {
                                 DatePicker("시작 시간", selection: $event.startTime)
                                     .padding()
-                                    .background(Color.customGreen.opacity(0.2))
+                                    .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
                                     .onChange(of: event.startTime) {
@@ -58,7 +57,7 @@ struct EditEventView: View {
                                 
                                 DatePicker("종료 시간", selection: $event.endTime)
                                     .padding()
-                                    .background(Color.customGreen.opacity(0.2))
+                                    .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
                                     .onChange(of: event.endTime) {
@@ -70,7 +69,7 @@ struct EditEventView: View {
                         SectionView(header: "알림") {
                             HStack {
                                 Image(systemName: "deskclock.fill")
-                                    .foregroundColor(.customGreen)
+                                    .foregroundColor(.green)
                                 
                                 Text("미리알림")
                                 
@@ -92,7 +91,8 @@ struct EditEventView: View {
                         
                         SectionView(header: "메모") {
                             ZStack {
-                                Color.customGreen.opacity(0.2)
+                                Color.green.opacity(0.2)
+
                                     .cornerRadius(8)
                                 TextEditor(text: $event.notes)
                                     .frame(height: 100)
@@ -104,6 +104,10 @@ struct EditEventView: View {
                                         isEdited = true
                                     }
                             }
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.gray.opacity(0.5))
+                            )
                         }
                     }
                     .padding()
@@ -116,7 +120,7 @@ struct EditEventView: View {
                         checkIfEditedBeforeDismissing()
                     }) {
                         Text("취소")
-                            .font(.regular20) 
+                            .font(.regular20)
                     }
                 }
 

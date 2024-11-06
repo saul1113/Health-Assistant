@@ -11,7 +11,7 @@ struct EmailLoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showLoginCompleteMessage = false
-    @State private var navigateToProfile = false
+    @State private var navigateToMainTab = false
     
     var body: some View {
         NavigationStack {
@@ -42,19 +42,6 @@ struct EmailLoginView: View {
                 .background(Color(uiColor: .systemGreen))
                 .cornerRadius(8)
                 .padding(.top, 80)
-                
-                NavigationLink(
-                    destination: ProfileSetting()
-                        .navigationBarBackButtonHidden(true) // ProfileSetting에서 Back 버튼 숨기기
-                        .onAppear {
-                            // ProfileSetting 뷰에 진입할 때 이메일과 비밀번호 초기화
-                            email = ""
-                            password = ""
-                        },
-                    isActive: $navigateToProfile
-                ) {
-                    EmptyView()
-                }
             }
             .navigationTitle("로그인")
             .font(Font.bold18)
@@ -74,7 +61,7 @@ struct EmailLoginView: View {
                             .onAppear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                     showLoginCompleteMessage = false
-                                    navigateToProfile = true // 메시지 숨김 후 네비게이션 활성화
+                                    navigateToMainTab = true // 메시지 숨김 후 네비게이션 활성화
                                 }
                             }
                     }
@@ -82,6 +69,9 @@ struct EmailLoginView: View {
                 }
                     .padding(.top, 50)
             )
+            .fullScreenCover(isPresented: $navigateToMainTab) {
+                MainTabView() // MainTabView를 전체 화면에 표시
+            }
         }
     }
     private func login() {
