@@ -15,7 +15,7 @@ struct HomeView: View {
     @StateObject private var userViewModel = UserViewModel()
     @State private var heartRate: Double = 0
     
-    let nickname: String = "asdf"
+    let nickname: String = "강사"
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
@@ -31,7 +31,7 @@ struct HomeView: View {
                             .frame(height: 20)
                         Text("안녕하세요 \(nickname)님!")
                             .font(.bold30)
-                        Text("건강에 관한 화이팅 문구--------------------")
+                        Text("꾸준한 관리가 건강을 지키는 가장 큰 비결입니다. 오늘도 작은 변화를 시작해보세요!")
                             .font(.medium14)
                         Spacer()
                             .frame(height: 100)
