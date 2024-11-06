@@ -7,100 +7,103 @@
 
 import SwiftUI
 
-
 struct HomeView: View {
+    @StateObject private var viewModel = CalendarViewModel()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
     @State private var heartRate: Double = 0
+  
+    let nickname: String = "asdf"
     var body: some View {
         NavigationStack {
-            GeometryReader { geometry in
-                ZStack {
-                    Color.CustomGreen
+            GeometryReader { proxy in
+                ZStack (alignment: .bottom){
+                    Color.customGreen
                         .ignoresSafeArea()
-                        .overlay (alignment: .bottom){
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(.white)
-                                .frame(height: geometry.size.height / 1.6)
-                        }
-                        .ignoresSafeArea()
-                    VStack(spacing: 55) {
-                        
-                        healthDataView()
-                        
-                        sleepTime(geometry: geometry)
-                        
-                        chartView(geometry: geometry)
-                        
-                        NavigationLink(destination: HealthCalendarView()) {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.bar)
+                        .frame(height: proxy.size.height / 1.3)
+                        .ignoresSafeArea(edges: .bottom)
+                    VStack (alignment: .leading) {
+                        Spacer()
+                            .frame(height: 20)
+                        Text("안녕하세요 \(nickname)님!")
+                            .font(.bold30)
+                        Text("건강에 관한 화이팅 문구--------------------")
+                            .font(.medium14)
+                        Spacer()
+                            .frame(height: 100)
+                        NavigationLink {
+                            HealthCalendarView()
+                        } label: {
                             MiniWeekView(viewModel: CalendarViewModel())
+                                .background(.white, in: RoundedRectangle(cornerRadius: 20))
                         }
-                        
-                                            }
-                    .onAppear {
-                        locationManager.fetchAddress { local, locality in
-                            Task {
-                                await userViewModel.fetchHospitalLocation(local: local, locality: locality)
-                            }
-                        }
+                        chartView(geometry: proxy)
+                            .frame(height: 180)
+                        healthDataView()
+                        Spacer()
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Image(.hahaTitleWhite)
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Image(systemName: "bell.fill")
-                                .foregroundStyle(.white)
-                        }
-                    }
+                    .padding(.horizontal, 15)
+                    .frame(maxWidth: proxy.size.width)
+                    .foregroundStyle(.white)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Image(.hahaTitleWhite)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Image(systemName: "bell.fill")
+                        .foregroundStyle(.white)
                 }
             }
         }
     }
     func healthDataView() -> some View {
-        VStack {
+        VStack (alignment: .center, spacing: 0) {
             Text("현재")
             if healthData.isMeasuring {
                 Text("0")
-                    .foregroundStyle(.white)
                     .font(.bold96)
-                    .padding(.vertical, 0)
+                    .padding(.vertical, -17)
             }
             else {
                 Text("\(String(format: "%.f", healthData.heartRate))")
-                    .foregroundStyle(.white)
                     .font(.bold96)
                     .padding(.vertical, -27)
-                
             }
             HStack {
                 Text("BPM")
-                    .foregroundStyle(.white)
                     .font(.regular20)
                 Image(systemName: "heart.fill")
-                    .foregroundStyle(.white)
             }
         }
+        .padding(20)
+        .frame(maxWidth: .infinity)
+        .foregroundStyle(.black)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+        )
     }
     func chartView(geometry: GeometryProxy) -> some View {
-        HStack {
+        HStack (spacing: 10) {
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.customGreen30)
+                .fill(Color.white)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
             NavigationLink {
                 HospitalMapView(hospitals: userViewModel.hospitalsInfo)
-            }label: {
-                Text("\(locationManager.currentAddress ?? "")")
+            } label: {
+                Text("\(locationManager.currentAddress ?? "")\n 가까운 병원 및 응급실")
                     .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.customGreen30)
+                            .fill(Color.white)
                     }
                 
             }
         }
-        .padding(.horizontal, 20)
     }
     
     func sleepTime(geometry: GeometryProxy) -> some View {
