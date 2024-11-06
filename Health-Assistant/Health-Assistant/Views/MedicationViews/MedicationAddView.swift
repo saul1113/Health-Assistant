@@ -184,7 +184,7 @@ struct MedicationAddView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         let formattedTimes = selectedTimes.map { formatTimeToString($0) }
-                        viewModel.addMedication(name: medicationName, company: "", days: selectedDays, times: formattedTimes, note: medicationNote)
+                        viewModel.addMedication(name: medicationName, company: "제약회사 이름", days: selectedDays, times: formattedTimes, note: medicationNote)
                         
                         dismiss()
                     }) {
