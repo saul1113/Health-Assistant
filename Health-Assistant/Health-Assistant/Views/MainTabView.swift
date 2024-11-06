@@ -33,7 +33,6 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person.crop.circle")
                 }
                 .tag(3)
-            
         }
         .accentColor(Color("CustomGreen"))
     }

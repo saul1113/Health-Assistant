@@ -14,14 +14,14 @@ struct HomeView: View {
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
     @State private var heartRate: Double = 0
-  
+    
     let nickname: String = "asdf"
     var body: some View {
         NavigationStack {
             GeometryReader { proxy in
                 ZStack (alignment: .bottom){
                     Color.customGreen
-                        .ignoresSafeArea()
+                        .ignoresSafeArea(edges: .top)
                     RoundedRectangle(cornerRadius: 20)
                         .fill(.bar)
                         .frame(height: proxy.size.height / 1.3)
@@ -35,17 +35,20 @@ struct HomeView: View {
                             .font(.medium14)
                         Spacer()
                             .frame(height: 100)
-                        NavigationLink {
-                            HealthCalendarView()
-                        } label: {
-                            MiniWeekView(viewModel: CalendarViewModel())
-                                .background(.white, in: RoundedRectangle(cornerRadius: 20))
+                        ScrollView {
+                            NavigationLink {
+                                HealthCalendarView()
+                            } label: {
+                                MiniWeekView(viewModel: CalendarViewModel())
+                                    .background(.white, in: RoundedRectangle(cornerRadius: 20))
+                            }
+                            chartView(geometry: proxy)
+                                .frame(height: 180)
+                            healthDataView()
                         }
-                        chartView(geometry: proxy)
-                            .frame(height: 180)
-                        healthDataView()
-                        Spacer()
-                   }
+                        .scrollIndicators(.hidden)
+                    }
+                    .padding(.horizontal, 20)
                     .onAppear {
                         locationManager.fetchAddress { local, locality in
                             Task {
@@ -54,17 +57,6 @@ struct HomeView: View {
                             }
                         }
                     }
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Image(.hahaTitleWhite)
-                        }
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Image(systemName: "bell.fill")
-                                .foregroundStyle(.white)
-                        }
-                    }
-                    .padding(.horizontal, 15)
-                    .frame(maxWidth: proxy.size.width)
                     .foregroundStyle(.white)
                 }
             }
@@ -104,6 +96,7 @@ struct HomeView: View {
         .background(
             RoundedRectangle(cornerRadius: 20)
         )
+        .padding(.bottom, 20)
     }
     func chartView(geometry: GeometryProxy) -> some View {
         HStack (spacing: 10) {
@@ -115,6 +108,7 @@ struct HomeView: View {
             } label: {
                 Text("\(locationManager.currentAddress ?? "")\n 가까운 병원 및 응급실")
                     .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+                    .foregroundStyle(.black)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color.white)
