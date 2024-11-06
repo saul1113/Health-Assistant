@@ -39,11 +39,11 @@ struct MedicationDetailView: View {
                     Text("요일")
                         .font(.semibold24)
                     
-                    HStack(spacing: 20) {
+                    LazyHStack(spacing: 20) {
                         ForEach(medication.translatedDays(), id: \.self) { day in
                             Text(day)
                                 .padding(10)
-                                .frame(width: 50, height: 50)
+                                .frame(width: 40, height: 40)
                                 .background(Color.CustomGreen)
                                 .clipShape(Circle())
                                 .foregroundStyle(.white)
