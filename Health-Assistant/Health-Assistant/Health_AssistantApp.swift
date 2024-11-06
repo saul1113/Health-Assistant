@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Health_AssistantApp: App {
+    @StateObject private var medicationViewModel: MedicationViewModel = MedicationViewModel()
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environmentObject(medicationViewModel)
         }
     }
 }
