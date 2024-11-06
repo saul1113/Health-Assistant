@@ -57,8 +57,8 @@ struct MedicationAddView: View {
                         
                         TextField("약 이름", text: $medicationName)
                             .background(Color.clear)
-                            .font(.semibold30)
-                            .frame(height: 60)
+                            .font(.semibold26)
+                            .frame(height: 50)
                             .padding(.leading, 10)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 5)
