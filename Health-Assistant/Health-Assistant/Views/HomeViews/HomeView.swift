@@ -33,8 +33,11 @@ struct HomeView: View {
                         
                         chartView(geometry: geometry)
                         
-                        Spacer()
-                    }
+                        NavigationLink(destination: HealthCalendarView()) {
+                            MiniWeekView(viewModel: CalendarViewModel())
+                        }
+                        
+                                            }
                     .onAppear {
                         locationManager.fetchAddress { local, locality in
                             Task {
