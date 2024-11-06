@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddEventView: View {
+    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalendarViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -148,7 +149,7 @@ struct AddEventView: View {
                             alert: alert,
                             notes: notes
                         )
-                        viewModel.addEvent(event: newEvent)
+                        viewModel.addEvent(event: newEvent, context: modelContext)
                         dismiss()
                     }
                 }

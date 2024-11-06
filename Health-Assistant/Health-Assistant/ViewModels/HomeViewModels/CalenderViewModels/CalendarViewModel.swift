@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Foundation
+import SwiftData
 
 class CalendarViewModel: ObservableObject {
     @Published var currentDate: Date {
@@ -83,8 +83,11 @@ class CalendarViewModel: ObservableObject {
         return (weekday - 1) % 7 // 요일을 일요일 시작에 맞춤 (일요일이 0)
     }
     
-    func events(for day: Int) -> [CalendarEvent] {
-        calendarEvents.filter { event in
+    func events(for day: Int, context: ModelContext) -> [CalendarEvent] {
+        let descriptor = FetchDescriptor<CalendarEvent>()
+        let allEvents = (try? context.fetch(descriptor)) ?? []
+        
+        let filteredEvents = allEvents.filter { event in
             let eventDateComponents = calendar.dateComponents([.year, .month, .day], from: event.startTime)
             let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: currentDate)
             
@@ -92,14 +95,21 @@ class CalendarViewModel: ObservableObject {
                    eventDateComponents.month == currentDateComponents.month &&
                    eventDateComponents.day == day
         }
+        return filteredEvents
     }
     
-    func addEvent(event: CalendarEvent) {
-        calendarEvents.append(event)
+    func addEvent(event: CalendarEvent, context: ModelContext) {
+        context.insert(event)
     }
     
-    func removeEvent(for day: Int, eventID: UUID) {
-        calendarEvents.removeAll { $0.id == eventID }
+    func removeEvent(eventID: UUID, context: ModelContext) {
+        let descriptor = FetchDescriptor<CalendarEvent>(
+            predicate: #Predicate { $0.id == eventID }
+        )
+        if let eventToDelete = (try? context.fetch(descriptor))?.first {
+            context.delete(eventToDelete)
+            calendarEvents.removeAll { $0.id == eventID }
+        }
     }
     
     // 선택한 날짜를 기준으로 그 날의 시작 시간 생성
@@ -166,7 +176,7 @@ class CalendarViewModel: ObservableObject {
     }
     
     // 특정 날짜의 이벤트 필터링
-    func events(for date: Date) -> [CalendarEvent] {
+    func events(for date: Date, context: ModelContext) -> [CalendarEvent] {
         let calendar = Calendar.current
         return calendarEvents.filter { event in
             calendar.isDate(event.startTime, inSameDayAs: date)
@@ -176,5 +186,14 @@ class CalendarViewModel: ObservableObject {
     // 오늘 날짜인지 확인하는 메서드
     func isToday(_ date: Date) -> Bool {
         Calendar.current.isDateInToday(date)
+    }
+    
+    func loadEvents(context: ModelContext) {
+        let descriptor = FetchDescriptor<CalendarEvent>()
+        if let allEvents = try? context.fetch(descriptor) {
+            calendarEvents = allEvents
+        } else {
+            calendarEvents = []
+        }
     }
 }

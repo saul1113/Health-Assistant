@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HealthCalendarView: View {
+    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel = CalendarViewModel()
     @State private var showDayEvents = false
     @State private var showAddEvent = false
@@ -15,144 +16,171 @@ struct HealthCalendarView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                HStack {
-                    Menu {
-                        ForEach(2020...2030, id: \.self) { year in
-                            Button("\(year)년") {
-                                viewModel.updateYear(year)
-                            }
-                        }
-                    } label: {
-                        Text(viewModel.displayedMonthYear)
-                            .font(.bold28)
-                            .foregroundStyle(.black)
-                    }
-                    
-                    Spacer()
-                    
-                    Button(action: { viewModel.moveToPreviousMonth() }) {
-                        Image(systemName: "chevron.left")
-                            .font(.bold24)
-                    }
-                    
-                    Button(action: { viewModel.moveToNextMonth() }) {
-                        Image(systemName: "chevron.right")
-                            .font(.bold24)
-                    }
-                    
-                    Button(action: {
-                        showAddEvent = true
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.bold24)
-                            .foregroundColor(.green)
-                    }
-                    .padding(.leading)
-                }
-                .padding(.horizontal)
-                .padding(.top, geometry.size.height * 0.02)
+                headerView(geometry: geometry)
                 
                 Spacer()
                 
-                HStack {
-                    ForEach(["일", "월", "화", "수", "목", "금", "토"], id: \.self) { day in
-                        Text(day)
-                            .frame(maxWidth: .infinity)
-                            .font(.medium18)
-                    }
-                }
-                .padding(.horizontal)
+                dayHeaders(geometry: geometry)
                 
-                // 날짜 및 이벤트 미리보기 표시
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: geometry.size.height * 0.01) {
-                    ForEach(0..<viewModel.startDayOffset() + viewModel.daysInCurrentMonth(), id: \.self) { index in
-                        if index < viewModel.startDayOffset() {
-                            Text(" ")
-                                .frame(height: geometry.size.height * 0.06)
-                        } else {
-                            let day = index - viewModel.startDayOffset() + 1
-                            
-                            ZStack {
-                                // 날짜 숫자 (고정 위치)
-                                VStack {
-                                    Text("\(day)")
-                                        .padding(geometry.size.width * 0.015)
-                                        .frame(maxWidth: .infinity)
-                                        .background(day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() ? Color.blue.opacity(0.3) : (day == viewModel.selectedDay ? Color.green.opacity(0.3) : Color.clear))
-                                        .clipShape(Circle())
-                                        .font(.semibold18)
-                                    
-                                    Spacer() // 날짜 숫자와 이벤트 목록 사이에 공간 추가
-                                }
-                                
-                                VStack(spacing: geometry.size.height * 0.005) {
-                                    Spacer() // 일정 목록을 날짜 숫자 아래로 밀기 위해 Spacer 사용
-                                    
-                                    if viewModel.events(for: day).isEmpty {
-                                        // 일정이 없을 때 빈 공간 2개 추가
-                                        Text(" ")
-                                            .font(.regular16)
-                                            .padding(geometry.size.width * 0.005)
-                                            .opacity(0) // 보이지 않게 설정하여 일정이 없을 때의 공간을 확보
-                                        Text(" ")
-                                            .font(.regular16)
-                                            .padding(geometry.size.width * 0.005)
-                                            .opacity(0)
-                                    } else if viewModel.events(for: day).count == 1 {
-                                        ForEach(viewModel.events(for: day).prefix(1), id: \.id) { event in
-                                            Text(event.title)
-                                                .font(.regular16)
-                                                .lineLimit(1)
-                                                .truncationMode(.tail)
-                                                .padding(geometry.size.width * 0.005)
-                                                .background(Color.customGreen.opacity(0.8))
-                                                .foregroundColor(.white)
-                                                .cornerRadius(geometry.size.width * 0.01)
-                                        }
-                                        // 일정이 1개일 때는 빈 공간 1개와 일정 텍스트 1개 추가
-                                        Text(" ")
-                                            .font(.regular16)
-                                            .padding(geometry.size.width * 0.005)
-                                            .opacity(0) // 빈 공간 하나 추가
-                                    } else {
-                                        // 일정이 2개 이상일 때
-                                        ForEach(viewModel.events(for: day).prefix(2), id: \.id) { event in
-                                            Text(event.title)
-                                                .font(.regular16)
-                                                .lineLimit(1)
-                                                .truncationMode(.tail)
-                                                .padding(geometry.size.width * 0.005)
-                                                .background(Color.customGreen.opacity(0.8))
-                                                .foregroundColor(.white)
-                                                .cornerRadius(geometry.size.width * 0.01)
-                                        }
-                                    }
-                                }
-                                .padding(.top, geometry.size.height * 0.04) // 일정 목록을 날짜 아래에 배치하도록 추가 간격 설정
-                            }
-                            .frame(height: geometry.size.height * 0.12)
-                            .onTapGesture {
-                                viewModel.selectedDay = day
-                                showDayEvents = true
-                            }
-                        }
-                    }
-                    Spacer()
-                }
-                .padding()
-                .sheet(isPresented: $showDayEvents) {
-                    if let selectedDay = viewModel.selectedDay {
-                        DayEventsView(viewModel: viewModel, day: selectedDay)
-                            .presentationDetents([.large]) // Full screen
-                    }
-                }
+                dateGridView(geometry: geometry)
                 
                 Spacer()
-                
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // Expand to full screen
             .sheet(isPresented: $showAddEvent) {
                 AddEventView(viewModel: viewModel)
+            }
+            .sheet(isPresented: $showDayEvents) {
+                if let selectedDay = viewModel.selectedDay {
+                    DayEventsView(viewModel: viewModel, day: selectedDay)
+                        .presentationDetents([.large]) // Full screen
+                }
+            }
+        }
+    }
+    
+    private func headerView(geometry: GeometryProxy) -> some View {
+        HStack {
+            Menu {
+                ForEach(2020...2030, id: \.self) { year in
+                    Button("\(year)년") {
+                        viewModel.updateYear(year)
+                    }
+                }
+            } label: {
+                Text(viewModel.displayedMonthYear)
+                    .font(.bold28)
+                    .foregroundStyle(.black)
+            }
+            
+            Spacer()
+            
+            Button(action: { viewModel.moveToPreviousMonth() }) {
+                Image(systemName: "chevron.left")
+                    .font(.bold24)
+            }
+            
+            Button(action: { viewModel.moveToNextMonth() }) {
+                Image(systemName: "chevron.right")
+                    .font(.bold24)
+            }
+            
+            Button(action: {
+                showAddEvent = true
+            }) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.bold24)
+                    .foregroundColor(.green)
+            }
+            .padding(.leading)
+        }
+        .padding(.horizontal)
+        .padding(.top, geometry.size.height * 0.02)
+    }
+    
+    private func dayHeaders(geometry: GeometryProxy) -> some View {
+        HStack {
+            ForEach(["일", "월", "화", "수", "목", "금", "토"], id: \.self) { day in
+                Text(day)
+                    .frame(maxWidth: .infinity)
+                    .font(.medium18)
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+    private func dateGridView(geometry: GeometryProxy) -> some View {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: geometry.size.height * 0.01) {
+            ForEach(0..<viewModel.startDayOffset() + viewModel.daysInCurrentMonth(), id: \.self) { index in
+                if index < viewModel.startDayOffset() {
+                    Text(" ")
+                        .frame(height: geometry.size.height * 0.06)
+                } else {
+                    let day = index - viewModel.startDayOffset() + 1
+                    DayCellView(day: day, geometry: geometry, viewModel: viewModel)
+                        .onTapGesture {
+                            viewModel.selectedDay = day
+                            showDayEvents = true
+                        }
+                }
+            }
+            Spacer()
+        }
+        .padding()
+    }
+}
+
+struct DayCellView: View {
+    @Environment(\.modelContext) private var modelContext
+    let day: Int
+    let geometry: GeometryProxy
+    let viewModel: CalendarViewModel
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                Text("\(day)")
+                    .padding(geometry.size.width * 0.015)
+                    .frame(maxWidth: .infinity)
+                    .background(dayBackgroundColor())
+                    .clipShape(Circle())
+                    .font(.semibold18)
+                
+                Spacer()
+            }
+            
+            VStack(spacing: geometry.size.height * 0.005) {
+                Spacer()
+                
+                let events = viewModel.events(for: day, context: modelContext)
+                
+                if events.isEmpty {
+                    // 일정이 없는 경우 빈 텍스트 두 개 추가
+                    emptyEventPlaceholders()
+                    emptyEventPlaceholders()
+                } else if events.count == 1 {
+                    // 일정이 한 개만 있는 경우 일정 한 개와 빈 텍스트 한 개 추가
+                    eventTexts()
+                    emptyEventPlaceholders()
+                } else {
+                    // 일정이 두 개 이상인 경우 두 개만 표시
+                    eventTexts()
+                }
+            }
+            .padding(.top, geometry.size.height * 0.04)
+        }
+        .frame(height: geometry.size.height * 0.12)
+    }
+    
+    private func dayBackgroundColor() -> Color {
+        if day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() {
+            return Color.blue.opacity(0.3)
+        } else if day == viewModel.selectedDay {
+            return Color.green.opacity(0.3)
+        } else {
+            return Color.clear
+        }
+    }
+    
+    private func emptyEventPlaceholders() -> some View {
+        VStack {
+            Text(" ")
+                .font(.regular16)
+                .padding(geometry.size.width * 0.005)
+                .opacity(0)
+        }
+    }
+    
+    private func eventTexts() -> some View {
+        VStack(spacing: geometry.size.height * 0.002) {
+            ForEach(viewModel.events(for: day, context: modelContext).prefix(2), id: \.id) { event in
+                Text(event.title)
+                    .font(.regular16)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                    .padding(geometry.size.width * 0.005)
+                    .background(Color.customGreen.opacity(0.8))
+                    .foregroundColor(.white)
+                    .cornerRadius(geometry.size.width * 0.01)
             }
         }
     }

@@ -6,15 +6,40 @@
 //
 
 import Foundation
+import SwiftData
 
-struct CalendarEvent: Identifiable, Equatable {
-    let id = UUID()
+@Model
+final class CalendarEvent: Identifiable, Equatable {
+    @Attribute(.unique) var id: UUID = UUID()
     var title: String
     var startTime: Date
     var endTime: Date
     var isAllDay: Bool
-    var alert: EventAlert
+    private var alertValue: String
+    
+    var alert: EventAlert {
+        get {
+            EventAlert(rawValue: alertValue) ?? .none // 기본값으로 .none 사용
+        }
+        set {
+            alertValue = newValue.rawValue
+        }
+    }
+
     var notes: String
+    
+    init(title: String, startTime: Date, endTime: Date, isAllDay: Bool, alert: EventAlert, notes: String) {
+        self.title = title
+        self.startTime = startTime
+        self.endTime = endTime
+        self.isAllDay = isAllDay
+        self.alertValue = alert.rawValue
+        self.notes = notes
+    }
+    
+    static func ==(lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 enum EventAlert: String, CaseIterable, Identifiable {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MiniWeekView: View {
+    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalendarViewModel
     
     var body: some View {
@@ -39,7 +40,7 @@ struct MiniWeekView: View {
                         Spacer()
                         
                         // 이벤트 표시 (최대 2개)
-                        let dayEvents = viewModel.events(for: date)
+                        let dayEvents = viewModel.events(for: date, context: modelContext)
                         ForEach(dayEvents.prefix(2), id: \.id) { event in
                             Text(event.title)
                                 .font(.caption)

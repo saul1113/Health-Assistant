@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DayEventsView: View {
+    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalendarViewModel
     let day: Int
 //    @State private var showAddEvent = false
@@ -16,13 +17,17 @@ struct DayEventsView: View {
     var body: some View {
         NavigationView {
             List {
-                if viewModel.events(for: day).isEmpty {
+                if viewModel.events(for: day, context: modelContext).isEmpty {
                     Text("일정이 없습니다.")
                         .font(.medium16)
                         .foregroundStyle(.gray)
                 } else  {
-                    ForEach(viewModel.events(for: day)) { event in
-                        NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)) {
+                    ForEach(viewModel.events(for: day, context: modelContext)) { event in
+                        NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)
+                            .onDisappear {
+                                viewModel.loadEvents(context: modelContext) // 삭제 후 새로 로드
+                            }
+                        ) {
                             VStack(alignment: .leading) {
                                 Text(viewModel.formattedTime(for: event))
                                     .font(.regular20)
@@ -42,20 +47,7 @@ struct DayEventsView: View {
                         .font(.bold24)
                         .foregroundColor(.green)
                 }
-                
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        showAddEvent = true
-//                    }) {
-//                        Image(systemName: "plus.circle.fill")
-//                            .font(.bold24)
-//                            .foregroundColor(.green)
-//                    }
-//                }
             }
-//            .sheet(isPresented: $showAddEvent) {
-//                AddEventView(viewModel: viewModel)
-//            }
         }
         .accentColor(Color("CustomGreen"))
     }
