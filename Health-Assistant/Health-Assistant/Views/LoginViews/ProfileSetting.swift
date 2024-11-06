@@ -25,6 +25,7 @@ enum BloodType: String, CaseIterable {
 }
 
 struct ProfileSetting: View {
+    @Environment(\.dismiss) var dismiss
     @State private var nickname: String = ""
     @State private var birthday: String = ""
     @State private var nicknameError: String?
@@ -60,7 +61,7 @@ struct ProfileSetting: View {
                         .padding(6)
                         .foregroundStyle(.white)
                         .font(Font.bold16)
-                        .background(Color(uiColor: .systemGreen))
+                        .background(Color.customGreen)
                         .cornerRadius(8)
                     }
                     if let error = nicknameError {
@@ -107,11 +108,11 @@ struct ProfileSetting: View {
                                 }) {
                                     Text(gender.rawValue)
                                         .font(Font.regular14)
-                                        .foregroundColor(selectedGender == gender ? Color(uiColor: .systemGreen) : Color(uiColor: .systemGray))
+                                        .foregroundColor(selectedGender == gender ? Color.CustomGreen : Color(uiColor: .systemGray))
                                         .frame(width: 50, height: 50)
                                         .background(
                                             RoundedRectangle(cornerRadius: 10)
-                                                .stroke(selectedGender == gender ? Color(uiColor: .systemGreen) : Color(uiColor: .systemGray), lineWidth: 2)
+                                                .stroke(selectedGender == gender ? Color.CustomGreen : Color(uiColor: .systemGray), lineWidth: 2)
                                         )
                                 }
                             }
@@ -137,18 +138,26 @@ struct ProfileSetting: View {
                     .padding(.top, 30)
                 }
                 Spacer()
-                NavigationLink(destination: HealthAllowView()
-                    .navigationBarBackButtonHidden(true), // HealthAllowView에서 Back 버튼 숨기기
-                               isActive: $navigateToHealthAllowView) {
-                    Button("확 인") {
-                        navigateToHealthAllowView = true
+                NavigationLink(destination: HealthAllowView()) {
+                                    Text("다 음")
+                                        .font(Font.semibold24)
+                                        .foregroundStyle(.white)
+                                        .frame(width: 330, height: 50)
+                                        .background(Color.CustomGreen)
+                                        .cornerRadius(8)
+                                        .padding(.bottom, 30)
+                                }
+            }
+            .navigationTitle("프로필 설정")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        BackButton()
                     }
-                    .font(Font.semibold24)
-                    .foregroundStyle(.white)
-                    .frame(width: 330, height: 50)
-                    .background(Color(uiColor: .systemGreen))
-                    .cornerRadius(8)
-                    .padding(.bottom, 40)
                 }
             }
         }

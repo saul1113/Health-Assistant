@@ -19,6 +19,11 @@ struct JoinView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Image("HAHALogo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .padding(.bottom, 40)
+                
                 VStack(alignment: .leading) {
                     Text("이메일")
                         .font(Font.semibold20)
@@ -69,28 +74,28 @@ struct JoinView: View {
                 .padding(.trailing, 40)
                 .padding(.top, 30)
                 
-                Button("다 음") {
-                    if validateForm() {
-                        saveUserData() // 회원 데이터 저장
-                        navigateToProfileSetting = true // ProfileSetting 뷰로 이동
-                    }
-                }
-                .font(Font.semibold24)
-                .foregroundStyle(.white)
-                .frame(width: 330, height: 50)
-                .background(Color(uiColor: .systemGreen))
-                .cornerRadius(8)
-                .padding(.top, 80)
-                
-                NavigationLink(
-                    destination: ProfileSetting(),
-                    isActive: $navigateToProfileSetting
-                ) {
-                    EmptyView()
+                NavigationLink(destination: ProfileSetting()) {
+                    Text("다 음")
+                        .font(Font.semibold24)
+                        .foregroundStyle(.white)
+                        .frame(width: 330, height: 50)
+                        .background(Color.CustomGreen)
+                        .cornerRadius(8)
+                        .padding(.top, 80)
                 }
             }
             .navigationTitle("회원가입")
-            .font(Font.bold18)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        BackButton()
+                    }
+                }
+            }
+            .navigationBarBackButtonHidden()
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }

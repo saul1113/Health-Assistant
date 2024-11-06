@@ -55,6 +55,8 @@
 		77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */; };
 		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
 		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
+		EB1D3F062CDBC4B900FA9732 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D3F052CDBC4B900FA9732 /* DataManager.swift */; };
+		EB1D3F092CDBC6EB00FA9732 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */; };
 		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
 		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
 		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
@@ -121,6 +123,8 @@
 		77C7F7CC2CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
 		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
+		EB1D3F052CDBC4B900FA9732 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
 				2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */,
 				2C77E0F52CDA8AB5005365CC /* Info.plist */,
+				EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */,
+				EB1D3F072CDBC4CB00FA9732 /* Managers */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
 				5079064E2CD4AED200AFE182 /* ViewModels */,
@@ -379,6 +385,14 @@
 			path = ProfileModels;
 			sourceTree = "<group>";
 		};
+		EB1D3F072CDBC4CB00FA9732 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				EB1D3F052CDBC4B900FA9732 /* DataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		EBE160A22CD88A1A003E7CC2 /* LoginViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +483,7 @@
 				2C77E0F22CDA857E005365CC /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
+				EB1D3F092CDBC6EB00FA9732 /* Config.xcconfig in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
 				2C77E0F42CDA8626005365CC /* Assets.xcassets in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
@@ -534,6 +549,7 @@
 				F64B24022CD883C100944503 /* HealthReport.swift in Sources */,
 				F64B23FE2CD8838600944503 /* NewReportView.swift in Sources */,
 				500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */,
+				EB1D3F062CDBC4B900FA9732 /* DataManager.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				EBE160A42CD8AF36003E7CC2 /* ProfileImageView.swift in Sources */,
 				EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */,
@@ -546,6 +562,7 @@
 /* Begin XCBuildConfiguration section */
 		2C7F61432CD491500070998C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -609,6 +626,7 @@
 		};
 		2C7F61442CD491500070998C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -678,6 +696,7 @@
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "이 앱은 수면 분석 및 심박수를 기반으로 개인화된 건강 피드백을 제공합니다.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "사용자 건강 데이터 업데이트 허용";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 항상 또는 앱을 사용할 때만 얻어 오기위한 권한요청";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 얻어 오기위한 권한요청";
@@ -719,6 +738,7 @@
 				INFOPLIST_FILE = "Health-Assistant/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = haha;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "이 앱은 수면 분석 및 심박수를 기반으로 개인화된 건강 피드백을 제공합니다.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "사용자 건강 데이터 업데이트 허용";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자의 위치를 항상 또는 앱을 사용할 때만 얻어 오기위한 권한요청";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 얻어 오기위한 권한요청";

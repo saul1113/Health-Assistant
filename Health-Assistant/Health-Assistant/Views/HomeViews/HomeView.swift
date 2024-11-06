@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var dataManager: DataManager = DataManager()
     @StateObject private var viewModel = CalendarViewModel()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
@@ -44,6 +45,23 @@ struct HomeView: View {
                             .frame(height: 180)
                         healthDataView()
                         Spacer()
+                   }
+                    .onAppear {
+                        locationManager.fetchAddress { local, locality in
+                            Task {
+                                await userViewModel.fetchHospitalLocation(local: local, locality: locality)
+                                try? await dataManager.login()
+                            }
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Image(.hahaTitleWhite)
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Image(systemName: "bell.fill")
+                                .foregroundStyle(.white)
+                        }
                     }
                     .padding(.horizontal, 15)
                     .frame(maxWidth: proxy.size.width)

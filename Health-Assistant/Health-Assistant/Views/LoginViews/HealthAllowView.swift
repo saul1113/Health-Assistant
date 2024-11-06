@@ -9,9 +9,10 @@ import SwiftUI
 import HealthKit
 
 struct HealthAllowView: View {
+    @Environment(\.dismiss) var dismiss
     private let healthKitManager = HealthKitManager()
     @State private var showHealthConnectSheet = false
-    @State private var navigateToHome = false
+    @State private var navigateLogin = false
     
     var body: some View {
         NavigationStack {
@@ -36,10 +37,10 @@ struct HealthAllowView: View {
                         
                         
                         Button("시작하기") {
-                            navigateToHome = true
+                            navigateLogin = true
                         }
                         .font(Font.semibold24)
-                        .foregroundStyle(Color(uiColor: .systemGreen))
+                        .foregroundStyle(Color.customGreen)
                         .frame(width: 330, height: 50)
                         .background(.white)
                         .cornerRadius(8)
@@ -48,15 +49,24 @@ struct HealthAllowView: View {
                 }
                 .padding(.top, 200)
             }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        BackButton()
+                    }
+                }
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(uiColor: .systemGreen)) // 전체 배경색 설정
+            .background(Color.customGreen) // 전체 배경색 설정
             .sheet(isPresented: $showHealthConnectSheet) {
-                HealthConnectSheet(navigateToHome: $navigateToHome)
+                HealthConnectSheet(navigateToHome: $navigateLogin)
                     .presentationDetents([.fraction(0.5)])
             }
-            .fullScreenCover(isPresented: $navigateToHome) {
-                MainTabView() // MainTabView로 이동
-                
+            .navigationDestination(isPresented: $navigateLogin) {
+                LoginView()
             }
         }
     }
