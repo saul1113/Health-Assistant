@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+<key>UIAppFonts</key>
+        <array>
+                <string>NotoSansKR-Bold.ttf</string>
+                <string>NotoSansKR-SemiBold.ttf</string>
+                <string>NotoSansKR-Medium.ttf</string>
+                <string>NotoSansKR-Regular.ttf</string>
+        </array>
 <key>NSAppTransportSecurity</key>
 <dict>
     <key>NSExceptionDomains</key>
@@ -15,6 +22,7 @@
             <key>NSTemporaryExceptionMinimumTLSVersion</key>
             <string>TLSv1.2</string>
         </dict>
+
     </dict>
 </dict>
 <key>NSHealthShareUsageDescription</key>
