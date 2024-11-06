@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct HomeView: View {
+    @StateObject private var dataManager: DataManager = DataManager()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
@@ -42,6 +43,7 @@ struct HomeView: View {
                         locationManager.fetchAddress { local, locality in
                             Task {
                                 await userViewModel.fetchHospitalLocation(local: local, locality: locality)
+                                try? await dataManager.login()
                             }
                         }
                     }

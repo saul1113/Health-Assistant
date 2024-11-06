@@ -59,6 +59,7 @@ struct EmailLoginView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .onTapGesture {
                 UIApplication.shared.endEditing() // 화면을 탭하면 키보드 내려가도록 함
             }

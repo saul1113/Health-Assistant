@@ -75,15 +75,15 @@ struct JoinView: View {
                 .padding(.top, 30)
                 
                 NavigationLink(destination: ProfileSetting()) {
-                                    Text("다 음")
-                                        .font(Font.semibold24)
-                                        .foregroundStyle(.white)
-                                        .frame(width: 330, height: 50)
-                                        .background(Color.CustomGreen)
-                                        .cornerRadius(8)
-                                        .padding(.top, 80)
-                                }
-                            }
+                    Text("다 음")
+                        .font(Font.semibold24)
+                        .foregroundStyle(.white)
+                        .frame(width: 330, height: 50)
+                        .background(Color.CustomGreen)
+                        .cornerRadius(8)
+                        .padding(.top, 80)
+                }
+            }
             .navigationTitle("회원가입")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -95,6 +95,7 @@ struct JoinView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden()
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }
