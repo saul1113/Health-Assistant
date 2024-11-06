@@ -11,7 +11,7 @@ struct MedicationSearchView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Hello, World!")
+                Text("약 검색 뷰")
             }
         }
         .navigationTitle("약 검색")
