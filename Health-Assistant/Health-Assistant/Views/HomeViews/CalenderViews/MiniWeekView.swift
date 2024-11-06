@@ -65,7 +65,8 @@ struct MiniWeekView: View {
         }
         .frame(maxHeight: 140)
         .padding(.vertical)
-        .background(Color("CustomGreen").opacity(0.3))
+        .background(.white)
+//        .background(Color("CustomGreen").opacity(0.3))
         .cornerRadius(20)
     }
 }
