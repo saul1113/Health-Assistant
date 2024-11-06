@@ -95,7 +95,7 @@ class CalendarViewModel: ObservableObject {
                    eventDateComponents.month == currentDateComponents.month &&
                    eventDateComponents.day == day
         }
-        return filteredEvents
+        return filteredEvents.sorted { $0.startTime < $1.startTime }
     }
     
     func addEvent(event: CalendarEvent, context: ModelContext) {
@@ -189,7 +189,9 @@ class CalendarViewModel: ObservableObject {
     }
     
     func loadEvents(context: ModelContext) {
-        let descriptor = FetchDescriptor<CalendarEvent>()
+        let descriptor = FetchDescriptor<CalendarEvent>(
+            sortBy: [SortDescriptor(\.startTime, order: .forward)] // 오름차순 정렬
+        )
         if let allEvents = try? context.fetch(descriptor) {
             calendarEvents = allEvents
         } else {
