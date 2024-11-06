@@ -113,7 +113,7 @@ struct MedicationMainView: View {
                 .foregroundColor(.black)
             
             Text(second)
-                .font(.regular16)
+                .font(.regular18)
                 .foregroundColor(.black)
                 .padding(.top, 7)
         }
