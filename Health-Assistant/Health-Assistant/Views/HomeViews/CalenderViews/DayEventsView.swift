@@ -10,7 +10,7 @@ import SwiftUI
 struct DayEventsView: View {
     @ObservedObject var viewModel: CalendarViewModel
     let day: Int
-    @State private var showAddEvent = false
+//    @State private var showAddEvent = false
     @State private var selectedEvent: CalendarEvent?
     
     var body: some View {
@@ -43,19 +43,19 @@ struct DayEventsView: View {
                         .foregroundColor(.green)
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showAddEvent = true
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.bold24)
-                            .foregroundColor(.green)
-                    }
-                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button(action: {
+//                        showAddEvent = true
+//                    }) {
+//                        Image(systemName: "plus.circle.fill")
+//                            .font(.bold24)
+//                            .foregroundColor(.green)
+//                    }
+//                }
             }
-            .sheet(isPresented: $showAddEvent) {
-                AddEventView(viewModel: viewModel, day: day)
-            }
+//            .sheet(isPresented: $showAddEvent) {
+//                AddEventView(viewModel: viewModel)
+//            }
         }
         .accentColor(Color("CustomGreen"))
     }

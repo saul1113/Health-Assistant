@@ -84,10 +84,17 @@ class CalendarViewModel: ObservableObject {
     }
     
     func events(for day: Int) -> [CalendarEvent] {
-        calendarEvents.filter { calendar.component(.day, from: $0.startTime) == day }
+        calendarEvents.filter { event in
+            let eventDateComponents = calendar.dateComponents([.year, .month, .day], from: event.startTime)
+            let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: currentDate)
+            
+            return eventDateComponents.year == currentDateComponents.year &&
+                   eventDateComponents.month == currentDateComponents.month &&
+                   eventDateComponents.day == day
+        }
     }
     
-    func addEvent(for day: Int, event: CalendarEvent) {
+    func addEvent(event: CalendarEvent) {
         calendarEvents.append(event)
     }
     

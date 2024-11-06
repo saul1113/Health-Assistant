@@ -10,6 +10,7 @@ import SwiftUI
 struct HealthCalendarView: View {
     @ObservedObject var viewModel = CalendarViewModel()
     @State private var showDayEvents = false
+    @State private var showAddEvent = false
     
     var body: some View {
         VStack {
@@ -38,6 +39,15 @@ struct HealthCalendarView: View {
                     Image(systemName: "chevron.right")
                         .font(.bold24)
                 }
+                
+                Button(action: {
+                    showAddEvent = true
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.bold24)
+                        .foregroundColor(.green)
+                }
+                .padding(.trailing)
             }
             .padding()
             Spacer()
@@ -97,8 +107,12 @@ struct HealthCalendarView: View {
                         .presentationDetents([.large]) // 풀스크린으로 띄움
                 }
             }
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) // 화면 전체 크기로 맞추기
+        .sheet(isPresented: $showAddEvent) {
+                    AddEventView(viewModel: viewModel)
+                }
     }
 }
 
