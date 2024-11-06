@@ -56,7 +56,6 @@
 		77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */; };
 		77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */; };
 		EB1D3F062CDBC4B900FA9732 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1D3F052CDBC4B900FA9732 /* DataManager.swift */; };
-		EB1D3F092CDBC6EB00FA9732 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */; };
 		EBE1608D2CD78B1E003E7CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */; };
 		EBE160912CD7CC23003E7CC2 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160902CD7CC23003E7CC2 /* JoinView.swift */; };
 		EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */; };
@@ -124,7 +123,6 @@
 		77C7F7CD2CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
 		77C7F7CE2CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
 		EB1D3F052CDBC4B900FA9732 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		EBE1608C2CD78B1E003E7CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EBE160902CD7CC23003E7CC2 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		EBE160942CD7CF4E003E7CC2 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
 				2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */,
 				2C77E0F52CDA8AB5005365CC /* Info.plist */,
-				EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */,
 				EB1D3F072CDBC4CB00FA9732 /* Managers */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
@@ -483,7 +480,6 @@
 				2C77E0F22CDA857E005365CC /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
-				EB1D3F092CDBC6EB00FA9732 /* Config.xcconfig in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
 				2C77E0F42CDA8626005365CC /* Assets.xcassets in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
@@ -562,7 +558,6 @@
 /* Begin XCBuildConfiguration section */
 		2C7F61432CD491500070998C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -626,7 +621,6 @@
 		};
 		2C7F61442CD491500070998C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB1D3F082CDBC6EB00FA9732 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
