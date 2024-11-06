@@ -58,6 +58,12 @@ struct MedicationAddView: View {
                         TextField("약 이름", text: $medicationName)
                             .background(Color.clear)
                             .font(.semibold30)
+                            .frame(height: 60)
+                            .padding(.leading, 10)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.black, lineWidth: 0.3)
+                            }
                             .padding(.bottom, 40)
                         
                         HStack {
@@ -134,7 +140,7 @@ struct MedicationAddView: View {
                                     selectedTimes.append(time)
                                     timePicker = false
                                 }) {
-                                    Text("완료")
+                                    Text("선택")
                                         .foregroundColor(.CustomGreen)
                                         .font(.semibold16)
                                 }
@@ -164,7 +170,7 @@ struct MedicationAddView: View {
                         
                     }
                 }
-                .padding(30)
+                .padding(50)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -179,7 +185,7 @@ struct MedicationAddView: View {
                     Button(action: {
                         let formattedTimes = selectedTimes.map { formatTimeToString($0) }
                         viewModel.addMedication(name: medicationName, company: "", days: selectedDays, times: formattedTimes, note: medicationNote)
-
+                        
                         dismiss()
                     }) {
                         Text("저장")
@@ -204,13 +210,25 @@ struct MedicationAddView: View {
         
         return HStack(spacing: 10) {
             Text(formatFirst)
-                .font(.medium24)
+                .font(.medium28)
                 .foregroundColor(.black)
             
             Text(second)
-                .font(.regular14)
+                .font(.regular16)
                 .foregroundColor(.black)
                 .padding(.top, 7)
+            
+            
+            
+            Button(action: {
+                if let index = selectedTimes.firstIndex(where: { formatTimeToString($0) == time }) {
+                    selectedTimes.remove(at: index)
+                }
+            }) {
+                Image(systemName: "minus.circle.fill")
+                    .foregroundColor(.red.opacity(0.8))
+                    .font(.system(size: 24))
+            }
         }
     }
 }

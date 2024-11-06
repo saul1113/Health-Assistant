@@ -15,7 +15,7 @@ struct MedicationMainView: View {
         NavigationStack {
             ScrollView {
                 VStack (alignment: .leading) {
-                    Text("알약 아이콘을 눌러 복용 상태를 체크하세요")
+                    Text("아이콘을 눌러 복용 상태를 체크하세요")
                         .padding(.leading, 15)
                         .padding(.bottom, -5)
                         .font(.medium16)
@@ -36,11 +36,11 @@ struct MedicationMainView: View {
                                     Image(systemName: "chevron.right")
                                         .foregroundColor(.black)
                                         .font(.system(size: 25))
-                                        .padding(.trailing, 10)
+                                        .padding(.trailing, 15)
                                 }
                             }
                             .padding()
-                            .padding(.bottom, -10)
+                            .padding(.bottom, -5)
                             
                             ForEach(medication.times.indices, id: \.self) { index in
                                 HStack {

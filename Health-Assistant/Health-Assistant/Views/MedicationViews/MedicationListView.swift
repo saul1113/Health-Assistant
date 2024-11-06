@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MedicationListView: View {
     
-//    @ObservedObject var viewModel = MedicationViewModel()
     @EnvironmentObject var viewModel: MedicationViewModel
     
     @State private var addViewSheet = false
