@@ -14,7 +14,13 @@ struct MedicationMainView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack {
+                VStack (alignment: .leading) {
+                    Text("알약 아이콘을 눌러 복용 상태를 체크하세요")
+                        .padding(.leading, 15)
+                        .padding(.bottom, -5)
+                        .font(.medium16)
+                        .foregroundStyle(.gray)
+                    
                     ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
                             HStack {
@@ -29,9 +35,12 @@ struct MedicationMainView: View {
                                 NavigationLink(destination: MedicationDetailView(medication: medication)) {
                                     Image(systemName: "chevron.right")
                                         .foregroundColor(.black)
+                                        .font(.system(size: 25))
+                                        .padding(.trailing, 10)
                                 }
                             }
                             .padding()
+                            .padding(.bottom, -10)
                             
                             ForEach(medication.times.indices, id: \.self) { index in
                                 HStack {
@@ -40,15 +49,22 @@ struct MedicationMainView: View {
                                     Button(action: {
                                         viewModel.toggleTakeMedication(for: medication, at: index)
                                     }) {
-                                        
-                                        Image(systemName: medication.isTaken[index] ? "pill.fill" : "pill")
-                                            .foregroundColor(medication.isTaken[index] ? .CustomGreen : .gray)
-                                            .font(.system(size: 30))
+                                        VStack(spacing: 5){
+                                            Image(systemName: medication.isTaken[index] ? "pill.fill" : "pill")
+                                                .foregroundColor(medication.isTaken[index] ? .CustomGreen : .gray)
+                                                .font(.system(size: 30))
+                                            
+                                            Text(medication.isTaken[index] ? "복용 완료 !" : "복용 전")
+                                                .frame(width: 70)
+                                                .multilineTextAlignment(.center)
+                                                .fixedSize()
+                                                .font(.medium14)
+                                                .foregroundColor(medication.isTaken[index] ? .CustomGreen : .black)
+                                        }
                                     }
                                 }
                                 .padding(.horizontal)
                             }
-                            .padding(.vertical)
                         }
                         .padding(.vertical)
                         
@@ -93,11 +109,11 @@ struct MedicationMainView: View {
         
         return HStack(spacing: 10) {
             Text(formatFirst)
-                .font(.medium24)
+                .font(.medium28)
                 .foregroundColor(.black)
             
             Text(second)
-                .font(.regular14)
+                .font(.regular16)
                 .foregroundColor(.black)
                 .padding(.top, 7)
         }
