@@ -40,51 +40,63 @@ struct NewReportView: View {
             }
         }
     }
-    //이거 옛날 방식인거 같은데 시간남으면 async로 바꿀게요
+    
     private func fetchHealthData() {
-         let calendar = Calendar.current
-         var currentDate = startDate
-         let group = DispatchGroup()
-         var reports: [HealthReport] = []
-
-         while currentDate <= endDate {
-             let date = currentDate
-             
-             group.enter()
-             reportHealthManager.fetchAverageHeartRate(for: date) { heartRate in
-                 group.enter()
-                 reportHealthManager.fetchBodyTemperature(for: date) { temperature in
-                     group.enter()
-                     reportHealthManager.fetchOxygenSaturation(for: date) { oxygenSaturation in
-                         group.enter()
-                         reportHealthManager.fetchBreathRate(for: date) { breath in
-                             let report = HealthReport(
-                                 id: UUID(),
-                                 title: title, // 리포트의 타이틀 추가
-                                 date: date,
-                                 heartRate: Double(heartRate),
-                                 temperature: temperature,
-                                 breath: Int(breath),
-                                 oxygenSaturation: oxygenSaturation
-                             )
-                             
-                             reports.append(report)
-                             group.leave()
-                         }
-                         group.leave()
-                     }
-                     group.leave()
-                 }
-                 group.leave()
-             }
-             
-             currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate)!
-         }
-         
-         // 모든 디스패치 그룹의 작업이 끝나면 실행
-         group.notify(queue: .main) {
-             let newSummary = HealthReportSummary(id: UUID(), title: title, startDate: startDate, endDate: endDate, healthReports: reports)
-             onSave(newSummary)
-         }
-     }
- }
+        let calendar = Calendar.current
+        var currentDate = startDate
+        let group = DispatchGroup()
+        var reports: [HealthReport] = []
+        
+        while currentDate <= endDate {
+            let date = currentDate
+            
+            group.enter()
+            reportHealthManager.fetchAverageHeartRate(for: date) { heartRate in
+                group.enter()
+                reportHealthManager.fetchBodyTemperature(for: date) { temperature in
+                    group.enter()
+                    reportHealthManager.fetchOxygenSaturation(for: date) { oxygenSaturation in
+                        group.enter()
+                        reportHealthManager.fetchBreathRate(for: date) { breath in
+                            group.enter()
+                            reportHealthManager.fetchSleepData(for: date) { inBedMinute, asleepUnspecifiedMinute, awakeMinute, asleepCoreMinute, asleepDeepMinute, asleepREMMinute in
+                                
+                                
+                                let report = HealthReport(
+                                    id: UUID(),
+                                    title: title, // 리포트의 타이틀 추가
+                                    date: date,
+                                    heartRate: Double(heartRate),
+                                    temperature: temperature,
+                                    breath: Int(breath),
+                                    oxygenSaturation: oxygenSaturation,
+                                    inBedMinute: inBedMinute,
+                                    asleepUnspecifiedMinute: asleepUnspecifiedMinute,
+                                    awakeMinute: awakeMinute,
+                                    asleepCoreMinute: asleepCoreMinute,
+                                    asleepDeepMinute: asleepDeepMinute,
+                                    asleepREMMinute: asleepREMMinute
+                                )
+                                print(report)
+                                reports.append(report)
+                                group.leave()
+                            }
+                            group.leave()
+                        }
+                        group.leave()
+                    }
+                    group.leave()
+                }
+                group.leave()
+            }
+            currentDate = calendar.date(byAdding: .day, value: 1, to: currentDate)!
+        }
+        
+        // 모든 디스패치 그룹의 작업이 끝나면 실행
+        group.notify(queue: .main) {
+            let newSummary = HealthReportSummary(id: UUID(), title: title, startDate: startDate, endDate: endDate, healthReports: reports)
+            
+            onSave(newSummary)
+        }
+    }
+}
