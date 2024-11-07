@@ -26,7 +26,6 @@ struct AddEventView: View {
     init(viewModel: CalenderViewModel) {
         self.viewModel = viewModel
         
-        // 선택한 날짜로 시작 시간을 설정하고, 선택된 날짜가 없으면 오늘 날짜로 설정
         if let selectedDay = viewModel.selectedDay,
            let selectedDate = viewModel.startOfDay(for: selectedDay) {
             _startTime = State(initialValue: selectedDate)
@@ -42,12 +41,8 @@ struct AddEventView: View {
             ZStack {
                 ScrollView {
                     VStack(spacing: 20) {
-                        SectionView(header: "제목") {
+                        SectionView(header: "") {
                             ZStack {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.customGreen.opacity(0.5), lineWidth: 3)
-                                    .background(Color.white.cornerRadius(8))
-                                
                                 TextField("제목을 입력해주세요", text: $title)
                                     .font(.bold20)
                                     .padding(8)
@@ -57,7 +52,7 @@ struct AddEventView: View {
                                     }
                                     .toolbar {
                                         ToolbarItemGroup(placement: .keyboard) {
-                                            Spacer() 
+                                            Spacer()
                                             Button("완료") {
                                                 hideKeyboard()
                                             }
@@ -66,7 +61,7 @@ struct AddEventView: View {
                             }
                         }
                         
-                        SectionView(header: "시간 설정") {
+                        SectionView(header: "") {
                             HStack {
                                 Image(systemName: "hourglass")
                                     .foregroundColor(.customGreen)
@@ -74,33 +69,61 @@ struct AddEventView: View {
                                     .onChange(of: isAllDay) {
                                         isEdited = true
                                     }
+                                    .font(.medium18)
                             }
-                            VStack {
-                                DatePicker("시작 시간", selection: $startTime, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
-                                    .padding()
-                                    .background(Color.customGreen.opacity(0.2))
-                                    .cornerRadius(8)
-                                    .font(.regular18)
-                                    .onChange(of: startTime) {
-                                        isEdited = true
+                            VStack(spacing: 20) {
+                                HStack {
+                                    Text("시작")
+                                        .font(.medium18)
+                                    
+                                    Spacer()
+                                    
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color.customGreen.opacity(0.2))
+                                            .frame(width: 230, height: 50)
+                                        
+                                        DatePicker("시작 시간", selection: $startTime, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
+                                            .labelsHidden() // 라벨 숨기기
+                                            .padding(.horizontal, 8) // DatePicker에 가로 패딩 추가
+                                            .font(.regular18)
+                                            .onChange(of: startTime) {
+                                                isEdited = true
+                                            }
+                                        
                                     }
+                                }
                                 
-                                DatePicker("종료 시간", selection: $endTime,displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
-                                    .padding()
-                                    .background(Color.customGreen.opacity(0.2))
-                                    .cornerRadius(8)
-                                    .font(.regular18)
-                                    .onChange(of: endTime) {
-                                        isEdited = true
+                                HStack {
+                                    Text("종료")
+                                        .font(.medium18)
+                                    
+                                    Spacer()
+                                    
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color.customGreen.opacity(0.2))
+                                            .frame(width: 230, height: 40)
+                                        
+                                        DatePicker("종료 시간", selection: $endTime, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
+                                            .labelsHidden()
+                                            .padding(.horizontal, 8)
+                                            .font(.regular18)
+                                            .onChange(of: endTime) {
+                                                isEdited = true
+                                            }
                                     }
+                                }
                             }
                         }
                         
-                        SectionView(header: "알림") {
+                        SectionView(header: "") {
                             HStack {
                                 Image(systemName: "deskclock.fill")
                                     .foregroundColor(.customGreen)
-                                Text("미리알림")
+                                
+                                Text("알림")
+                                    .font(.medium18)
                                 
                                 Spacer()
                                 
@@ -110,16 +133,28 @@ struct AddEventView: View {
                                     }
                                 }
                                 .pickerStyle(MenuPickerStyle())
-                                .font(.bold24)
+                                .font(.medium20)
                                 .onChange(of: alert) {
                                     isEdited = true
                                 }
                             }
-                            .font(.regular18)
                         }
                         
                         ZStack {
-                            SectionView(header: "메모") {
+                            SectionView(header: "") {
+                                HStack {
+                                    Image(systemName: "pencil")
+                                        .foregroundColor(.customGreen)
+                                    
+                                    Text("메모")
+                                        .font(.medium20)
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(notes.count)/\(notesCharacterLimit) 글자")
+                                        .font(.caption)
+                                        .foregroundColor(notes.count > notesCharacterLimit ? .red : .gray)
+                                }
                                 ZStack {
                                     Color.customGreen.opacity(0.2)
                                         .cornerRadius(8)
@@ -136,24 +171,12 @@ struct AddEventView: View {
                                             }
                                         }
                                 }
-                                
-                            }
-                            VStack {
-                                HStack {
-                                    Spacer()
-                                    Text("\(notes.count)/\(notesCharacterLimit) 글자")
-                                        .font(.caption)
-                                        .foregroundColor(notes.count > notesCharacterLimit ? .red : .gray)
-                                }
-                                .padding(.trailing, 8)
-                                Spacer()
                             }
                         }
                     }
                     .padding()
                 }
                 .scrollDismissesKeyboard(.immediately)
-
             }
             .navigationTitle("새 일정 추가")
             .toolbar {
@@ -161,6 +184,7 @@ struct AddEventView: View {
                     Button("취소") {
                         checkIfEditedBeforeDismissing()
                     }
+                    .font(.regular18)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("저장") {
@@ -175,6 +199,7 @@ struct AddEventView: View {
                         viewModel.addEvent(event: newEvent, context: modelContext)
                         dismiss()
                     }
+                    .font(.regular18)
                 }
             }
             .onDisappear {
@@ -182,12 +207,14 @@ struct AddEventView: View {
             }
             .alert(isPresented: $showDiscardAlert) {
                 Alert(
-                    title: Text("이 새로운 일정을 폐기하시겠습니까?"),
-                    message: Text("저장하지 않은 변경사항이 사라집니다."),
-                    primaryButton: .destructive(Text("변경사항 폐기")) {
+                    title: Text("이 새로운 일정을 폐기하시겠습니까?")
+                        .font(.bold20),
+                    message: Text("저장하지 않은 변경사항이 사라집니다.")
+                        .font(.regular16),
+                    primaryButton: .destructive(Text("변경사항 폐기").font(.regular18)) {
                         dismiss()
                     },
-                    secondaryButton: .cancel(Text("계속 편집하기"))
+                    secondaryButton: .cancel(Text("계속 편집하기").font(.regular18))
                 )
             }
         }

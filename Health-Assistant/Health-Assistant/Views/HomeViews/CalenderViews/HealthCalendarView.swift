@@ -149,10 +149,14 @@ struct DayCellView: View {
     }
     
     private func dayBackgroundColor() -> Color {
+        let hasEvents = !viewModel.events(for: day, context: modelContext).isEmpty
+        
         if day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() {
-            return Color.blue.opacity(0.3)
+            return Color.blue.opacity(0.3) // Highlight for today's date
         } else if day == viewModel.selectedDay {
-            return Color.customGreen.opacity(0.3)
+            return Color.customGreen.opacity(0.5) // Highlight for selected date
+        } else if hasEvents {
+            return Color.customGreen.opacity(0.2) // Custom color for dates with events
         } else {
             return Color.clear
         }
