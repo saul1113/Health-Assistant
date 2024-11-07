@@ -13,6 +13,7 @@ struct TextFieldView: View {
     var isSecure: Bool = false
     var showError: Bool = false
     var errorColor: Color = .red
+    var errorMessage: String? = nil
     var onTextChange: ((String) -> Void)?
     
     var body: some View {
@@ -40,6 +41,14 @@ struct TextFieldView: View {
                     .onChange(of: text, perform: { newValue in
                         onTextChange?(newValue) // 텍스트 변경 시 검증 클로저 호출
                     })
+            }
+            // 에러 메시지 표시 - 텍스트필드 아이디 비번 닉네임 등 중복 혹은 오류 떴을 때 에러메세지 재사용
+            if showError, let errorMessage = errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(errorColor)
+                    .font(.caption)
+                    .padding(.top, 4)
+                    .padding(.leading, 10)
             }
         }
     }
