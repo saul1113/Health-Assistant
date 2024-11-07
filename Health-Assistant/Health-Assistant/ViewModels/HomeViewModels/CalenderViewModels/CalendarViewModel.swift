@@ -32,6 +32,7 @@ class CalendarViewModel: ObservableObject {
         calendar.component(.day, from: today)
     }
     
+    // 현재 월과 연도 확인
     func isCurrentMonthAndYear() -> Bool {
         let currentMonth = calendar.component(.month, from: currentDate)
         let currentYear = calendar.component(.year, from: currentDate)
@@ -41,24 +42,28 @@ class CalendarViewModel: ObservableObject {
         return currentMonth == todayMonth && currentYear == todayYear
     }
     
+    // "yyyy년 M월" 형식으로 월 표시 업데이트
     func updateMonthYearDisplay() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 M월"
         displayedMonthYear = dateFormatter.string(from: currentDate)
     }
     
+    // 다음 달로 이동
     func moveToNextMonth() {
         if let nextMonth = calendar.date(byAdding: .month, value: 1, to: currentDate) {
             currentDate = nextMonth
         }
     }
     
+    // 이전 달로 이동
     func moveToPreviousMonth() {
         if let previousMonth = calendar.date(byAdding: .month, value: -1, to: currentDate) {
             currentDate = previousMonth
         }
     }
     
+    // 연도를 업데이트
     func updateYear(_ year: Int) {
         var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
         components.year = year
@@ -67,6 +72,7 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
+    // 현재 월의 일 수 계산
     func daysInCurrentMonth() -> Int {
         guard let range = calendar.range(of: .day, in: .month, for: currentDate) else {
             return 31
@@ -74,15 +80,17 @@ class CalendarViewModel: ObservableObject {
         return range.count
     }
     
+    // 현재 월의 시작 요일을 계산
     func startDayOffset() -> Int {
         let components = calendar.dateComponents([.year, .month], from: currentDate)
         guard let firstDayOfMonth = calendar.date(from: components),
               let weekday = calendar.dateComponents([.weekday], from: firstDayOfMonth).weekday else {
             return 0
         }
-        return (weekday - 1) % 7 // 요일을 일요일 시작에 맞춤 (일요일이 0)
+        return (weekday - 1) % 7 // 일요일을 기준으로 시작
     }
     
+    // 특정 일의 이벤트 목록 반환
     func events(for day: Int, context: ModelContext) -> [CalendarEvent] {
         let descriptor = FetchDescriptor<CalendarEvent>()
         let allEvents = (try? context.fetch(descriptor)) ?? []
@@ -98,10 +106,12 @@ class CalendarViewModel: ObservableObject {
         return filteredEvents.sorted { $0.startTime < $1.startTime }
     }
     
+    // 새 이벤트 추가
     func addEvent(event: CalendarEvent, context: ModelContext) {
         context.insert(event)
     }
     
+    // 이벤트 삭제
     func removeEvent(eventID: UUID, context: ModelContext) {
         let descriptor = FetchDescriptor<CalendarEvent>(
             predicate: #Predicate { $0.id == eventID }
@@ -112,27 +122,28 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    // 선택한 날짜를 기준으로 그 날의 시작 시간 생성
+    // 특정 날짜의 시작 시간 생성
     func startOfDay(for day: Int) -> Date? {
         var components = calendar.dateComponents([.year, .month], from: currentDate)
         components.day = day
         return calendar.date(from: components)
     }
     
-    // 특정 시간 수를 더한 날짜 생성
+    // 날짜에 특정 시간 추가
     func dateByAddingHours(_ hours: Int, to date: Date) -> Date? {
         return calendar.date(byAdding: .hour, value: hours, to: date)
     }
     
+    // 이벤트 시간 형식 지정 (오전/오후 h:mm)
     func formattedTime(for event: CalendarEvent) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "a h:mm" // "오전/오후 h:mm" 형식
+        formatter.dateFormat = "a h:mm"
         
         return "\(formatter.string(from: event.startTime)) - \(formatter.string(from: event.endTime))"
     }
     
-    // 특정 날짜에 현재 시간을 적용한 시작 및 종료 시간 반환
+    // 특정 일의 시작 및 종료 시간 반환
     func getStartAndEndTime(for day: Int) -> (startTime: Date, endTime: Date) {
         let now = Date()
         if let selectedDayStart = startOfDay(for: day) {
@@ -153,21 +164,13 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    // 현재 주의 날짜들을 가져오는 메서드
+    // 현재 주의 날짜 목록 반환
     func currentWeekDates() -> [Date] {
-        let calendar = Calendar.current
-        let today = Date()
         let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)) ?? today
-        var dates = [Date]()
-        for i in 0..<7 {
-            if let date = calendar.date(byAdding: .day, value: i, to: startOfWeek) {
-                dates.append(date)
-            }
-        }
-        return dates
+        return (0..<7).compactMap { calendar.date(byAdding: .day, value: $0, to: startOfWeek) }
     }
     
-    // 요일과 날짜 포맷 (예: "월 5")
+    // 요일 및 날짜 형식 지정 (예: "월 5")
     func formattedDateForWeekView(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "E d"
@@ -177,25 +180,21 @@ class CalendarViewModel: ObservableObject {
     
     // 특정 날짜의 이벤트 필터링
     func events(for date: Date, context: ModelContext) -> [CalendarEvent] {
-        let calendar = Calendar.current
         return calendarEvents.filter { event in
             calendar.isDate(event.startTime, inSameDayAs: date)
         }
     }
     
-    // 오늘 날짜인지 확인하는 메서드
+    // 오늘 날짜인지 확인
     func isToday(_ date: Date) -> Bool {
-        Calendar.current.isDateInToday(date)
+        calendar.isDateInToday(date)
     }
     
+    // 이벤트 로드 및 오름차순 정렬
     func loadEvents(context: ModelContext) {
         let descriptor = FetchDescriptor<CalendarEvent>(
-            sortBy: [SortDescriptor(\.startTime, order: .forward)] // 오름차순 정렬
+            sortBy: [SortDescriptor(\.startTime, order: .forward)]
         )
-        if let allEvents = try? context.fetch(descriptor) {
-            calendarEvents = allEvents
-        } else {
-            calendarEvents = []
-        }
+        calendarEvents = (try? context.fetch(descriptor)) ?? []
     }
 }
