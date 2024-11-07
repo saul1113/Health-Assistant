@@ -35,7 +35,7 @@ struct MedicationMainView: View {
                             
                             ForEach(medication.times.indices, id: \.self) { index in
                                 HStack {
-                                    displayTime(medication.times[index])
+                                    TimeView(time: medication.times[index])
                                     Spacer()
                                     Button(action: {
                                         viewModel.toggleTakeMedication(for: medication, at: index)
@@ -86,25 +86,6 @@ struct MedicationMainView: View {
                     }
                 }
             }
-        }
-    }
-    
-    private func displayTime(_ time: String) -> some View {
-        let components = time.split(separator: " ")
-        let first = components[0]
-        let second = components[1]
-        
-        let formatFirst = first.replacingOccurrences(of: ":", with: " : ")
-        
-        return HStack(spacing: 10) {
-            Text(formatFirst)
-                .font(.medium28)
-                .foregroundColor(.black)
-            
-            Text(second)
-                .font(.regular18)
-                .foregroundColor(.black)
-                .padding(.top, 7)
         }
     }
 }

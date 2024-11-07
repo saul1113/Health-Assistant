@@ -56,7 +56,7 @@ struct MedicationDetailView: View {
                         .padding(.bottom, -20)
                     VStack {
                         ForEach(medication.times.indices, id: \.self) { index in
-                            displayTime(medication.times[index])
+                            TimeView(time: medication.times[index])
                         }
                         .padding(.trailing, 10)
                     }
@@ -102,24 +102,6 @@ struct MedicationDetailView: View {
             }
         }
     }
-    private func displayTime(_ time: String) -> some View {
-        let components = time.split(separator: " ")
-        let first = components[0]
-        let second = components[1]
-        
-        let formatFirst = first.replacingOccurrences(of: ":", with: " : ")
-        
-        return HStack(spacing: 10) {
-            Text(formatFirst)
-                .font(.medium28)
-                .foregroundColor(.black)
-            
-            Text(second)
-                .font(.regular16)
-                .foregroundColor(.black)
-                .padding(.top, 7)
-        }
-    }
 }
 
 struct DetailSheetView: View {
@@ -133,10 +115,8 @@ struct DetailSheetView: View {
             ScrollView {
                 VStack (alignment: .leading, spacing: 40) {
                     Text(medication.name)
-                        .font(.semibold26)
-                        .padding(.horizontal, 5)
-                        .background(Color.CustomGreen.opacity(0.3))
-                        .cornerRadius(3)
+                        .font(.semibold20)
+                        .foregroundStyle(Color(.customGreen))
                     
                     Text("효능")
                         .font(.semibold24)
