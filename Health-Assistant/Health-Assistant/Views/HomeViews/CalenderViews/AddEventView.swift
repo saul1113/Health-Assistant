@@ -18,7 +18,7 @@ struct AddEventView: View {
     @State private var endTime: Date
     @State private var alert: EventAlert = .none
     @State private var notes: String = ""
-    private let notesCharacterLimit = 50
+    private let notesCharacterLimit = 200
     
     @State private var showDiscardAlert = false
     @State private var isEdited = false
@@ -102,31 +102,36 @@ struct AddEventView: View {
                             .font(.regular18)
                         }
                         
-                        SectionView(header: "메모") {
-                            ZStack {
-                                Color.green.opacity(0.2)
-                                    .cornerRadius(8)
-                                TextEditor(text: $notes)
-                                    .frame(height: 100)
-                                    .padding(8)
-                                    .font(.regular18)
-                                    .background(Color.clear)
-                                    .cornerRadius(8)
-                                    .onChange(of: notes) {
-                                        isEdited = true
-                                        if notes.count > notesCharacterLimit {
-                                            notes = String(notes.prefix(notesCharacterLimit))
+                        ZStack {
+                            SectionView(header: "메모") {
+                                ZStack {
+                                    Color.green.opacity(0.2)
+                                        .cornerRadius(8)
+                                    TextEditor(text: $notes)
+                                        .frame(height: 140)
+                                        .padding(8)
+                                        .font(.regular18)
+                                        .background(Color.clear)
+                                        .cornerRadius(8)
+                                        .onChange(of: notes) {
+                                            isEdited = true
+                                            if notes.count > notesCharacterLimit {
+                                                notes = String(notes.prefix(notesCharacterLimit))
+                                            }
                                         }
-                                    }
+                                }
+                                
                             }
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.5))
-                            )
-                            
-                            Text("\(notes.count)/\(notesCharacterLimit) 글자")
-                                .font(.caption)
-                                .foregroundColor(notes.count > notesCharacterLimit ? .red : .gray)
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    Text("\(notes.count)/\(notesCharacterLimit) 글자")
+                                        .font(.caption)
+                                        .foregroundColor(notes.count > notesCharacterLimit ? .red : .gray)
+                                }
+                                .padding(.trailing, 8)
+                                Spacer()
+                            }
                         }
                     }
                     .padding()
