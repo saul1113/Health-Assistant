@@ -128,7 +128,7 @@ struct DayCellView: View {
                 Spacer()
             }
             
-            VStack(spacing: geometry.size.height * 0.005) {
+            VStack(alignment: .leading, spacing: geometry.size.height * 0.005) {
                 Spacer()
                 
                 let events = viewModel.events(for: day, context: modelContext)
@@ -161,20 +161,21 @@ struct DayCellView: View {
     private func emptyEventPlaceholders() -> some View {
         VStack {
             Text(" ")
-                .font(.regular16)
-                .padding(geometry.size.width * 0.005)
+                .font(.regular10)
+                .padding(geometry.size.width * 0.002)
                 .opacity(0)
         }
     }
     
     private func eventTexts() -> some View {
-        VStack(spacing: geometry.size.height * 0.002) {
+        VStack(alignment: .leading, spacing: geometry.size.height * 0.0042) {
             ForEach(viewModel.events(for: day, context: modelContext).prefix(2), id: \.id) { event in
                 Text(event.title)
-                    .font(.regular16)
+                    .font(.regular10)
                     .lineLimit(1)
                     .truncationMode(.tail)
-                    .padding(geometry.size.width * 0.005)
+                    .padding(geometry.size.width * 0.002)
+                    .frame(maxWidth: geometry.size.width * 0.3)
                     .background(Color.customGreen.opacity(0.8))
                     .foregroundColor(.white)
                     .cornerRadius(geometry.size.width * 0.01)
