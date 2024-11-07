@@ -42,7 +42,7 @@ struct MiniWeekView: View {
                                 .font(.caption)
                                 .lineLimit(1)
                                 .padding(4)
-                                .background(Color.green.opacity(0.8))
+                                .background(Color.customGreen.opacity(0.8))
                                 .cornerRadius(4)
                                 .foregroundColor(.white)
                         }

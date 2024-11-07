@@ -26,7 +26,7 @@ struct EditEventView: View {
                         SectionView(header: "제목") {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.green.opacity(0.5), lineWidth: 3)
+                                    .stroke(Color.customGreen.opacity(0.5), lineWidth: 3)
                                     .background(Color.white.cornerRadius(8))
                                 
                                 TextField("제목을 입력해주세요", text: $event.title)
@@ -42,7 +42,7 @@ struct EditEventView: View {
                         SectionView(header: "시간 설정") {
                             HStack {
                                 Image(systemName: "hourglass")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.customGreen)
                                 Toggle("종일", isOn: $event.isAllDay)
                                     .onChange(of: event.isAllDay) {
                                         isEdited = true
@@ -51,7 +51,7 @@ struct EditEventView: View {
                             VStack {
                                 DatePicker("시작 시간", selection: $event.startTime, displayedComponents: event.isAllDay ? .date : [.date, .hourAndMinute])
                                     .padding()
-                                    .background(Color.green.opacity(0.2))
+                                    .background(Color.customGreen.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
                                     .onChange(of: event.startTime) {
@@ -60,7 +60,7 @@ struct EditEventView: View {
                                 
                                 DatePicker("종료 시간", selection: $event.endTime, displayedComponents: event.isAllDay ? .date : [.date, .hourAndMinute])
                                     .padding()
-                                    .background(Color.green.opacity(0.2))
+                                    .background(Color.customGreen.opacity(0.2))
                                     .cornerRadius(8)
                                     .font(.regular18)
                                     .onChange(of: event.endTime) {
@@ -72,7 +72,7 @@ struct EditEventView: View {
                         SectionView(header: "알림") {
                             HStack {
                                 Image(systemName: "deskclock.fill")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.customGreen)
                                 Text("미리알림")
                                 
                                 Spacer()
@@ -94,7 +94,7 @@ struct EditEventView: View {
                         ZStack {
                             SectionView(header: "메모") {
                                 ZStack {
-                                    Color.green.opacity(0.2)
+                                    Color.customGreen.opacity(0.2)
                                         .cornerRadius(8)
                                     
                                     TextEditor(text: $event.notes)

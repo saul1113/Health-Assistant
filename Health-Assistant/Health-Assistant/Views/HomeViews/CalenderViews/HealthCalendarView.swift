@@ -69,7 +69,7 @@ struct HealthCalendarView: View {
             }) {
                 Image(systemName: "plus.circle.fill")
                     .font(.bold24)
-                    .foregroundColor(.green)
+                    .foregroundColor(.customGreen)
             }
             .padding(.leading)
         }
@@ -152,7 +152,7 @@ struct DayCellView: View {
         if day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() {
             return Color.blue.opacity(0.3)
         } else if day == viewModel.selectedDay {
-            return Color.green.opacity(0.3)
+            return Color.customGreen.opacity(0.3)
         } else {
             return Color.clear
         }

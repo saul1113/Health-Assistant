@@ -23,7 +23,7 @@ struct EventDetailView: View {
                     Text(event.title)
                         .font(.bold30)
                         .padding()
-                        .foregroundStyle(.green)
+                        .foregroundStyle(.customGreen)
                         .cornerRadius(8)
                 }
                 .padding(.vertical)
@@ -31,7 +31,7 @@ struct EventDetailView: View {
                 
                     HStack {
                         Image(systemName: "clock.fill")
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.customGreen)
 
                         Text("시간")
                         
@@ -50,7 +50,7 @@ struct EventDetailView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Image(systemName: "deskclock.fill")
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.customGreen)
                         Text("알림")
                         
                         Spacer()
@@ -68,7 +68,7 @@ struct EventDetailView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Image(systemName: "pencil")
-                            .foregroundStyle(.green)
+                            .foregroundStyle(.customGreen)
                         Text("메모")
                     }
                     .font(.regular18)
@@ -76,7 +76,7 @@ struct EventDetailView: View {
                     Text(event.notes)
                         .font(.regular20)
                         .padding()
-                        .background(Color.green.opacity(0.2))
+                        .background(Color.customGreen.opacity(0.2))
                         .cornerRadius(8)
                 }
                 Spacer()
