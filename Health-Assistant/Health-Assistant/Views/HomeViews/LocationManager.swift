@@ -13,6 +13,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
     @Published private(set) var location: CLLocation?
     @Published private(set) var authorizationStatus: CLAuthorizationStatus?
+    @Published private(set) var hospitalLocation: CLLocationCoordinate2D?
     @Published private(set) var currentAddress: String?
     
     override init() {
@@ -31,6 +32,19 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first
+    }
+    @MainActor
+    func fetchAddressFromLocation(hospitalAddress: String) async {
+        do {
+            let hospitalAddress = try await geocoder.geocodeAddressString(hospitalAddress)
+            if let address = hospitalAddress.first?.location {
+                self.hospitalLocation = address.coordinate
+                print(hospitalLocation?.latitude)
+                print(hospitalLocation!.longitude)
+            }
+        } catch {
+            
+        }
     }
     func fetchAddress( currentLocationString: @escaping (String) -> ()) {
         guard let coordinate = location?.coordinate else {

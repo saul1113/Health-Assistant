@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct HospitalMapView: View {
+    @StateObject private var locationManager = LocationManager()
     let hospitals: [Item]
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach(hospitals, id: \.dutyName) { hospital in
-                        hospitalView(hospital: hospital)
+                        if let hospitalName = hospital.dutyName, let hospitalAddress = hospital.dutyAddr {
+                            NavigationLink {
+                                MapView(locationName: hospitalName, location: hospitalAddress)
+                            }label: {
+                                hospitalView(hospitalName: hospitalName, hospitalAddress: hospitalAddress)
+                            }
+                        }
                     }
                 }
             }
@@ -23,11 +29,11 @@ struct HospitalMapView: View {
             .navigationTitle("가까운 병원 및 응급실 정보")
         }
     }
-    func hospitalView(hospital: Item)-> some View {
+    func hospitalView(hospitalName: String, hospitalAddress: String)-> some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text(hospital.dutyName ?? "조회 실패")
+            Text(hospitalName)
                 .font(.bold18)
-            Text(hospital.dutyAddr ?? "조회 실패")
+            Text(hospitalAddress)
                 .font(.medium16)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -39,6 +45,7 @@ struct HospitalMapView: View {
         )
     }
 }
+
 
 #Preview {
     HospitalMapView(hospitals: [])
