@@ -234,6 +234,7 @@
 		500EB88D2CD855E500CCD409 /* HomeViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2C41A0CA2CD9B763006815BC /* UserViewModel.swift */,
 				500EB88E2CD855EB00CCD409 /* CalenderViewModels */,
 			);
 			path = HomeViewModels;
@@ -281,6 +282,7 @@
 		507906212CD4A87700AFE182 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */,
 				500EB8892CD8558600CCD409 /* HomeModels */,
 				50FC2E572CDA04F8000C1EB8 /* ProfileModels */,
 				EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */,
@@ -294,12 +296,8 @@
 			children = (
 				500EB8882CD854CD00CCD409 /* CalenderViews */,
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
-				2C41A0D32CDA054A006815BC /* HospitalMapView.swift */,
 				2C75269D2CDCAA6E00E10C1B /* MapView.swift */,
-				2C41A0CA2CD9B763006815BC /* UserViewModel.swift */,
-				2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */,
-				2C41A0CC2CD9B837006815BC /* LocationManager.swift */,
-				2C8E15F42CD89D6E005C9801 /* HealthManager.swift */,
+				2C41A0D32CDA054A006815BC /* HospitalMapView.swift */,
 			);
 			path = HomeViews;
 			sourceTree = "<group>";
@@ -368,9 +366,11 @@
 		5079064E2CD4AED200AFE182 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2C41A0CC2CD9B837006815BC /* LocationManager.swift */,
 				500EB88D2CD855E500CCD409 /* HomeViewModels */,
 				50FC2E532CDA0469000C1EB8 /* ProfileViewModels */,
 				773997222CD8573D008DE12E /* MedicationViewModel.swift */,
+				2C8E15F42CD89D6E005C9801 /* HealthManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
