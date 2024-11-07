@@ -15,11 +15,6 @@ struct MedicationMainView: View {
         NavigationStack {
             ScrollView {
                 VStack (alignment: .leading) {
-                    Text("아이콘을 눌러 복용 상태를 체크하세요")
-                        .padding(.leading, 15)
-                        .padding(.bottom, -10)
-                        .font(.medium14)
-                        .foregroundStyle(.gray)
                     
                     ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
@@ -71,7 +66,6 @@ struct MedicationMainView: View {
                         Divider()
                     }
                 }
-                .padding(20)
             }
             .onAppear {
                 viewModel.filterTodayMedications()

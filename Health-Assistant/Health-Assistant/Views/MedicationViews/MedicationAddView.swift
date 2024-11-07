@@ -171,6 +171,7 @@ struct MedicationAddView: View {
                     }
                 }
                 .padding(50)
+                .padding(.trailing, 20)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

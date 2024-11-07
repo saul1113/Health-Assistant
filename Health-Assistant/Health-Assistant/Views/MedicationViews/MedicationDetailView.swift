@@ -18,8 +18,6 @@ struct MedicationDetailView: View {
         NavigationStack {
             ScrollView {
                 VStack (alignment: .leading, spacing: 40) {
-                    Spacer()
-                        .frame(height: 5)
                     HStack {
                         Text("약아이콘")
                             .frame(width: 80, height: 80)
@@ -37,6 +35,7 @@ struct MedicationDetailView: View {
                         }
                         Spacer()
                     }
+                    .padding(.top, 18)
                     
                     Text("요일")
                         .font(.semibold24)
@@ -82,7 +81,7 @@ struct MedicationDetailView: View {
                     }
                     Spacer()
                 }
-                .padding(.horizontal, 35)
+                .padding(.horizontal, 20)
                 .scrollIndicators(.never)
                 .navigationTitle("\(medication.name) 정보")
                 .navigationBarTitleDisplayMode(.inline)
@@ -194,7 +193,7 @@ struct DetailSheetView: View {
                         .font(.regular14)
                     Spacer()
                 }
-                .padding(.horizontal, 35)
+                .padding(.horizontal, 25)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
