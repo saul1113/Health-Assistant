@@ -9,12 +9,15 @@ import SwiftUI
 
 struct JoinView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var email: String = ""
+    @ObservedObject var dataManager = DataManager()
+    
+    @State private var uid: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var showPasswordMismatch: Bool = false
-    @State private var navigateToProfileSetting = false
     @State private var showEmailFormatError: Bool = false
+    @State private var navigateToEmailLogin: Bool = false
+    @State private var showSignUpCompleteMessage = false
     
     var body: some View {
         NavigationStack {
@@ -27,14 +30,25 @@ struct JoinView: View {
                 VStack(alignment: .leading) {
                     Text("이메일")
                         .font(Font.semibold20)
-                    EmailTextField(text: $email)
-                        .onChange(of: email) {
+                    HStack {
+                        TextFieldView(
+                            text: $uid,
+                            placeholder: "이메일을 입력하세요",
+                            showError: showEmailFormatError,
+                            errorColor: .red
+                        )
+                        Button("중복확인") {
+                            
+                        }
+                        .padding(6)
+                        .foregroundStyle(.white)
+                        .font(Font.bold16)
+                        .background(Color.customGreen)
+                        .cornerRadius(8)
+                        .onChange(of: uid) {
                             validateEmailFormat()
                         }
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(showEmailFormatError ? Color.red : Color.black, lineWidth: 0.3)
-                        }
+                    }
                     if showEmailFormatError {
                         Text("이메일 형식으로 가입해야 합니다")
                             .foregroundColor(.red)
@@ -43,25 +57,33 @@ struct JoinView: View {
                             .padding(.leading, 10)
                     }
                 }
-                .padding(.leading, 40)
-                .padding(.trailing, 40)
+                .padding([.leading, .trailing], 40)
                 
                 VStack(alignment: .leading) {
                     Text("비밀번호")
                         .font(Font.semibold20)
-                    PasswordTextField(text: $password)
+                    TextFieldView(
+                        text: $password,
+                        placeholder: "비밀번호",
+                        isSecure: true
+                    )
                 }
-                .padding(.leading, 40)
-                .padding(.trailing, 40)
+                .padding([.leading, .trailing], 40)
                 .padding(.top, 30)
                 
                 VStack(alignment: .leading) {
                     Text("비밀번호 확인")
                         .font(Font.semibold20)
-                    passwordtextField()
-                        .onChange(of: confirmPassword) {
-                            validatePasswords()
-                        }
+                    TextFieldView(
+                        text: $confirmPassword,
+                        placeholder: "비밀번호 확인",
+                        isSecure: true,
+                        showError: showPasswordMismatch,
+                        errorColor: .red
+                    )
+                    .onChange(of: confirmPassword) {
+                        validatePasswords()
+                    }
                     if showPasswordMismatch {
                         Text("비밀번호가 일치하지 않습니다")
                             .foregroundColor(.red)
@@ -70,16 +92,20 @@ struct JoinView: View {
                             .padding(.leading, 10)
                     }
                 }
-                .padding(.leading, 40)
-                .padding(.trailing, 40)
+                .padding([.leading, .trailing], 40)
                 .padding(.top, 30)
                 
-                NavigationLink(destination: ProfileSetting()) {
-                    Text("다 음")
-                        .font(Font.semibold24)
-                        .foregroundStyle(.white)
+                Button(action: {
+                    if validateForm() {
+                        dataManager.saveUserData(uid: uid, password: password)
+                        showSignUpCompleteMessage = true
+                    }
+                }) {
+                    Text("가입 완료")
+                        .font(.headline)
+                        .foregroundColor(.white)
                         .frame(width: 330, height: 50)
-                        .background(Color.CustomGreen)
+                        .background(Color.customGreen)
                         .cornerRadius(8)
                         .padding(.top, 80)
                 }
@@ -95,22 +121,34 @@ struct JoinView: View {
                     }
                 }
             }
-            .navigationBarBackButtonHidden()
-            .onTapGesture {
-                UIApplication.shared.endEditing()
+            .navigationBarBackButtonHidden(true)
+            .onTapGesture { UIApplication.shared.endEditing() }
+            .navigationDestination(isPresented: $navigateToEmailLogin) {
+                EmailLoginView(dataManager: dataManager)
             }
+            .overlay(
+                VStack {
+                    if showSignUpCompleteMessage {
+                        Text("가입 완료되었습니다!")
+                            .font(Font.regular16)
+                            .padding()
+                            .background(Color.green.opacity(0.8))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .transition(.slide)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    showSignUpCompleteMessage = false
+                                    navigateToEmailLogin = true // 메시지 숨김 후 네비게이션 활성화
+                                }
+                            }
+                    }
+                    Spacer()
+                }
+            )
         }
     }
     
-    func passwordtextField() -> some View {
-        SecureField("비밀번호 확인", text: $confirmPassword)
-            .frame(height: 35)
-            .padding(.leading, 10)
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(showPasswordMismatch ? Color.red : Color.black, lineWidth: 0.3)
-            }
-    }
     func validatePasswords() {
         showPasswordMismatch = (password != confirmPassword && !confirmPassword.isEmpty)
     }
@@ -119,7 +157,7 @@ struct JoinView: View {
         // 간단한 이메일 형식 검사 (정규식 사용)
         let emailPattern = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailPattern)
-        showEmailFormatError = !emailPredicate.evaluate(with: email)
+        showEmailFormatError = !emailPredicate.evaluate(with: uid)
     }
     
     func validateForm() -> Bool {
@@ -127,12 +165,6 @@ struct JoinView: View {
         validateEmailFormat()
         validatePasswords()
         return !showEmailFormatError && !showPasswordMismatch
-    }
-    
-    func saveUserData() {
-        // 서버 없이 데이터 저장 예제
-        UserDefaults.standard.set(email, forKey: "userEmail")
-        UserDefaults.standard.set(password, forKey: "userPassword")
     }
 }
 

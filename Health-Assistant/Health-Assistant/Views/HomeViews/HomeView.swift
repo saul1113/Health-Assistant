@@ -53,7 +53,7 @@ struct HomeView: View {
                         locationManager.fetchAddress { local, locality in
                             Task {
                                 await userViewModel.fetchHospitalLocation(local: local, locality: locality)
-                                try? await dataManager.login()
+                                try? await dataManager.signUp()
                             }
                         }
                     }

@@ -7,105 +7,41 @@
 
 import SwiftUI
 
-struct EmailTextField: View {
+struct TextFieldView: View {
     @Binding var text: String
+    var placeholder: String
+    var isSecure: Bool = false
+    var showError: Bool = false
+    var errorColor: Color = .red
+    var onTextChange: ((String) -> Void)?
     
     var body: some View {
-        TextField("email.example.com",text: $text )
-            .font(Font.regular14)
-            .frame(height: 35)
-            .padding(.leading, 10)
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.black, lineWidth: 0.3)
+        VStack(alignment: .leading) {
+            if isSecure {
+                SecureField(placeholder, text: $text)
+                    .padding(.horizontal, 10)
+                    .frame(height: 35)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(showError ? errorColor : Color.black, lineWidth: 0.3)
+                    )
+                    .onChange(of: text, perform: { newValue in
+                        onTextChange?(newValue) // 텍스트 변경 시 검증 클로저 호출
+                    })
+            } else {
+                TextField(placeholder, text: $text)
+                    .padding(.horizontal, 10) // 내부 패딩
+                    .frame(height: 35)
+                    .background(Color.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(showError ? errorColor : Color.black, lineWidth: 0.3)
+                    )
+                    .onChange(of: text, perform: { newValue in
+                        onTextChange?(newValue) // 텍스트 변경 시 검증 클로저 호출
+                    })
             }
-    }
-}
-
-struct PasswordTextField: View {
-    @Binding var text: String
-    
-    var body: some View {
-        VStack {
-            SecureField("6자~20자 사이로 입력해주세요.",text: $text )
-                .font(Font.regular14)
-                .frame(height: 35)
-                .padding(.leading, 10)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.black, lineWidth: 0.3)
-                }
         }
-    }
-}
-
-struct CustomTextField: View {
-    @State private var text: String = ""
-    
-    var body: some View {
-        TextField("",text: $text )
-            .frame(height: 35)
-            .padding(.leading, 10)
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.black, lineWidth: 0.3)
-            }
-    }
-}
-
-struct NickNameTextField: View {
-    @Binding var text: String
-    @Binding var error: String?
-    @Binding var isAvailable: Bool?
-    
-    var body: some View {
-        TextField("2자 - 10자사이로 입력해주세요.", text: $text)
-            .font(Font.regular14)
-            .frame(height: 35)
-            .padding(.leading, 10)
-            .onChange(of: text) { newValue in
-                if newValue.isEmpty {
-                    // 텍스트가 비어 있으면 기본 상태로 복원
-                    error = nil
-                    isAvailable = nil
-                } else if newValue.count < 2 || newValue.count > 10 {
-                    // 2글자 미만이거나 10글자 초과일 때 에러 설정
-                    error = "닉네임은 2글자 이상 10자 이내로 설정하여주세요."
-                    isAvailable = nil
-                } else {
-                    // 유효한 입력일 때 에러 제거
-                    error = nil
-                }
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(isAvailable == true ? Color.blue : (error != nil || isAvailable == false ? Color.red : Color.black), lineWidth: 0.3)
-            }
-    }
-}
-
-struct BirthDayTextField: View {
-    @Binding var text: String
-    @Binding var error: String?
-    
-    var body: some View {
-        TextField("숫자 8자리로 입력해주세요.", text: $text)
-            .font(Font.regular14)
-            .frame(height: 35)
-            .padding(.leading, 10)
-            .onChange(of: text) { newValue in
-                if newValue.isEmpty {
-                    error = nil // 비어 있을 때 에러 메시지를 제거하여 기본 상태로
-                } else if newValue.count != 8 || Int(newValue) == nil {
-                    error = "생년월일은 숫자 8자리로 입력해주세요." // 8자리 숫자가 아닐 때 에러 메시지 표시
-                } else {
-                    error = nil
-                }
-            }
-            .overlay {
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(error != nil ? Color.red : Color.black, lineWidth: 0.3)
-            }
     }
 }
 
