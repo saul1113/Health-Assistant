@@ -12,25 +12,25 @@ struct MainTabView: View {
         TabView {
             HomeView()
                 .tabItem() {
-                    Label("Home", systemImage: "house")
+                    Label("홈", systemImage: "house")
                 }
                 .tag(0)
             
             MedicationMainView()
                 .tabItem() {
-                    Label("medison", systemImage: "pill")
+                    Label("약 복용", systemImage: "pill")
                 }
                 .tag(1)
             
             HealthListView()
                 .tabItem() {
-                    Label("HealthList", systemImage: "list.clipboard")
+                    Label("건강 기록", systemImage: "list.clipboard")
                 }
                 .tag(2)
             
             ProfileView()
                 .tabItem() {
-                    Label("Profile", systemImage: "person.crop.circle")
+                    Label("프로필", systemImage: "person.crop.circle")
                 }
                 .tag(3)
         }
