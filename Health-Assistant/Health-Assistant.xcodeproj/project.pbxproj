@@ -13,6 +13,7 @@
 		2C41A0D02CD9E8C7006815BC /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 2C41A0CF2CD9E8C7006815BC /* XMLCoder */; };
 		2C41A0D22CD9ED24006815BC /* HostpitalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */; };
 		2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C41A0D32CDA054A006815BC /* HospitalMapView.swift */; };
+		2C75269C2CDC8EFA00E10C1B /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C75269B2CDC8EFA00E10C1B /* RoundedCorner.swift */; };
 		2C77E0EF2CDA857E005365CC /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EC2CDA857E005365CC /* NotoSansKR-Regular.ttf */; };
 		2C77E0F02CDA857E005365CC /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0ED2CDA857E005365CC /* NotoSansKR-SemiBold.ttf */; };
 		2C77E0F12CDA857E005365CC /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EA2CDA857E005365CC /* NotoSansKR-Bold.ttf */; };
@@ -78,6 +79,7 @@
 		2C41A0CC2CD9B837006815BC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostpitalResponse.swift; sourceTree = "<group>"; };
 		2C41A0D32CDA054A006815BC /* HospitalMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalMapView.swift; sourceTree = "<group>"; };
+		2C75269B2CDC8EFA00E10C1B /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		2C77E0EA2CDA857E005365CC /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		2C77E0EB2CDA857E005365CC /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
 		2C77E0EC2CDA857E005365CC /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				500EFB5E2CD99BB30036D4DC /* CustomColors.swift */,
 				500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */,
+				2C75269B2CDC8EFA00E10C1B /* RoundedCorner.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */,
 				500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */,
 				773997192CD852C5008DE12E /* MedicationMainView.swift in Sources */,
+				2C75269C2CDC8EFA00E10C1B /* RoundedCorner.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
 				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,

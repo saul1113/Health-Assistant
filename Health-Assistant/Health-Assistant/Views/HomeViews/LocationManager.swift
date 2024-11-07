@@ -32,7 +32,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first
     }
-    func fetchAddress( currentLocationString: @escaping (String, String) -> ()) {
+    func fetchAddress( currentLocationString: @escaping (String) -> ()) {
         guard let coordinate = location?.coordinate else {
             return
         }
@@ -46,8 +46,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
             
             if let placemark = placemarks?.first {
-                if let location = placemark.administrativeArea, let locality = placemark.locality {
-                    currentLocationString(location, locality)
+                if let location = placemark.administrativeArea {
+                    currentLocationString(location)
                 }
                 self?.currentAddress = self?.formatPlacemark(placemark)
             } else {
