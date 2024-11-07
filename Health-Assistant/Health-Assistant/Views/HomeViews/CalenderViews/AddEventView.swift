@@ -103,7 +103,7 @@ struct AddEventView: View {
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 8)
                                             .fill(Color.customGreen.opacity(0.2))
-                                            .frame(width: 230, height: 40)
+                                            .frame(width: 230, height: 50)
                                         
                                         DatePicker("종료 시간", selection: $endTime, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
                                             .labelsHidden()
