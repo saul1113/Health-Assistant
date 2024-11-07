@@ -60,7 +60,7 @@ struct AddEventView: View {
                                     }
                             }
                             VStack {
-                                DatePicker("시작 시간", selection: $startTime)
+                                DatePicker("시작 시간", selection: $startTime, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
@@ -69,7 +69,7 @@ struct AddEventView: View {
                                         isEdited = true
                                     }
                                 
-                                DatePicker("종료 시간", selection: $endTime)
+                                DatePicker("종료 시간", selection: $endTime,displayedComponents: isAllDay ? .date : [.date, .hourAndMinute])
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
