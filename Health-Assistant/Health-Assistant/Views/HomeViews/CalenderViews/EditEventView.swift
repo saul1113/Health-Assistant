@@ -16,6 +16,7 @@ struct EditEventView: View {
     
     @State private var showDiscardAlert = false
     @State private var isEdited = false
+    private let notesCharacterLimit = 200
     
     var body: some View {
         NavigationView {
@@ -25,10 +26,11 @@ struct EditEventView: View {
                         SectionView(header: "제목") {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.customGreen.opacity(0.5), lineWidth: 3)
+                                    .stroke(Color.green.opacity(0.5), lineWidth: 3)
                                     .background(Color.white.cornerRadius(8))
+                                
                                 TextField("제목을 입력해주세요", text: $event.title)
-                                    .font(.medium20)
+                                    .font(.bold20)
                                     .padding(8)
                                     .background(Color.clear)
                                     .onChange(of: event.title) {
@@ -47,7 +49,7 @@ struct EditEventView: View {
                                     }
                             }
                             VStack {
-                                DatePicker("시작 시간", selection: $event.startTime)
+                                DatePicker("시작 시간", selection: $event.startTime, displayedComponents: event.isAllDay ? .date : [.date, .hourAndMinute])
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
@@ -56,7 +58,7 @@ struct EditEventView: View {
                                         isEdited = true
                                     }
                                 
-                                DatePicker("종료 시간", selection: $event.endTime)
+                                DatePicker("종료 시간", selection: $event.endTime, displayedComponents: event.isAllDay ? .date : [.date, .hourAndMinute])
                                     .padding()
                                     .background(Color.green.opacity(0.2))
                                     .cornerRadius(8)
@@ -71,7 +73,6 @@ struct EditEventView: View {
                             HStack {
                                 Image(systemName: "deskclock.fill")
                                     .foregroundColor(.green)
-                                
                                 Text("미리알림")
                                 
                                 Spacer()
@@ -90,25 +91,36 @@ struct EditEventView: View {
                             .font(.regular18)
                         }
                         
-                        SectionView(header: "메모") {
-                            ZStack {
-                                Color.green.opacity(0.2)
-
-                                    .cornerRadius(8)
-                                TextEditor(text: $event.notes)
-                                    .frame(height: 100)
-                                    .padding(8)
-                                    .font(.regular18)
-                                    .background(Color.clear)
-                                    .cornerRadius(8)
-                                    .onChange(of: event.notes) {
-                                        isEdited = true
-                                    }
+                        ZStack {
+                            SectionView(header: "메모") {
+                                ZStack {
+                                    Color.green.opacity(0.2)
+                                        .cornerRadius(8)
+                                    
+                                    TextEditor(text: $event.notes)
+                                        .frame(height: 140)
+                                        .padding(8)
+                                        .font(.regular18)
+                                        .background(Color.clear)
+                                        .cornerRadius(8)
+                                        .onChange(of: event.notes) {
+                                            isEdited = true
+                                            if event.notes.count > notesCharacterLimit {
+                                                event.notes = String(event.notes.prefix(notesCharacterLimit))
+                                            }
+                                        }
+                                }
                             }
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray.opacity(0.5))
-                            )
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    Text("\(event.notes.count)/\(notesCharacterLimit) 글자")
+                                        .font(.caption)
+                                        .foregroundColor(event.notes.count > notesCharacterLimit ? .red : .gray)
+                                }
+                                .padding(.trailing, 8)
+                                Spacer()
+                            }
                         }
                     }
                     .padding()
@@ -117,23 +129,16 @@ struct EditEventView: View {
             .navigationTitle("일정 편집")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(action: {
+                    Button("취소") {
                         checkIfEditedBeforeDismissing()
-                    }) {
-                        Text("취소")
-                            .font(.regular20)
                     }
                 }
-
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(action: {
+                    Button("저장") {
                         if let index = viewModel.calendarEvents.firstIndex(where: { $0.id == event.id }) {
                             viewModel.calendarEvents[index] = event
                         }
                         dismiss()
-                    }) {
-                        Text("저장")
-                            .font(.regular20)
                     }
                 }
             }
@@ -158,3 +163,4 @@ struct EditEventView: View {
         }
     }
 }
+
