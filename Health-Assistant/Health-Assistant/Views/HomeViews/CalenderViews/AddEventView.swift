@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddEventView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel: CalendarViewModel
+    @ObservedObject var viewModel: CalenderViewModel
     @Environment(\.dismiss) var dismiss
     
     @State private var title: String = ""
@@ -23,7 +23,7 @@ struct AddEventView: View {
     @State private var showDiscardAlert = false
     @State private var isEdited = false
     
-    init(viewModel: CalendarViewModel, startTime: Date = Date(), endTime: Date = Date()) {
+    init(viewModel: CalenderViewModel, startTime: Date = Date(), endTime: Date = Date()) {
         self.viewModel = viewModel
         _startTime = State(initialValue: startTime)
         _endTime = State(initialValue: endTime)
@@ -200,5 +200,5 @@ struct AddEventView: View {
 }
 
 #Preview {
-    AddEventView(viewModel: CalendarViewModel(), startTime: Date(), endTime: Date())
+    AddEventView(viewModel: CalenderViewModel(), startTime: Date(), endTime: Date())
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventDetailView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel: CalendarViewModel
+    @ObservedObject var viewModel: CalenderViewModel
     let day: Int
     @State var event: CalendarEvent
     @Environment(\.dismiss) var dismiss
@@ -137,7 +137,7 @@ struct EventDetailView: View {
 
 #Preview {
     EventDetailView(
-        viewModel: CalendarViewModel(),
+        viewModel: CalenderViewModel(),
         day: 1,
         event: CalendarEvent(
             title: "예시 이벤트",

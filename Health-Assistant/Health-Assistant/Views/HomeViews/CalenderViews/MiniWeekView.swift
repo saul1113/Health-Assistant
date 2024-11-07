@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MiniWeekView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel: CalendarViewModel
+    @ObservedObject var viewModel: CalenderViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -72,7 +72,7 @@ struct MiniWeekView: View {
 }
 
 // CalendarViewModel에 요일과 날짜 포맷팅 메서드 추가
-extension CalendarViewModel {
+extension CalenderViewModel {
     // 요일 포맷 (예: "월")
     func formattedDayOfWeek(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -91,7 +91,7 @@ extension CalendarViewModel {
 
 struct MiniWeekView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = CalendarViewModel()
+        let viewModel = CalenderViewModel()
         
         // 샘플 이벤트를 추가
         let sampleEvents = [

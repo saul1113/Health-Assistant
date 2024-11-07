@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HealthCalendarView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel = CalendarViewModel()
+    @ObservedObject var viewModel = CalenderViewModel()
     @State private var showDayEvents = false
     @State private var showAddEvent = false
     
@@ -113,7 +113,7 @@ struct DayCellView: View {
     @Environment(\.modelContext) private var modelContext
     let day: Int
     let geometry: GeometryProxy
-    let viewModel: CalendarViewModel
+    let viewModel: CalenderViewModel
     
     var body: some View {
         ZStack {

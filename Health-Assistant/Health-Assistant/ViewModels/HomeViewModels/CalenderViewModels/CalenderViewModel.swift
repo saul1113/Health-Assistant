@@ -1,5 +1,5 @@
 //
-//  CalendarViewModel.swift
+//  CalenderViewModel.swift
 //  Health-Assistant
 //
 //  Created by Hwang_Inyoung on 11/4/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-class CalendarViewModel: ObservableObject {
+class CalenderViewModel: ObservableObject {
     @Published var currentDate: Date {
         didSet {
             updateMonthYearDisplay()

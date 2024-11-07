@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DayEventsView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel: CalendarViewModel
+    @ObservedObject var viewModel: CalenderViewModel
     let day: Int
 //    @State private var showAddEvent = false
     @State private var selectedEvent: CalendarEvent?
