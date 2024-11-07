@@ -134,15 +134,12 @@ struct DayCellView: View {
                 let events = viewModel.events(for: day, context: modelContext)
                 
                 if events.isEmpty {
-                    // 일정이 없는 경우 빈 텍스트 두 개 추가
                     emptyEventPlaceholders()
                     emptyEventPlaceholders()
                 } else if events.count == 1 {
-                    // 일정이 한 개만 있는 경우 일정 한 개와 빈 텍스트 한 개 추가
                     eventTexts()
                     emptyEventPlaceholders()
                 } else {
-                    // 일정이 두 개 이상인 경우 두 개만 표시
                     eventTexts()
                 }
             }

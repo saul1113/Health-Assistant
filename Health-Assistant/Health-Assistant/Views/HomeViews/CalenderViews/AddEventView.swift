@@ -49,7 +49,7 @@ struct AddEventView: View {
                                     }
                                     .toolbar {
                                         ToolbarItemGroup(placement: .keyboard) {
-                                            Spacer() // 오른쪽 정렬
+                                            Spacer() 
                                             Button("완료") {
                                                 hideKeyboard()
                                             }
@@ -193,7 +193,6 @@ struct AddEventView: View {
         }
     }
     
-    // 키보드 숨김 함수
     private func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
