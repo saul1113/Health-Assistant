@@ -174,15 +174,18 @@ struct DayCellView: View {
     private func eventTexts() -> some View {
         VStack(alignment: .leading, spacing: geometry.size.height * 0.0042) {
             ForEach(viewModel.events(for: day, context: modelContext).prefix(2), id: \.id) { event in
-                Text(event.title)
-                    .font(.regular10)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-                    .padding(geometry.size.width * 0.002)
-                    .frame(maxWidth: geometry.size.width * 0.3)
-                    .background(Color.customGreen.opacity(0.8))
-                    .foregroundColor(.white)
-                    .cornerRadius(geometry.size.width * 0.01)
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color.customGreen.opacity(0.8))
+                        .cornerRadius(geometry.size.width * 0.01)
+                        .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024) // 크기 조정
+
+                    Text(event.title)
+                        .font(.regular8)
+                        .lineLimit(1) // 여러 줄이 아닌 한 줄로 표시
+                        .padding(.leading, geometry.size.width * 0.005)
+                        .foregroundColor(.white)
+                }
             }
         }
     }
