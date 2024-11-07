@@ -23,10 +23,18 @@ struct AddEventView: View {
     @State private var showDiscardAlert = false
     @State private var isEdited = false
     
-    init(viewModel: CalenderViewModel, startTime: Date = Date(), endTime: Date = Date()) {
+    init(viewModel: CalenderViewModel) {
         self.viewModel = viewModel
-        _startTime = State(initialValue: startTime)
-        _endTime = State(initialValue: endTime)
+        
+        // 선택한 날짜로 시작 시간을 설정하고, 선택된 날짜가 없으면 오늘 날짜로 설정
+        if let selectedDay = viewModel.selectedDay,
+           let selectedDate = viewModel.startOfDay(for: selectedDay) {
+            _startTime = State(initialValue: selectedDate)
+            _endTime = State(initialValue: Calendar.current.date(byAdding: .hour, value: 1, to: selectedDate) ?? Date())
+        } else {
+            _startTime = State(initialValue: Date())
+            _endTime = State(initialValue: Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date())
+        }
     }
     
     var body: some View {
@@ -199,5 +207,5 @@ struct AddEventView: View {
 }
 
 #Preview {
-    AddEventView(viewModel: CalenderViewModel(), startTime: Date(), endTime: Date())
+    AddEventView(viewModel: CalenderViewModel())
 }
