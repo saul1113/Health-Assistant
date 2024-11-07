@@ -15,26 +15,22 @@ struct MedicationMainView: View {
         NavigationStack {
             ScrollView {
                 VStack (alignment: .leading) {
-                    
                     ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
                             HStack {
                                 Text(medication.name)
-                                    .font(.semibold20)
-                                    .padding(.horizontal, 5)
-                                    .background(Color.CustomGreen.opacity(0.3))
+                                    .font(.semibold18)
+                                    .foregroundColor(Color(.customGreen))
                                     .cornerRadius(3)
+                                
                                 
                                 Spacer()
                                 
                                 NavigationLink(destination: MedicationDetailView(medication: medication)) {
                                     Image(systemName: "chevron.right")
-                                        .foregroundColor(.black)
-                                        .font(.system(size: 25))
-                                        .padding(.trailing, 15)
+                                        .foregroundColor(Color(.customGreen))
                                 }
                             }
-                            .padding()
                             .padding(.bottom, -5)
                             
                             ForEach(medication.times.indices, id: \.self) { index in
@@ -48,6 +44,9 @@ struct MedicationMainView: View {
                                             Image(systemName: medication.isTaken[index] ? "pill.fill" : "pill")
                                                 .foregroundColor(medication.isTaken[index] ? .CustomGreen : .gray)
                                                 .font(.system(size: 30))
+                                                .padding(10)
+                                                .background(medication.isTaken[index] ? Color.CustomGreen.opacity(0.1) : Color.gray.opacity(0.1))
+                                                .cornerRadius(30)
                                             
                                             Text(medication.isTaken[index] ? "복용 완료 !" : "복용 전")
                                                 .frame(width: 70)
@@ -56,9 +55,9 @@ struct MedicationMainView: View {
                                                 .font(.medium14)
                                                 .foregroundColor(medication.isTaken[index] ? .CustomGreen : .black)
                                         }
+                                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
                                     }
                                 }
-                                .padding(.horizontal)
                             }
                         }
                         .padding(.vertical)
@@ -66,6 +65,7 @@ struct MedicationMainView: View {
                         Divider()
                     }
                 }
+                .padding(.horizontal,20)
             }
             .onAppear {
                 viewModel.filterTodayMedications()
