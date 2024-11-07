@@ -15,8 +15,7 @@ struct MiniWeekView: View {
         VStack(alignment: .leading) {
             // 이번 주 월 표시
             Text(viewModel.displayedMonthYear)
-                .font(.title2)
-                .fontWeight(.bold)
+                .font(.bold28)
                 .padding(.leading)
                 .foregroundStyle(.black)
             
