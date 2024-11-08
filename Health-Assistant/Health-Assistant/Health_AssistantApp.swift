@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Health_AssistantApp: App {
@@ -14,6 +15,7 @@ struct Health_AssistantApp: App {
         WindowGroup {
             MainTabView()
                 .environmentObject(medicationViewModel)
+                .modelContainer(for: [CalendarEvent.self])
         }
     }
 }

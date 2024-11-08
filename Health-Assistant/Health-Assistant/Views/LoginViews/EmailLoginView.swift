@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct EmailLoginView: View {
-    @State private var email: String = ""
+    @Environment(\.dismiss) var dismiss
+    @ObservedObject var dataManager = DataManager()
+    
+    @State private var uid: String = ""
     @State private var password: String = ""
     @State private var showLoginCompleteMessage = false
     @State private var navigateToMainTab = false
@@ -16,10 +19,14 @@ struct EmailLoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Image("HAHALogo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .padding(.bottom, 40)
                 VStack(alignment: .leading) {
                     Text("이메일")
                         .font(Font.semibold20)
-                    EmailTextField(text: $email)
+                    TextFieldView(text: $uid, placeholder: "ID는 이메일형식 입니다.")
                 }
                 .padding(.leading, 40)
                 .padding(.trailing, 40)
@@ -27,7 +34,7 @@ struct EmailLoginView: View {
                 VStack(alignment: .leading) {
                     Text("비밀번호")
                         .font(Font.semibold20)
-                    PasswordTextField(text: $password)
+                    TextFieldView(text: $password, placeholder: "비밀번호")
                 }
                 .padding(.leading, 40)
                 .padding(.trailing, 40)
@@ -39,12 +46,22 @@ struct EmailLoginView: View {
                 .font(Font.semibold24)
                 .foregroundStyle(.white)
                 .frame(width: 330, height: 50)
-                .background(Color(uiColor: .systemGreen))
+                .background(Color.CustomGreen)
                 .cornerRadius(8)
                 .padding(.top, 80)
             }
             .navigationTitle("로그인")
-            .font(Font.bold18)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        BackButton()
+                    }
+                }
+            }
+            .navigationBarBackButtonHidden(true)
             .onTapGesture {
                 UIApplication.shared.endEditing() // 화면을 탭하면 키보드 내려가도록 함
             }
@@ -52,7 +69,7 @@ struct EmailLoginView: View {
                 VStack {
                     if showLoginCompleteMessage {
                         Text("로그인 완료되었습니다!")
-                            .font(.system(size: 16, weight: .bold))
+                            .font(Font.regular16)
                             .padding()
                             .background(Color.green.opacity(0.8))
                             .foregroundColor(.white)
@@ -69,9 +86,11 @@ struct EmailLoginView: View {
                 }
                     .padding(.top, 50)
             )
-            .fullScreenCover(isPresented: $navigateToMainTab) {
-                MainTabView() // MainTabView를 전체 화면에 표시
+            .navigationDestination(isPresented: $navigateToMainTab) {
+                ProfileSetting(dataManager: dataManager)
+                    .navigationBarBackButtonHidden(true)
             }
+            
         }
     }
     private func login() {

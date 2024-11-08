@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct DayEventsView: View {
-    @ObservedObject var viewModel: CalendarViewModel
+    @Environment(\.modelContext) private var modelContext
+    @ObservedObject var viewModel: CalenderViewModel
     let day: Int
-    @State private var showAddEvent = false
     @State private var selectedEvent: CalendarEvent?
     
     var body: some View {
         NavigationView {
             List {
-                if viewModel.events(for: day).isEmpty {
+                if viewModel.events(for: day, context: modelContext).isEmpty {
                     Text("일정이 없습니다.")
                         .font(.medium16)
                         .foregroundStyle(.gray)
                 } else  {
-                    ForEach(viewModel.events(for: day)) { event in
-                        NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)) {
+                    ForEach(viewModel.events(for: day, context: modelContext)) { event in
+                        NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)
+                            .onDisappear {
+                                viewModel.loadEvents(context: modelContext)
+                            }
+                        ) {
                             VStack(alignment: .leading) {
                                 Text(viewModel.formattedTime(for: event))
                                     .font(.regular20)
@@ -40,21 +44,8 @@ struct DayEventsView: View {
                 ToolbarItem(placement: .principal) {
                     Text("\(viewModel.displayedMonthYear) \(day)일 일정")
                         .font(.bold24)
-                        .foregroundColor(.green)
+                        .foregroundColor(.customGreen)
                 }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showAddEvent = true
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .font(.bold24)
-                            .foregroundColor(.green)
-                    }
-                }
-            }
-            .sheet(isPresented: $showAddEvent) {
-                AddEventView(viewModel: viewModel, day: day)
             }
         }
         .accentColor(Color("CustomGreen"))

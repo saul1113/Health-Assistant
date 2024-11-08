@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
-    @State private var isLoggedIn = false 
+    @State private var isLoggedIn = false
+    @State private var showLoginView = false
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -106,7 +108,9 @@ struct ProfileView: View {
                     }
                     .padding()
                 } else {
-                    NavigationLink(destination: LoginView()) {
+                    Button(action: {
+                        showLoginView = true
+                    }) {
                         VStack {
                             Text("로그인하기")
                                 .font(.medium16)
@@ -114,9 +118,11 @@ struct ProfileView: View {
                                 .padding()
                                 .background(Color("CustomGreen"))
                                 .cornerRadius(10)
-                            
                         }
                         .padding(.bottom, 40)
+                    }
+                    .fullScreenCover(isPresented: $showLoginView) {
+                        LoginView()
                     }
                 }
             }

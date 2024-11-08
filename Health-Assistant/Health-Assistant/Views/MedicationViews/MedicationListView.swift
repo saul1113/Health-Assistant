@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MedicationListView: View {
     
-//    @ObservedObject var viewModel = MedicationViewModel()
     @EnvironmentObject var viewModel: MedicationViewModel
     
     @State private var addViewSheet = false
@@ -49,7 +48,7 @@ struct MedicationListView: View {
                         .padding(.bottom, 40)
                     }
                 }
-                .padding(40)
+                .padding(20)
             }
             
         }
