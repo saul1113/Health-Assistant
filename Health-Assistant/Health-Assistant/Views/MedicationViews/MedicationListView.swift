@@ -48,7 +48,7 @@ struct MedicationListView: View {
                         .padding(.bottom, 40)
                     }
                 }
-                .padding(35)
+                .padding(20)
             }
             
         }

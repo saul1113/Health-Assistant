@@ -122,8 +122,8 @@ struct MedicationAddView: View {
                         }
                         
                         if !selectedTimes.isEmpty {
-                            ForEach(selectedTimes, id: \.self) { time in
-                                displayTime(formatTimeToString(time))
+                                ForEach(selectedTimes, id: \.self) { time in
+                                    displayTime(formatTimeToString(time))
                             }
                         }
                         
@@ -171,6 +171,7 @@ struct MedicationAddView: View {
                     }
                 }
                 .padding(50)
+                .padding(.trailing, 20)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
