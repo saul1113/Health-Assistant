@@ -17,16 +17,14 @@ struct MedicationMainView: View {
                 VStack (alignment: .leading) {
                     ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
-                            HStack {
-                                Text(medication.name)
-                                    .font(.semibold18)
-                                    .foregroundColor(Color(.customGreen))
-                                    .cornerRadius(3)
-                                
-                                
-                                Spacer()
-                                
-                                NavigationLink(destination: MedicationDetailView(medication: medication)) {
+                            NavigationLink(destination: MedicationDetailView(medication: medication)) {
+                                HStack {
+                                    Text(medication.name)
+                                        .font(.semibold18)
+                                        .foregroundColor(Color(.customGreen))
+                                        .cornerRadius(3)
+                                    
+                                    
                                     Image(systemName: "chevron.right")
                                         .foregroundColor(Color(.customGreen))
                                 }
