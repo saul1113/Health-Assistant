@@ -66,7 +66,8 @@ struct HealthAllowView: View {
                     .presentationDetents([.fraction(0.5)])
             }
             .navigationDestination(isPresented: $navigateLogin) {
-                LoginView()
+                MainTabView()
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }

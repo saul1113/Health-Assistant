@@ -26,6 +26,9 @@ enum BloodType: String, CaseIterable {
 
 struct ProfileSetting: View {
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var dataManager: DataManager
+    
+    @State private var name: String = ""
     @State private var nickname: String = ""
     @State private var birthday: String = ""
     @State private var nicknameError: String?
@@ -45,7 +48,7 @@ struct ProfileSetting: View {
                 VStack(alignment: .leading) {
                     Text("이름")
                         .font(Font.semibold20)
-                    CustomTextField()
+                    TextFieldView(text: $name, placeholder: "실명을 입력해주세요.")
                 }
                 .padding(.leading, 40)
                 .padding(.trailing, 40)
@@ -54,7 +57,15 @@ struct ProfileSetting: View {
                     Text("닉네임")
                         .font(Font.semibold20)
                     HStack {
-                        NickNameTextField(text: $nickname, error: $nicknameError, isAvailable: $isNicknameAvailable)
+                        TextFieldView(
+                            text: $nickname,
+                            placeholder: "2자 - 10자 사이로 입력하세요.",
+                            showError: nicknameError != nil,
+                            errorColor: .red,
+                            onTextChange: { newValue in
+                                validateNickname(newValue)
+                            }
+                        )
                         Button("중복확인") {
                             checkNicknameAvailability()
                         }
@@ -78,22 +89,29 @@ struct ProfileSetting: View {
                             .font(.caption)
                     }
                 }
-                .padding(.leading, 40)
-                .padding(.trailing, 40)
+                .padding([.leading, .trailing], 40)
                 .padding(.top, 30)
                 
                 VStack(alignment: .leading) {
                     Text("생년월일")
                         .font(Font.semibold20)
-                    BirthDayTextField(text: $birthday, error: $birthdayError)
+                    TextFieldView(
+                        text: $birthday,
+                        placeholder: "숫자 8자리로 입력해주세요.",
+                        showError: birthdayError != nil,
+                        errorColor: .red,
+                        onTextChange: { newValue in
+                            validateBirthday(newValue)
+                        }
+                    )
+                    
                     if let error = birthdayError {
                         Text(error)
                             .foregroundColor(.red)
                             .font(.caption)
                     }
                 }
-                .padding(.leading, 40)
-                .padding(.trailing, 40)
+                .padding([.leading, .trailing], 40)
                 .padding(.top, 30)
                 
                 HStack {
@@ -139,14 +157,14 @@ struct ProfileSetting: View {
                 }
                 Spacer()
                 NavigationLink(destination: HealthAllowView()) {
-                                    Text("다 음")
-                                        .font(Font.semibold24)
-                                        .foregroundStyle(.white)
-                                        .frame(width: 330, height: 50)
-                                        .background(Color.CustomGreen)
-                                        .cornerRadius(8)
-                                        .padding(.bottom, 30)
-                                }
+                    Text("다 음")
+                        .font(Font.semibold24)
+                        .foregroundStyle(.white)
+                        .frame(width: 330, height: 50)
+                        .background(Color.CustomGreen)
+                        .cornerRadius(8)
+                        .padding(.bottom, 30)
+                }
             }
             .navigationTitle("프로필 설정")
             .navigationBarTitleDisplayMode(.inline)
@@ -162,13 +180,33 @@ struct ProfileSetting: View {
             }
         }
     }
+    private func validateNickname(_ newValue: String) {
+        if newValue.isEmpty {
+            nicknameError = nil
+            isNicknameAvailable = nil
+        } else if newValue.count < 2 || newValue.count > 10 {
+            nicknameError = "닉네임은 2글자 이상 10자 이내로 설정하여주세요."
+            isNicknameAvailable = nil
+        } else {
+            nicknameError = nil
+        }
+    }
+    
+    private func validateBirthday(_ newValue: String) {
+        if newValue.isEmpty {
+            birthdayError = nil
+        } else if newValue.count != 8 || Int(newValue) == nil {
+            birthdayError = "생년월일은 숫자 8자리로 입력해주세요."
+        } else {
+            birthdayError = nil
+        }
+    }
+    
     private func checkNicknameAvailability() {
-        // 닉네임 유효성 검사 예시 (서버와 연동이 필요한 경우 서버와 통신 필요)
         if nickname.isEmpty || nickname.count < 2 || nickname.count > 10 {
             nicknameError = "닉네임은 2글자 이상 10자 이내로 설정하여주세요."
             isNicknameAvailable = nil
         } else {
-            // 임의로 중복 확인 예시
             if nickname == "중복닉네임" {
                 isNicknameAvailable = false
             } else {
@@ -180,5 +218,5 @@ struct ProfileSetting: View {
 }
 
 #Preview {
-    ProfileSetting()
+    ProfileSetting(dataManager: DataManager())
 }

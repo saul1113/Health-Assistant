@@ -48,6 +48,7 @@ struct LoginView: View {
                 Text("건강 관리")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(.black)
+                    .padding(.horizontal, 5)
                     .background(Color.customGreen.opacity(0.3))
                     .cornerRadius(5)
                 

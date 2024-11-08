@@ -9,7 +9,9 @@ import SwiftUI
 
 struct EmailLoginView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var email: String = ""
+    @ObservedObject var dataManager = DataManager()
+    
+    @State private var uid: String = ""
     @State private var password: String = ""
     @State private var showLoginCompleteMessage = false
     @State private var navigateToMainTab = false
@@ -24,7 +26,7 @@ struct EmailLoginView: View {
                 VStack(alignment: .leading) {
                     Text("이메일")
                         .font(Font.semibold20)
-                    EmailTextField(text: $email)
+                    TextFieldView(text: $uid, placeholder: "ID는 이메일형식 입니다.")
                 }
                 .padding(.leading, 40)
                 .padding(.trailing, 40)
@@ -32,7 +34,7 @@ struct EmailLoginView: View {
                 VStack(alignment: .leading) {
                     Text("비밀번호")
                         .font(Font.semibold20)
-                    PasswordTextField(text: $password)
+                    TextFieldView(text: $password, placeholder: "비밀번호")
                 }
                 .padding(.leading, 40)
                 .padding(.trailing, 40)
@@ -85,7 +87,7 @@ struct EmailLoginView: View {
                     .padding(.top, 50)
             )
             .navigationDestination(isPresented: $navigateToMainTab) {
-                MainTabView()
+                ProfileSetting(dataManager: dataManager)
                     .navigationBarBackButtonHidden(true)
             }
             
