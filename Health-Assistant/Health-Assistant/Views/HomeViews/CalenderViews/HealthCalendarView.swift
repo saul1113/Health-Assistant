@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HealthCalendarView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel = CalendarViewModel()
+    @ObservedObject var viewModel = CalenderViewModel()
     @State private var showDayEvents = false
     @State private var showAddEvent = false
     
@@ -69,7 +69,7 @@ struct HealthCalendarView: View {
             }) {
                 Image(systemName: "plus.circle.fill")
                     .font(.bold24)
-                    .foregroundColor(.green)
+                    .foregroundColor(.customGreen)
             }
             .padding(.leading)
         }
@@ -113,7 +113,7 @@ struct DayCellView: View {
     @Environment(\.modelContext) private var modelContext
     let day: Int
     let geometry: GeometryProxy
-    let viewModel: CalendarViewModel
+    let viewModel: CalenderViewModel
     
     var body: some View {
         ZStack {
@@ -128,21 +128,18 @@ struct DayCellView: View {
                 Spacer()
             }
             
-            VStack(spacing: geometry.size.height * 0.005) {
+            VStack(alignment: .leading, spacing: geometry.size.height * 0.005) {
                 Spacer()
                 
                 let events = viewModel.events(for: day, context: modelContext)
                 
                 if events.isEmpty {
-                    // 일정이 없는 경우 빈 텍스트 두 개 추가
                     emptyEventPlaceholders()
                     emptyEventPlaceholders()
                 } else if events.count == 1 {
-                    // 일정이 한 개만 있는 경우 일정 한 개와 빈 텍스트 한 개 추가
                     eventTexts()
                     emptyEventPlaceholders()
                 } else {
-                    // 일정이 두 개 이상인 경우 두 개만 표시
                     eventTexts()
                 }
             }
@@ -152,10 +149,14 @@ struct DayCellView: View {
     }
     
     private func dayBackgroundColor() -> Color {
+        let hasEvents = !viewModel.events(for: day, context: modelContext).isEmpty
+        
         if day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() {
-            return Color.blue.opacity(0.3)
+            return Color.blue.opacity(0.3) // Highlight for today's date
         } else if day == viewModel.selectedDay {
-            return Color.green.opacity(0.3)
+            return Color.customGreen.opacity(0.5) // Highlight for selected date
+        } else if hasEvents {
+            return Color.customGreen.opacity(0.2) // Custom color for dates with events
         } else {
             return Color.clear
         }
@@ -164,23 +165,27 @@ struct DayCellView: View {
     private func emptyEventPlaceholders() -> some View {
         VStack {
             Text(" ")
-                .font(.regular16)
-                .padding(geometry.size.width * 0.005)
+                .font(.regular10)
+                .padding(geometry.size.width * 0.002)
                 .opacity(0)
         }
     }
     
     private func eventTexts() -> some View {
-        VStack(spacing: geometry.size.height * 0.002) {
+        VStack(alignment: .leading, spacing: geometry.size.height * 0.0042) {
             ForEach(viewModel.events(for: day, context: modelContext).prefix(2), id: \.id) { event in
-                Text(event.title)
-                    .font(.regular16)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
-                    .padding(geometry.size.width * 0.005)
-                    .background(Color.customGreen.opacity(0.8))
-                    .foregroundColor(.white)
-                    .cornerRadius(geometry.size.width * 0.01)
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color.customGreen.opacity(0.8))
+                        .cornerRadius(geometry.size.width * 0.01)
+                        .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024) // 크기 조정
+
+                    Text(event.title)
+                        .font(.regular8)
+                        .lineLimit(1) // 여러 줄이 아닌 한 줄로 표시
+                        .padding(.leading, geometry.size.width * 0.005)
+                        .foregroundColor(.white)
+                }
             }
         }
     }

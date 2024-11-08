@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var dataManager: DataManager = DataManager()
-    @StateObject private var viewModel = CalendarViewModel()
+    @StateObject private var viewModel = CalenderViewModel()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
@@ -22,38 +22,39 @@ struct HomeView: View {
                 ZStack (alignment: .bottom){
                     Color.customGreen
                         .ignoresSafeArea(edges: .top)
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.bar)
-                        .frame(height: proxy.size.height / 1.3)
-                        .ignoresSafeArea(edges: .bottom)
                     VStack (alignment: .leading) {
                         Spacer()
                             .frame(height: 20)
                         Text("안녕하세요 \(nickname)님!")
                             .font(.bold30)
+                            .padding(.horizontal, 16)
                         Text("꾸준한 관리가 건강을 지키는 가장 큰 비결입니다. 오늘도 작은 변화를 시작해보세요!")
                             .font(.medium14)
+                            .padding(.horizontal, 16)
                         Spacer()
-                            .frame(height: 100)
+                            .frame(height: 80)
                         ScrollView {
                             NavigationLink {
                                 HealthCalendarView()
                             } label: {
-                                MiniWeekView(viewModel: CalendarViewModel())
+                                MiniWeekView(viewModel: CalenderViewModel())
                                     .background(.white, in: RoundedRectangle(cornerRadius: 20))
                             }
                             chartView(geometry: proxy)
                                 .frame(height: 180)
                             healthDataView()
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.top, 20)
                         .scrollIndicators(.hidden)
+                        .background(Color.CustomGreen02)
+                        .cornerRadius(15, corners: [.topLeft, .topRight])
                     }
-                    .padding(.horizontal, 20)
                     .onAppear {
-                        locationManager.fetchAddress { local, locality in
+                        locationManager.fetchAddress { local in
                             Task {
-                                await userViewModel.fetchHospitalLocation(local: local, locality: locality)
-                                try? await dataManager.signUp()
+                                await userViewModel.fetchHospitalLocation(local: local)
+                                try? await dataManager.login()
                             }
                         }
                     }

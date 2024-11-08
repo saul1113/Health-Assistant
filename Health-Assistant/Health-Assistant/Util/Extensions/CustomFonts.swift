@@ -49,6 +49,7 @@ extension Font {
     static var regular14 = Font.custom("NotoSansKR-Regular", size: 14)
     static var regular12 = Font.custom("NotoSansKR-Regular", size: 12)
     static var regular10 = Font.custom("NotoSansKR-Regular", size: 10)
+    static var regular8 = Font.custom("NotoSansKR-Regular", size: 8)
 }
 
 //        Text("폰트사용예시")
