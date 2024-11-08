@@ -20,7 +20,7 @@ struct SectionView<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(header)
-                .font(.headline)
+                .font(.bold20)
                 .padding(.leading, 5)
             VStack {
                 content

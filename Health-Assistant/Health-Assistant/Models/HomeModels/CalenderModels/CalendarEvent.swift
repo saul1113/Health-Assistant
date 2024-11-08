@@ -43,8 +43,12 @@ final class CalendarEvent: Identifiable, Equatable {
 }
 
 enum EventAlert: String, CaseIterable, Identifiable {
-    case tenMinutesBefore = "10분 전"
+    case oneDayBefore = "하루 전"
+    case twoHoursBefore = "2시간 전"
     case oneHourBefore = "1시간 전"
+    case thirtyMinutesBefore = "30분 전"
+    case tenMinutesBefore = "10분 전"
+    case fiveMinutesBefore = "5분 전"
     case atStart = "시작 시간에"
     case none = "알림 없음"
     

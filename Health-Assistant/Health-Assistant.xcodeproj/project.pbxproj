@@ -23,7 +23,7 @@
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
 		2C8E15F52CD89D6E005C9801 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E15F42CD89D6E005C9801 /* HealthManager.swift */; };
 		500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88B2CD855C800CCD409 /* CalendarEvent.swift */; };
-		500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */; };
+		500EB8902CD8561800CCD409 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */; };
 		500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8912CD8568300CCD409 /* HealthCalendarView.swift */; };
 		500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89D2CD866FE00CCD409 /* AddEventView.swift */; };
 		500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89F2CD867E300CCD409 /* EditEventView.swift */; };
@@ -72,7 +72,6 @@
 		F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */; };
 		F64B24022CD883C100944503 /* HealthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64B24012CD883BC00944503 /* HealthReport.swift */; };
 		F6CFC5A72CDB3110003C0087 /* ReportHealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CFC5A62CDB310F003C0087 /* ReportHealthManager.swift */; };
-		FEE0546C2CDBE7E800389149 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = FEE0546B2CDBE7E800389149 /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +92,7 @@
 		2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
 		2C8E15F42CD89D6E005C9801 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		500EB88B2CD855C800CCD409 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
-		500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
 		500EB8912CD8568300CCD409 /* HealthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCalendarView.swift; sourceTree = "<group>"; };
 		500EB89D2CD866FE00CCD409 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		500EB89F2CD867E300CCD409 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		504ECF3D2CDC765D00CDB88A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniWeekView.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
 		5079062A2CD4AA9F00AFE182 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -141,7 +141,6 @@
 		F64B23FF2CD8839C00944503 /* ReportsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsDetailView.swift; sourceTree = "<group>"; };
 		F64B24012CD883BC00944503 /* HealthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthReport.swift; sourceTree = "<group>"; };
 		F6CFC5A62CDB310F003C0087 /* ReportHealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHealthManager.swift; sourceTree = "<group>"; };
-		FEE0546B2CDBE7E800389149 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +190,7 @@
 				2C7F614C2CD491570070998C /* Health_AssistantApp.swift */,
 				2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */,
 				2C77E0F52CDA8AB5005365CC /* Info.plist */,
-				FEE0546B2CDBE7E800389149 /* Config.xcconfig */,
+				504ECF3D2CDC765D00CDB88A /* Config.xcconfig */,
 				EB1D3F072CDBC4CB00FA9732 /* Managers */,
 				507906372CD4AB1B00AFE182 /* Util */,
 				507906212CD4A87700AFE182 /* Models */,
@@ -243,7 +242,7 @@
 		500EB88E2CD855EB00CCD409 /* CalenderViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				500EB88F2CD8561800CCD409 /* CalendarViewModel.swift */,
+				500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */,
 			);
 			path = CalenderViewModels;
 			sourceTree = "<group>";
@@ -489,7 +488,6 @@
 				2C77E0F22CDA857E005365CC /* NotoSansKR-Medium.ttf in Resources */,
 				77C7F7CF2CD7BC9B00D345E5 /* NotoSansKR-Bold.ttf in Resources */,
 				77C7F7D02CD7BC9B00D345E5 /* NotoSansKR-Medium.ttf in Resources */,
-				FEE0546C2CDBE7E800389149 /* Config.xcconfig in Resources */,
 				77C7F7D12CD7BC9B00D345E5 /* NotoSansKR-Regular.ttf in Resources */,
 				2C77E0F42CDA8626005365CC /* Assets.xcassets in Resources */,
 				77C7F7D22CD7BC9B00D345E5 /* NotoSansKR-SemiBold.ttf in Resources */,
@@ -542,7 +540,7 @@
 				500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */,
 				2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */,
 				7739971F2CD85337008DE12E /* MedicationSearchView.swift in Sources */,
-				500EB8902CD8561800CCD409 /* CalendarViewModel.swift in Sources */,
+				500EB8902CD8561800CCD409 /* CalenderViewModel.swift in Sources */,
 				EBE160992CD7D357003E7CC2 /* EmailLoginView.swift in Sources */,
 				2C75269E2CDCAA6E00E10C1B /* MapView.swift in Sources */,
 				EBE160952CD7CF4E003E7CC2 /* TextFieldView.swift in Sources */,

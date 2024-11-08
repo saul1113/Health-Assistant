@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var dataManager: DataManager = DataManager()
-    @StateObject private var viewModel = CalendarViewModel()
+    @StateObject private var viewModel = CalenderViewModel()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
@@ -37,7 +37,7 @@ struct HomeView: View {
                             NavigationLink {
                                 HealthCalendarView()
                             } label: {
-                                MiniWeekView(viewModel: CalendarViewModel())
+                                MiniWeekView(viewModel: CalenderViewModel())
                                     .background(.white, in: RoundedRectangle(cornerRadius: 20))
                             }
                             chartView(geometry: proxy)

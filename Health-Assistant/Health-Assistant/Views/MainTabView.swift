@@ -16,6 +16,7 @@ struct MainTabView: View {
         case profile
     }
     var body: some View {
+
         ZStack(alignment: .bottom){
             VStack(alignment: .center,spacing: 0) {
                 switch selectedTab {

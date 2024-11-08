@@ -9,9 +9,8 @@ import SwiftUI
 
 struct DayEventsView: View {
     @Environment(\.modelContext) private var modelContext
-    @ObservedObject var viewModel: CalendarViewModel
+    @ObservedObject var viewModel: CalenderViewModel
     let day: Int
-//    @State private var showAddEvent = false
     @State private var selectedEvent: CalendarEvent?
     
     var body: some View {
@@ -25,7 +24,7 @@ struct DayEventsView: View {
                     ForEach(viewModel.events(for: day, context: modelContext)) { event in
                         NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)
                             .onDisappear {
-                                viewModel.loadEvents(context: modelContext) // 삭제 후 새로 로드
+                                viewModel.loadEvents(context: modelContext)
                             }
                         ) {
                             VStack(alignment: .leading) {
@@ -45,7 +44,7 @@ struct DayEventsView: View {
                 ToolbarItem(placement: .principal) {
                     Text("\(viewModel.displayedMonthYear) \(day)일 일정")
                         .font(.bold24)
-                        .foregroundColor(.green)
+                        .foregroundColor(.customGreen)
                 }
             }
         }
