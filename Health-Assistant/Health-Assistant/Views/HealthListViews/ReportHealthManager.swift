@@ -111,6 +111,7 @@ class ReportHealthManager: ObservableObject{
             var asleepDeepMinute = 0.0
             var asleepREMMinute = 0.0
             
+            print(results)
             results?.forEach { sample in
                 if let sleepSample = sample as? HKCategorySample {
                     switch sleepSample.value {

@@ -10,18 +10,34 @@ import SwiftUI
 struct NewReportView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title: String = ""
-    @State private var startDate = Date()
-    @State private var endDate = Date()
+    @State private var startDate: Date = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
+    @State private var endDate: Date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
     @State private var healthData: [HealthReport] = []
     @ObservedObject var reportHealthManager: ReportHealthManager
     var onSave: (HealthReportSummary) -> Void
     
+    
     var body: some View {
+        
         NavigationView {
             Form {
-                TextField("리포트 제목", text: $title)
-                DatePicker("시작 날짜", selection: $startDate, displayedComponents: .date)
-                DatePicker("종료 날짜", selection: $endDate, displayedComponents: .date)
+                //한달로제한
+                Section(header: Text("평균 건강 데이터 리포트 생성")) {
+                    TextField("리포트 제목", text: $title)
+                    DatePicker(
+                        "Start Date",
+                        selection: $startDate,
+                        in: ...Date(),
+                        displayedComponents: .date
+                    )
+                   
+                    DatePicker(
+                        "End Date",
+                        selection: $endDate,
+                        in: startDate...(min(Calendar.current.date(byAdding: .month, value: 1, to: startDate) ?? Date(), Date())),
+                        displayedComponents: .date
+                    )
+                }
             }
             .navigationTitle("새 리포트")
             .navigationBarTitleDisplayMode(.inline)
@@ -40,6 +56,7 @@ struct NewReportView: View {
             }
         }
     }
+    
     
     private func fetchHealthData() {
         let calendar = Calendar.current
@@ -77,7 +94,7 @@ struct NewReportView: View {
                                     asleepDeepMinute: asleepDeepMinute,
                                     asleepREMMinute: asleepREMMinute
                                 )
-                                print(report)
+                                print(date)
                                 reports.append(report)
                                 group.leave()
                             }
