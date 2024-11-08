@@ -24,6 +24,8 @@
 		2C8E15F52CD89D6E005C9801 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E15F42CD89D6E005C9801 /* HealthManager.swift */; };
 		2CA0321F2CDD8E3B006DF2DD /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0321E2CDD8E3B006DF2DD /* Medication.swift */; };
 		2CA032212CDD9269006DF2DD /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA032202CDD9269006DF2DD /* TimeView.swift */; };
+		2CA032252CDD931F006DF2DD /* MedicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA032232CDD931F006DF2DD /* MedicationResponse.swift */; };
+		2CA032262CDD931F006DF2DD /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA032222CDD931F006DF2DD /* Medication.swift */; };
 		500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88B2CD855C800CCD409 /* CalendarEvent.swift */; };
 		500EB8902CD8561800CCD409 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */; };
 		500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8912CD8568300CCD409 /* HealthCalendarView.swift */; };
@@ -94,6 +96,8 @@
 		2C8E15F42CD89D6E005C9801 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		2CA0321E2CDD8E3B006DF2DD /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		2CA032202CDD9269006DF2DD /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		2CA032222CDD931F006DF2DD /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		2CA032232CDD931F006DF2DD /* MedicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationResponse.swift; sourceTree = "<group>"; };
 		500EB88B2CD855C800CCD409 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
 		500EB8912CD8568300CCD409 /* HealthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCalendarView.swift; sourceTree = "<group>"; };
@@ -202,6 +206,15 @@
 			path = "Health-Assistant";
 			sourceTree = "<group>";
 		};
+		2CA032242CDD931F006DF2DD /* MedicationModels */ = {
+			isa = PBXGroup;
+			children = (
+				2CA032222CDD931F006DF2DD /* Medication.swift */,
+				2CA032232CDD931F006DF2DD /* MedicationResponse.swift */,
+			);
+			path = MedicationModels;
+			sourceTree = "<group>";
+		};
 		500EB8882CD854CD00CCD409 /* CalenderViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				2C41A0D12CD9ED24006815BC /* HostpitalResponse.swift */,
+				2CA032242CDD931F006DF2DD /* MedicationModels */,
 				500EB8892CD8558600CCD409 /* HomeModels */,
 				50FC2E572CDA04F8000C1EB8 /* ProfileModels */,
 				EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */,
@@ -535,6 +549,8 @@
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
 				50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */,
 				50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */,
+				2CA032252CDD931F006DF2DD /* MedicationResponse.swift in Sources */,
+				2CA032262CDD931F006DF2DD /* Medication.swift in Sources */,
 				7739971D2CD85319008DE12E /* MedicationAddView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */,
