@@ -30,7 +30,7 @@ class ReportHealthManager: ObservableObject{
             completion(success, error)
         }
     }
-   
+    
     // 각 건강데이터 평균값 가져오는 메소드 데이터가없을경우 0.0으로 고정
     func fetchAverageHeartRate(for date: Date, completion: @escaping (Double) -> Void) {
         guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else {
@@ -95,4 +95,49 @@ class ReportHealthManager: ObservableObject{
         }
         healthStore.execute(query)
     }
+    
+    func fetchSleepData(for date: Date, completion: @escaping (Double, Double, Double, Double, Double, Double) -> Void) {
+        guard let sleepType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else {
+            completion(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+            return
+        }
+        
+        let predicate = HKQuery.predicateForSamples(withStart: date, end: Calendar.current.date(byAdding: .day, value: 1, to: date))
+        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, _ in
+            var inBedMinute = 0.0
+            var asleepUnspecifiedMinute = 0.0
+            var awakeMinute = 0.0
+            var asleepCoreMinute = 0.0
+            var asleepDeepMinute = 0.0
+            var asleepREMMinute = 0.0
+            
+            print(results)
+            results?.forEach { sample in
+                if let sleepSample = sample as? HKCategorySample {
+                    switch sleepSample.value {
+                    case HKCategoryValueSleepAnalysis.inBed.rawValue:
+                        inBedMinute += sleepSample.endDate.timeIntervalSince(sleepSample.startDate)
+                    case HKCategoryValueSleepAnalysis.asleepUnspecified.rawValue:
+                        asleepUnspecifiedMinute += sleepSample.endDate.timeIntervalSince(sleepSample.startDate)
+                    case HKCategoryValueSleepAnalysis.awake.rawValue:
+                        awakeMinute += sleepSample.endDate.timeIntervalSince(sleepSample.startDate)
+                    case HKCategoryValueSleepAnalysis.asleepCore.rawValue:
+                        asleepCoreMinute += sleepSample.endDate.timeIntervalSince(sleepSample.startDate)
+                    case HKCategoryValueSleepAnalysis.asleepDeep.rawValue:
+                        asleepDeepMinute += sleepSample.endDate.timeIntervalSince(sleepSample.startDate)
+                    case HKCategoryValueSleepAnalysis.asleepREM.rawValue:
+                        asleepREMMinute += sleepSample.endDate.timeIntervalSince(sleepSample.startDate)
+                    default:
+                        break
+                    }
+                }
+            }
+            
+            completion(inBedMinute, asleepUnspecifiedMinute, awakeMinute, asleepCoreMinute, asleepDeepMinute, asleepREMMinute)
+        }
+        
+        healthStore.execute(query)
+    }
+
+    
 }
