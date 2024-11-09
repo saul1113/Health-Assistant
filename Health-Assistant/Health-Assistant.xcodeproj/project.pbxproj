@@ -37,6 +37,7 @@
 		500EFB622CD99BB30036D4DC /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */; };
 		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
 		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
+		5019F8AD2CDF122F00A8964E /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019F8AC2CDF122F00A8964E /* EventFormView.swift */; };
 		5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
 		5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProfileView.swift */; };
@@ -110,6 +111,7 @@
 		500EFB5F2CD99BB30036D4DC /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		5019F8AC2CDF122F00A8964E /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 		504ECF3D2CDC765D00CDB88A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniWeekView.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				500EB8912CD8568300CCD409 /* HealthCalendarView.swift */,
 				500EB8A72CD8696B00CCD409 /* DayEventsView.swift */,
+				5019F8AC2CDF122F00A8964E /* EventFormView.swift */,
 				500EFB652CD9AA240036D4DC /* EventDetailView.swift */,
 				500EB89D2CD866FE00CCD409 /* AddEventView.swift */,
 				500EB89F2CD867E300CCD409 /* EditEventView.swift */,
@@ -558,6 +561,7 @@
 				2CA032262CDD931F006DF2DD /* Medication.swift in Sources */,
 				7739971D2CD85319008DE12E /* MedicationAddView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
+				5019F8AD2CDF122F00A8964E /* EventFormView.swift in Sources */,
 				F6CFC5AB2CDB93F6003C0087 /* pdfTest.swift in Sources */,
 				50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */,
 				50FC2E5F2CDA070C000C1EB8 /* NotificationSettingsView.swift in Sources */,

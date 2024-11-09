@@ -34,7 +34,7 @@ struct EventDetailView: View {
             }
         }
         .sheet(isPresented: $showEditEvent) {
-            EditEventView(viewModel: viewModel, day: day, event: event)
+            EventFormView(viewModel: viewModel, event: event)
         }
         .alert(isPresented: $showDeleteAlert) {
             deleteAlert

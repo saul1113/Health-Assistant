@@ -12,6 +12,7 @@ struct HealthCalendarView: View {
     @ObservedObject var viewModel = CalenderViewModel()
     @State private var showDayEvents = false
     @State private var showAddEvent = false
+    @State private var showEventForm = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,8 +27,8 @@ struct HealthCalendarView: View {
                 
                 Spacer()
             }
-            .sheet(isPresented: $showAddEvent) {
-                AddEventView(viewModel: viewModel)
+            .sheet(isPresented: $showEventForm) {
+                EventFormView(viewModel: viewModel)
             }
             .sheet(isPresented: $showDayEvents) {
                 if let selectedDay = viewModel.selectedDay {
@@ -82,7 +83,7 @@ struct HealthCalendarView: View {
     
     private func addEventButton() -> some View {
         Button(action: {
-            showAddEvent = true
+            showEventForm = true // AddEventView 대신 EventFormView 호출
         }) {
             Image(systemName: "plus.circle.fill")
                 .font(.bold24)
