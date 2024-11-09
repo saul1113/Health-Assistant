@@ -16,16 +16,15 @@ struct MiniWeekView: View {
             Text(viewModel.displayedMonthYear)
                 .font(.bold28)
                 .padding(.leading)
-                .foregroundStyle(.black)
+                .foregroundColor(.black)
             
             HStack {
                 ForEach(viewModel.currentWeekDates(), id: \.self) { date in
-                    VStack() {
-                        // 요일 표시
+                    VStack {
                         Text(viewModel.formattedDayOfWeek(date))
                             .font(.regular14)
                             .padding(.vertical, -5)
-                            .foregroundStyle(.black)
+                            .foregroundColor(.black)
                         
                         Text(viewModel.formattedDayOfMonth(date))
                             .font(.headline)
@@ -61,7 +60,7 @@ struct MiniWeekView: View {
         }
         .frame(maxHeight: 140)
         .padding(.vertical)
-        .background(.white)
+        .background(Color.white)
         .cornerRadius(20)
     }
 }
