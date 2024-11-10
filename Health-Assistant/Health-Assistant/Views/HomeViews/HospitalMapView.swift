@@ -4,28 +4,32 @@
 //
 //  Created by Soom on 11/5/24.
 //
-
+//현재 리스트를 누르면 맵뷰로 넘
 import SwiftUI
-
+import MapKit
 struct HospitalMapView: View {
     @StateObject private var locationManager = LocationManager()
     let hospitals: [Item]
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach(hospitals, id: \.dutyName) { hospital in
-                        if let hospitalName = hospital.dutyName, let hospitalAddress = hospital.dutyAddr {
-                            NavigationLink {
-                                MapView(locationName: hospitalName, location: hospitalAddress)
-                            }label: {
-                                hospitalView(hospitalName: hospitalName, hospitalAddress: hospitalAddress)
-                            }
+            Map{
+                ForEach(locationManager.hospitalLocation.indices, id: \.self) { index in
+                    Annotation("\(index)", coordinate: locationManager.hospitalLocation[index]){
+                        ZStack {
+                            Text(hospitals[index].dutyName ?? "")
+                                .background {
+                                    Rectangle()
+                                        .padding()
+                                }
                         }
                     }
+                
                 }
             }
-            .padding(.horizontal, 16)
+            .task {
+                await locationManager.fetchAddressFromLocation(hospitalAddress: hospitals)
+            }
+            
             .navigationTitle("가까운 병원 및 응급실 정보")
         }
     }
