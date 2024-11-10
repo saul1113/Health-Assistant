@@ -44,7 +44,10 @@ struct HomeView: View {
                             }
                             chartView(geometry: proxy)
                                 .frame(height: 180)
-                            healthDataView()
+                            
+                            NavigationLink(destination: HeartRateChartView()) {
+                                healthDataView()
+                            }
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 20)
