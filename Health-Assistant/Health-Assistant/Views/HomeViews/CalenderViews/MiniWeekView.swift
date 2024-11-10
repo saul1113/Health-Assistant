@@ -26,7 +26,7 @@ struct MiniWeekView: View {
                 ForEach(viewModel.currentWeekDates(), id: \.self) { date in
                     VStack {
                         Text(viewModel.formattedDayOfMonth(date))
-                            .font(.semibold16)  // 날짜 텍스트에 커스텀 세미볼드 적용
+                            .font(.semibold16)
                             .foregroundColor(viewModel.isToday(date) ? .white : .primary)
                             .padding(8)
                             .background(viewModel.isToday(date) ? Color.blue.opacity(0.4) : Color.clear)
@@ -58,7 +58,7 @@ struct MiniWeekView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                             }
-                            .frame(height: 20) // 고정된 높이로 각 일정 텍스트 설정
+                            .frame(height: 20) 
                         }
                         
                         if dayEvents.count == 1 {

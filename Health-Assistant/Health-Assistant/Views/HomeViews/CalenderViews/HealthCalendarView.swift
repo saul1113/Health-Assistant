@@ -35,11 +35,11 @@ struct HealthCalendarView: View {
             .sheet(isPresented: $showDayEvents) {
                 if let selectedDay = viewModel.selectedDay {
                     DayEventsView(viewModel: viewModel, day: selectedDay)
-                        .presentationDetents([.large]) // 전체 화면으로 표시
+                        .presentationDetents([.large])
                 }
             }
             .onAppear {
-                viewModel.loadEvents(context: modelContext) // 초기 로드
+                viewModel.loadEvents(context: modelContext)
             }
         }
     }
@@ -88,7 +88,7 @@ struct HealthCalendarView: View {
     
     private func addEventButton() -> some View {
         Button(action: {
-            showEventForm = true // AddEventView 대신 EventFormView 호출
+            showEventForm = true
         }) {
             Image(systemName: "plus.circle.fill")
                 .font(.bold24)
