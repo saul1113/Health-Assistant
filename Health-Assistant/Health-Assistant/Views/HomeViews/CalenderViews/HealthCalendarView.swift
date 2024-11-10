@@ -149,15 +149,7 @@ struct DayCellView: View {
                 
                 let events = viewModel.events(for: day, context: modelContext)
                 
-                if events.isEmpty {
-                    EmptyEventPlaceholders(geometry: geometry)
-                    EmptyEventPlaceholders(geometry: geometry)
-                } else if events.count == 1 {
-                    EventTexts(viewModel: viewModel, day: day, geometry: geometry)
-                    EmptyEventPlaceholders(geometry: geometry)
-                } else {
-                    EventTexts(viewModel: viewModel, day: day, geometry: geometry)
-                }
+                EventTexts(viewModel: viewModel, day: day, geometry: geometry)
             }
             .padding(.top, geometry.size.height * 0.04)
         }
@@ -185,8 +177,9 @@ struct EmptyEventPlaceholders: View {
     var body: some View {
         VStack {
             Text(" ")
-                .font(.regular10)
-                .padding(geometry.size.width * 0.002)
+                .font(.regular8)
+                .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024)
+                .padding(geometry.size.width * 0.005)
                 .opacity(0)
         }
     }
@@ -199,23 +192,35 @@ struct EventTexts: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        VStack(alignment: .leading, spacing: geometry.size.height * 0.0042) {
-            ForEach(viewModel.events(for: day, context: modelContext).prefix(2), id: \.id) { event in
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .fill(Color.customGreen.opacity(0.8))
-                        .cornerRadius(geometry.size.width * 0.01)
-                        .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024)
+            VStack(alignment: .leading, spacing: geometry.size.height * 0.0042) {
+                let dayEvents = viewModel.events(for: day, context: modelContext)
 
-                    Text(event.title)
+                ForEach(dayEvents.prefix(2), id: \.id) { event in
+                    ZStack(alignment: .leading) {
+                        Rectangle()
+                            .fill(Color.customGreen.opacity(0.8))
+                            .cornerRadius(geometry.size.width * 0.01)
+                            .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024)
+                        
+                        Text(event.title)
+                            .font(.regular8)
+                            .lineLimit(1)
+                            .padding(.leading, geometry.size.width * 0.005)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                
+                // 만약 일정이 1개라면 빈 공간 추가
+                if dayEvents.count == 1 {
+                    Text(" ")
                         .font(.regular8)
-                        .lineLimit(1)
+                        .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024)
                         .padding(.leading, geometry.size.width * 0.005)
-                        .foregroundColor(.white)
+                        .opacity(0)
                 }
             }
         }
-    }
 }
 
 #Preview {
