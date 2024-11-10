@@ -29,8 +29,6 @@
 		500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88B2CD855C800CCD409 /* CalendarEvent.swift */; };
 		500EB8902CD8561800CCD409 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */; };
 		500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8912CD8568300CCD409 /* HealthCalendarView.swift */; };
-		500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89D2CD866FE00CCD409 /* AddEventView.swift */; };
-		500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB89F2CD867E300CCD409 /* EditEventView.swift */; };
 		500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EB8A72CD8696B00CCD409 /* DayEventsView.swift */; };
 		500EFB532CD99B9B0036D4DC /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB512CD99B9B0036D4DC /* BackButton.swift */; };
 		500EFB612CD99BB30036D4DC /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB5E2CD99BB30036D4DC /* CustomColors.swift */; };
@@ -38,6 +36,7 @@
 		500EFB642CD9A6FB0036D4DC /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB632CD9A6FB0036D4DC /* SectionView.swift */; };
 		500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500EFB652CD9AA240036D4DC /* EventDetailView.swift */; };
 		5019F8AD2CDF122F00A8964E /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019F8AC2CDF122F00A8964E /* EventFormView.swift */; };
+		5019F8AF2CE02F5F00A8964E /* DayHeadersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019F8AE2CE02F5F00A8964E /* DayHeadersView.swift */; };
 		5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */; };
 		507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507906282CD4AA7900AFE182 /* HealthListView.swift */; };
 		5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079062A2CD4AA9F00AFE182 /* ProfileView.swift */; };
@@ -103,8 +102,6 @@
 		500EB88B2CD855C800CCD409 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		500EB88F2CD8561800CCD409 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
 		500EB8912CD8568300CCD409 /* HealthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthCalendarView.swift; sourceTree = "<group>"; };
-		500EB89D2CD866FE00CCD409 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
-		500EB89F2CD867E300CCD409 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		500EB8A72CD8696B00CCD409 /* DayEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventsView.swift; sourceTree = "<group>"; };
 		500EFB512CD99B9B0036D4DC /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		500EFB5E2CD99BB30036D4DC /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
@@ -112,6 +109,7 @@
 		500EFB632CD9A6FB0036D4DC /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		500EFB652CD9AA240036D4DC /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
 		5019F8AC2CDF122F00A8964E /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
+		5019F8AE2CE02F5F00A8964E /* DayHeadersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeadersView.swift; sourceTree = "<group>"; };
 		504ECF3D2CDC765D00CDB88A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniWeekView.swift; sourceTree = "<group>"; };
 		507906282CD4AA7900AFE182 /* HealthListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthListView.swift; sourceTree = "<group>"; };
@@ -224,11 +222,10 @@
 			isa = PBXGroup;
 			children = (
 				500EB8912CD8568300CCD409 /* HealthCalendarView.swift */,
+				5019F8AE2CE02F5F00A8964E /* DayHeadersView.swift */,
 				500EB8A72CD8696B00CCD409 /* DayEventsView.swift */,
 				5019F8AC2CDF122F00A8964E /* EventFormView.swift */,
 				500EFB652CD9AA240036D4DC /* EventDetailView.swift */,
-				500EB89D2CD866FE00CCD409 /* AddEventView.swift */,
-				500EB89F2CD867E300CCD409 /* EditEventView.swift */,
 				500EFB632CD9A6FB0036D4DC /* SectionView.swift */,
 				5077A2BA2CD9F1D3007D8B18 /* MiniWeekView.swift */,
 			);
@@ -537,7 +534,6 @@
 				500EB8A82CD8696B00CCD409 /* DayEventsView.swift in Sources */,
 				500EB88C2CD855C800CCD409 /* CalendarEvent.swift in Sources */,
 				50FC2E5B2CDA06C2000C1EB8 /* ProfileEditView.swift in Sources */,
-				500EB89E2CD866FE00CCD409 /* AddEventView.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
 				F64B24002CD883A500944503 /* ReportsDetailView.swift in Sources */,
 				773997232CD8573D008DE12E /* MedicationViewModel.swift in Sources */,
@@ -548,12 +544,12 @@
 				2C75269C2CDC8EFA00E10C1B /* RoundedCorner.swift in Sources */,
 				2CA032212CDD9269006DF2DD /* TimeView.swift in Sources */,
 				5079062F2CD4AAB300AFE182 /* HomeView.swift in Sources */,
+				5019F8AF2CE02F5F00A8964E /* DayHeadersView.swift in Sources */,
 				500EFB662CD9AA240036D4DC /* EventDetailView.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
 				2C41A0CD2CD9B837006815BC /* LocationManager.swift in Sources */,
 				F6CFC5A92CDB57FA003C0087 /* PDFViewModel.swift in Sources */,
 				2C41A0D22CD9ED24006815BC /* HostpitalResponse.swift in Sources */,
-				500EB8A02CD867E300CCD409 /* EditEventView.swift in Sources */,
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
 				50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */,
 				50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */,

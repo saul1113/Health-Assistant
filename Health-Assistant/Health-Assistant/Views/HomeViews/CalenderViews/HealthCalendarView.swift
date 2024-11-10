@@ -93,13 +93,7 @@ struct HealthCalendarView: View {
     }
     
     private func dayHeaders() -> some View {
-        HStack {
-            ForEach(["일", "월", "화", "수", "목", "금", "토"], id: \.self) { day in
-                Text(day)
-                    .frame(maxWidth: .infinity)
-                    .font(.medium18)
-            }
-        }
+        DayHeadersView()
         .padding(.horizontal)
     }
     
