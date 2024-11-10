@@ -19,9 +19,8 @@ struct HealthCalendarView: View {
             VStack {
                 headerView(geometry: geometry)
                 
-                Spacer()
-                
                 dayHeaders()
+                    .padding(.bottom, -30)
                 
                 dateGridView(geometry: geometry)
                 
@@ -29,12 +28,18 @@ struct HealthCalendarView: View {
             }
             .sheet(isPresented: $showEventForm) {
                 EventFormView(viewModel: viewModel)
+                    .onDisappear {
+                        viewModel.loadEvents(context: modelContext)
+                    }
             }
             .sheet(isPresented: $showDayEvents) {
                 if let selectedDay = viewModel.selectedDay {
                     DayEventsView(viewModel: viewModel, day: selectedDay)
                         .presentationDetents([.large]) // 전체 화면으로 표시
                 }
+            }
+            .onAppear {
+                viewModel.loadEvents(context: modelContext) // 초기 로드
             }
         }
     }
@@ -200,7 +205,7 @@ struct EventTexts: View {
                         Rectangle()
                             .fill(Color.customGreen.opacity(0.8))
                             .cornerRadius(geometry.size.width * 0.01)
-                            .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024)
+                            .frame(width: geometry.size.width * 0.13, height: geometry.size.height * 0.024)
                         
                         Text(event.title)
                             .font(.regular8)
@@ -215,7 +220,7 @@ struct EventTexts: View {
                 if dayEvents.count == 1 {
                     Text(" ")
                         .font(.regular8)
-                        .frame(width: geometry.size.width * 0.134, height: geometry.size.height * 0.024)
+                        .frame(width: geometry.size.width * 0.13, height: geometry.size.height * 0.024)
                         .padding(.leading, geometry.size.width * 0.005)
                         .opacity(0)
                 }

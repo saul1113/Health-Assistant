@@ -20,6 +20,7 @@ struct MiniWeekView: View {
             
             DayHeadersView()
                 .padding(.horizontal)
+                .padding(.bottom, -10)
             
             HStack {
                 ForEach(viewModel.currentWeekDates(), id: \.self) { date in
@@ -42,24 +43,27 @@ struct MiniWeekView: View {
                         let dayEvents = viewModel.events(for: date, context: modelContext)
                         
                         ForEach(dayEvents.prefix(2), id: \.id) { event in
-                            ZStack(alignment: .leading) {
-                                Rectangle()
-                                    .fill(Color.customGreen.opacity(0.8))
-                                    .cornerRadius(4)
-                                    .frame(width: 60, height: 20)
-                                
-                                Text(event.title)
-                                    .font(.regular8)
-                                    .lineLimit(1)
-                                    .padding(.leading, 5)
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            GeometryReader { geometry in
+                                ZStack(alignment: .leading) {
+                                    Rectangle()
+                                        .fill(Color.customGreen.opacity(0.8))
+                                        .cornerRadius(4)
+                                        .frame(width: geometry.size.width * 1.12, height: geometry.size.height * 0.9) 
+                                    
+                                    Text(event.title)
+                                        .font(.regular8)
+                                        .lineLimit(1)
+                                        .padding(.leading, geometry.size.width * 0.02)
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
                             }
+                            .frame(height: 20) // 고정된 높이로 각 일정 텍스트 설정
                         }
                         
                         if dayEvents.count == 1 {
                             Text(" ")
-                                .font(.regular8)
+                                .font(.system(size: 10))
                                 .padding(4)
                         }
                         
