@@ -92,14 +92,47 @@ class HeartRateViewModel: ObservableObject {
     }
     
     func formattedDate(for date: Date) -> String {
-            let formatter = DateFormatter()
-            if selectedTimeRange == .sixHours {
-                formatter.dateFormat = "HH:mm"
-            } else {
-                formatter.dateFormat = "MM월 dd일 HH:mm"
-            }
-            return formatter.string(from: date)
+        let formatter = DateFormatter()
+        if selectedTimeRange == .sixHours {
+            formatter.dateFormat = "HH:mm"
+        } else {
+            formatter.dateFormat = "MM월 dd일 HH:mm"
         }
+        return formatter.string(from: date)
+    }
+    
+    func getAveragedData(for range: TimeRange) -> [HeartRateModel] {
+        let interval: TimeInterval
+        switch range {
+        case .sixHours:
+            interval = 3600 // 1시간
+        case .oneDay:
+            interval = 14400 // 4시간
+        case .oneWeek:
+            interval = 86400 // 1일
+        case .oneMonth:
+            interval = 345600 // 4일
+        }
+        
+        // 그룹화하여 평균값 계산
+        let groupedData = Dictionary(grouping: filteredData) { sample in
+            Date(timeIntervalSinceReferenceDate: (sample.date.timeIntervalSinceReferenceDate / interval).rounded(.down) * interval)
+        }
+        
+        var averagedData = groupedData.map { date, samples in
+            let averageValue = samples.map(\.value).reduce(0, +) / Double(samples.count)
+            return HeartRateModel(date: date, value: averageValue)
+        }
+            .sorted { $0.date < $1.date }
+        
+        // 현재 시간까지 마지막 구간을 추가하여 선 그래프가 이어지도록 설정
+        if let lastDate = averagedData.last?.date, lastDate < Date() {
+            let lastValue = averagedData.last?.value ?? 0
+            averagedData.append(HeartRateModel(date: Date(), value: lastValue))
+        }
+        
+        return averagedData
+    }
 }
 
 extension HealthDataManager {
