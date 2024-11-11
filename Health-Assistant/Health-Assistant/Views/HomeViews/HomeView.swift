@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
@@ -14,6 +15,7 @@ struct HomeView: View {
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var viewModelHeart = HeartRateViewModel()
     @State private var heartRate: Double = 0
     
     let nickname: String = "강사"
@@ -54,6 +56,7 @@ struct HomeView: View {
                         .scrollIndicators(.hidden)
                         .background(Color.CustomGreen02)
                         .cornerRadius(15, corners: [.topLeft, .topRight])
+                        .padding(.bottom, 50)
                     }
                     .onAppear {
                         locationManager.fetchAddress { local in
@@ -79,21 +82,37 @@ struct HomeView: View {
     }
     func healthDataView() -> some View {
         VStack (alignment: .center, spacing: 0) {
-            Text("현재")
-            if healthData.isMeasuring {
-                Text("0")
-                    .font(.bold96)
-                    .padding(.vertical, -17)
-            }
-            else {
-                Text("\(String(format: "%.f", healthData.heartRate))")
-                    .font(.bold96)
-                    .padding(.vertical, -27)
-            }
             HStack {
-                Text("BPM")
-                    .font(.regular20)
-                Image(systemName: "heart.fill")
+                // 6시간 차트 표시
+                Chart(viewModelHeart.filteredData.filter { item in
+                    Calendar.current.isDateInToday(item.date) // 6시간 범위 데이터 필터링
+                }) { item in
+                    PointMark(
+                        x: .value("Time", item.date),
+                        y: .value("Heart Rate", item.value)
+                    )
+                    .foregroundStyle(.red)
+                    .symbolSize(50)
+                }
+                .padding(.horizontal)
+                VStack {
+                    Text("현재")
+                    if healthData.isMeasuring {
+                        Text("0")
+                            .font(.bold96)
+                            .padding(.vertical, -17)
+                    }
+                    else {
+                        Text("\(String(format: "%.f", healthData.heartRate))")
+                            .font(.bold96)
+                            .padding(.vertical, -27)
+                    }
+                    HStack {
+                        Text("BPM")
+                            .font(.regular20)
+                        Image(systemName: "heart.fill")
+                    }
+                }
             }
         }
         .padding(20)
