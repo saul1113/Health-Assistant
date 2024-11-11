@@ -45,6 +45,9 @@
 		50C3C6062CE09F7C00CCF0FB /* HeartRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C3C6052CE09F7C00CCF0FB /* HeartRateModel.swift */; };
 		50C3C60C2CE0A0C300CCF0FB /* HeartRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C3C60A2CE0A0C300CCF0FB /* HeartRateViewModel.swift */; };
 		50F5CE0B2CDA926900B22E2E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5CE0A2CDA926900B22E2E /* MainTabView.swift */; };
+		50F87B0B2CE1E629005DB7D0 /* SleepStageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F87B0A2CE1E629005DB7D0 /* SleepStageModel.swift */; };
+		50F87B0D2CE1E648005DB7D0 /* SleepDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F87B0C2CE1E648005DB7D0 /* SleepDataViewModel.swift */; };
+		50F87B0F2CE1E7D7005DB7D0 /* SleepChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F87B0E2CE1E7D7005DB7D0 /* SleepChartView.swift */; };
 		50FC2E552CDA0484000C1EB8 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */; };
 		50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */; };
 		50FC2E5B2CDA06C2000C1EB8 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */; };
@@ -122,6 +125,9 @@
 		50C3C6052CE09F7C00CCF0FB /* HeartRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateModel.swift; sourceTree = "<group>"; };
 		50C3C60A2CE0A0C300CCF0FB /* HeartRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModel.swift; sourceTree = "<group>"; };
 		50F5CE0A2CDA926900B22E2E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		50F87B0A2CE1E629005DB7D0 /* SleepStageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepStageModel.swift; sourceTree = "<group>"; };
+		50F87B0C2CE1E648005DB7D0 /* SleepDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataViewModel.swift; sourceTree = "<group>"; };
+		50F87B0E2CE1E7D7005DB7D0 /* SleepChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepChartView.swift; sourceTree = "<group>"; };
 		50FC2E542CDA0484000C1EB8 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		50FC2E582CDA0506000C1EB8 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		50FC2E5A2CDA06C2000C1EB8 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
@@ -392,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				50C3C5F92CE09E0A00CCF0FB /* HeartRateChartView.swift */,
+				50F87B0E2CE1E7D7005DB7D0 /* SleepChartView.swift */,
 			);
 			path = HealthMetrics;
 			sourceTree = "<group>";
@@ -417,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				50C3C6052CE09F7C00CCF0FB /* HeartRateModel.swift */,
+				50F87B0A2CE1E629005DB7D0 /* SleepStageModel.swift */,
 			);
 			path = HealthModels;
 			sourceTree = "<group>";
@@ -425,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				50C3C60A2CE0A0C300CCF0FB /* HeartRateViewModel.swift */,
+				50F87B0C2CE1E648005DB7D0 /* SleepDataViewModel.swift */,
 			);
 			path = HealthViewModels;
 			sourceTree = "<group>";
@@ -560,6 +569,7 @@
 				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
 				2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */,
 				50C3C5FA2CE09E0A00CCF0FB /* HeartRateChartView.swift in Sources */,
+				50F87B0D2CE1E648005DB7D0 /* SleepDataViewModel.swift in Sources */,
 				2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */,
 				50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */,
 				F6CFC5A72CDB3110003C0087 /* ReportHealthManager.swift in Sources */,
@@ -585,6 +595,7 @@
 				F6CFC5A92CDB57FA003C0087 /* PDFViewModel.swift in Sources */,
 				2C41A0D22CD9ED24006815BC /* HostpitalResponse.swift in Sources */,
 				500EB8922CD8568300CCD409 /* HealthCalendarView.swift in Sources */,
+				50F87B0B2CE1E629005DB7D0 /* SleepStageModel.swift in Sources */,
 				50FC2E632CDA0748000C1EB8 /* AccountDeletionView.swift in Sources */,
 				50FC2E5D2CDA06DF000C1EB8 /* PasswordChangeView.swift in Sources */,
 				2CA032252CDD931F006DF2DD /* MedicationResponse.swift in Sources */,
@@ -608,6 +619,7 @@
 				770FA17D2CD9A97800949C07 /* MedicationListView.swift in Sources */,
 				EBE1609B2CD85F59003E7CC2 /* ProfileSetting.swift in Sources */,
 				507906292CD4AA7900AFE182 /* HealthListView.swift in Sources */,
+				50F87B0F2CE1E7D7005DB7D0 /* SleepChartView.swift in Sources */,
 				5077A2BB2CD9F1D3007D8B18 /* MiniWeekView.swift in Sources */,
 				EBE160A82CD8FFD4003E7CC2 /* HealthSheetView.swift in Sources */,
 				50FC2E612CDA0736000C1EB8 /* AccountManagementView.swift in Sources */,

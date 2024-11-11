@@ -150,22 +150,29 @@ struct HeartRateChartView: View {
                         
                         Spacer()
                     }
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        ForEach(viewModel.filteredData) { data in
-                            HStack {
-                                Text(viewModel.formattedDate(for: data.date)) // 날짜 포맷 적용
-                                    .font(.regular14)
-                                Spacer()
-                                Text("\(Int(data.value)) BPM")
-                                    .font(.regular14)
-                                    .foregroundColor(.blue)
+                    if viewModel.filteredData.isEmpty {
+                        Text("데이터 없음")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                            .padding()
+                            .frame(height: 300)
+                    } else {
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(viewModel.filteredData) { data in
+                                HStack {
+                                    Text(viewModel.formattedDate(for: data.date)) // 날짜 포맷 적용
+                                        .font(.regular14)
+                                    Spacer()
+                                    Text("\(Int(data.value)) BPM")
+                                        .font(.regular14)
+                                        .foregroundColor(.blue)
+                                }
+                                .padding(.vertical, 4)
+                                Divider() // 각 항목 사이에 구분선 추가
                             }
-                            .padding(.vertical, 4)
-                            Divider() // 각 항목 사이에 구분선 추가
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                     
                     Spacer(minLength: 50)
                 }

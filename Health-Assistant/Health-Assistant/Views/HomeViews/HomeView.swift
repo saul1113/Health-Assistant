@@ -50,6 +50,10 @@ struct HomeView: View {
                             NavigationLink(destination: HeartRateChartView()) {
                                 healthDataView()
                             }
+                            
+                            NavigationLink(destination: SleepChartView()) {
+                                healthDataView()
+                            }
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 20)
