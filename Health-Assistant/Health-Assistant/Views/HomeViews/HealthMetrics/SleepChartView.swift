@@ -17,13 +17,36 @@ struct SleepChartView: View {
                 .font(.title2)
                 .padding(.horizontal)
             
-            Chart(viewModel.sleepData) { stage in
-                RectangleMark(
-                    xStart: .value("Start Time", stage.startDate),
-                    xEnd: .value("End Time", stage.endDate),
-                    y: .value("Stage", stage.stage.description)
-                )
-                .foregroundStyle(sleepStageColor(stage.stage)) // 수면 단계에 따른 색상 설정
+            Chart {
+                ForEach(viewModel.sleepData.indices, id: \.self) { index in
+                    let stage = viewModel.sleepData[index]
+                    
+                    // 현재 수면 상태를 막대로 표시
+                    RectangleMark(
+                        xStart: .value("Start Time", stage.startDate),
+                        xEnd: .value("End Time", stage.endDate),
+                        y: .value("Stage", stage.stage.description)
+                    )
+                    .foregroundStyle(sleepStageColor(stage.stage))
+                    
+                    // 다음 수면 상태와 이어주는 선을 추가
+                    if index < viewModel.sleepData.count - 1 {
+                        let nextStage = viewModel.sleepData[index + 1]
+                        LineMark(
+                            x: .value("End Time", stage.endDate),
+                            y: .value("Current Stage", stage.stage.description)
+                        )
+                        .lineStyle(StrokeStyle(lineWidth: 2, dash: [5])) // 선 스타일 설정
+                        .foregroundStyle(Color.gray)
+                        
+                        LineMark(
+                            x: .value("Start Time", nextStage.startDate),
+                            y: .value("Next Stage", nextStage.stage.description)
+                        )
+                        .lineStyle(StrokeStyle(lineWidth: 2, dash: [5])) // 선 스타일 설정
+                        .foregroundStyle(Color.gray)
+                    }
+                }
             }
             .chartYAxis {
                 AxisMarks(position: .leading) {
