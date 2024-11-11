@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MedicationAddView: View {
     
@@ -122,8 +123,8 @@ struct MedicationAddView: View {
                         }
                         
                         if !selectedTimes.isEmpty {
-                                ForEach(selectedTimes, id: \.self) { time in
-                                    displayTime(formatTimeToString(time))
+                            ForEach(selectedTimes, id: \.self) { time in
+                                displayTime(formatTimeToString(time))
                             }
                         }
                         
@@ -185,7 +186,10 @@ struct MedicationAddView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         let formattedTimes = selectedTimes.map { formatTimeToString($0) }
-                        viewModel.addMedication(name: medicationName, company: "제약회사 이름", days: selectedDays, times: formattedTimes, note: medicationNote)
+                        
+                        let newMedication = Medication(name: medicationName, company: "제약회사 이름", days: selectedDays, times: formattedTimes, note: medicationNote)
+                        
+                        viewModel.addMedication(medication: newMedication)
                         
                         dismiss()
                     }) {
@@ -199,6 +203,9 @@ struct MedicationAddView: View {
             .sheet(isPresented: $iconViewSheet) {
                 MedicationIconView()
             }
+//            .onDisappear() {
+//                viewModel.fetchMedication()
+//            }
         }
     }
     
@@ -236,5 +243,5 @@ struct MedicationAddView: View {
 
 #Preview {
     MedicationAddView()
-        .environmentObject(MedicationViewModel())
+        .environmentObject(MedicationViewModel(dataSource: .shared))
 }

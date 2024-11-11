@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Medication: Identifiable {
-    let id: UUID
+@Model
+final class Medication: Identifiable, Equatable {
+    @Attribute(.unique) var id: UUID = UUID()
     var name: String      // 약 이름
     var company: String   // 제약회사 이름
     var days: [String]    // 복용 요일
@@ -29,12 +31,6 @@ struct Medication: Identifiable {
     func translatedDays() -> [String] {
             return days.map { translateDayKorean($0) }
     }
-    
-    static let dummyList: [Medication] = [Medication(name: "혈압약", company: "대웅제약", days:  ["thursday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "식후 30분 후에 복용하기"),
-                                          Medication(name: "진통제", company: "동국제약",days:  ["Wednesday", "thursday", "Friday"], times: ["08:00 AM", "02:00 PM", "10:00 PM"], note: "부작용 있을 수 있음"),
-                                       Medication(name: "영양제", company: "뉴젠팜",days:  ["thursday"], times: ["08:00 AM", "02:00 PM", "10:00 PM"], note: "물과 함게 복용하기. 음료수 안됨"),
-                                          Medication(name: "타이레놀",company: "BMS 제약",days:  ["TuesDay", "Wednesday", "thursday","Friday"], times: ["08:00 AM", "02:00 PM", "10:00 PM"], note: "공복에 섭취하지 않기"),
-    ]
 }
 
 func translateDayKorean(_ day: String) -> String {

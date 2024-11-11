@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MedicationMainView: View {
-    
-    @EnvironmentObject var viewModel: MedicationViewModel
+    @StateObject var viewModel: MedicationViewModel = MedicationViewModel(dataSource: .shared)
     
     var body: some View {
         NavigationStack {
@@ -17,7 +16,7 @@ struct MedicationMainView: View {
                 VStack (alignment: .leading) {
                     ForEach(viewModel.todayMedications) { medication in
                         VStack(alignment: .leading) {
-                            NavigationLink(destination: MedicationDetailView(medication: medication)) {
+                            NavigationLink(destination: MedicationDetailView(medication: medication).environmentObject(viewModel)) {
                                 HStack {
                                     Text(medication.name)
                                         .font(.semibold18)
@@ -66,7 +65,7 @@ struct MedicationMainView: View {
                 .padding(.horizontal,20)
             }
             .onAppear {
-                viewModel.filterTodayMedications()
+                viewModel.fetchTodayMedication()
             }
             .navigationTitle("오늘 복용 약")
             .navigationBarTitleDisplayMode(.inline)
@@ -89,7 +88,7 @@ struct MedicationMainView: View {
 }
 
 
-#Preview {
-    MedicationMainView()
-        .environmentObject(MedicationViewModel())
-}
+//#Preview {
+//    MedicationMainView()
+//        .environmentObject(MedicationViewModel(dataSource: .shared))
+//}
