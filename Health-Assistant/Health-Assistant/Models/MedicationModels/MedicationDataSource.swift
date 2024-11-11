@@ -48,4 +48,7 @@ final class MedicationDataSource {
             print("\(error)")
         }
     }
+    
+    func updateMedication(_ medication: Medication) {
+    }
 }
