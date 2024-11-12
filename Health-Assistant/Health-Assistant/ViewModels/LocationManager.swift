@@ -13,9 +13,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
     @Published private(set) var location: CLLocation?
     @Published private(set) var authorizationStatus: CLAuthorizationStatus?
-    @Published private(set) var hospitalLocation: CLLocationCoordinate2D?
+    @Published private(set) var hospitalLocation: [CLLocationCoordinate2D] = []
     @Published private(set) var currentAddress: String?
-    
+    @Published private(set) var hospitalDistances: [Double] = []
     override init() {
         geocoder = CLGeocoder() // Geocoder 초기화
         super.init()
@@ -34,17 +34,32 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         location = locations.first
     }
     @MainActor
-    func fetchAddressFromLocation(hospitalAddress: String) async {
+    func fetchAddressFromLocation(hospitalAddress: [Item]) async {
         do {
-            let hospitalAddress = try await geocoder.geocodeAddressString(hospitalAddress)
-            if let address = hospitalAddress.first?.location {
-                self.hospitalLocation = address.coordinate
-                print(hospitalLocation?.latitude)
-                print(hospitalLocation!.longitude)
+            var distances: [Double] = []
+            for hospitalAddrs in hospitalAddress {
+                if let hospitalAddress = hospitalAddrs.dutyAddr{
+                    let addressString = hospitalAddress.contains(",") ?
+                    String(hospitalAddress.split(separator: ",")[0]) : hospitalAddress
+                    let hospitalAddress = try? await geocoder.geocodeAddressString(addressString)
+                    
+                    if let address = hospitalAddress?.first?.location {
+                        self.hospitalLocation.append(address.coordinate)
+                        //거리 계산 추가함
+                        if let userLocation = location {
+                            let distance = userLocation.distance(from: address) // 거리 계산 (미터 단위)
+                            print("병원과의 거리: \(distance) 미터")
+                            distances.append(distance)
+                        }
+                    }
+                }
             }
+            self.hospitalDistances = distances
         } catch {
-            
+            print("Error geocoding address: \(error)")
         }
+        
+        
     }
     func fetchAddress( currentLocationString: @escaping (String) -> ()) {
         guard let coordinate = location?.coordinate else {

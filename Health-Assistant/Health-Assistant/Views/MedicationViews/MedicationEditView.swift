@@ -1,26 +1,24 @@
 //
-//  MedicationAddView.swift
+//  MedicationEditView.swift
 //  Health-Assistant
 //
-//  Created by 김수민 on 11/4/24.
+//  Created by 김수민 on 11/11/24.
 //
 
 import SwiftUI
-import SwiftData
 
-struct MedicationAddView: View {
+struct MedicationEditView: View {
     
     @EnvironmentObject var viewModel: MedicationViewModel
+    
+    var medication: Medication
     
     @State private var medicationName: String = ""
     @State private var selectedDays: [String] = []
     @State private var selectedTimes: [Date] = []
-    @State private var medicationTime: String = ""
-    @State private var medicationNote : String = ""
+    @State private var medicationNote: String = ""
     @State private var timePicker: Bool = false
     @State private var time: Date = Date()
-    
-    @State private var iconViewSheet = false
     
     let week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
@@ -42,21 +40,13 @@ struct MedicationAddView: View {
                             Image(systemName: "pill.fill")
                                 .foregroundStyle(.white)
                                 .font(.system(size: 40))
-                            
-                            Button(action: {
-                                iconViewSheet.toggle()
-                            }) {
-                                Text("아이콘 추가")
-                                    .foregroundColor(.white)
-                                    .font(.semibold14)
-                            }
                         }
                     }
                     .padding(.top, 10)
                     .padding(.bottom, 20)
-                    VStack (alignment: .leading){
-                        
-                        TextField("약 이름", text: $medicationName)
+                    
+                    VStack (alignment: .leading) {
+                        TextField("\(medication.name)", text: $medicationName)
                             .background(Color.clear)
                             .font(.semibold26)
                             .frame(height: 50)
@@ -85,7 +75,8 @@ struct MedicationAddView: View {
                                     .font(.regular16)
                             }
                         }
-                        HStack(spacing: 10){
+                        
+                        HStack(spacing: 10) {
                             ForEach(week, id: \.self) { day in
                                 Text(translateDayKorean(day))
                                     .padding(10)
@@ -104,7 +95,7 @@ struct MedicationAddView: View {
                             }
                         }
                         .padding(.bottom, 40)
-                        
+
                         HStack {
                             Text("시간")
                                 .font(.semibold22)
@@ -127,7 +118,6 @@ struct MedicationAddView: View {
                                 displayTime(formatTimeToString(time))
                             }
                         }
-                        
                         
                         if timePicker {
                             VStack {
@@ -168,7 +158,6 @@ struct MedicationAddView: View {
                             .cornerRadius(2)
                             .font(.regular14)
                             .frame(height: 150)
-                        
                     }
                 }
                 .padding(50)
@@ -185,23 +174,15 @@ struct MedicationAddView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        let formattedTimes = selectedTimes.map { formatTimeToString($0) }
-                        
-                        let newMedication = Medication(name: medicationName, company: "제약회사 이름", days: selectedDays, times: formattedTimes, note: medicationNote)
-                        
-                        viewModel.addMedication(medication: newMedication)
-                        
-                        dismiss()
                     }) {
                         Text("저장")
                             .foregroundStyle(.black)
                     }
                 }
             }
-            .navigationTitle("약 추가")
+            .navigationTitle("약 정보 수정")
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $iconViewSheet) {
-                MedicationIconView()
+            .onAppear {
             }
         }
     }
@@ -223,8 +204,6 @@ struct MedicationAddView: View {
                 .foregroundColor(.black)
                 .padding(.top, 7)
             
-            
-            
             Button(action: {
                 if let index = selectedTimes.firstIndex(where: { formatTimeToString($0) == time }) {
                     selectedTimes.remove(at: index)
@@ -239,6 +218,7 @@ struct MedicationAddView: View {
 }
 
 #Preview {
-    MedicationAddView()
+    MedicationEditView(medication: Medication(name: "혈압약", company: "대웅제약", days: ["Thursday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "식후 30분 후에 복용하기"))
         .environmentObject(MedicationViewModel(dataSource: .shared))
 }
+
