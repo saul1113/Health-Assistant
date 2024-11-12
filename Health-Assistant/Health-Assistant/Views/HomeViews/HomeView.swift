@@ -15,6 +15,17 @@ struct HomeView: View {
     @StateObject private var userViewModel = UserViewModel()
     @State private var heartRate: Double = 0
     
+    private var sortedHospitals: [(String, Double, String)] {
+        // 병원 이름, 거리, 주소를 묶어서 배열을 생성하고 거리 기준으로 정렬
+        let hospitals = (0..<locationManager.hospitalNames.count).map { index in
+            (locationManager.hospitalNames[index],
+             locationManager.hospitalDistances[index],
+             locationManager.hospitalAddresses[index])
+        }
+        
+        return hospitals.sorted { $0.1 < $1.1 }  // 거리 기준으로 정렬
+    }
+    
     let nickname: String = "강사"
     var body: some View {
         NavigationStack {
@@ -51,10 +62,12 @@ struct HomeView: View {
                         .cornerRadius(15, corners: [.topLeft, .topRight])
                     }
                     .onAppear {
+                        
                         locationManager.fetchAddress { local in
                             Task {
                                 await userViewModel.fetchHospitalLocation(local: local)
                                 try? await dataManager.signUp()
+                                await locationManager.fetchAddressFromLocation(hospitalAddress: userViewModel.hospitalsInfo)
                             }
                         }
                     }
@@ -100,24 +113,66 @@ struct HomeView: View {
         .padding(.bottom, 20)
     }
     func chartView(geometry: GeometryProxy) -> some View {
-        HStack (spacing: 10) {
+        HStack(spacing: 10) {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+            
             NavigationLink {
                 HospitalMapView(hospitals: userViewModel.hospitalsInfo)
             } label: {
-                Text("\(locationManager.currentAddress ?? "")\n 가까운 병원 및 응급실")
-                    .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
-                    .foregroundStyle(.black)
-                    .background {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("내 근처 병원")
+                        .font(.bold18)
+                        .foregroundColor(.black)
+                        .padding(.leading, 10)
+                    
+                    ForEach(0..<min(3, sortedHospitals.count), id: \.self) { index in
+                        let hospital = sortedHospitals[index].0
+                        let distance = sortedHospitals[index].1
+                        let address = sortedHospitals[index].2
+                        
+                        HStack(alignment: .top, spacing: 8) {
+                          
+                            Divider()
+                                .frame(width: 2, height: 26)
+                                .background(Color.CustomGreen)
+                            
+                            VStack(alignment: .leading, spacing: 3) {
+                                
+                                HStack {
+                                    Text(hospital)
+                                        .font(.semibold14)
+                                        .foregroundColor(.black)
+                                        
+                                    Spacer()
+                                    
+                                    Text("\(Int(distance)/1000)km")
+                                        .font(.regular10)
+                                        .foregroundColor(.CustomGreen)
+                                }
+                                
+                                Text(address)
+                                    .font(.regular10)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(0)
+                            }
+                        }
+                        .padding(.horizontal, 8)
                     }
-                
+                }
+                .padding(12)
+                .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                )
             }
         }
     }
+
+
+
+
     
     func sleepTime(geometry: GeometryProxy) -> some View {
         VStack(spacing: 5) {

@@ -17,9 +17,9 @@ struct HospitalMapView: View {
             ZStack(alignment: .bottom) {
                 Map {
                     ForEach(locationManager.hospitalLocation.indices, id: \.self) { index in
-                        Annotation("\(index)", coordinate: locationManager.hospitalLocation[index]){
+                        Annotation("", coordinate: locationManager.hospitalLocation[index]){
                             ZStack {
-                                Text("🏥\(hospitals[index].dutyName ?? "") ")
+                                Image("HospitalMarker")
                                     .background {
                                         Rectangle()
                                             .padding()
@@ -45,6 +45,7 @@ struct HospitalMapView: View {
                                 .padding()
                                 .background(Color.customGreen)
                                 .cornerRadius(20)
+                                .font(.bold18)
                         }
                         .padding()
                     }
@@ -90,6 +91,7 @@ struct HospitalListView: View {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(sortedHospitals[index].0.dutyName ?? "")
                             .font(.semibold18)
+                        Text(sortedHospitals[index].0.dutyAddr ?? "")
                         if currentLocation.indices.contains(index) {
                             if sortedHospitals[index].1 > 1000 {
                                 Text("거리: \(Int(sortedHospitals[index].1/1000)) Km")
@@ -101,6 +103,7 @@ struct HospitalListView: View {
                                     .foregroundStyle(.customGreen)
                                 
                             }
+                            
                         }
                     }
                     Spacer()
