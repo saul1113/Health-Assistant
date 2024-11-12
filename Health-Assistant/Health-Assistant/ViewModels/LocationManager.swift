@@ -38,13 +38,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         do {
             var distances: [Double] = []
             for hospitalAddrs in hospitalAddress {
-                print(hospitalAddress)
                 if let hospitalAddress = hospitalAddrs.dutyAddr{
                     let addressString = hospitalAddress.contains(",") ?
                     String(hospitalAddress.split(separator: ",")[0]) : hospitalAddress
-                    print("gldjf")
-                    print(addressString)
-                    print("____")
                     let hospitalAddress = try? await geocoder.geocodeAddressString(addressString)
                     
                     if let address = hospitalAddress?.first?.location {
