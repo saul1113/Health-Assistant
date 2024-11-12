@@ -76,21 +76,31 @@ struct SleepChartView: View {
                     .padding()
                 }
                 
+                
+                HStack {
+                    Text("수면 기록")
+                        .font(.semibold22)
+                    Spacer()
+                }
+                .padding()
+                
                 // 수면 데이터를 VStack과 ForEach로 표시
                 ForEach(viewModel.sleepData) { stage in
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("수면 단계: \(stage.stage.rawValue)")
-                            .font(.semibold18)
-                        Text("시작 시간: \(formatDate(stage.startDate))")
-                            .font(.regular16)
-                        Text("종료 시간: \(formatDate(stage.endDate))")
-                            .font(.regular16)
+                        HStack {
+                            Text("수면 단계:  \(stage.stage.rawValue)")
+                                .font(.semibold18)
+                            
+                            Spacer()
+                            
+                            Text("\(formatTimeRange(start: stage.startDate, end: stage.endDate))")
+                                .font(.regular16)
+                        }
+                        
+                        Divider() // 각 데이터 구분을 위한 Divider 추가
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 1)
                     .padding(.horizontal)
+                    
                 }
             }
             .navigationTitle("수면 데이터")
@@ -98,11 +108,10 @@ struct SleepChartView: View {
         }
     }
     
-    private func formatDate(_ date: Date) -> String {
+    private func formatTimeRange(start: Date, end: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-        return formatter.string(from: date)
+        formatter.dateFormat = "hh:mm a"
+        return "\(formatter.string(from: start)) ~ \(formatter.string(from: end))"
     }
     
     private func formatDateToYearMonthDay(_ date: Date) -> String {
