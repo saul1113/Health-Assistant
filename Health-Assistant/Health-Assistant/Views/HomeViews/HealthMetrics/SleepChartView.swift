@@ -14,6 +14,27 @@ struct SleepChartView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
+                // 수면 시간과 날짜 표시
+                if let firstSleep = viewModel.sleepData.first {
+                    let totalSleepDuration = calculateTotalSleepDuration()
+                    
+                    Text("수면 시간")
+                        .font(.headline)
+                        .padding(.horizontal)
+                    
+                    Text("\(formatDuration(totalSleepDuration))")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
+                        .padding(.bottom, 2)
+                    
+                    Text(formatDateToYearMonthDay(firstSleep.startDate))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
+                }
+                
                 Text("수면 데이터")
                     .font(.title2)
                     .padding(.horizontal)
@@ -28,7 +49,7 @@ struct SleepChartView: View {
                             xEnd: .value("End Time", stage.endDate),
                             y: .value("Stage", stage.stage.rawValue)
                         )
-                        .foregroundStyle(stage.stage.color) // stage.color 사용
+                        .foregroundStyle(stage.stage.color)
                         
                         // 다음 단계와 현재 단계의 끝을 선으로 연결
                         if index < viewModel.sleepData.count - 1 {
@@ -83,4 +104,23 @@ struct SleepChartView: View {
         return formatter.string(from: date)
     }
     
+    private func formatDateToYearMonthDay(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 M월 d일"
+        return formatter.string(from: date)
+    }
+    
+    // 수면 단계 총 시간을 계산하는 함수
+    private func calculateTotalSleepDuration() -> TimeInterval {
+        viewModel.sleepData.reduce(0) { total, stage in
+            total + stage.endDate.timeIntervalSince(stage.startDate)
+        }
+    }
+    
+    // TimeInterval을 읽기 쉬운 형식으로 포맷
+    private func formatDuration(_ duration: TimeInterval) -> String {
+        let hours = Int(duration) / 3600
+        let minutes = (Int(duration) % 3600) / 60
+        return "\(hours)시간 \(minutes)분"
+    }
 }
