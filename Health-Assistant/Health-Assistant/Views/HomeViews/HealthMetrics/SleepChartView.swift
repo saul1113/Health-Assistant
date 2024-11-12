@@ -82,7 +82,49 @@ struct SleepChartView: View {
                         .font(.semibold22)
                     Spacer()
                 }
-                .padding()
+                .padding(.horizontal)
+                
+                // 수면 단계별 총 시간 표시
+                VStack {
+                    HStack {
+                        Text("비수면 총 시간:")
+                            .font(.regular20)
+                        
+                        Spacer()
+                        
+                        Text("\(formatDuration(totalTime(for: .awake)))")
+                            .font(.regular20)
+                    }
+                    HStack {
+                        Text("REM 수면 총 시간:")
+                            .font(.regular20)
+                        
+                        Spacer()
+                        
+                        Text("\(formatDuration(totalTime(for: .rem)))")
+                            .font(.regular20)
+                    }
+                    HStack {
+                        Text("코어 수면 총 시간:")
+                            .font(.regular20)
+                        
+                        Spacer()
+                        
+                        Text("\(formatDuration(totalTime(for: .core)))")
+                            .font(.regular20)
+                    }
+                    HStack {
+                        Text("깊은 수면 총 시간:")
+                            .font(.regular20)
+                        
+                        Spacer()
+                        
+                        Text("\(formatDuration(totalTime(for: .deep)))")
+                            .font(.regular20)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 20)
                 
                 // 수면 데이터를 VStack과 ForEach로 표시
                 ForEach(viewModel.sleepData) { stage in
@@ -118,6 +160,15 @@ struct SleepChartView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 M월 d일"
         return formatter.string(from: date)
+    }
+    
+    // 특정 수면 단계의 총 시간을 계산하는 함수
+    private func totalTime(for stageType: SleepStage) -> TimeInterval {
+        viewModel.sleepData
+            .filter { $0.stage == stageType }
+            .reduce(0) { total, stage in
+                total + stage.endDate.timeIntervalSince(stage.startDate)
+            }
     }
     
     // 수면 단계 총 시간을 계산하는 함수
