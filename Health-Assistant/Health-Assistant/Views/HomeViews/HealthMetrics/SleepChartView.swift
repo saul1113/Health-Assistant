@@ -50,7 +50,7 @@ struct SleepChartView: View {
                     }
                 }
                 .chartYAxis {
-                    AxisMarks(position: .leading) {
+                    AxisMarks {
                         AxisValueLabel()
                     }
                 }
