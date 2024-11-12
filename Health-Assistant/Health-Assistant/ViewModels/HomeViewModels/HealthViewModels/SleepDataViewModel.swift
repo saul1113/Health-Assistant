@@ -49,10 +49,7 @@ class SleepDataViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 // 수면 단계를 원하는 순서로 정렬하여 sleepData에 저장
-                self?.sleepData = sleepData.sorted { (first, second) in
-                    let order: [SleepStage] = [.awake, .rem, .core, .deep ]
-                    return order.firstIndex(of: first.stage) ?? 0 < order.firstIndex(of: second.stage) ?? 0
-                }
+                self?.sleepData = sleepData.sorted { $0.startDate < $1.startDate }
             }
         }
     }
