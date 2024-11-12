@@ -16,64 +16,76 @@ struct MiniWeekView: View {
             Text(viewModel.displayedMonthYear)
                 .font(.bold28)
                 .padding(.leading)
-                .foregroundStyle(.black)
+                .foregroundColor(.black)
+            
+            DayHeadersView()
+                .padding(.horizontal)
+                .padding(.bottom, -10)
             
             HStack {
                 ForEach(viewModel.currentWeekDates(), id: \.self) { date in
-                    VStack() {
-                        // 요일 표시
-                        Text(viewModel.formattedDayOfWeek(date))
-                            .font(.regular14)
-                            .padding(.vertical, -5)
-                            .foregroundStyle(.black)
-                        
+                    VStack {
                         Text(viewModel.formattedDayOfMonth(date))
-                            .font(.headline)
+                            .font(.semibold16)
                             .foregroundColor(viewModel.isToday(date) ? .white : .primary)
                             .padding(8)
                             .background(viewModel.isToday(date) ? Color.blue.opacity(0.4) : Color.clear)
                             .clipShape(Circle())
-                        
-                        Spacer()
-                        
-                        let dayEvents = viewModel.events(for: date, context: modelContext)
-                        ForEach(dayEvents.prefix(2), id: \.id) { event in
-                            Text(event.title)
-                                .font(.caption)
-                                .lineLimit(1)
-                                .padding(4)
-                                .background(Color.customGreen.opacity(0.8))
-                                .cornerRadius(4)
-                                .foregroundColor(.white)
-                        }
-                        
-                        if dayEvents.count > 2 {
-                            Text("+\(dayEvents.count - 2) 더보기")
-                                .font(.caption2)
-                                .foregroundColor(.gray)
-                        }
                     }
-                    .padding(.vertical, 2)
                     .frame(maxWidth: .infinity)
                 }
             }
             .padding(.horizontal)
+            
+            HStack {
+                ForEach(viewModel.currentWeekDates(), id: \.self) { date in
+                    VStack(alignment: .leading, spacing: 2) {
+                        let dayEvents = viewModel.events(for: date, context: modelContext)
+                        
+                        ForEach(dayEvents.prefix(2), id: \.id) { event in
+                            GeometryReader { geometry in
+                                ZStack(alignment: .leading) {
+                                    Rectangle()
+                                        .fill(Color.customGreen.opacity(0.8))
+                                        .cornerRadius(4)
+                                        .frame(width: geometry.size.width * 1.12, height: geometry.size.height * 0.9) 
+                                    
+                                    Text(event.title)
+                                        .font(.regular8)
+                                        .lineLimit(1)
+                                        .padding(.leading, geometry.size.width * 0.02)
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            .frame(height: 20) 
+                        }
+                        
+                        if dayEvents.count == 1 {
+                            Text(" ")
+                                .font(.system(size: 10))
+                                .padding(4)
+                        }
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .padding(.horizontal)
+            
+            Spacer()
         }
         .frame(maxHeight: 140)
         .padding(.vertical)
-        .background(.white)
+        .background(Color.white)
         .cornerRadius(20)
+        .onAppear {
+            viewModel.loadEvents(context: modelContext)
+        }
     }
 }
 
 extension CalenderViewModel {
-    func formattedDayOfWeek(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E"
-        formatter.locale = Locale(identifier: "ko_KR")
-        return formatter.string(from: date)
-    }
-    
     func formattedDayOfMonth(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d"
