@@ -60,3 +60,6 @@ func formatTimeToString(_ date: Date) -> String {
     formatter.dateFormat = "hh:mm a"
     return formatter.string(from: date)
 }
+
+
+

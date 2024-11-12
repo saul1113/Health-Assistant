@@ -1,28 +1,23 @@
 //
-//  MedicationEditView.swift
+//  MedicationDetailView.swift
 //  Health-Assistant
 //
-//  Created by 김수민 on 11/11/24.
+//  Created by 김수민 on 11/4/24.
 //
 
 import SwiftUI
+import SwiftData
 
 struct MedicationEditView: View {
-    
+    @State var medication: Medication
     @EnvironmentObject var viewModel: MedicationViewModel
-    
-    var medication: Medication
-    
-    @State private var medicationName: String = ""
-    @State private var selectedDays: [String] = []
     @State private var selectedTimes: [Date] = []
-    @State private var medicationNote: String = ""
-    @State private var timePicker: Bool = false
     @State private var time: Date = Date()
+    @Environment(\.dismiss) var dismiss
+    @State private var timePicker: Bool = false
+    @State private var iconViewSheet = false
     
     let week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
@@ -40,13 +35,19 @@ struct MedicationEditView: View {
                             Image(systemName: "pill.fill")
                                 .foregroundStyle(.white)
                                 .font(.system(size: 40))
+                            
+                            Button(action: {
+                                iconViewSheet.toggle()
+                            }) {
+                                Text("아이콘 변경")
+                                    .foregroundColor(.white)
+                                    .font(.semibold14)
+                            }
                         }
                     }
-                    .padding(.top, 10)
-                    .padding(.bottom, 20)
-                    
-                    VStack (alignment: .leading) {
-                        TextField("\(medication.name)", text: $medicationName)
+                    .padding(20)
+                    VStack(alignment: .leading, spacing: 40) {
+                        TextField("약 이름", text: $medication.name)
                             .background(Color.clear)
                             .font(.semibold26)
                             .frame(height: 50)
@@ -55,7 +56,7 @@ struct MedicationEditView: View {
                                 RoundedRectangle(cornerRadius: 5)
                                     .stroke(Color.black, lineWidth: 0.3)
                             }
-                            .padding(.bottom, 40)
+                            .padding(.bottom, 10)
                         
                         HStack {
                             Text("요일")
@@ -64,38 +65,37 @@ struct MedicationEditView: View {
                             Spacer()
                             
                             Button(action: {
-                                if selectedDays.count == week.count {
-                                    selectedDays.removeAll()
+                                if medication.days.count == week.count {
+                                    medication.days.removeAll()
                                 } else {
-                                    selectedDays = week
+                                    medication.days = week
                                 }
                             }) {
-                                Text(selectedDays.count == week.count ? "선택 취소" : "모두 선택")
+                                Text(medication.days.count == week.count ? "선택 취소" : "모두 선택")
                                     .foregroundColor(.CustomGreen)
                                     .font(.regular16)
                             }
                         }
-                        
-                        HStack(spacing: 10) {
+                        HStack(spacing: 10){
                             ForEach(week, id: \.self) { day in
                                 Text(translateDayKorean(day))
                                     .padding(10)
                                     .frame(width: 40, height: 40)
-                                    .background(selectedDays.contains(day) ? Color.CustomGreen : Color.gray.opacity(0.3))
+                                    .background(medication.days.contains(day) ? Color.CustomGreen : Color.gray.opacity(0.3))
                                     .clipShape(Circle())
-                                    .foregroundColor(selectedDays.contains(day) ? .white : .black)
+                                    .foregroundColor(medication.days.contains(day) ? .white : .black)
                                     .font(.semibold16)
                                     .onTapGesture {
-                                        if selectedDays.contains(day) {
-                                            selectedDays.removeAll { $0 == day }
+                                        if medication.days.contains(day) {
+                                            medication.days.removeAll { $0 == day }
                                         } else {
-                                            selectedDays.append(day)
+                                            medication.days.append(day)
                                         }
                                     }
                             }
                         }
                         .padding(.bottom, 40)
-
+                        
                         HStack {
                             Text("시간")
                                 .font(.semibold22)
@@ -118,6 +118,7 @@ struct MedicationEditView: View {
                                 displayTime(formatTimeToString(time))
                             }
                         }
+                        
                         
                         if timePicker {
                             VStack {
@@ -148,41 +149,50 @@ struct MedicationEditView: View {
                                 .padding(.top, 10)
                                 .foregroundColor(.CustomGreen)
                         }
-                        .padding(.bottom, 5)
                         .padding(.top, 30)
                         
-                        TextEditor(text: $medicationNote)
+                        TextEditor(text: $medication.note)
                             .padding()
                             .scrollContentBackground(.hidden)
                             .background(Color.CustomGreen.opacity(0.1))
                             .cornerRadius(2)
                             .font(.regular14)
                             .frame(height: 150)
+                        
+                        
+                        Spacer()
                     }
                 }
-                .padding(50)
-                .padding(.trailing, 20)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Text("취소")
-                            .foregroundStyle(.black)
+                .padding(.horizontal, 20)
+                .scrollIndicators(.never)
+                .navigationTitle("\(medication.name) 정보")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Text("취소")
+                                .foregroundStyle(.black)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            //                            let formattedTimes = selectedTimes.map { formatTimeToString($0) }
+                            
+                            //                            let updateMedication = Medication(name: medication.name, company: "제약회사 이름", days: medication.days, times: formattedTimes, note: medication.note)
+                            //
+                            //                            viewModel.updateMedication(medication: updateMedication)
+                            
+                            dismiss()
+                        }) {
+                            Text("수정")
+                                .foregroundStyle(.black)
+                        }
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                    }) {
-                        Text("저장")
-                            .foregroundStyle(.black)
-                    }
-                }
-            }
-            .navigationTitle("약 정보 수정")
-            .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
+                
             }
         }
     }
@@ -204,6 +214,8 @@ struct MedicationEditView: View {
                 .foregroundColor(.black)
                 .padding(.top, 7)
             
+            
+            
             Button(action: {
                 if let index = selectedTimes.firstIndex(where: { formatTimeToString($0) == time }) {
                     selectedTimes.remove(at: index)
@@ -218,7 +230,7 @@ struct MedicationEditView: View {
 }
 
 #Preview {
-    MedicationEditView(medication: Medication(name: "혈압약", company: "대웅제약", days: ["Thursday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "식후 30분 후에 복용하기"))
-        .environmentObject(MedicationViewModel(dataSource: .shared))
+    MedicationEditView(medication: Medication(name: "혈압약", company: "대웅제약", days:  ["Thursday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "식후 30분 후에 복용하기"))
 }
+
 

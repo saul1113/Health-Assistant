@@ -30,6 +30,7 @@ extension Font {
     static var semibold14 = Font.custom("NotoSansKR-SemiBold", size: 14)
     
     /// Medium
+    static var medium30 = Font.custom("NotoSansKR-Medium", size: 28)
     static var medium28 = Font.custom("NotoSansKR-Medium", size: 28)
     static var medium26 = Font.custom("NotoSansKR-Medium", size: 26)
     static var medium24 = Font.custom("NotoSansKR-Medium", size: 24)

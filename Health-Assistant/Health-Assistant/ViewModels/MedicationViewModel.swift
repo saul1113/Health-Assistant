@@ -22,11 +22,11 @@ class MedicationViewModel: ObservableObject {
     init(dataSource: MedicationDataSource) {
         self.dataSource = dataSource
         
-//        let dummyList = Medication.dummyList
-//        for medication in dummyList {
-//            dataSource.addMedication(medication)
-//        }
-//        
+        //        let dummyList = Medication.dummyList
+        //        for medication in dummyList {
+        //            dataSource.addMedication(medication)
+        //        }
+        //
         medications = dataSource.fetchMedications()
     }
     
@@ -54,6 +54,12 @@ class MedicationViewModel: ObservableObject {
         fetchMedications()
     }
     
+    //복용 약 업데이트
+    func updateMedication(medication: Medication) {
+        dataSource.updateMedication(medication)
+        fetchMedications()
+    }
+    
     // 오늘 복용해야 할 약 필터링
     func filterTodayMedications() {
         let dateFormatter = DateFormatter()
@@ -69,6 +75,63 @@ class MedicationViewModel: ObservableObject {
             todayMedications[medicationIndex].isTaken[index].toggle()
         }
     }
+    
+    func timesToDates(_ times: [String]) -> [Date] {
+        var dates: [Date] = []
+        for timeString in times {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm a"
+            
+            if let time = formatter.date(from: timeString) {
+                dates.append(time)
+            } else {
+                print("Failed to convert time: \(timeString)")
+            }
+        }
+        
+        return dates
+    }
+    
+    func checkMinuteMedications() -> [Medication] {
+        let currentDate = Date()
+        var passMedications: [Medication] = []
+        
+        for medication in todayMedications {
+            for (index, timeString) in medication.times.enumerated() {
+                if let medicationTime = timeToDate(timeString, currentDate: currentDate) {
+                    let timeDifference = currentDate.timeIntervalSince(medicationTime)
+                    let thirtyMinutesInSeconds: TimeInterval = 30 * 60
+                    if timeDifference > thirtyMinutesInSeconds && !medication.isTaken[index] {
+                        passMedications.append(medication)
+                    }
+                    print(timeDifference)
+                }
+            }
+        }
+        return passMedications
+    }
+    
+    func timeToDate(_ timeString: String, currentDate: Date) -> Date? {
+        let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm a"  // 12-hour format with AM/PM
+            
+            // 현재 날짜의 연도, 월, 일만 추출
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+            
+            // 시간 문자열로부터 시간을 파싱
+            if let time = formatter.date(from: timeString) {
+                // 시간을 현재 날짜에 결합하여 정확한 날짜 객체로 반환
+                return calendar.date(bySettingHour: calendar.component(.hour, from: time),
+                                     minute: calendar.component(.minute, from: time),
+                                     second: 0,
+                                     of: calendar.date(from: components)!)
+            }
+            
+            print("Invalid time format: \(timeString)")
+            return nil
+    }
+
     
     //    func fetchMedications(local: String, locality: String) async {
     //        let url = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService"
