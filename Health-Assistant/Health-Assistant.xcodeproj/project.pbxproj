@@ -19,6 +19,7 @@
 		2C77E0F12CDA857E005365CC /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EA2CDA857E005365CC /* NotoSansKR-Bold.ttf */; };
 		2C77E0F22CDA857E005365CC /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0EB2CDA857E005365CC /* NotoSansKR-Medium.ttf */; };
 		2C77E0F42CDA8626005365CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C77E0F32CDA8626005365CC /* Assets.xcassets */; };
+		2C7D9D2E2CE2F39000C824FE /* MedicationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7D9D2D2CE2F39000C824FE /* MedicationDataSource.swift */; };
 		2C7F614F2CD491570070998C /* Health_AssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F614C2CD491570070998C /* Health_AssistantApp.swift */; };
 		2C8E15F52CD89D6E005C9801 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8E15F42CD89D6E005C9801 /* HealthManager.swift */; };
 		2CA032212CDD9269006DF2DD /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA032202CDD9269006DF2DD /* TimeView.swift */; };
@@ -89,11 +90,11 @@
 		2C77E0ED2CDA857E005365CC /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
 		2C77E0F32CDA8626005365CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C77E0F52CDA8AB5005365CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C7D9D2D2CE2F39000C824FE /* MedicationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDataSource.swift; sourceTree = "<group>"; };
 		2C7F61372CD4914E0070998C /* Health-Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health-Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7F614C2CD491570070998C /* Health_AssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_AssistantApp.swift; sourceTree = "<group>"; };
 		2C8E15F32CD899B2005C9801 /* Health-Assistant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Health-Assistant.entitlements"; sourceTree = "<group>"; };
 		2C8E15F42CD89D6E005C9801 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
-		2CA0321E2CDD8E3B006DF2DD /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		2CA032202CDD9269006DF2DD /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		2CA032222CDD931F006DF2DD /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		2CA032232CDD931F006DF2DD /* MedicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationResponse.swift; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 		2CA032242CDD931F006DF2DD /* MedicationModels */ = {
 			isa = PBXGroup;
 			children = (
+				2C7D9D2D2CE2F39000C824FE /* MedicationDataSource.swift */,
 				2CA032222CDD931F006DF2DD /* Medication.swift */,
 				2CA032232CDD931F006DF2DD /* MedicationResponse.swift */,
 			);
@@ -302,7 +304,6 @@
 				500EB8892CD8558600CCD409 /* HomeModels */,
 				50FC2E572CDA04F8000C1EB8 /* ProfileModels */,
 				EBE160AA2CDA0A1B003E7CC2 /* HealthKitManager.swift */,
-				2CA0321E2CDD8E3B006DF2DD /* Medication.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -522,6 +523,7 @@
 			files = (
 				2CA032302CDD9739006DF2DD /* MedicationDetailView.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
+				2C7D9D2E2CE2F39000C824FE /* MedicationDataSource.swift in Sources */,
 				2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */,
 				2C41A0CB2CD9B763006815BC /* UserViewModel.swift in Sources */,
 				50FC2E592CDA0506000C1EB8 /* ProfileModel.swift in Sources */,
