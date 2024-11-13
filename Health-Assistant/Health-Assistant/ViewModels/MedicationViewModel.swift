@@ -21,12 +21,6 @@ class MedicationViewModel: ObservableObject {
     
     init(dataSource: MedicationDataSource) {
         self.dataSource = dataSource
-        
-        //        let dummyList = Medication.dummyList
-        //        for medication in dummyList {
-        //            dataSource.addMedication(medication)
-        //        }
-        //
         medications = dataSource.fetchMedications()
     }
     
@@ -92,36 +86,33 @@ class MedicationViewModel: ObservableObject {
         return dates
     }
     
-    func checkMinuteMedications() -> [Medication] {
+    func checkMinuteMedications(_ medication: Medication) -> [Bool] {
         let currentDate = Date()
-        var passMedications: [Medication] = []
-        
-        for medication in todayMedications {
-            for (index, timeString) in medication.times.enumerated() {
-                if let medicationTime = timeToDate(timeString, currentDate: currentDate) {
-                    let timeDifference = currentDate.timeIntervalSince(medicationTime)
-                    let thirtyMinutesInSeconds: TimeInterval = 30 * 60
-                    if timeDifference > thirtyMinutesInSeconds && !medication.isTaken[index] {
-                        passMedications.append(medication)
-                    }
-                    print(timeDifference)
-                }
+        let thirtyMinutesInSeconds: TimeInterval = 30 * 60
+        var isTimePassedArray: [Bool] = []
+
+        for (index, timeString) in medication.times.enumerated() {
+            if let medicationTime = timeToDate(timeString, currentDate: currentDate) {
+                let timeDifference = currentDate.timeIntervalSince(medicationTime)
+                let isPassed = (timeDifference > thirtyMinutesInSeconds && !medication.isTaken[index])
+                isTimePassedArray.append(isPassed)
+            } else {
+                isTimePassedArray.append(false)
             }
         }
-        return passMedications
+
+        return isTimePassedArray
     }
     
     func timeToDate(_ timeString: String, currentDate: Date) -> Date? {
         let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm a"  // 12-hour format with AM/PM
-            
-            // 현재 날짜의 연도, 월, 일만 추출
+            formatter.dateFormat = "hh:mm a"
+
             let calendar = Calendar.current
             let components = calendar.dateComponents([.year, .month, .day], from: currentDate)
-            
-            // 시간 문자열로부터 시간을 파싱
+
             if let time = formatter.date(from: timeString) {
-                // 시간을 현재 날짜에 결합하여 정확한 날짜 객체로 반환
+
                 return calendar.date(bySettingHour: calendar.component(.hour, from: time),
                                      minute: calendar.component(.minute, from: time),
                                      second: 0,
