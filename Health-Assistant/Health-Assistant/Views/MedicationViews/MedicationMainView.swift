@@ -41,19 +41,19 @@ struct MedicationMainView: View {
                                                 viewModel.toggleTakeMedication(for: medication, at: index)
                                             }) {
                                                 HStack(spacing: 5) {
-                                                    Image(systemName: medication.isTaken[0] ? "pill.fill" : "pill")
-                                                        .foregroundColor(medication.isTaken[0] ? .CustomGreen : .gray)
+                                                    Image(systemName: medication.isTaken[index] ? "pill.fill" : "pill")
+                                                        .foregroundColor(medication.isTaken[index] ? .CustomGreen : .gray)
                                                         .font(.system(size: 30))
                                                         .padding(10)
-                                                        .background(medication.isTaken[0] ? Color.CustomGreen.opacity(0.1) : Color.gray.opacity(0.1))
+                                                        .background(medication.isTaken[index] ? Color.CustomGreen.opacity(0.1) : Color.gray.opacity(0.1))
                                                         .cornerRadius(30)
                                                     
-                                                    Text(medication.isTaken[0] ? "복용\n완료" : "복용 전")
+                                                    Text(medication.isTaken[index] ? "복용\n완료" : "복용 전")
                                                         .frame(width: 70)
                                                         .multilineTextAlignment(.center)
                                                         .fixedSize()
                                                         .font(.medium16)
-                                                        .foregroundColor(medication.isTaken[0] ? .CustomGreen : .black)
+                                                        .foregroundColor(medication.isTaken[index] ? .CustomGreen : .black)
                                                 }
                                                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
                                             }
