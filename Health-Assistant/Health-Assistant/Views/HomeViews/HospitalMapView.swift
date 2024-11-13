@@ -125,12 +125,13 @@ struct HospitalListView: View {
                     withAnimation {
                         cameraPosition = .region(
                             MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude),
-                                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                                center: coordinate ,
+                                span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
                             )
                         )
+                        isSheetExpanded = false
                     }
-                    isSheetExpanded = false
+                  
                 }
             }
             .listStyle(PlainListStyle())
