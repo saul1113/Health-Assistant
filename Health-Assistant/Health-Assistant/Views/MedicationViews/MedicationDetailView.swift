@@ -69,9 +69,14 @@ struct MedicationDetailView: View {
                         .font(.semibold24)
                         .padding(.bottom, -20)
                     
-                    Text("\(medication.note)")
-                        .font(.regular16)
-                    
+                    if medication.note == "" {
+                        Text("메모 없음")
+                            .font(.regular16)
+                    }
+                    else {
+                        Text("\(medication.note)")
+                            .font(.regular16)
+                    }
                     
                     Button(action: {
                         showDetailsSheet.toggle()
