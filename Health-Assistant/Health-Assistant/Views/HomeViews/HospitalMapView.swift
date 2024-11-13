@@ -10,16 +10,22 @@ import MapKit
 struct HospitalMapView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var isSheetExpanded = false
-    
+    @State private var cameraPosition: MapCameraPosition = .region (
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 37.5665, longitude: 126.978),
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        )
+        
+    )
     let hospitals: [Item]
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                Map {
+                Map(position: $cameraPosition){
                     ForEach(locationManager.hospitalLocation.indices, id: \.self) { index in
-                        Annotation("\(index)", coordinate: locationManager.hospitalLocation[index]){
+                        Annotation("", coordinate: locationManager.hospitalLocation[index]){
                             ZStack {
-                                Text("🏥\(hospitals[index].dutyName ?? "") ")
+                                Image("HospitalMarker")
                                     .background {
                                         Rectangle()
                                             .padding()
@@ -45,11 +51,12 @@ struct HospitalMapView: View {
                                 .padding()
                                 .background(Color.customGreen)
                                 .cornerRadius(20)
+                                .font(.bold18)
                         }
                         .padding()
                     }
                     
-                    HospitalListView(hospitals: hospitals, currentLocation: locationManager.hospitalDistances)
+                    HospitalListView(hospitals: hospitals, currentLocation: locationManager.hospitalDistances, hospitalLocation: locationManager.hospitalLocation, cameraPosition: $cameraPosition, isSheetExpanded: $isSheetExpanded)
                         .frame(height: isSheetExpanded ? 500 : 160)
                         .background(Color.white)
                         .cornerRadius(20)
@@ -69,11 +76,12 @@ struct HospitalMapView: View {
         }
     }
 }
-
 struct HospitalListView: View {
     let hospitals: [Item]
     let currentLocation: [Double]
-    
+    let hospitalLocation: [CLLocationCoordinate2D]
+    @Binding var cameraPosition: MapCameraPosition
+    @Binding var isSheetExpanded: Bool
     var body: some View {
         VStack {
             HStack {
@@ -83,34 +91,51 @@ struct HospitalListView: View {
             }
             .padding(.horizontal)
             .padding(.top, 10)
-            //거리순 정렬
-            let sortedHospitals = zip(hospitals, currentLocation).sorted { $0.1 < $1.1 }
+            
+            // 3개의 배열을 zip으로 묶기
+            let sortedHospitals = zip(hospitals, zip(currentLocation, hospitalLocation))
+                .sorted { $0.1.0 < $1.1.0 } // 거리순 정렬
+            
             List(sortedHospitals.indices, id: \.self) { index in
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
+                        // 병원 이름과 주소 표시
                         Text(sortedHospitals[index].0.dutyName ?? "")
                             .font(.semibold18)
+                        Text(sortedHospitals[index].0.dutyAddr ?? "")
+                        
+                        // 거리 표시
                         if currentLocation.indices.contains(index) {
-                            if sortedHospitals[index].1 > 1000 {
-                                Text("거리: \(Int(sortedHospitals[index].1/1000)) Km")
+                            if sortedHospitals[index].1.0 > 1000 {
+                                Text("거리: \(Int(sortedHospitals[index].1.0 / 1000)) Km")
                                     .font(.regular14)
                                     .foregroundStyle(.customGreen)
-                            } else{
-                                Text("거리: \(Int(sortedHospitals[index].1)) m")
+                            } else {
+                                Text("거리: \(Int(sortedHospitals[index].1.0)) m")
                                     .font(.regular14)
                                     .foregroundStyle(.customGreen)
-                                
                             }
                         }
                     }
                     Spacer()
                 }
                 .padding(.vertical, 5)
+                .onTapGesture {
+                    let coordinate = sortedHospitals[index].1.1
+                    withAnimation {
+                        cameraPosition = .region(
+                            MKCoordinateRegion(
+                                center: coordinate ,
+                                span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+                            )
+                        )
+                        isSheetExpanded = false
+                    }
+                  
+                }
             }
             .listStyle(PlainListStyle())
         }
         .padding(.top)
     }
-    
 }
-

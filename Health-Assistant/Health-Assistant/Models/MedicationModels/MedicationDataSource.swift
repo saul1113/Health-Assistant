@@ -33,12 +33,12 @@ final class MedicationDataSource {
     
     func addMedication(_ medication: Medication) {
         modelContext.insert(medication)
-            do {
-                try modelContext.save()
-            } catch {
-                print("\(error)")
-            }
+        do {
+            try modelContext.save()
+        } catch {
+            print("\(error)")
         }
+    }
     
     func deldeteMedication(_ medication: Medication) {
         modelContext.delete(medication)
@@ -50,5 +50,12 @@ final class MedicationDataSource {
     }
     
     func updateMedication(_ medication: Medication) {
+        
+        do {
+            try modelContext.save()
+        } catch {
+            print("\(error)")
+        }
     }
+    
 }

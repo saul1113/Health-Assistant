@@ -12,6 +12,7 @@ struct MedicationDetailView: View {
     var medication: Medication
     @EnvironmentObject var viewModel: MedicationViewModel
     @State private var showDetailsSheet = false
+    @State private var showEditSheet = false
     @State private var showDeleteAlert = false
     let gridItem: [GridItem] =  [GridItem(.flexible())]
     
@@ -68,9 +69,14 @@ struct MedicationDetailView: View {
                         .font(.semibold24)
                         .padding(.bottom, -20)
                     
-                    Text("\(medication.note)")
-                        .font(.regular16)
-                    
+                    if medication.note == "" {
+                        Text("메모 없음")
+                            .font(.regular16)
+                    }
+                    else {
+                        Text("\(medication.note)")
+                            .font(.regular16)
+                    }
                     
                     Button(action: {
                         showDetailsSheet.toggle()
@@ -96,11 +102,12 @@ struct MedicationDetailView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            
+                            showEditSheet.toggle()
                         }) {
                             Image(systemName: "pencil")
                                 .foregroundStyle(.black)
                         }
+                        
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
@@ -108,6 +115,9 @@ struct MedicationDetailView: View {
                         }) {
                             Image(systemName: "trash")
                                 .foregroundColor(.black)
+                        }
+                        .sheet(isPresented: $showEditSheet) {
+                            MedicationEditView(medication: medication)
                         }
                     }
                 }
