@@ -62,12 +62,14 @@ struct HomeView: View {
                         .cornerRadius(15, corners: [.topLeft, .topRight])
                     }
                     .onAppear {
-                        
                         locationManager.fetchAddress { local in
                             Task {
-                                await userViewModel.fetchHospitalLocation(local: local)
-                                try? await dataManager.signUp()
-                                await locationManager.fetchAddressFromLocation(hospitalAddress: userViewModel.hospitalsInfo)
+                                await userViewModel.fetchHospitalLocation(local: local) { items in
+                                    Task {
+                                        await locationManager.fetchAddressFromLocation(hospitalAddress: items)
+                                    }
+                                }
+//                                try? await dataManager.signUp()
                             }
                         }
                     }

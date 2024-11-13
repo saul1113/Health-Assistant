@@ -47,7 +47,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                     String(hospitalAddress.split(separator: ",")[0]) : hospitalAddress
                     let hospitalAddress = try? await geocoder.geocodeAddressString(addressString)
                     hospitalAddresses.append(addressString)
-                    print(hospitalAddresses)
                     if let address = hospitalAddress?.first?.location {
                         self.hospitalLocation.append(address.coordinate)
                         //거리 계산 추가함
