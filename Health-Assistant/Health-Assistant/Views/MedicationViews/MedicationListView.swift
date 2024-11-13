@@ -54,7 +54,7 @@ struct MedicationListView: View {
             }
             
         }
-        .navigationTitle("내가 복용하는 약")
+        .navigationTitle("내가 복용하는 모든 약")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
