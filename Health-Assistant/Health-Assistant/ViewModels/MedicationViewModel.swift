@@ -21,12 +21,6 @@ class MedicationViewModel: ObservableObject {
     
     init(dataSource: MedicationDataSource) {
         self.dataSource = dataSource
-        
-//        let dummyList = Medication.dummyList
-//        for medication in dummyList {
-//            dataSource.addMedication(medication)
-//        }
-//        
         medications = dataSource.fetchMedications()
     }
     
@@ -54,6 +48,12 @@ class MedicationViewModel: ObservableObject {
         fetchMedications()
     }
     
+    //복용 약 업데이트
+    func updateMedication(medication: Medication) {
+        dataSource.updateMedication(medication)
+        fetchMedications()
+    }
+    
     // 오늘 복용해야 할 약 필터링
     func filterTodayMedications() {
         let dateFormatter = DateFormatter()
@@ -70,30 +70,58 @@ class MedicationViewModel: ObservableObject {
         }
     }
     
-    //    func fetchMedications(local: String, locality: String) async {
-    //        let url = "http://apis.data.go.kr/1471000/DrbEasyDrugInfoService"
-    //        let serviceKey = "jWOjrutwzF9Lrt7K8SUJoUn2F+1Vj3nfQJgknlMuq6hgcZsP9P9VY/2Wk9jauomuaQzDgeczvrSmOMNxWKQorQ=="
-    //        let pageNo = "1"
-    //        let numOfRows = "10"
-    //        let parameters: Parameters = [
-    //            "STAGE1": local,
-    //            "STAGE2": locality,
-    //            "pageNo": pageNo,
-    //            "numOfRows": numOfRows,
-    //            "serviceKey": serviceKey
-    //        ]
-    //        AF.request(url, method: .get, parameters: parameters).response
-    //        { response in
-    //            switch response.result {
-    //            case .success(let data):
-    //                if let data {
-    ////                    self.medicationsInfo = try! XMLDecoder().decode(MedicationResponse.self, from: data).body.infos.info
-    //                }
-    //            case .failure(let error):
-    //                print(error.localizedDescription)
-    //            }
-    //        }
-    //    }
+    func stringToDates(_ times: [String]) -> [Date] {
+        var dates: [Date] = []
+        for timeString in times {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm a"
+            
+            if let time = formatter.date(from: timeString) {
+                dates.append(time)
+            } else {
+                print("Failed to convert time: \(timeString)")
+            }
+        }
+        
+        return dates
+    }
+    
+    func checkMinuteMedications(_ medication: Medication) -> [Bool] {
+        let currentDate = Date()
+        let thirtyMinutesInSeconds: TimeInterval = 30 * 60
+        var isTimePassedArray: [Bool] = []
+
+        for (index, timeString) in medication.times.enumerated() {
+            if let medicationTime = timeToDate(timeString, currentDate: currentDate) {
+                let timeDifference = currentDate.timeIntervalSince(medicationTime)
+                let isPassed = (timeDifference > thirtyMinutesInSeconds && !medication.isTaken[index])
+                isTimePassedArray.append(isPassed)
+            } else {
+                isTimePassedArray.append(false)
+            }
+        }
+
+        return isTimePassedArray
+    }
+    
+    func timeToDate(_ timeString: String, currentDate: Date) -> Date? {
+        let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm a"
+
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+
+            if let time = formatter.date(from: timeString) {
+
+                return calendar.date(bySettingHour: calendar.component(.hour, from: time),
+                                     minute: calendar.component(.minute, from: time),
+                                     second: 0,
+                                     of: calendar.date(from: components)!)
+            }
+            
+            print("Invalid time format: \(timeString)")
+            return nil
+    }
     
 }
 extension Medication {

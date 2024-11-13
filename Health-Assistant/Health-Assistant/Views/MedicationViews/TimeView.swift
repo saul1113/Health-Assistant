@@ -19,11 +19,11 @@ struct TimeView: View {
         
         return HStack(spacing: 10) {
             Text(formatFirst)
-                .font(.medium28)
+                .font(.medium30)
                 .foregroundColor(.black)
             
             Text(second)
-                .font(.regular16)
+                .font(.regular18)
                 .foregroundColor(.black)
                 .padding(.top, 7)
         }

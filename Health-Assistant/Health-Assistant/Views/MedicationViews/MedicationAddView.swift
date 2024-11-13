@@ -19,8 +19,9 @@ struct MedicationAddView: View {
     @State private var medicationNote : String = ""
     @State private var timePicker: Bool = false
     @State private var time: Date = Date()
-    
     @State private var iconViewSheet = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     let week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
@@ -55,7 +56,6 @@ struct MedicationAddView: View {
                     .padding(.top, 10)
                     .padding(.bottom, 20)
                     VStack (alignment: .leading){
-                        
                         TextField("약 이름", text: $medicationName)
                             .background(Color.clear)
                             .font(.semibold26)
@@ -66,11 +66,9 @@ struct MedicationAddView: View {
                                     .stroke(Color.black, lineWidth: 0.3)
                             }
                             .padding(.bottom, 40)
-                        
                         HStack {
                             Text("요일")
                                 .font(.semibold22)
-                            
                             Spacer()
                             
                             Button(action: {
@@ -85,6 +83,8 @@ struct MedicationAddView: View {
                                     .font(.regular16)
                             }
                         }
+                        
+                        
                         HStack(spacing: 10){
                             ForEach(week, id: \.self) { day in
                                 Text(translateDayKorean(day))
@@ -108,7 +108,6 @@ struct MedicationAddView: View {
                         HStack {
                             Text("시간")
                                 .font(.semibold22)
-                            
                             Spacer()
                             
                             Button(action: {
@@ -185,16 +184,28 @@ struct MedicationAddView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        let formattedTimes = selectedTimes.map { formatTimeToString($0) }
-                        
-                        let newMedication = Medication(name: medicationName, company: "제약회사 이름", days: selectedDays, times: formattedTimes, note: medicationNote)
-                        
-                        viewModel.addMedication(medication: newMedication)
-                        
-                        dismiss()
+                        if medicationName.isEmpty {
+                            alertMessage = "약 이름이 입력되어 있지 않습니다"
+                            showAlert = true
+                        } else if selectedDays.isEmpty {
+                            alertMessage = "복용 요일이 선택되어 있지 않습니다"
+                            showAlert = true
+                        } else if selectedTimes.isEmpty {
+                            alertMessage = "복용 시간이 추가되어 있지 않습니다"
+                            showAlert = true
+                        } else {
+                            let formattedTimes = selectedTimes.map { formatTimeToString($0) }
+                            let newMedication = Medication(name: medicationName, company: "제약회사 이름", days: selectedDays, times: formattedTimes, note: medicationNote)
+                            
+                            viewModel.addMedication(medication: newMedication)
+                            dismiss()
+                        }
                     }) {
                         Text("저장")
                             .foregroundStyle(.black)
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("오류"), message: Text(alertMessage), dismissButton: .default(Text("확인")))
                     }
                 }
             }
