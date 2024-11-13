@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 final class CalendarEvent: Identifiable, Equatable {
-    @Attribute(.unique) var id: UUID = UUID()
+    var id: UUID = UUID()
     var title: String
     var startTime: Date
     var endTime: Date
@@ -37,6 +37,7 @@ final class CalendarEvent: Identifiable, Equatable {
         self.notes = notes
     }
     
+    // 연산자 오버라이딩
     static func ==(lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {
         return lhs.id == rhs.id
     }

@@ -30,6 +30,7 @@ final class CalendarEventDataSource {
     func fetchCalendarEvents() -> [CalendarEvent] {
         do {
             let events = try modelContext.fetch(FetchDescriptor<CalendarEvent>())
+            print("캘린더 이벤트 가져오기 성공, \(events.count)")
             return events
         } catch {
             print("캘린더 이벤트를 가져오는 중 오류 발생: \(error)")
@@ -41,6 +42,7 @@ final class CalendarEventDataSource {
         modelContext.insert(event)
         do {
             try modelContext.save()
+            print("캘린더 이벤트를 저장 성공, \(event.title)")
         } catch {
             print("캘린더 이벤트를 저장하는 중 오류 발생: \(error)")
         }
@@ -49,6 +51,7 @@ final class CalendarEventDataSource {
     func deleteCalendarEvent(_ event: CalendarEvent) {
         modelContext.delete(event)
         do {
+            print("캘린더 이벤트 삭제 성공, \(event.title)")
             try modelContext.save()
         } catch {
             print("캘린더 이벤트 삭제 중 오류 발생: \(error)")
@@ -58,6 +61,7 @@ final class CalendarEventDataSource {
     func updateCalendarEvent(_ event: CalendarEvent) {
         do {
             try modelContext.save()
+            print("캘린더 이벤트 업데이트 성공, \(event.title)")
         } catch {
             print("캘린더 이벤트 업데이트 중 오류 발생: \(error)")
         }
