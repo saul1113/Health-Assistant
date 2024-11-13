@@ -16,6 +16,7 @@ struct HomeView: View {
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
     @StateObject private var viewModelHeart = HeartRateViewModel()
+    @StateObject private var sleepViewModel = SleepDataViewModel()
     @State private var heartRate: Double = 0
     
     let nickname: String = "강사"
@@ -52,7 +53,7 @@ struct HomeView: View {
                             }
                             
                             NavigationLink(destination: SleepChartView()) {
-                                healthDataView()
+                                sleepTime(geometry: proxy)
                             }
                         }
                         .padding(.horizontal, 16)
@@ -149,36 +150,38 @@ struct HomeView: View {
     
     func sleepTime(geometry: GeometryProxy) -> some View {
         VStack(spacing: 5) {
-            let gaugeSize = geometry.size.width - 94
-            let gaugePerOne = gaugeSize / 10
-            Text("2024.11.03")
-                .foregroundStyle(.gray)
-                .font(.medium14)
-                .frame(maxWidth: geometry.size.width, alignment: .leading)
-            RoundedRectangle(cornerRadius: 18)
-                .fill(Color.green)
-                .frame(width: abs(geometry.size.width - 94), height: 34)
-                .overlay (alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 18)
-                        .frame(width:abs(gaugePerOne * 5) )
-                        .foregroundStyle(.white)
-                }
+            
+            // 수면 데이터 차트 표시
+            Chart(sleepViewModel.filteredSleepData()) { stage in
+                RectangleMark(
+                    xStart: .value("Start Time", stage.startDate),
+                    xEnd: .value("End Time", stage.endDate),
+                    y: .value("Stage", stage.stage.rawValue)
+                )
+                .foregroundStyle(stage.stage.color)
+            }
+//            .frame(height: 100)
+            .padding(.horizontal)
+            
             HStack {
                 Text("수면시간")
                     .foregroundStyle(.gray)
                     .font(.medium14)
-                Text("6시간 33분")
-                    .font(.bold16)
-                    .foregroundStyle(.white)
+                
                 Spacer()
-                Text("취침 시간")
-                    .foregroundStyle(.gray)
-                    .font(.medium14)
-                Text("7시간 47분")
+                
+                Text("\(sleepViewModel.formattedTotalSleepDuration())")
                     .font(.bold16)
+                    .foregroundStyle(.black)
             }
         }
-        .padding(.horizontal, 47)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white)
+        )
+        .padding(.top, -20)
     }
 }
 

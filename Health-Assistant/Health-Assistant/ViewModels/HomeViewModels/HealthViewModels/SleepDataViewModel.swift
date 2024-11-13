@@ -96,6 +96,13 @@ class SleepDataViewModel: ObservableObject {
         let days = Set(filteredSleepData().map { Calendar.current.startOfDay(for: $0.startDate) }).count
         return days > 0 ? totalDuration / Double(days) : 0
     }
+    
+    func formattedTotalSleepDuration() -> String {
+        let totalDuration = calculateTotalSleepDuration()
+        let hours = Int(totalDuration) / 3600
+        let minutes = (Int(totalDuration) % 3600) / 60
+        return "\(hours)시간 \(minutes)분"
+    }
 }
 
 enum SleepFilter {
