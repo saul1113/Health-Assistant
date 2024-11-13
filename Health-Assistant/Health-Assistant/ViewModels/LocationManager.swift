@@ -16,6 +16,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published private(set) var hospitalLocation: [CLLocationCoordinate2D] = []
     @Published private(set) var currentAddress: String?
     @Published private(set) var hospitalDistances: [Double] = []
+    @Published private(set) var hospitalNames: [String] = []
+    @Published private(set) var hospitalAddresses: [String] = []
     override init() {
         geocoder = CLGeocoder() // Geocoder 초기화
         super.init()
@@ -37,12 +39,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func fetchAddressFromLocation(hospitalAddress: [Item]) async {
         do {
             var distances: [Double] = []
+            var hospitalNames: [String] = []
+            var hospitalLocations: [CLLocationCoordinate2D] = []
             for hospitalAddrs in hospitalAddress {
                 if let hospitalAddress = hospitalAddrs.dutyAddr{
                     let addressString = hospitalAddress.contains(",") ?
                     String(hospitalAddress.split(separator: ",")[0]) : hospitalAddress
                     let hospitalAddress = try? await geocoder.geocodeAddressString(addressString)
-                    
+                    hospitalAddresses.append(addressString)
                     if let address = hospitalAddress?.first?.location {
                         self.hospitalLocation.append(address.coordinate)
                         //거리 계산 추가함
@@ -50,11 +54,20 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                             let distance = userLocation.distance(from: address) // 거리 계산 (미터 단위)
                             print("병원과의 거리: \(distance) 미터")
                             distances.append(distance)
+                            let hospitalName = hospitalAddrs.dutyName
+                            hospitalNames.append(hospitalName ?? "")
+                            print(hospitalNames)
+                            print(hospitalLocation)
                         }
                     }
                 }
             }
+            print("병원 이름: \(hospitalNames.count), 병원 좌표: \(hospitalLocation.count), 병원과의거리: \(distances.count)")
             self.hospitalDistances = distances
+            self.hospitalNames = hospitalNames
+            self.hospitalAddresses = hospitalAddresses
+            self.hospitalLocation = hospitalLocation
+            
         } catch {
             print("Error geocoding address: \(error)")
         }
