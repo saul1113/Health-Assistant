@@ -117,7 +117,7 @@ struct SleepChartView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 2)
                 
-                Text(formatDateToYearMonthDay(firstSleep.startDate))
+                Text(formatDateToYearMonthDay(Date()))
                     .font(.regular16)
                     .foregroundColor(.gray)
                     .padding(.horizontal)
@@ -171,6 +171,7 @@ struct SleepChartView: View {
             // 수면 시간과 날짜 표시
             if let firstSleep = viewModel.sleepData.first {
                 let averageSleepDuration = viewModel.calculateAverageSleepDuration()
+                let dateRangeText = calculateDateRange()
                 
                 Text("평균 수면 시간")
                     .font(.semibold20)
@@ -181,7 +182,7 @@ struct SleepChartView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 2)
                 
-                Text(formatDateToYearMonthDay(firstSleep.startDate))
+                Text(dateRangeText)
                     .font(.regular16)
                     .foregroundColor(.gray)
                     .padding(.horizontal)
@@ -246,6 +247,17 @@ struct SleepChartView: View {
         let hours = Int(duration) / 3600
         let minutes = (Int(duration) % 3600) / 60
         return "\(hours)시간 \(minutes)분"
+    }
+    
+    private func calculateDateRange() -> String {
+        let calendar = Calendar.current
+        let today = Date()
+        guard let startDate = calendar.date(byAdding: .day, value: -6, to: today) else { return "" }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 M월 d일"
+        
+        return "\(formatter.string(from: startDate)) ~ \(formatter.string(from: today))"
     }
     
     private func hours(from date: Date) -> Double {
