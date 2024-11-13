@@ -168,49 +168,48 @@ struct SleepChartView: View {
     
     private func weekViewChart() -> some View {
         VStack(alignment: .leading) {
-            // 수면 시간과 날짜 표시
-            if let firstSleep = viewModel.sleepData.first {
-                let averageSleepDuration = viewModel.calculateAverageSleepDuration()
-                let dateRangeText = calculateDateRange()
-                
-                Text("평균 수면 시간")
-                    .font(.semibold20)
-                    .padding(.horizontal)
-                
-                Text("\(formatDuration(averageSleepDuration))")
-                    .font(.bold30)
-                    .padding(.horizontal)
-                    .padding(.bottom, 2)
-                
-                Text(dateRangeText)
-                    .font(.regular16)
-                    .foregroundColor(.gray)
-                    .padding(.horizontal)
-                    .padding(.bottom, 10)
-            }
+            let averageSleepDuration = viewModel.calculateAverageSleepDuration()
+            let dateRangeText = calculateDateRange()
+            
+            Text("평균 수면 시간")
+                .font(.semibold20)
+                .padding(.horizontal)
+            
+            Text("\(formatDuration(averageSleepDuration))")
+                .font(.bold30)
+                .padding(.horizontal)
+                .padding(.bottom, 2)
+            
+            Text(dateRangeText)
+                .font(.regular16)
+                .foregroundColor(.gray)
+                .padding(.horizontal)
+                .padding(.bottom, 10)
             
             Chart {
                 ForEach(viewModel.filteredSleepData(), id: \.id) { stage in
-                    let dayOfWeek = Calendar.current.component(.weekday, from: stage.startDate) - 1
+                    let dayOffset = daysFromToday(stage.startDate)
                     let startTimeInHours = hours(from: stage.startDate)
                     let endTimeInHours = hours(from: stage.endDate)
                     
                     RectangleMark(
-                        x: .value("요일", dayOfWeek),
+                        x: .value("요일", 6 - dayOffset),
                         yStart: .value("Start Time", startTimeInHours),
                         yEnd: .value("End Time", endTimeInHours)
                     )
                     .foregroundStyle(stage.stage.color)
                 }
             }
-            .chartXScale(domain: 0...6) // 월~일까지의 x축 범위 설정
+            .chartXScale(domain: 1...7) // 오늘을 0으로 두고 6일 전을 -6으로 설정
             .chartXAxis {
                 AxisMarks(values: .stride(by: 1)) { value in
                     AxisGridLine()
                     AxisTick()
                     AxisValueLabel {
                         if let intValue = value.as(Int.self) {
-                            Text(dayOfWeekString(intValue))
+                            // 실제 날짜를 계산하여 dayOfWeekString에 전달
+                            let date = Calendar.current.date(byAdding: .day, value: intValue - 6, to: Date())!
+                            Text(dayOfWeekString(for: date))
                         }
                     }
                 }
@@ -229,6 +228,15 @@ struct SleepChartView: View {
             .frame(height: 300)
             .padding()
         }
+    }
+    
+    // 오늘부터의 일 수 차이로 요일을 계산하는 함수
+    private func daysFromToday(_ date: Date) -> Int {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let targetDate = calendar.startOfDay(for: date)
+        
+        return calendar.dateComponents([.day], from: targetDate, to: today).day ?? 0
     }
     
     private func formatTimeRange(start: Date, end: Date) -> String {
@@ -267,15 +275,19 @@ struct SleepChartView: View {
         return Double(hour) + Double(minute) / 60.0
     }
     
-    private func dayOfWeekString(_ day: Int) -> String {
+    // 날짜에 맞는 요일을 반환하는 함수
+    private func dayOfWeekString(for date: Date) -> String {
+        let calendar = Calendar.current
+        let day = calendar.component(.weekday, from: date)
+        
         switch day {
-        case 0: return "일"
-        case 1: return "월"
-        case 2: return "화"
-        case 3: return "수"
-        case 4: return "목"
-        case 5: return "금"
-        case 6: return "토"
+        case 1: return "일"
+        case 2: return "월"
+        case 3: return "화"
+        case 4: return "수"
+        case 5: return "목"
+        case 6: return "금"
+        case 7: return "토"
         default: return ""
         }
     }
