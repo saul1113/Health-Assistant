@@ -10,7 +10,6 @@ import Alamofire
 import XMLCoder
 
 
-
 class UserViewModel: ObservableObject {
     @Published private(set) var hospitalsInfo: [Item] = []
     let url = "http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEgytLcinfoInqire"

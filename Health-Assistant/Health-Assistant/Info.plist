@@ -35,5 +35,9 @@
 	</array>
 	<key>UrlString</key>
 	<string>$(UrlString)</string>
+	<key>NSCameraUsageDescription</key>
+	<string>사용자의 건강 데이터를 해석하기 위한 카메라 권한 요청</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>해석된 건강 데이터를 저장하기 위한 권한 요청</string>
 </dict>
 </plist>
