@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import Charts
 
 struct HomeView: View {
-    @Environment(\.modelContext) private var modelContext
     @StateObject private var dataManager: DataManager = DataManager()
     @StateObject private var viewModel = CalenderViewModel()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var viewModelHeart = HeartRateViewModel()
+    @StateObject private var sleepViewModel = SleepDataViewModel()
     @State private var heartRate: Double = 0
     
     private var sortedHospitals: [(String, Double, String)] {
@@ -50,18 +52,25 @@ struct HomeView: View {
                                 HealthCalendarView()
                             } label: {
                                 MiniWeekView(viewModel: viewModel)
-                                    .environment(\.modelContext, modelContext)
                                     .background(.white, in: RoundedRectangle(cornerRadius: 20))
                             }
                             chartView(geometry: proxy)
                                 .frame(height: 180)
-                            healthDataView()
+                            
+                            NavigationLink(destination: HeartRateChartView()) {
+                                healthDataView()
+                            }
+                            
+                            NavigationLink(destination: SleepChartView()) {
+                                sleepTime(geometry: proxy)
+                            }
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 20)
                         .scrollIndicators(.hidden)
                         .background(Color.CustomGreen02)
                         .cornerRadius(15, corners: [.topLeft, .topRight])
+                        .padding(.bottom, 50)
                     }
                     .onAppear {
                         locationManager.fetchAddress { local in
@@ -91,21 +100,37 @@ struct HomeView: View {
     }
     func healthDataView() -> some View {
         VStack (alignment: .center, spacing: 0) {
-            Text("현재")
-            if healthData.isMeasuring {
-                Text("0")
-                    .font(.bold96)
-                    .padding(.vertical, -17)
-            }
-            else {
-                Text("\(String(format: "%.f", healthData.heartRate))")
-                    .font(.bold96)
-                    .padding(.vertical, -27)
-            }
             HStack {
-                Text("BPM")
-                    .font(.regular20)
-                Image(systemName: "heart.fill")
+                // 6시간 차트 표시
+                Chart(viewModelHeart.filteredData.filter { item in
+                    Calendar.current.isDateInToday(item.date) // 6시간 범위 데이터 필터링
+                }) { item in
+                    PointMark(
+                        x: .value("Time", item.date),
+                        y: .value("Heart Rate", item.value)
+                    )
+                    .foregroundStyle(.red)
+                    .symbolSize(50)
+                }
+                .padding(.horizontal)
+                VStack {
+                    Text("현재")
+                    if healthData.isMeasuring {
+                        Text("0")
+                            .font(.bold96)
+                            .padding(.vertical, -17)
+                    }
+                    else {
+                        Text("\(String(format: "%.f", healthData.heartRate))")
+                            .font(.bold96)
+                            .padding(.vertical, -27)
+                    }
+                    HStack {
+                        Text("BPM")
+                            .font(.regular20)
+                        Image(systemName: "heart.fill")
+                    }
+                }
             }
         }
         .padding(20)
@@ -180,36 +205,38 @@ struct HomeView: View {
     
     func sleepTime(geometry: GeometryProxy) -> some View {
         VStack(spacing: 5) {
-            let gaugeSize = geometry.size.width - 94
-            let gaugePerOne = gaugeSize / 10
-            Text("2024.11.03")
-                .foregroundStyle(.gray)
-                .font(.medium14)
-                .frame(maxWidth: geometry.size.width, alignment: .leading)
-            RoundedRectangle(cornerRadius: 18)
-                .fill(Color.green)
-                .frame(width: abs(geometry.size.width - 94), height: 34)
-                .overlay (alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 18)
-                        .frame(width:abs(gaugePerOne * 5) )
-                        .foregroundStyle(.white)
-                }
+            
+            // 수면 데이터 차트 표시
+            Chart(sleepViewModel.filteredSleepData()) { stage in
+                RectangleMark(
+                    xStart: .value("Start Time", stage.startDate),
+                    xEnd: .value("End Time", stage.endDate),
+                    y: .value("Stage", stage.stage.rawValue)
+                )
+                .foregroundStyle(stage.stage.color)
+            }
+//            .frame(height: 100)
+            .padding(.horizontal)
+            
             HStack {
                 Text("수면시간")
                     .foregroundStyle(.gray)
                     .font(.medium14)
-                Text("6시간 33분")
-                    .font(.bold16)
-                    .foregroundStyle(.white)
+                
                 Spacer()
-                Text("취침 시간")
-                    .foregroundStyle(.gray)
-                    .font(.medium14)
-                Text("7시간 47분")
+                
+                Text("\(sleepViewModel.formattedTotalSleepDuration())")
                     .font(.bold16)
+                    .foregroundStyle(.black)
             }
         }
-        .padding(.horizontal, 47)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white)
+        )
+        .padding(.top, -20)
     }
 }
 

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DayEventsView: View {
-    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalenderViewModel
     let day: Int
     @State private var selectedEvent: CalendarEvent?
@@ -16,7 +15,7 @@ struct DayEventsView: View {
     var body: some View {
         NavigationView {
             List {
-                if viewModel.events(for: day, context: modelContext).isEmpty {
+                if viewModel.events(for: day).isEmpty {
                     emptyEventText()
                 } else {
                     eventList()
@@ -41,10 +40,10 @@ struct DayEventsView: View {
     }
     
     private func eventList() -> some View {
-        ForEach(viewModel.events(for: day, context: modelContext)) { event in
+        ForEach(viewModel.events(for: day)) { event in
             NavigationLink(destination: EventDetailView(viewModel: viewModel, day: day, event: event)
                 .onDisappear {
-                    viewModel.loadEvents(context: modelContext)
+                    viewModel.loadEvents()
                 }
             ) {
                 EventRow(event: event, viewModel: viewModel)

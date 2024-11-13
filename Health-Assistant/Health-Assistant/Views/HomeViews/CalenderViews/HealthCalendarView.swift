@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HealthCalendarView: View {
-    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel = CalenderViewModel()
     @State private var showDayEvents = false
     @State private var showAddEvent = false
@@ -29,7 +28,7 @@ struct HealthCalendarView: View {
             .sheet(isPresented: $showEventForm) {
                 EventFormView(viewModel: viewModel)
                     .onDisappear {
-                        viewModel.loadEvents(context: modelContext)
+                        viewModel.loadEvents()
                     }
             }
             .sheet(isPresented: $showDayEvents) {
@@ -39,7 +38,7 @@ struct HealthCalendarView: View {
                 }
             }
             .onAppear {
-                viewModel.loadEvents(context: modelContext)
+                viewModel.loadEvents()
             }
         }
     }
@@ -152,7 +151,7 @@ struct DayCellView: View {
             VStack(alignment: .leading, spacing: geometry.size.height * 0.005) {
                 Spacer()
                 
-                let events = viewModel.events(for: day, context: modelContext)
+                let events = viewModel.events(for: day)
                 
                 EventTexts(viewModel: viewModel, day: day, geometry: geometry)
             }
@@ -162,7 +161,7 @@ struct DayCellView: View {
     }
     
     private func dayBackgroundColor() -> Color {
-        let hasEvents = !viewModel.events(for: day, context: modelContext).isEmpty
+        let hasEvents = !viewModel.events(for: day).isEmpty
         
         if day == viewModel.todayDay && viewModel.isCurrentMonthAndYear() {
             return Color.blue.opacity(0.3)
@@ -198,7 +197,7 @@ struct EventTexts: View {
     
     var body: some View {
             VStack(alignment: .leading, spacing: geometry.size.height * 0.0042) {
-                let dayEvents = viewModel.events(for: day, context: modelContext)
+                let dayEvents = viewModel.events(for: day)
 
                 ForEach(dayEvents.prefix(2), id: \.id) { event in
                     ZStack(alignment: .leading) {

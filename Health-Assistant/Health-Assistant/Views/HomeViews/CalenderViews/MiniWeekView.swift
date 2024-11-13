@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MiniWeekView: View {
-    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalenderViewModel
     
     var body: some View {
@@ -40,7 +39,7 @@ struct MiniWeekView: View {
             HStack {
                 ForEach(viewModel.currentWeekDates(), id: \.self) { date in
                     VStack(alignment: .leading, spacing: 2) {
-                        let dayEvents = viewModel.events(for: date, context: modelContext)
+                        let dayEvents = viewModel.events(for: date)
                         
                         ForEach(dayEvents.prefix(2), id: \.id) { event in
                             GeometryReader { geometry in
@@ -80,7 +79,7 @@ struct MiniWeekView: View {
         .background(Color.white)
         .cornerRadius(20)
         .onAppear {
-            viewModel.loadEvents(context: modelContext)
+            viewModel.loadEvents()
         }
     }
 }
@@ -90,22 +89,5 @@ extension CalenderViewModel {
         let formatter = DateFormatter()
         formatter.dateFormat = "d"
         return formatter.string(from: date)
-    }
-}
-
-struct MiniWeekView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = CalenderViewModel()
-        
-        let sampleEvents = [
-            CalendarEvent(title: "Meeting", startTime: Date(), endTime: Date().addingTimeInterval(3600), isAllDay: false, alert: .none, notes: "Sample meeting event."),
-            CalendarEvent(title: "Workout", startTime: Date(), endTime: Date().addingTimeInterval(90000), isAllDay: false, alert: .none, notes: "Sample workout event."),
-            CalendarEvent(title: "Lunch", startTime: Date().addingTimeInterval(2 * 86400), endTime: Date().addingTimeInterval(2 * 86400 + 3600), isAllDay: false, alert: .none, notes: "Sample lunch event.")
-        ]
-        
-        viewModel.calendarEvents = sampleEvents
-        
-        return MiniWeekView(viewModel: viewModel)
-            .previewLayout(.sizeThatFits)
     }
 }

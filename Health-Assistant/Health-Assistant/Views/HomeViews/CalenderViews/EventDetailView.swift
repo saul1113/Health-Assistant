@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EventDetailView: View {
-    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalenderViewModel
     let day: Int
     @State var event: CalendarEvent
@@ -107,7 +106,7 @@ struct EventDetailView: View {
             title: Text("이벤트 삭제"),
             message: Text("이 이벤트를 삭제하시겠습니까?"),
             primaryButton: .destructive(Text("삭제")) {
-                viewModel.removeEvent(eventID: event.id, context: modelContext)
+                viewModel.removeEvent(eventID: event.id)
                 dismiss()
             },
             secondaryButton: .cancel(Text("취소"))
