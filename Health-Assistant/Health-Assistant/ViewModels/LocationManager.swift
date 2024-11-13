@@ -57,13 +57,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                             let hospitalName = hospitalAddrs.dutyName
                             hospitalNames.append(hospitalName ?? "")
                             print(hospitalNames)
+                            print(hospitalLocation)
                         }
                     }
                 }
             }
+            print("병원 이름: \(hospitalNames.count), 병원 좌표: \(hospitalLocation.count), 병원과의거리: \(distances.count)")
             self.hospitalDistances = distances
             self.hospitalNames = hospitalNames
             self.hospitalAddresses = hospitalAddresses
+            self.hospitalLocation = hospitalLocation
             
         } catch {
             print("Error geocoding address: \(error)")
