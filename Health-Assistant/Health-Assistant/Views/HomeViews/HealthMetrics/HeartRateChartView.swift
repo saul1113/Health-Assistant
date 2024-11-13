@@ -20,7 +20,6 @@ struct HeartRateChartView: View {
                     Text("6시간").tag(TimeRange.sixHours)
                     Text("1일").tag(TimeRange.oneDay)
                     Text("1주").tag(TimeRange.oneWeek)
-                    Text("1개월").tag(TimeRange.oneMonth)
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .font(.semibold16) // 커스텀 폰트 사용
@@ -184,7 +183,7 @@ struct HeartRateChartView: View {
         switch viewModel.selectedTimeRange {
         case .sixHours, .oneDay:
             return .dateTime.hour().minute() // 시간 형식
-        case .oneWeek, .oneMonth:
+        case .oneWeek:
             return .dateTime.month().day().locale(Locale(identifier: "ko_KR")) // 날짜 형식
         }
     }

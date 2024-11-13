@@ -9,7 +9,7 @@ import SwiftUI
 import HealthKit
 
 enum TimeRange {
-    case sixHours, oneDay, oneWeek, oneMonth
+    case sixHours, oneDay, oneWeek
 }
 
 class HeartRateViewModel: ObservableObject {
@@ -55,8 +55,6 @@ class HeartRateViewModel: ObservableObject {
             startDate = Calendar.current.date(byAdding: .day, value: -1, to: now)!
         case .oneWeek:
             startDate = Calendar.current.date(byAdding: .day, value: -7, to: now)!
-        case .oneMonth:
-            startDate = Calendar.current.date(byAdding: .month, value: -1, to: now)!
         }
         
         filteredData = allData.filter { $0.date >= startDate }
@@ -85,7 +83,7 @@ class HeartRateViewModel: ObservableObject {
             return "\(formatter.string(from: start))부터 ~ \(formatter.string(from: end))까지"
         case .oneDay:
             return "오늘"
-        case .oneWeek, .oneMonth:
+        case .oneWeek:
             formatter.dateFormat = "MM월 dd일"
             return "\(formatter.string(from: start))부터 ~ \(formatter.string(from: end))까지"
         }
@@ -110,8 +108,6 @@ class HeartRateViewModel: ObservableObject {
             interval = 14400 // 4시간
         case .oneWeek:
             interval = 86400 // 1일
-        case .oneMonth:
-            interval = 345600 // 4일
         }
         
         // 그룹화하여 평균값 계산
