@@ -54,7 +54,7 @@ final class MedicationDataSource {
         do {
             try modelContext.save()
         } catch {
-            print("Error updating medication: \(error)")
+            print("\(error)")
         }
     }
     

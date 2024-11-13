@@ -70,7 +70,7 @@ class MedicationViewModel: ObservableObject {
         }
     }
     
-    func timesToDates(_ times: [String]) -> [Date] {
+    func stringToDates(_ times: [String]) -> [Date] {
         var dates: [Date] = []
         for timeString in times {
             let formatter = DateFormatter()

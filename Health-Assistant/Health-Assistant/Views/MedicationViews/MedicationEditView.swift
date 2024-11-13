@@ -113,6 +113,10 @@ struct MedicationEditView: View {
                             }
                         }
                         
+                        .onAppear {
+                            selectedTimes = viewModel.stringToDates(medication.times)
+                        }
+                        
                         if !selectedTimes.isEmpty {
                             ForEach(selectedTimes, id: \.self) { time in
                                 displayTime(formatTimeToString(time))
