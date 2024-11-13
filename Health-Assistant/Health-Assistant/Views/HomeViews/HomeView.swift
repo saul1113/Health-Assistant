@@ -9,7 +9,6 @@ import SwiftUI
 import Charts
 
 struct HomeView: View {
-    @Environment(\.modelContext) private var modelContext
     @StateObject private var dataManager: DataManager = DataManager()
     @StateObject private var viewModel = CalenderViewModel()
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
@@ -42,7 +41,6 @@ struct HomeView: View {
                                 HealthCalendarView()
                             } label: {
                                 MiniWeekView(viewModel: viewModel)
-                                    .environment(\.modelContext, modelContext)
                                     .background(.white, in: RoundedRectangle(cornerRadius: 20))
                             }
                             chartView(geometry: proxy)

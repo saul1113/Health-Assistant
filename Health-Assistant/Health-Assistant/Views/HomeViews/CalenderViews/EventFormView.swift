@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EventFormView: View {
-    @Environment(\.modelContext) private var modelContext
     @ObservedObject var viewModel: CalenderViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -191,12 +190,10 @@ struct EventFormView: View {
     private var saveButton: some View {
         Button("저장") {
             if isEditing, let event = event {
-                if let index = viewModel.calendarEvents.firstIndex(where: { $0.id == event.id }) {
-                    viewModel.calendarEvents[index] = CalendarEvent( title: title, startTime: startTime, endTime: endTime, isAllDay: isAllDay, alert: alert, notes: notes)
-                }
+                viewModel.updateEvent(event: CalendarEvent(title: title, startTime: startTime, endTime: endTime, isAllDay: isAllDay, alert: alert, notes: notes))
             } else {
                 let newEvent = CalendarEvent(title: title, startTime: startTime, endTime: endTime, isAllDay: isAllDay, alert: alert, notes: notes)
-                viewModel.addEvent(event: newEvent, context: modelContext)
+                viewModel.addEvent(event: newEvent)
             }
             dismiss()
         }

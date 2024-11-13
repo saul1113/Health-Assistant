@@ -44,6 +44,7 @@
 		50C3C6022CE09F3E00CCF0FB /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C3C5FF2CE09F3E00CCF0FB /* CalendarEvent.swift */; };
 		50C3C6062CE09F7C00CCF0FB /* HeartRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C3C6052CE09F7C00CCF0FB /* HeartRateModel.swift */; };
 		50C3C60C2CE0A0C300CCF0FB /* HeartRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C3C60A2CE0A0C300CCF0FB /* HeartRateViewModel.swift */; };
+		50EADDE32CE46D640082A23A /* CalendarEventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EADDE22CE46D640082A23A /* CalendarEventDataSource.swift */; };
 		50F5CE0B2CDA926900B22E2E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F5CE0A2CDA926900B22E2E /* MainTabView.swift */; };
 		50F87B0B2CE1E629005DB7D0 /* SleepStageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F87B0A2CE1E629005DB7D0 /* SleepStageModel.swift */; };
 		50F87B0D2CE1E648005DB7D0 /* SleepDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F87B0C2CE1E648005DB7D0 /* SleepDataViewModel.swift */; };
@@ -123,6 +124,7 @@
 		50C3C5FF2CE09F3E00CCF0FB /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		50C3C6052CE09F7C00CCF0FB /* HeartRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateModel.swift; sourceTree = "<group>"; };
 		50C3C60A2CE0A0C300CCF0FB /* HeartRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModel.swift; sourceTree = "<group>"; };
+		50EADDE22CE46D640082A23A /* CalendarEventDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventDataSource.swift; sourceTree = "<group>"; };
 		50F5CE0A2CDA926900B22E2E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		50F87B0A2CE1E629005DB7D0 /* SleepStageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepStageModel.swift; sourceTree = "<group>"; };
 		50F87B0C2CE1E648005DB7D0 /* SleepDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataViewModel.swift; sourceTree = "<group>"; };
@@ -311,7 +313,6 @@
 				500EB8882CD854CD00CCD409 /* CalenderViews */,
 				5079062D2CD4AAB300AFE182 /* HomeView.swift */,
 				50C3C5F62CE09DE400CCF0FB /* HealthMetrics */,
-				2C75269D2CDCAA6E00E10C1B /* MapView.swift */,
 				2C41A0D32CDA054A006815BC /* HospitalMapView.swift */,
 			);
 			path = HomeViews;
@@ -406,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				50C3C5FF2CE09F3E00CCF0FB /* CalendarEvent.swift */,
+				50EADDE22CE46D640082A23A /* CalendarEventDataSource.swift */,
 			);
 			path = CalenderModels;
 			sourceTree = "<group>";
@@ -567,6 +569,7 @@
 				2CA032302CDD9739006DF2DD /* MedicationDetailView.swift in Sources */,
 				5079062B2CD4AA9F00AFE182 /* ProfileView.swift in Sources */,
 				2C7D9D2E2CE2F39000C824FE /* MedicationDataSource.swift in Sources */,
+				50EADDE32CE46D640082A23A /* CalendarEventDataSource.swift in Sources */,
 				2C41A0D42CDA054A006815BC /* HospitalMapView.swift in Sources */,
 				50C3C5FA2CE09E0A00CCF0FB /* HeartRateChartView.swift in Sources */,
 				50F87B0D2CE1E648005DB7D0 /* SleepDataViewModel.swift in Sources */,

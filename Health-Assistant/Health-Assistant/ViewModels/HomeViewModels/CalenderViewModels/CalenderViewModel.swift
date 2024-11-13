@@ -20,11 +20,15 @@ class CalenderViewModel: ObservableObject {
     
     private let calendar = Calendar.current
     private let today = Date()
+    private let dataSource = CalendarEventDataSource.shared
     
     init() {
         self.currentDate = Date()
         self.selectedDay = todayDay
         updateMonthYearDisplay()
+        Task {
+            await loadEvents()  // init 내에서 비동기 호출
+        }
     }
     
     // 오늘의 날짜 (일)
@@ -91,11 +95,8 @@ class CalenderViewModel: ObservableObject {
     }
     
     // 특정 일의 이벤트 목록 반환
-    func events(for day: Int, context: ModelContext) -> [CalendarEvent] {
-        let descriptor = FetchDescriptor<CalendarEvent>()
-        let allEvents = (try? context.fetch(descriptor)) ?? []
-        
-        let filteredEvents = allEvents.filter { event in
+    func events(for day: Int) -> [CalendarEvent] {
+        return calendarEvents.filter { event in
             let eventDateComponents = calendar.dateComponents([.year, .month, .day], from: event.startTime)
             let currentDateComponents = calendar.dateComponents([.year, .month, .day], from: currentDate)
             
@@ -103,23 +104,31 @@ class CalenderViewModel: ObservableObject {
                    eventDateComponents.month == currentDateComponents.month &&
                    eventDateComponents.day == day
         }
-        return filteredEvents.sorted { $0.startTime < $1.startTime }
     }
     
     // 새 이벤트 추가
-    func addEvent(event: CalendarEvent, context: ModelContext) {
-        context.insert(event)
+    @MainActor func addEvent(event: CalendarEvent) {
+        dataSource.addCalendarEvent(event)
+        loadEvents()
     }
     
     // 이벤트 삭제
-    func removeEvent(eventID: UUID, context: ModelContext) {
-        let descriptor = FetchDescriptor<CalendarEvent>(
-            predicate: #Predicate { $0.id == eventID }
-        )
-        if let eventToDelete = (try? context.fetch(descriptor))?.first {
-            context.delete(eventToDelete)
-            calendarEvents.removeAll { $0.id == eventID }
+    @MainActor func removeEvent(eventID: UUID) {
+        if let eventToDelete = calendarEvents.first(where: { $0.id == eventID }) {
+            dataSource.deleteCalendarEvent(eventToDelete)
+            loadEvents()
         }
+    }
+    
+    // 이벤트 업데이트
+    @MainActor func updateEvent(event: CalendarEvent) {
+        dataSource.updateCalendarEvent(event)
+        loadEvents()
+    }
+    
+    // 이벤트 로드 및 오름차순 정렬
+    @MainActor func loadEvents() {
+        calendarEvents = dataSource.fetchCalendarEvents().sorted { $0.startTime < $1.startTime }
     }
     
     // 특정 날짜의 시작 시간 생성
@@ -143,27 +152,6 @@ class CalenderViewModel: ObservableObject {
         return "\(formatter.string(from: event.startTime)) - \(formatter.string(from: event.endTime))"
     }
     
-    // 특정 일의 시작 및 종료 시간 반환
-    func getStartAndEndTime(for day: Int) -> (startTime: Date, endTime: Date) {
-        let now = Date()
-        if let selectedDayStart = startOfDay(for: day) {
-            var components = calendar.dateComponents([.year, .month, .day], from: selectedDayStart)
-            let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: now)
-            
-            components.hour = timeComponents.hour
-            components.minute = timeComponents.minute
-            components.second = timeComponents.second
-            
-            let startTime = calendar.date(from: components) ?? now
-            let endTime = calendar.date(byAdding: .hour, value: 1, to: startTime) ?? startTime
-            
-            return (startTime: startTime, endTime: endTime)
-        } else {
-            let endTime = calendar.date(byAdding: .hour, value: 1, to: now) ?? now
-            return (startTime: now, endTime: endTime)
-        }
-    }
-    
     // 현재 주의 날짜 목록 반환
     func currentWeekDates() -> [Date] {
         let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)) ?? today
@@ -178,23 +166,16 @@ class CalenderViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
-    // 특정 날짜의 이벤트 필터링
-    func events(for date: Date, context: ModelContext) -> [CalendarEvent] {
-        return calendarEvents.filter { event in
-            calendar.isDate(event.startTime, inSameDayAs: date)
-        }
-    }
-    
     // 오늘 날짜인지 확인
     func isToday(_ date: Date) -> Bool {
         calendar.isDateInToday(date)
     }
-    
-    // 이벤트 로드 및 오름차순 정렬
-    func loadEvents(context: ModelContext) {
-        let descriptor = FetchDescriptor<CalendarEvent>(
-            sortBy: [SortDescriptor(\.startTime, order: .forward)]
-        )
-        calendarEvents = (try? context.fetch(descriptor)) ?? []
+}
+
+extension CalenderViewModel {
+    func events(for date: Date) -> [CalendarEvent] {
+        return calendarEvents.filter { event in
+            calendar.isDate(event.startTime, inSameDayAs: date)
+        }
     }
 }
