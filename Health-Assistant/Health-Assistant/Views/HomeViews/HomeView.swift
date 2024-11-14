@@ -142,11 +142,17 @@ struct HomeView: View {
         .padding(.bottom, 20)
     }
     func chartView(geometry: GeometryProxy) -> some View {
-        HStack(spacing: 10) {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
-            
+        HStack (spacing: 10) {
+            NavigationLink {
+                MedicationCaptureView()
+            }label: {
+                Text("OCR")
+                    .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.white)
+                    }
+            }
             NavigationLink {
                 HospitalMapView(hospitals: userViewModel.hospitalsInfo)
             } label: {

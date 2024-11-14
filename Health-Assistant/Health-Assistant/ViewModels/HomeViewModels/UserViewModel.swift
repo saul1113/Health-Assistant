@@ -10,7 +10,6 @@ import Alamofire
 import XMLCoder
 
 
-
 class UserViewModel: ObservableObject {
     @Published private(set) var hospitalsInfo: [Item] = []
     let locationManager = LocationManager()
