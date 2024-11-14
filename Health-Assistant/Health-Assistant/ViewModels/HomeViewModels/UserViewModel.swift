@@ -12,10 +12,11 @@ import XMLCoder
 
 class UserViewModel: ObservableObject {
     @Published private(set) var hospitalsInfo: [Item] = []
+    let locationManager = LocationManager()
     let url = "http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEgytLcinfoInqire"
     //    let locationManager = LocationManager()
     
-    func fetchHospitalLocation(local: String) async {
+    func fetchHospitalLocation(local: String, completion: @escaping ([Item]) -> () ) async {
         let url = "http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEgytListInfoInqire"
         let serviceKey = "dVN/U3WDl0cxC8+FvHOLHWawaJ6KvrzGNa+QRPr6WV/kFjOSJi9JEmnpCtEkgsiIgDkfCwhk0Oxm4pOJOP87YA=="
         let pageNo = "1"
@@ -28,12 +29,13 @@ class UserViewModel: ObservableObject {
         ]
         let decoder = XMLDecoder()
         decoder.keyDecodingStrategy = .convertFromCapitalized
-        AF.request(url, method: .get, parameters: parameters).response { response in
+        AF.request(url, method: .get, parameters: parameters).response { [self] response in
             switch response.result {
             case .success(let data):
                 if let data {
                     do {
                         self.hospitalsInfo = try decoder.decode(HostpitalResponse.self, from: data).body.items.item
+                        completion(hospitalsInfo)
                     } catch {
                         print("Hospital Response: \(error.localizedDescription)")
                     }

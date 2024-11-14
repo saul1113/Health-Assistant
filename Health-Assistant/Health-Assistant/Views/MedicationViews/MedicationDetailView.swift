@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MedicationDetailView: View {
     var medication: Medication
-    
+    @EnvironmentObject var viewModel: MedicationViewModel
     @State private var showDetailsSheet = false
+    @State private var showEditSheet = false
+    @State private var showDeleteAlert = false
     let gridItem: [GridItem] =  [GridItem(.flexible())]
     
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
@@ -65,9 +69,14 @@ struct MedicationDetailView: View {
                         .font(.semibold24)
                         .padding(.bottom, -20)
                     
-                    Text("\(medication.note)")
-                        .font(.regular16)
-                    
+                    if medication.note == "" {
+                        Text("메모 없음")
+                            .font(.regular16)
+                    }
+                    else {
+                        Text("\(medication.note)")
+                            .font(.regular16)
+                    }
                     
                     Button(action: {
                         showDetailsSheet.toggle()
@@ -79,6 +88,7 @@ struct MedicationDetailView: View {
                     .sheet(isPresented: $showDetailsSheet) {
                         DetailSheetView(medication: medication)
                     }
+                    
                     Spacer()
                 }
                 .padding(.horizontal, 20)
@@ -92,13 +102,36 @@ struct MedicationDetailView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            
+                            showEditSheet.toggle()
                         }) {
                             Image(systemName: "pencil")
                                 .foregroundStyle(.black)
                         }
+                        
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            showDeleteAlert = true
+                        }) {
+                            Image(systemName: "trash")
+                                .foregroundColor(.black)
+                        }
+                        .sheet(isPresented: $showEditSheet) {
+                            MedicationEditView(medication: medication)
+                        }
                     }
                 }
+            }
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("약을 삭제하시겠습니까?"),
+                    message: Text("이 약에 대한 모든 정보가 앱에서 제거됩니다."),
+                    primaryButton: .destructive(Text("삭제")) {
+                        viewModel.deleteMedication(medication: medication)
+                        dismiss()
+                    },
+                    secondaryButton: .cancel(Text("취소"))
+                )
             }
         }
     }
@@ -139,7 +172,7 @@ struct DetailSheetView: View {
                     HStack {
                         Text("상호작용")
                             .font(.semibold24)
-                         
+                        
                         Text("주의해야 할 약 또는 음식")
                             .font(.regular12)
                             .padding(.top, 15)
@@ -153,7 +186,7 @@ struct DetailSheetView: View {
                     HStack {
                         Text("부작용")
                             .font(.semibold24)
-                         
+                        
                         Text("나타날 수도 있는 이상반응")
                             .font(.regular12)
                             .padding(.top, 15)
@@ -192,6 +225,6 @@ struct DetailSheetView: View {
 }
 
 #Preview {
-    MedicationDetailView(medication: Medication(name: "혈압약", company: "대웅제약", days:  ["Monday", "Wednesday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "식후 30분 후에 복용하기"))
+    MedicationDetailView(medication: Medication(name: "혈압약", company: "대웅제약", days:  ["thursday", "Friday"], times: ["08:00 AM", "02:00 PM"], note: "식후 30분 후에 복용하기"))
 }
 

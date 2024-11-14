@@ -5,7 +5,6 @@
 //  Created by Hwang_Inyoung on 11/5/24.
 //
 
-
 import SwiftUI
 
 struct SectionView<Content: View>: View {
@@ -19,9 +18,11 @@ struct SectionView<Content: View>: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(header)
-                .font(.bold20)
-                .padding(.leading, 5)
+            if !header.isEmpty {
+                Text(header)
+                    .font(.bold20)
+                    .padding(.leading, 5)
+            }
             VStack {
                 content
             }

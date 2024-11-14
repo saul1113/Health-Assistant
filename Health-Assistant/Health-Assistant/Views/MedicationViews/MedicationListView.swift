@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MedicationListView: View {
-    
-    @EnvironmentObject var viewModel: MedicationViewModel
+    @StateObject var viewModel: MedicationViewModel = MedicationViewModel(dataSource: .shared)
     
     @State private var addViewSheet = false
     
@@ -40,7 +39,7 @@ struct MedicationListView: View {
                             
                             Spacer()
                             
-                            NavigationLink(destination: MedicationDetailView(medication: medication)) {
+                            NavigationLink(destination: MedicationDetailView(medication: medication).environmentObject(viewModel)) {
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.black)
                             }
@@ -49,13 +48,13 @@ struct MedicationListView: View {
                     }
                 }
                 .padding(20)
+                .onAppear {
+                    viewModel.fetchMedications()
+                }
             }
             
         }
-        .onAppear {
-            viewModel.filterTodayMedications()
-        }
-        .navigationTitle("내가 복용하는 약")
+        .navigationTitle("내가 복용하는 모든 약")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -75,12 +74,15 @@ struct MedicationListView: View {
         .sheet(isPresented: $addViewSheet) {
             MedicationAddView()
                 .environmentObject(viewModel)
+                .onDisappear {
+                    viewModel.fetchMedications()
+                }
         }
     }
 }
 
 #Preview {
     MedicationListView()
-        .environmentObject(MedicationViewModel())
+        .environmentObject(MedicationViewModel(dataSource: .shared))
     
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct HomeView: View {
     @StateObject private var dataManager: DataManager = DataManager()
@@ -13,7 +14,20 @@ struct HomeView: View {
     @StateObject private var healthData: HealthDataManager = HealthDataManager()
     @StateObject private var locationManager: LocationManager = LocationManager()
     @StateObject private var userViewModel = UserViewModel()
+    @StateObject private var viewModelHeart = HeartRateViewModel()
+    @StateObject private var sleepViewModel = SleepDataViewModel()
     @State private var heartRate: Double = 0
+    
+    private var sortedHospitals: [(String, Double, String)] {
+        // 병원 이름, 거리, 주소를 묶어서 배열을 생성하고 거리 기준으로 정렬
+        let hospitals = (0..<locationManager.hospitalNames.count).map { index in
+            (locationManager.hospitalNames[index],
+             locationManager.hospitalDistances[index],
+             locationManager.hospitalAddresses[index])
+        }
+        
+        return hospitals.sorted { $0.1 < $1.1 }  // 거리 기준으로 정렬
+    }
     
     let nickname: String = "강사"
     var body: some View {
@@ -37,24 +51,36 @@ struct HomeView: View {
                             NavigationLink {
                                 HealthCalendarView()
                             } label: {
-                                MiniWeekView(viewModel: CalenderViewModel())
+                                MiniWeekView(viewModel: viewModel)
                                     .background(.white, in: RoundedRectangle(cornerRadius: 20))
                             }
                             chartView(geometry: proxy)
                                 .frame(height: 180)
-                            healthDataView()
+                            
+                            NavigationLink(destination: HeartRateChartView()) {
+                                healthDataView()
+                            }
+                            
+                            NavigationLink(destination: SleepChartView()) {
+                                sleepTime(geometry: proxy)
+                            }
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 20)
                         .scrollIndicators(.hidden)
                         .background(Color.CustomGreen02)
                         .cornerRadius(15, corners: [.topLeft, .topRight])
+                        .padding(.bottom, 50)
                     }
                     .onAppear {
                         locationManager.fetchAddress { local in
                             Task {
-                                await userViewModel.fetchHospitalLocation(local: local)
-                                try? await dataManager.signUp()
+                                await userViewModel.fetchHospitalLocation(local: local) { items in
+                                    Task {
+                                        await locationManager.fetchAddressFromLocation(hospitalAddress: items)
+                                    }
+                                }
+//                                try? await dataManager.signUp()
                             }
                         }
                     }
@@ -74,21 +100,37 @@ struct HomeView: View {
     }
     func healthDataView() -> some View {
         VStack (alignment: .center, spacing: 0) {
-            Text("현재")
-            if healthData.isMeasuring {
-                Text("0")
-                    .font(.bold96)
-                    .padding(.vertical, -17)
-            }
-            else {
-                Text("\(String(format: "%.f", healthData.heartRate))")
-                    .font(.bold96)
-                    .padding(.vertical, -27)
-            }
             HStack {
-                Text("BPM")
-                    .font(.regular20)
-                Image(systemName: "heart.fill")
+                // 6시간 차트 표시
+                Chart(viewModelHeart.filteredData.filter { item in
+                    Calendar.current.isDateInToday(item.date) // 6시간 범위 데이터 필터링
+                }) { item in
+                    PointMark(
+                        x: .value("Time", item.date),
+                        y: .value("Heart Rate", item.value)
+                    )
+                    .foregroundStyle(.red)
+                    .symbolSize(50)
+                }
+                .padding(.horizontal)
+                VStack {
+                    Text("현재")
+                    if healthData.isMeasuring {
+                        Text("0")
+                            .font(.bold96)
+                            .padding(.vertical, -17)
+                    }
+                    else {
+                        Text("\(String(format: "%.f", healthData.heartRate))")
+                            .font(.bold96)
+                            .padding(.vertical, -27)
+                    }
+                    HStack {
+                        Text("BPM")
+                            .font(.regular20)
+                        Image(systemName: "heart.fill")
+                    }
+                }
             }
         }
         .padding(20)
@@ -114,50 +156,93 @@ struct HomeView: View {
             NavigationLink {
                 HospitalMapView(hospitals: userViewModel.hospitalsInfo)
             } label: {
-                Text("\(locationManager.currentAddress ?? "")\n 가까운 병원 및 응급실")
-                    .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
-                    .foregroundStyle(.black)
-                    .background {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("내 근처 병원")
+                        .font(.bold18)
+                        .foregroundColor(.black)
+                        .padding(.leading, 10)
+                    
+                    ForEach(0..<min(3, sortedHospitals.count), id: \.self) { index in
+                        let hospital = sortedHospitals[index].0
+                        let distance = sortedHospitals[index].1
+                        let address = sortedHospitals[index].2
+                        
+                        HStack(alignment: .top, spacing: 8) {
+                          
+                            Divider()
+                                .frame(width: 2, height: 26)
+                                .background(Color.CustomGreen)
+                            
+                            VStack(alignment: .leading, spacing: 3) {
+                                
+                                HStack {
+                                    Text(hospital)
+                                        .font(.semibold14)
+                                        .foregroundColor(.black)
+                                        
+                                    Spacer()
+                                    
+                                    Text("\(Int(distance)/1000)km")
+                                        .font(.regular10)
+                                        .foregroundColor(.CustomGreen)
+                                }
+                                
+                                Text(address)
+                                    .font(.regular10)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(0)
+                            }
+                        }
+                        .padding(.horizontal, 8)
                     }
-                
+                }
+                .padding(12)
+                .frame(maxWidth: geometry.size.width / 2, maxHeight: geometry.size.height / 4)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                )
             }
         }
     }
+
+
+
+
     
     func sleepTime(geometry: GeometryProxy) -> some View {
         VStack(spacing: 5) {
-            let gaugeSize = geometry.size.width - 94
-            let gaugePerOne = gaugeSize / 10
-            Text("2024.11.03")
-                .foregroundStyle(.gray)
-                .font(.medium14)
-                .frame(maxWidth: geometry.size.width, alignment: .leading)
-            RoundedRectangle(cornerRadius: 18)
-                .fill(Color.green)
-                .frame(width: abs(geometry.size.width - 94), height: 34)
-                .overlay (alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 18)
-                        .frame(width:abs(gaugePerOne * 5) )
-                        .foregroundStyle(.white)
-                }
+            
+            // 수면 데이터 차트 표시
+            Chart(sleepViewModel.filteredSleepData()) { stage in
+                RectangleMark(
+                    xStart: .value("Start Time", stage.startDate),
+                    xEnd: .value("End Time", stage.endDate),
+                    y: .value("Stage", stage.stage.rawValue)
+                )
+                .foregroundStyle(stage.stage.color)
+            }
+//            .frame(height: 100)
+            .padding(.horizontal)
+            
             HStack {
                 Text("수면시간")
                     .foregroundStyle(.gray)
                     .font(.medium14)
-                Text("6시간 33분")
-                    .font(.bold16)
-                    .foregroundStyle(.white)
+                
                 Spacer()
-                Text("취침 시간")
-                    .foregroundStyle(.gray)
-                    .font(.medium14)
-                Text("7시간 47분")
+                
+                Text("\(sleepViewModel.formattedTotalSleepDuration())")
                     .font(.bold16)
+                    .foregroundStyle(.black)
             }
         }
-        .padding(.horizontal, 47)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white)
+        )
+        .padding(.top, -20)
     }
 }
 

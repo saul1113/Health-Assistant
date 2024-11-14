@@ -23,6 +23,7 @@ class PDFViewModel: ObservableObject {
                 ## \(report.reportDate)
                 
                 ### 수면
+                - 총 수면 시간 : \(report.asleepCoreTime.hours + report.asleepDeepTime.hours + report.asleepREMTime.hours + report.asleepUnspecifiedTime.hours) 시간 \(report.asleepCoreTime.minutes + report.asleepDeepTime.minutes + report.asleepREMTime.minutes + report.asleepUnspecifiedTime.minutes) 분
                 - 코어 수면 시간: \(report.asleepCoreTime.hours)시간 \(report.asleepCoreTime.minutes)분
                 - 깊은 수면 시간: \(report.asleepDeepTime.hours)시간 \(report.asleepDeepTime.minutes)분
                 - 램 수면 시간: \(report.asleepREMTime.hours)시간 \(report.asleepREMTime.minutes)분
