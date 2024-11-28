@@ -16,15 +16,23 @@ extension Font {
     static var bold20 = Font.custom("NotoSansKR-Bold", size: 20)
     static var bold18 = Font.custom("NotoSansKR-Bold", size: 18)
     static var bold16 = Font.custom("NotoSansKR-Bold", size: 16)
-    
+    static var bold96 = Font.custom("NotoSansKR-Bold", size: 96)
+
     /// SemiBold
+    static var semibold30 = Font.custom("NotoSansKR-SemiBold", size: 30)
+    static var semibold28 = Font.custom("NotoSansKR-SemiBold", size: 28)
+    static var semibold26 = Font.custom("NotoSansKR-SemiBold", size: 26)
     static var semibold24 = Font.custom("NotoSansKR-SemiBold", size: 24)
+    static var semibold22 = Font.custom("NotoSansKR-SemiBold", size: 22)
     static var semibold20 = Font.custom("NotoSansKR-SemiBold", size: 20)
     static var semibold18 = Font.custom("NotoSansKR-SemiBold", size: 18)
     static var semibold16 = Font.custom("NotoSansKR-SemiBold", size: 16)
     static var semibold14 = Font.custom("NotoSansKR-SemiBold", size: 14)
     
     /// Medium
+    static var medium30 = Font.custom("NotoSansKR-Medium", size: 28)
+    static var medium28 = Font.custom("NotoSansKR-Medium", size: 28)
+    static var medium26 = Font.custom("NotoSansKR-Medium", size: 26)
     static var medium24 = Font.custom("NotoSansKR-Medium", size: 24)
     static var medium20 = Font.custom("NotoSansKR-Medium", size: 20)
     static var medium18 = Font.custom("NotoSansKR-Medium", size: 18)
@@ -42,6 +50,7 @@ extension Font {
     static var regular14 = Font.custom("NotoSansKR-Regular", size: 14)
     static var regular12 = Font.custom("NotoSansKR-Regular", size: 12)
     static var regular10 = Font.custom("NotoSansKR-Regular", size: 10)
+    static var regular8 = Font.custom("NotoSansKR-Regular", size: 8)
 }
 
 //        Text("폰트사용예시")
