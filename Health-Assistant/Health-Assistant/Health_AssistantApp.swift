@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Health_AssistantApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .modelContainer(for: [CalendarEvent.self, Medication.self])
         }
     }
 }

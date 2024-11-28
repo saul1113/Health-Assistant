@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  Health-Assistant
+//
+//  Created by 강희창 on 11/7/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+UrlString = protectmeios.xyz

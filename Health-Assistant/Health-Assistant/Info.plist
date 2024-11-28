@@ -2,6 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+		</dict>
+	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>apis.data.go.kr</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.2</string>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansKR-Bold.ttf</string>
@@ -9,5 +33,11 @@
 		<string>NotoSansKR-Medium.ttf</string>
 		<string>NotoSansKR-Regular.ttf</string>
 	</array>
+	<key>UrlString</key>
+	<string>$(UrlString)</string>
+	<key>NSCameraUsageDescription</key>
+	<string>사용자의 건강 데이터를 해석하기 위한 카메라 권한 요청</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>해석된 건강 데이터를 저장하기 위한 권한 요청</string>
 </dict>
 </plist>
